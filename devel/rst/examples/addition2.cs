@@ -11,13 +11,13 @@ class Addition2
 
    static void Main()
    {
-      Console.WriteLine(sumProblem(2, 3));
-      Console.WriteLine(sumProblem(12345, 53579));
+      Console.WriteLine(sumProblemString(2, 3));
+      Console.WriteLine(sumProblemString(12345, 53579));
       Console.Write("Enter an integer: ");
       int a = int.Parse(Console.ReadLine());
       Console.Write("Enter another integer: ");
       int b = int.Parse(Console.ReadLine());
-      Console.WriteLine(sumProblem(a, b));
+      Console.WriteLine(sumProblemString(a, b));
    }
 }
 

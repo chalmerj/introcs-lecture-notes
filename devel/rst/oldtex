@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 10, 2012}
+\date{January 12, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -155,9 +155,268 @@ Windows, Mac, or Linux machines.
 \chapter{C\# Data and Operations}
 \label{data::doc}\label{data:c-data-and-operations}
 
-\section{Mono Tools}
-\label{monotools:mono-tools}\label{monotools::doc}
-George, substitute your stuff on csharp and (?) then running a program in MonoDevelop
+\section{Development Tools}
+\label{monotools:development-tools}\label{monotools::doc}
+
+\subsection{About Software Development Kits (SDKs)}
+\label{monotools:about-software-development-kits-sdks}
+A software development kit (SDK) is a set of tools for developing in a
+particular programming language (in our class, C\#). Developing in a
+language means everything from compiling to running and (when things
+go wrong) to debugging programs.
+
+The Microsoft SDK is the proprietary implementation of .Net. It runs
+only on Windows and is the primary development framework for all
+things Microsoft.
+
+The Mono Project SDK \textless{}\href{http://mono-project.com}{http://mono-project.com}\textgreater{} is the free/open source
+equivalent implementation of the Microsoft SDK. It runs on all major platforms (including Windows) and is needed in situations where you want to develop .Net applications on non-Windows platforms.
+
+As an interesting aside, the company whose developers lead the work on
+the Mono SDK are working on commercial tools that allow you to
+develop/run applications written in .Net on Apple iOS and Android
+mobile devices (phones and tablets).
+
+
+\subsection{About Integrated Development Environments (IDE)}
+\label{monotools:about-integrated-development-environments-ide}
+While just about everything you need to create programs can, indeed,
+be found in the SDK, it is not long before you wish there were an ``app
+for that'' so to speak. While most programmers who developed code (like
+your instructors) in the 1970s-1990s learned to program directly with
+the SDK using the \emph{command line}, today's programmers largely to
+prefer working in in IDE.
+
+There are two major IDEs for .Net development, which we explain briefly below:
+\begin{itemize}
+\item {} 
+Visual Studio is the Microsoft IDE that interfaces directly to the
+Microsoft SDK.
+
+\item {} 
+MonoDevelop is the free/open source IDE for developing applications
+using the Mono SDK on Windows and all other platforms (in
+particular, Linux and OS X).
+
+\end{itemize}
+
+In addition, there is another Windows-specific IDE, SharpDevelop, that
+inspired the creation of MonoDevelop. It is still actively maintained
+and provides a somewhat ``lighter weight'' alternative to Visual Studio
+for Windows users. Like MonoDevelop, it is aimed at developers who
+would prefer a more free/open source ``friendly'' version.
+
+
+\subsection{Our Approach}
+\label{monotools:our-approach}
+In the interest of providing a consistent experience for our students,
+we will be using Mono (the SDK) and MonoDevelop (the IDE) for
+everything we demonstrate in class. We will also be encouraging you to
+use it for your work, especially if you are interested in
+non-Microsoft platforms.
+
+Our notes assume for the most part that you are working with Mono and
+MonoDevelop. In most cases, what we are showing you in Mono and
+MonoDevelop will translate almost \emph{as is} to the Microsoft
+equivalents. However, there are some tools, such as the \code{csharp}
+interpreter, that are available in Microsoft's tools but in a somewhat
+limited form. As there is significant evolution of both the Microsoft
+and Mono \emph{toolchains}--a fancy word we want you to know and a more
+elegant way of saying SDK--we'll issue updates to these notes.
+
+
+\section{Installing Mono}
+\label{monotools:installing-mono}
+Because the Mono Project web page is known to change frequently, these
+instructions are designed to be as generic as possible. If you have
+any questions, you should contact the intructors immediately or seek
+tutoring help.
+
+
+\subsection{OS X}
+\label{monotools:os-x}\begin{enumerate}
+\item {} 
+Go to \textless{}\href{http://mono-project.com}{http://mono-project.com}\textgreater{}.
+
+\item {} 
+Look for the Mono downloads link. You want to get the latest
+
+\end{enumerate}
+\begin{quote}
+
+\emph{stable} version of Mono for OS X. For this class, you need version
+2.10 or later.
+\end{quote}
+\begin{enumerate}
+\item {} 
+You may see a link to download \emph{Runtime} or \emph{SDK}. Make sure you select SDK.
+
+\item {} 
+For OS X, the SDK is distributed as a DMG disk image. You'll need
+
+\end{enumerate}
+\begin{quote}
+
+to download this image and double-click it. Open the image and run
+the installer. Administrative privileges are required to run the
+installer, so if you do not know this information, please stop here.
+\end{quote}
+\begin{enumerate}
+\item {} 
+Once installation is completed, you have everything needed to start
+
+\end{enumerate}
+\begin{quote}
+
+using the IDE, MonoDevelop.
+\end{quote}
+\begin{enumerate}
+\item {} 
+Now go to \textless{}\href{http://mono-develop.com}{http://mono-develop.com}\textgreater{}.
+
+\item {} 
+As with Mono, we need to look for the downloads link. You should download the \emph{stable} version.
+
+\item {} 
+As with Mono, you will see a DMG file, which you should download and double-click to mount on your desktop.
+
+\item {} 
+This time, you will see an App for MonoDevelop, which you can drag and drop into the Applications foldeer.
+
+\end{enumerate}
+
+Here is how to do a quick sanity check of your Mono setup:
+\begin{enumerate}
+\item {} 
+Go to Applications -\textgreater{} Utilities and launch the Terminal
+
+\end{enumerate}
+\begin{quote}
+
+application. (Terminal is how you get to a command-line shell in OS X.)
+\end{quote}
+\begin{enumerate}
+\item {} 
+You'll see a prompt that looks like this {\color{red}\bfseries{}{}`{}`}computername:folder
+
+\end{enumerate}
+\begin{quote}
+
+user\${}`{}`. This means that terminal is ready for input.
+\end{quote}
+\begin{enumerate}
+\item {} 
+Type \code{which csharp} and hit enter/return. You should see
+
+\end{enumerate}
+\begin{quote}
+
+\code{/usr/bin/csharp} as output. \code{csharp} is the C\# interpreter.
+\end{quote}
+\begin{enumerate}
+\item {} 
+Type \code{which dmcs} and hit enter/return. You should see
+
+\end{enumerate}
+\begin{quote}
+
+\code{/usr/bin/dmcs} as output.  \code{dmcs} is one of the interfaces to
+the C\# compiler.
+\end{quote}
+\begin{enumerate}
+\item {} 
+If the two preceding steps were successful, you can launch
+
+\end{enumerate}
+\begin{quote}
+
+MonoDevelop by double-clicking the icon in your Applications
+folder. (You won't know what to do with it yet, but at least you can
+verify that it launches correctly and then use \%Q to exit.)
+\end{quote}
+
+
+\subsection{Windows}
+\label{monotools:windows}\begin{enumerate}
+\item {} 
+Go to \textless{}\href{http://mono-project.com}{http://mono-project.com}\textgreater{}.
+
+\item {} 
+Look for the Mono downloads link. You want to get the latest
+
+\end{enumerate}
+\begin{quote}
+
+\emph{stable} version of Mono for Windows. For this class, you need version
+2.10 or later.
+\end{quote}
+\begin{enumerate}
+\item {} 
+You may see a link to download \emph{Runtime} or \emph{SDK}. Make sure you select SDK.
+
+\item {} 
+For Windows, there is only one option to download the SDK. It is a
+
+\end{enumerate}
+\begin{quote}
+
+self-extracting executable, so you will need to double click it to
+install. For Vista and 7 users, you may need to check your taskbar to
+see whether the installer is being held up by Microsoft's enhanced
+security, UAM, that makes sure you really want to install something
+you downloaded from the internet.
+\end{quote}
+\begin{enumerate}
+\item {} 
+Once installation is completed, you have everything needed to start
+
+\end{enumerate}
+\begin{quote}
+
+using the IDE, MonoDevelop.
+\end{quote}
+\begin{enumerate}
+\item {} 
+Now go to \textless{}\href{http://mono-develop.com}{http://mono-develop.com}\textgreater{}.
+
+\item {} 
+As with Mono, we need to look for the downloads link. You should
+
+\end{enumerate}
+\begin{quote}
+
+download the \emph{stable} version.
+\end{quote}
+\begin{enumerate}
+\item {} 
+As with Mono, you will see a self-extracting installer, which you should run as before.
+
+\end{enumerate}
+
+Here is how to do a quick sanity check of your Mono setup:
+\begin{enumerate}
+\item {} 
+Go to Programs -\textgreater{} Mono and you should be able to find MonoDevelop.
+
+\item {} 
+Open a DOS shell, which can be done by going to the Start menu,
+
+\end{enumerate}
+\begin{quote}
+
+select Run, and enter \code{cmd}.
+\end{quote}
+\begin{enumerate}
+\item {} 
+If the two preceding steps were successful, you can launch
+
+\end{enumerate}
+\begin{quote}
+
+MonoDevelop by double-clicking the icon in your Applications
+folder. (You won't know what to do with it yet, but at least you can
+verify that it launches correctly and then use \%Q to exit.)
+\end{quote}
 
 
 \section{Comments on Miles Simple Data}
@@ -823,6 +1082,30 @@ actual parameter (line 15 and again in line 16).
 We can combine function parameters with user input, and have the
 program be able to print Happy Birthday for anyone. Check out the
 main method and run \code{birthday\_who.cs}:
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{Birthday\PYGZus{}Who}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{happyBirthday}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{person}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday to you!"}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday to you!"}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday, dear "} \PYG{p}{+} \PYG{n}{person} \PYG{p}{+} \PYG{l+s}{"."}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday to you!"}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+
+   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{string} \PYG{n}{userName}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Who would you like to sing Happy Birthday to?"}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{userName} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{happyBirthday}\PYG{p}{(}\PYG{n}{userName}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
 
 This last version illustrates several important ideas:
 \begin{enumerate}
