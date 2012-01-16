@@ -3,13 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
+
 Introductory Programming in C#
 ==============================
 
+
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :numbered:
 
+   offerings
    context
    data
    functions
@@ -18,7 +22,6 @@ Introductory Programming in C#
    arrays
 
 .. no stubs yet
-
 
    files
    compoundtypes

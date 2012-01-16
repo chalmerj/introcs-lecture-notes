@@ -66,7 +66,7 @@ elegant way of saying SDK--we'll issue updates to these notes.
 
 
 Installing Mono
-===============
+---------------
 
 Because the Mono Project web page is known to change frequently, these
 instructions are designed to be as generic as possible. If you have
