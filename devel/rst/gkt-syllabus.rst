@@ -163,12 +163,15 @@ that supports the current C# language and is entirely compatible with
 the concepts/materials we are covering in this class.
 
 You are encouraged to download and install the Mono SDK (Software
-Development Kit) for your computer/operating system right away (version
-2.10 or later, please). In addition, you will need to download and
-install a text editor. Any text editor is fine but we plan to introduce
-Vim and Emacs, which are available on all platforms. We discourage the
-use of Windows Notepad, which is not the best editor for programmers,
-owing to many limitations.
+Development Kit) for your computer/operating system right away
+(version 2.10 or later, please). In addition, you will need to
+download and install a text editor and the MonoDevelop development
+environment, which will be used once we get experience with the basics
+of editing, compiling, and running programs. Any text editor is fine
+but we plan to introduce Vim and Emacs in a first laboratory exercise,
+which are available on all platforms. We discourage the use of Windows
+Notepad, which is not the best editor for programmers, owing to many
+limitations.
 
 Programming and homework assignments
 ------------------------------------
@@ -240,20 +243,6 @@ provided when you need them.
    others. See the `tutoring
    schedule <http://www.cs.luc.edu/academics/services/tutoring>`_.
    Hopefully this is set up by the second week of classes.
-4. Free Java practice in the small (within static functions -- not OOP
-   oriented): `http://codingbat.com/ <http://codingbat.com/>`_
-5. Similar in spirit to CodingBat, and getting to larger problems with
-   classes, is
-   `Practice-It <http://webster.cs.washington.edu:8080/practiceit/>`_.
-   It follows the order of another introductory text.
-6. Free interactive testing of your ability to read bits of Java and
-   predict the path of execution (playing computer). This understanding
-   is important before writing your own code. Advantages: free, gives
-   step by step answers, adaptive to your level. Disadvantages: slow,
-   picky about order.
-   `http://www.problets.org/user/s11/luc/ <http://www.problets.org/user/s11/luc/>`_
-7. `Further references <index.html#References>`_ are listed on the
-   course home page.
 
 Campus Network, Rights and Responsibilities: As a user of the campus
 network, you should be aware of your rights and responsibilities in at
@@ -385,7 +374,7 @@ Help from any source *is fine* concerning
    or the actual solution).
 -  The tools used to write programs. Feel free to ask questions on the
    programming environment you use and the use of the debugger.
--  The restrictions of Java syntax.
+-  The restrictions of C# syntax.
 
 **Questions?** Please contact me if you have questions about these
 groundrules or about anything else in the course. After class, by email,

@@ -79,16 +79,17 @@ OS X
 
 #. Go to <http://mono-project.com>.
 
-#. Look for the Mono downloads link. You want to get the latest
-   *stable* version of Mono for OS X. For this class, you need version
-   2.10 or later.
+#. Look for the Mono downloads link. You want to get the latest *stable*
+   version of Mono for OS X. For this class, you need version 2.10 or
+   later.
 
 #. You may see a link to download *Runtime* or *SDK*. Make sure you select SDK.
 
 #. For OS X, the SDK is distributed as a DMG disk image. You'll need
    to download this image and double-click it. Open the image and run
    the installer. Administrative privileges are required to run the
-   installer, so if you do not know this information, please stop here.
+   installer, so if you do not know this information, please stop
+   here.
 
 #. Once installation is completed, you have everything needed to start
    using the IDE, MonoDevelop. 
@@ -171,3 +172,32 @@ Here is how to do a quick sanity check of your Mono setup:
    folder. (You won't know what to do with it yet, but at least you can
    verify that it launches correctly and then close the window.
    Ctrl-Q is a shortcut.)
+
+Linux
+-----
+
+We only provide instructions for Debian-based Linux distributions such
+as Ubuntu.
+
+#. Using the command-line ``apt-get`` tool, you can install everything
+ that you need using ``apt-get install monodevelop``. This should be
+ run as the **root** user (using the ``sudo`` command).
+
+#. You can test the sanity of your setup by following the instructions
+ under OS X. 
+
+MonoDevelop releases on Linux tend to lag behind the official stable
+release. This page,
+https://launchpad.net/~keks9n/+archive/monodevelop-latest, describes
+how to update your MonoDevelop setup if it is not version 2.8 or later
+as we'll need for this course.
+
+We wish to stress that Linux is recommended for students who already
+have a bit of programming experience under their belts. It can take a
+significant amount of energy to get a Linux setup up and running and
+to tweak it to your liking. While it has gotten ever so much easier
+since the 1990s when it first appeared, we encourage you to set it up
+perhaps a bit later in the semester or consider running it using
+virtualization software (on Mac or Windows) such as VirtualBox or
+VMware.
+
