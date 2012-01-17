@@ -1433,13 +1433,13 @@ printing is one possibility, done in
 
    \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{p}{)}
    \PYG{p}{\PYGZob{}}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{sumProblem}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{3}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{sumProblem}\PYG{p}{(}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{5}\PYG{p}{,} \PYG{l+m}{5}\PYG{l+m}{3}\PYG{l+m}{5}\PYG{l+m}{7}\PYG{l+m}{9}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{sumProblemString}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{3}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{sumProblemString}\PYG{p}{(}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{5}\PYG{p}{,} \PYG{l+m}{5}\PYG{l+m}{3}\PYG{l+m}{5}\PYG{l+m}{7}\PYG{l+m}{9}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write}\PYG{p}{(}\PYG{l+s}{"Enter an integer: "}\PYG{p}{)}\PYG{p}{;}
       \PYG{k+kt}{int} \PYG{n}{a} \PYG{p}{=} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write}\PYG{p}{(}\PYG{l+s}{"Enter another integer: "}\PYG{p}{)}\PYG{p}{;}
       \PYG{k+kt}{int} \PYG{n}{b} \PYG{p}{=} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{sumProblem}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{sumProblemString}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}

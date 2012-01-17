@@ -14,27 +14,30 @@ scenario as a *workflow*, which can be thought of as a series of steps
 that are possibly repeated. The workflow of programming can loosely be
 defined as follows:
 
-1. Use a text editor to write your code.
+1. Use a text editor to write your source code (human readable).
 2. Compile your code using the Software Development Kit (SDK) into
    object code.
 3. Link your object code to create an executable. (There are other kinds
-   of targets but we will start with the idea of an executable program
-   to keep things simple.)
+   of results to produce, 
+   but we will start with the idea of an executable program
+   to keep things simple.)  The default is to
+   nave an executable program created with compilation, automatically. 
 4. Run your program. Even for the most seasoned developers, your program
-   will not work entirely right the first time, so you may end up
-   repeating these steps.
+   may not work entirely right the first time, so you may end up
+   repeating these steps (debugging).
 
-.. raw:: html
-
-   <!~~ end of list ~~>
+..  what is this?
+	.. raw:: html
+	
+	   <!~~ end of list ~~>
 
 As we will learn later in the course, development environments such as
 Visual Studio (from Microsoft) and MonoDevelop (an open source
 implementation similar to Visual Studio) basically shield you from the
 details of understanding the workflow in detail. We think it is
-important that you learn this workflow from day one, because many types
+important that you *learn* this workflow from day one, because many types
 of software development don't always have the easiest software
-development tools.
+development tools.  You will be able to use fancy tools later.
 
 To be completed in the lab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,8 +86,8 @@ religiously at least once to ensure you were successful.)
 
 6.  Now we are going to learn how to compile this program. For this, you
     will need to open a shell. On Linux and OS X, the shell is opened by
-    launching Terminal. On Windows, a shortcut is created for accessing
-    a command line. Here's how you find it:
+    launching Terminal. On Windows, open a Mono Command Prompt,
+    as discussed above (or use one you left open).  Again to find it:
 
     -  OS X: Applications -> Terminal (double click it)
     -  Linux: Applications -> Terminal
@@ -94,23 +97,25 @@ religiously at least once to ensure you were successful.)
     command shell basically awaits user input and does whatever it is
     told (and does nothing otherwise). You'll begin by using the "cd"
     command to change your working directory to where you saved
-    ``Hello.cs``. If you did everything right, you can do this on
-    Windows:
+    ``Hello.cs``. 
+    Note:  Replace Dr. Thiruvathukals's login id gkt by your login id.
+    Also note for Mac/Unix examples that his machine is called 
+    macaroni.
+    
+    If you did everything right, you can do this on
+    Windows.  ::    
+    
+        C:\Windows\System32> cd C:\users\LOGIN
+        C:\Users\LOGIN> cd Documents\hello
+        C:\Users\LOGIN\Documents\hello> 
 
-    ::
-
-        C:\Users\gkt> cd Documents\hello
-        C:\Users\gkt\Documents\hello> 
-
-    ::
+    Mac/Linux::
 
         $ cd Documents/hello
 
 8.  If you are on OS X or Linux, you can list the directory using the
     ``ls`` command. If the output you see here does not match, make sure
-    you are in the ``hello`` folder:
-
-    ::
+    you are in the ``hello`` folder::
 
         $ ls
 
@@ -118,15 +123,22 @@ religiously at least once to ensure you were successful.)
         hello.cs
 
         $ pwd
-        /Users/gkt/Work/gkt-comp-170/hello
+        /Users/gkt/Documents/hello
 
 9.  If you're on Windows, can list the contents of the directory using
-    ``dir``:
+    ``dir``::
 
-    ::
-
-        C:\Users\gkt> dir
-        GKT to paste output here...
+        C:\Users\gkt\Documents\hello>dir
+		 Volume in drive C has no label.
+		 Volume Serial Number is 2C13-C918
+		
+		 Directory of C:\Users\anh\Documents\hello
+		
+		01/16/2012  06:07 PM    <DIR>          .
+		01/16/2012  06:07 PM    <DIR>          ..
+		11/04/2011  08:20 PM               646 Hello.cs
+		
+		...
 
 10. If you are unable to see ``Hello.cs`` at this stage, you need to go
     back and check all previous steps. It is entirely possible you did
@@ -140,12 +152,9 @@ religiously at least once to ensure you were successful.)
     *for life*. We're going to compile the ``Hello.cs`` program into
     ``Hello.exe`` so we can run it. FYI, you should still be in the
     Terminal/DOS window where we just listed the directory (this works
-    regardless of what OS you are using):
+    regardless of what OS you are using). Enter::
 
-    ::
-
-        $ gmcs Hello.cs
-        $
+        gmcs Hello.cs
 
 12. If everything worked right, you will not see any output. If you spot
     any error messages, it means that you probably made a typo when
@@ -158,11 +167,12 @@ religiously at least once to ensure you were successful.)
     folder structure to find folder ``hello``, then ``Hello.cs``.
 
 13. Now for the great moment you have been awaiting: You can *run*
-    ``Hello.exe``
+    ``Hello.exe``.  Enter::
 
-    ::
-
-        $ mono Hello.exe
+        mono Hello.exe
+        
+    You should see the result::
+    
         Hello, World!
 
 At this point, we have accomplished the major objective for Lab 0: to
