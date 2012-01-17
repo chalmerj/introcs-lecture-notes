@@ -180,11 +180,11 @@ We only provide instructions for Debian-based Linux distributions such
 as Ubuntu.
 
 #. Using the command-line ``apt-get`` tool, you can install everything
- that you need using ``apt-get install monodevelop``. This should be
- run as the **root** user (using the ``sudo`` command).
+   that you need using ``apt-get install monodevelop``. This should be
+   run as the **root** user (using the ``sudo`` command).
 
 #. You can test the sanity of your setup by following the instructions
- under OS X. 
+   under OS X.
 
 MonoDevelop releases on Linux tend to lag behind the official stable
 release. This page,
