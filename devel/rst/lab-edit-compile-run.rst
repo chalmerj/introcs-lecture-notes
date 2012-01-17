@@ -197,7 +197,7 @@ For further reinforcement
 #. Download and install the Emacs and Mono Software Development Kit on
    your home computer or laptop.
 
-#. Make sure you an do everything that you just completed in the lab.
+#. Make sure you can do everything that you just completed in the lab.
 
 #. See whether you can get a head start on Lab 1.
 
