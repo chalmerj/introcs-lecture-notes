@@ -414,6 +414,20 @@ development tools.  You will be able to use fancy tools later.
 The following is the code for a very well-known program, \emph{Hello,
 World!}:
 
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
+\PYG{k}{namespace} \PYG{n+nn}{introcs}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{class} \PYG{n+nc}{Hello}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main} \PYG{p}{(}\PYG{p}{)}
+      \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Hello, world!"}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
 This program is deliberately simple, so you can type it into a text
 editor (we are assuming Emacs here) quickly and become familiar with how
 to create, edit, and save a program. Perform the following steps. (You
@@ -484,9 +498,9 @@ If you did everything right, you can do this on
 Windows.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-C:\PYGZbs{}Windows\PYGZbs{}System32\textgreater{} cd C:\PYGZbs{}users\PYGZbs{}LOGIN
-C:\PYGZbs{}Users\PYGZbs{}LOGIN\textgreater{} cd Documents\PYGZbs{}hello
-C:\PYGZbs{}Users\PYGZbs{}LOGIN\PYGZbs{}Documents\PYGZbs{}hello\textgreater{}
+C:\PYGZbs{}Windows\PYGZbs{}System32\textgreater{} cd C:\PYGZbs{}users\PYGZbs{}gkt
+C:\PYGZbs{}Users\PYGZbs{}gkt\textgreater{} cd Documents\PYGZbs{}hello
+C:\PYGZbs{}Users\PYGZbs{}gkt\PYGZbs{}Documents\PYGZbs{}hello\textgreater{}
 \end{Verbatim}
 
 Mac/Linux:
@@ -504,7 +518,7 @@ you are in the \code{hello} folder:
 \$ ls
 
 macaroni:hello gkt\$ ls
-hello.cs
+Hello.cs
 
 \$ pwd
 /Users/gkt/Documents/hello
