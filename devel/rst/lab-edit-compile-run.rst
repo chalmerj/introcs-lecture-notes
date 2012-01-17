@@ -45,10 +45,25 @@ To be completed in the lab
 The following is the code for a very well-known program, *Hello,
 World!*:
 
-.. literalinclude:: hello+nant/HelloWorld.cs
-   :language: csharp
-   :emphasize-lines: 9
-   :linenos:
+..  waiting for fix to change back
+    .. literalinclude:: hello+nant/HelloWorld.cs
+       :language: csharp
+       :emphasize-lines: 9
+       :linenos:
+	   
+::
+    using System;
+
+    namespace introcs
+    {
+       class Hello
+       {
+          static void Main ()
+          {
+	         Console.WriteLine ("Hello, world!");
+          }
+       }
+    }
 
 This program is deliberately simple, so you can type it into a text
 editor (we are assuming Emacs here) quickly and become familiar with how
@@ -105,9 +120,9 @@ religiously at least once to ensure you were successful.)
     If you did everything right, you can do this on
     Windows.  ::    
     
-        C:\Windows\System32> cd C:\users\LOGIN
-        C:\Users\LOGIN> cd Documents\hello
-        C:\Users\LOGIN\Documents\hello> 
+        C:\Windows\System32> cd C:\users\gkt
+        C:\Users\gkt> cd Documents\hello
+        C:\Users\gkt\Documents\hello> 
 
     Mac/Linux::
 
@@ -120,7 +135,7 @@ religiously at least once to ensure you were successful.)
         $ ls
 
         macaroni:hello gkt$ ls
-        hello.cs
+        Hello.cs
 
         $ pwd
         /Users/gkt/Documents/hello
