@@ -6,6 +6,7 @@ C# Data and Operations
 
 
    monotools
+   lab-edit-compile-run
    milessimpledata
    remainders
  
