@@ -239,9 +239,9 @@ tutoring help.
 Go to \textless{}\href{http://mono-project.com}{http://mono-project.com}\textgreater{}.
 
 \item {} 
-Look for the Mono downloads link. You want to get the latest
-\emph{stable} version of Mono for OS X. For this class, you need version
-2.10 or later.
+Look for the Mono downloads link. You want to get the latest \emph{stable}
+version of Mono for OS X. For this class, you need version 2.10 or
+later.
 
 \item {} 
 You may see a link to download \emph{Runtime} or \emph{SDK}. Make sure you select SDK.
@@ -250,7 +250,8 @@ You may see a link to download \emph{Runtime} or \emph{SDK}. Make sure you selec
 For OS X, the SDK is distributed as a DMG disk image. You'll need
 to download this image and double-click it. Open the image and run
 the installer. Administrative privileges are required to run the
-installer, so if you do not know this information, please stop here.
+installer, so if you do not know this information, please stop
+here.
 
 \item {} 
 Once installation is completed, you have everything needed to start
@@ -364,6 +365,38 @@ Ctrl-Q is a shortcut.)
 \end{enumerate}
 
 
+\subsection{Linux}
+\label{monotools:linux}
+We only provide instructions for Debian-based Linux distributions such
+as Ubuntu.
+\begin{enumerate}
+\item {} 
+Using the command-line \code{apt-get} tool, you can install everything
+that you need using \code{apt-get install monodevelop}. This should be
+run as the \textbf{root} user (using the \code{sudo} command).
+
+\item {} 
+You can test the sanity of your setup by following the instructions
+under OS X.
+
+\end{enumerate}
+
+MonoDevelop releases on Linux tend to lag behind the official stable
+release. This page,
+\href{https://launchpad.net/~keks9n/+archive/monodevelop-latest}{https://launchpad.net/\textasciitilde{}keks9n/+archive/monodevelop-latest}, describes
+how to update your MonoDevelop setup if it is not version 2.8 or later
+as we'll need for this course.
+
+We wish to stress that Linux is recommended for students who already
+have a bit of programming experience under their belts. It can take a
+significant amount of energy to get a Linux setup up and running and
+to tweak it to your liking. While it has gotten ever so much easier
+since the 1990s when it first appeared, we encourage you to set it up
+perhaps a bit later in the semester or consider running it using
+virtualization software (on Mac or Windows) such as VirtualBox or
+VMware.
+
+
 \section{Lab Exercise: Editing, Compiling, and Running}
 \label{lab-edit-compile-run:lab-exercise-editing-compiling-and-running}\label{lab-edit-compile-run::doc}
 
@@ -372,7 +405,7 @@ Ctrl-Q is a shortcut.)
 This first lab is aimed at taking you through the end-to-end process of
 writing and running a basic computer program. As with all things in
 life, we will learn in this lab that becoming a programmer requires you
-to learn a number of other things.
+to learn a number of other things along the way.
 
 In software development/engineering parlance, we typically describe a
 scenario as a \emph{workflow}, which can be thought of as a series of steps
@@ -387,16 +420,15 @@ Compile your code using the Software Development Kit (SDK) into
 object code.
 
 \item {} 
-Link your object code to create an executable. (There are other kinds
-of results to produce,
-but we will start with the idea of an executable program
-to keep things simple.)  The default is to
-nave an executable program created with compilation, automatically.
+Link your object code to create an executable. (There are other
+kinds of results to produce, but we will start with the idea of an
+executable program to keep things simple.)  The default is to nave
+an executable program created with compilation, automatically.
 
 \item {} 
-Run your program. Even for the most seasoned developers, your program
-may not work entirely right the first time, so you may end up
-repeating these steps (debugging).
+Run your program. Even for the most seasoned developers, your
+program may not work entirely right the first time, so you may end
+up repeating these steps (debugging).
 
 \end{enumerate}
 
@@ -414,64 +446,73 @@ development tools.  You will be able to use fancy tools later.
 The following is the code for a very well-known program, \emph{Hello,
 World!}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
-\PYG{k}{namespace} \PYG{n+nn}{introcs}
+
+\PYG{k}{namespace} \PYG{n+nn}{Comp170}
 \PYG{p}{\PYGZob{}}
-   \PYG{k}{class} \PYG{n+nc}{Hello}
-   \PYG{p}{\PYGZob{}}
-      \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main} \PYG{p}{(}\PYG{p}{)}
+   \PYG{k}{public} \PYG{k}{class} \PYG{n+nc}{Hello}
+   \PYG{p}{\PYGZob{}}    
+      \PYG{k}{public} \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main} \PYG{p}{(}\PYG{p}{)}
       \PYG{p}{\PYGZob{}}
-         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Hello, world!"}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Hello World!"}\PYG{p}{)}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
 This program is deliberately simple, so you can type it into a text
-editor (we are assuming Emacs here) quickly and become familiar with how
+editor (Emacs is recommended but your instructor may introduce you to
+a different editor, subject to availability in the lab) quickly and become familiar with how
 to create, edit, and save a program. Perform the following steps. (You
 are free to deviate but may want to consider following the steps
 religiously at least once to ensure you were successful.)
 \begin{enumerate}
 \item {} 
-Open the Emacs text editor. This can usually be done from your GUI's
-start menu.
+Open the text editor. This can usually be done from your
+GUI's start menu.
 
 \item {} 
 Create a folder anywhere you like (e.g. in Documents) and name it
-\code{hello}. (This can be done through the desktop shell (e.g. Windows
-Explorer or Apple Finder.) As a general rule, we recommend that you
-start any new programming project in its own folder that is free of
-other folders/files. Clutter is a great enemy of those who aspire to
-become good programmers.
+\code{hello}. (This can be done through the desktop shell
+(e.g. Windows Explorer or Apple Finder.) As a general rule, we
+recommend that you start any new programming project in its own
+folder that is free of other folders/files. Clutter is a great
+enemy of those who aspire to become good programmers.
 
 \item {} 
-When you start in Emacs, you are in what is known as \emph{scratch} mode.
-Typical of a sketchpad used by artists, this is where you can start
-typing right away. You can now begin typing in the text above. Keep
-in mind that the exact formatting is not important at this stage;
-however, as we progress in this course, you'll \emph{want} to pay
-attention to how your code is formatted. (With Emacs, it is possible
-to reformat your code to make it \emph{beautiful}. More on that later.)
+When you start in Emacs, you are in what is known as \emph{scratch}
+mode.  Typical of a sketchpad used by artists, this is where you
+can start typing right away. You can now begin typing in the text
+above. Keep in mind that the exact formatting is not important at
+this stage; however, as we progress in this course, you'll \emph{want}
+to pay attention to how your code is formatted. (With most text editors, it is
+possible to reformat your code to make it \emph{beautiful}. More on
+that later.)
 
 \item {} 
-Once you have entered the text, you will want to \emph{save} it using
-\code{ctrl-s ctrl-a} to a file named \code{Hello.cs}. You can also use the
-File menu to save but we mention the control sequence, which works
-on any version of Emacs, including those without a GUI (web servers,
-embedded systems, etc.)
+Once you have entered the text, you will want to \emph{save} it, just
+as if you were saving a file in your word processor. (In the Emacs
+text editor, you use Control-x, Control-s. You will want to save
+the file with the name \code{Hello.cs}. If you are using a graphical
+text editor (like the case) then you will usually be able to save
+from the File menu, much like you would do in a regular word
+processor. Keep in mind, however, that you will eventually want to
+learn the \emph{keyboard shortcuts} for your editor as much development
+work in the real world happens from the command line and remote
+terminal sessions (e.g. web and embedded systems development).
 
 \item {} 
-If all has gone well, you will now have a version of \emph{Hello, World}
-in a file named \code{Hello.cs} in a folder named \code{hello} (located in
-\code{Documents}).
+If all has gone well, you will now have a version of \emph{Hello,
+World} in a file named \code{Hello.cs} in a folder named \code{hello}
+(located in \code{Documents}).
 
 \item {} 
-Now we are going to learn how to compile this program. For this, you
-will need to open a shell. On Linux and OS X, the shell is opened by
-launching Terminal. On Windows, open a Mono Command Prompt,
-as discussed above (or use one you left open).  Again to find it:
+Now we are going to learn how to compile this program. For this,
+you will need to open a shell. On Linux and OS X, the shell is
+opened by launching Terminal. On Windows, open a Mono Command
+Prompt, as discussed above (or use one you left open).  Again to
+find it:
 \begin{itemize}
 \item {} 
 OS X: Applications -\textgreater{} Terminal (double click it)
@@ -489,13 +530,11 @@ Now you need to learn how to ``move around'' using the shell. The
 command shell basically awaits user input and does whatever it is
 told (and does nothing otherwise). You'll begin by using the ``cd''
 command to change your working directory to where you saved
-\code{Hello.cs}.
-Note:  Replace Dr. Thiruvathukals's login id gkt by your login id.
-Also note for Mac/Unix examples that his machine is called
-macaroni.
+\code{Hello.cs}.  Note: Replace Dr. Thiruvathukals's login id gkt by
+your login id.  Also note for Mac/Unix examples that his machine
+is called macaroni.
 
-If you did everything right, you can do this on
-Windows.
+If you did everything right, you can do this on Windows:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 C:\PYGZbs{}Windows\PYGZbs{}System32\textgreater{} cd C:\PYGZbs{}users\PYGZbs{}gkt
@@ -511,8 +550,8 @@ Mac/Linux:
 
 \item {} 
 If you are on OS X or Linux, you can list the directory using the
-\code{ls} command. If the output you see here does not match, make sure
-you are in the \code{hello} folder:
+\code{ls} command. If the output you see here does not match, make
+sure you are in the \code{hello} folder:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ ls
@@ -543,35 +582,36 @@ C:\PYGZbs{}Users\PYGZbs{}gkt\PYGZbs{}Documents\PYGZbs{}hello\textgreater{}dir
 \end{Verbatim}
 
 \item {} 
-If you are unable to see \code{Hello.cs} at this stage, you need to go
-back and check all previous steps. It is entirely possible you did
-not create the folder or save properly. If you think you completed
-these steps, this is a good time to ask the instructor or teaching
-assistant for help.
+If you are unable to see \code{Hello.cs} at this stage, you need to
+go back and check all previous steps. It is entirely possible you
+did not create the folder or save properly. If you think you
+completed these steps, this is a good time to ask the instructor
+or teaching assistant for help.
 
 \item {} 
 Assuming you are able to see \code{Hello.cs} in the \code{hello} folder,
 we are now ready for \emph{the good stuff*\textasciitilde{}\textasciitilde{}the technical term we use
-when we are about to learn something that we need to know how to do
-*for life}. We're going to compile the \code{Hello.cs} program into
-\code{Hello.exe} so we can run it. FYI, you should still be in the
-Terminal/DOS window where we just listed the directory (this works
-regardless of what OS you are using). Enter:
+when we are about to learn something that we need to know how to
+do *for life}. We're going to compile the \code{Hello.cs} program
+into \code{Hello.exe} so we can run it. FYI, you should still be in
+the Terminal/DOS window where we just listed the directory (this
+works regardless of what OS you are using). Enter:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{gmcs} \PYG{n}{Hello}\PYG{p}{.}\PYG{n}{cs}
 \end{Verbatim}
 
 \item {} 
-If everything worked right, you will not see any output. If you spot
-any error messages, it means that you probably made a typo when
-copying/typing the sample code into the text editor. Go back to step
-@EditHello and check that everything is typed properly. (We will not
-be discussing all the possible errors you an encounter at this
-stage, but you might find them helpful to edit your program.) If
-your text editor is not still open, then you need to re-open the
-file, which can be done easily by using File-\textgreater{}Open and browsing your
-folder structure to find folder \code{hello}, then \code{Hello.cs}.
+If everything worked right, you will not see any output. If you
+spot any error messages, it means that you probably made a typo
+when copying/typing the sample code into the text editor. Go back
+to step @EditHello and check that everything is typed
+properly. (We will not be discussing all the possible errors you
+an encounter at this stage, but you might find them helpful to
+edit your program.) If your text editor is not still open, then
+you need to re-open the file, which can be done easily by using
+File \code{-\textgreater{}} Open and browsing your folder structure to find folder
+\code{hello}, then \code{Hello.cs}.
 
 \item {} 
 Now for the great moment you have been awaiting: You can \emph{run}
@@ -608,12 +648,48 @@ Download and install the Emacs and Mono Software Development Kit on
 your home computer or laptop.
 
 \item {} 
-Make sure you an do everything that you just completed in the lab.
+Make sure you can do everything that you just completed in the lab.
 
 \item {} 
 See whether you can get a head start on Lab 1.
 
 \end{enumerate}
+
+
+\subsection{Some Useful Resources for Learning Emacs}
+\label{lab-edit-compile-run:some-useful-resources-for-learning-emacs}\begin{enumerate}
+\item {} 
+The GNU Emacs Tutorial, \href{http://www.gnu.org/software/emacs/tour/}{http://www.gnu.org/software/emacs/tour/}
+
+\item {} 
+University of Chicago Libraries Emacs Tutorial,
+
+\end{enumerate}
+\begin{quote}
+
+\href{http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html}{http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html}
+\end{quote}
+
+
+\subsection{Other Useful Text Editors}
+\label{lab-edit-compile-run:other-useful-text-editors}
+\#. Gedit, \href{http://gedit.org}{http://gedit.org}, is a very nice editor that comes with most
+Linux/Gnome distributions. Although it allegedely runs on Windows and OS X, we
+have not had a chance to test it and cannot recommend it at this time.
+\begin{enumerate}
+\item {} 
+Vim,  \href{http://www.vim.org/docs.php}{http://www.vim.org/docs.php}, is another popular editor based
+
+\end{enumerate}
+\begin{quote}
+
+on the famous \textbf{vi} text editor that goes back a number of
+decades. There are graphical versions for Linux, Mac, and Windows.
+\end{quote}
+
+Unfortuntely, these are not available in the Windows labs yet (unlike
+Emacs); however, students working in the Linux laboratory have access
+to these editors and may wish to learn them.
 
 
 \subsection{What's next in Lab 1?}

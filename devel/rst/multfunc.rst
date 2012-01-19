@@ -56,36 +56,3 @@ function. Have the program call the function three times,
 so the poem or verse is repeated three times.
 
 	
-See :ref:`BirthdayFunctionEx`.
-
-We can combine function parameters with user input, and have the
-program be able to print Happy Birthday for anyone. Check out the
-main method and run ``birthday_who.cs``:
-
-.. literalinclude:: examples/birthday_who.cs
-   :linenos:
-
-This last version illustrates several important ideas:
-
-#. There are more than one way to get information into a function:
-   
-   #. Have a value passed in through a parameter (from line 10 to line 3).
-
-   #. Prompt the user, and obtain data from the keyboard (line 11).
-
-#. It is a good idea to separate the *internal* processing of data
-   from the *external* input from the user by the use of distinct
-   functions. Here the user interaction is in ``main``, and the data
-   is manipulated in ``happyBirthday``.
-
-#. In the first examples of actual parameters, we used literal
-   values. In general an actual parameter can be an expression. The
-   expression is evaluated before it is passed in the function call.
-   One of the simplest expressions is a plain variable name, which is
-   evaluated by replacing it with its associated value. Since it is
-   only the value of the actual parameter that is passed, not any
-   variable name, there is *no need* to have a variable name used in
-   an actual parameter match a formal parameter name. (Here we have the
-   value of ``userName`` in ``main`` becoming the value of ``person``
-   in ``happyBirthday``.)
-
