@@ -992,9 +992,22 @@ produces
 
 \section{Lab: Division Sentences}
 \label{lab-division-sentences:index-0}\label{lab-division-sentences::doc}\label{lab-division-sentences:lab-division-sentences}
+\begin{notice}{note}{Todo}
+
+George
+
+emacs java mode, csharp mode, Windows install csharp mode
+
+14 / 4 is approximately 3.5.
+
+14/4 = 3 2/4
+
+will improve ``2/4'' later....
+\end{notice}
+
 
 \chapter{Defining Functions of your Own}
-\label{functions:defining-functions-of-your-own}\label{functions::doc}\label{functions:index-1}\label{functions:defining-own-functions}
+\label{functions:defining-functions-of-your-own}\label{functions::doc}\label{functions:defining-own-functions}
 \index{syntax template!typography}\index{typography!syntax template}
 
 \section{Syntax Template Typography}
@@ -1834,6 +1847,11 @@ printing is one possibility, done in
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
+\begin{notice}{note}{Todo}
+
+Put in utility functions for promted input
+\end{notice}
+
 
 \subsection{Quotient String Return Exercise}
 \label{funcreturn:quotient-string-return-exercise}\label{funcreturn:quotientstringex}
@@ -2015,36 +2033,73 @@ By convention, names for constants are all capital letters.
 
 \section{Not using Return Values}
 \label{notusereturn:index-0}\label{notusereturn::doc}\label{notusereturn:not-using-return-values}
+\begin{notice}{note}{Todo}
+
+Andy new
+\end{notice}
+
 \index{assignment!functions}
 
 \section{Assignment: Functions}
-\label{assignment-functions:index-0}\label{assignment-functions:assignment-functions}\label{assignment-functions::doc}\label{assignment-functions:index-1}
+\label{assignment-functions:index-0}\label{assignment-functions:assignment-functions}\label{assignment-functions::doc}
+\begin{notice}{note}{Todo}
+
+George
+
+? tie into later work; good CS example?
+\end{notice}
+
 
 \chapter{Basic String Operations}
-\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\label{basicstringops:index-1}\phantomsection\label{stringchar:string-char}
+\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\phantomsection\label{stringchar:string-char}
 \index{string!char}\index{char!string}
 
 \section{Strings and Characters}
-\label{stringchar:index-0}\label{stringchar::doc}\label{stringchar:strings-and-characters}\phantomsection\label{stringindexing:string-char}
+\label{stringchar:index-0}\label{stringchar::doc}\label{stringchar:strings-and-characters}
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+\phantomsection\label{stringindexing:string-char}
 \index{string!char}\index{char!string}
 
 \section{String Indexing}
-\label{stringindexing:index-0}\label{stringindexing::doc}\label{stringindexing:index-1}\label{stringindexing:string-indexing}\phantomsection\label{stringmethods:string-char}
+\label{stringindexing:index-0}\label{stringindexing::doc}\label{stringindexing:string-indexing}
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+\phantomsection\label{stringmethods:string-char}
 \index{string!methods}
 
 \section{String Methods}
-\label{stringmethods:string-methods}\label{stringmethods:index-0}\label{stringmethods::doc}\label{stringmethods:index-1}\phantomsection\label{problem-solving-replace:string-char}
+\label{stringmethods:string-methods}\label{stringmethods:index-0}\label{stringmethods::doc}
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+\phantomsection\label{problem-solving-replace:string-char}
 \index{string!problem solving}\index{problem solving!string}
 
 \section{A Creative Problem Solution}
-\label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}\label{problem-solving-replace:index-1}\phantomsection\label{lab-string-ops:string-char}
+\label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+\phantomsection\label{lab-string-ops:string-char}
 \index{labs!string manipulations}
 
 \section{Lab: String Operations}
-\label{lab-string-ops:index-0}\label{lab-string-ops::doc}\label{lab-string-ops:index-1}\label{lab-string-ops:lab-string-operations}
+\label{lab-string-ops:index-0}\label{lab-string-ops::doc}\label{lab-string-ops:lab-string-operations}
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+
 
 \chapter{Decisions}
-\label{decisions:decisions}\label{decisions::doc}\label{decisions:index-1}
+\label{decisions:decisions}\label{decisions::doc}
 
 \section{Conditions}
 \label{conditions:conditions}\label{conditions::doc}

@@ -9,6 +9,7 @@ C# Data and Operations
    milessimpledata
    remainders
    writeline-substitution
+   learning-to-problem-solve
    lab-division-sentences
  
 
