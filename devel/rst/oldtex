@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 16, 2012}
+\date{January 18, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -382,8 +382,12 @@ under OS X.
 \end{enumerate}
 
 MonoDevelop releases on Linux tend to lag behind the official stable
-release. This page,
-\href{https://launchpad.net/~keks9n/+archive/monodevelop-latest}{https://launchpad.net/\textasciitilde{}keks9n/+archive/monodevelop-latest}, describes
+release.
+
+This page,
+\href{https://launchpad.net/~keks9n/+archive/monodevelop-latest}{https://launchpad.net/\textasciitilde{}keks9n/+archive/monodevelop-latest},
+
+describes
 how to update your MonoDevelop setup if it is not version 2.8 or later
 as we'll need for this course.
 
@@ -663,12 +667,9 @@ The GNU Emacs Tutorial, \href{http://www.gnu.org/software/emacs/tour/}{http://ww
 
 \item {} 
 University of Chicago Libraries Emacs Tutorial,
+\href{http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html}{http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html}
 
 \end{enumerate}
-\begin{quote}
-
-\href{http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html}{http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html}
-\end{quote}
 
 
 \subsection{Other Useful Text Editors}
@@ -679,13 +680,10 @@ have not had a chance to test it and cannot recommend it at this time.
 \begin{enumerate}
 \item {} 
 Vim,  \href{http://www.vim.org/docs.php}{http://www.vim.org/docs.php}, is another popular editor based
-
-\end{enumerate}
-\begin{quote}
-
 on the famous \textbf{vi} text editor that goes back a number of
 decades. There are graphical versions for Linux, Mac, and Windows.
-\end{quote}
+
+\end{enumerate}
 
 Unfortuntely, these are not available in the Windows labs yet (unlike
 Emacs); however, students working in the Linux laboratory have access
@@ -824,6 +822,173 @@ sentence with an integer division problem like
 \PYG{n}{The} \PYG{n}{quotient} \PYG{n}{of} \PYG{l+m}{1}\PYG{l+m}{4} \PYG{n}{and} \PYG{l+m}{3} \PYG{k}{is} \PYG{l+m}{4} \PYG{n}{with} \PYG{n}{a} \PYG{n}{remainder} \PYG{n}{of} \PYG{l+m}{2}
 \end{Verbatim}
 
+
+\section{Substitutions in Console.WriteLine}
+\label{writeline-substitution:substitutions-in-console-writeline}\label{writeline-substitution::doc}
+
+\subsection{Output With \texttt{+}}
+\label{writeline-substitution:output-with}
+An elaboration of a ``Hello, World'' program, could greet the user,
+after obtaining the user's name.  If the user enters thje name
+Kim, the program could print
+\begin{quote}
+
+Hello, Kim!
+\end{quote}
+
+This is a very simple
+input-process-output program (in fact with almost no ``process'').
+Think how would you code it?
+
+You need to obtain a name, remember it and use it in your output.
+A solution is in the next section.
+
+\index{WriteLine!\{\} for format}\index{\{\} for format!WriteLine}
+
+\subsection{String Format Operation}
+\label{writeline-substitution:index-0}\label{writeline-substitution:string-format-operation}\label{writeline-substitution:format-strings}
+A common convention is fill-in-the blanks. For instance,
+\begin{quote}
+
+Hello, \_\_\_\_\_!
+\end{quote}
+
+and you can fill in the name of the person greeted, and combine
+given text with a chosen insertion. C\# has a similar
+construction, better called fill-in-the-braces,
+that can be used with \code{Console.WriteLine}.
+
+Instead of inserting user input with the \code{+} operation as in
+\code{HelloYou1.cs}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{HelloYou2}
+\PYG{p}{\PYGZob{}}
+    \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main} \PYG{p}{(}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}   
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"What is your name?"}\PYG{p}{)}\PYG{p}{;}
+        \PYG{k+kt}{string} \PYG{n}{name} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine} \PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Hello, \PYGZob{}0\PYGZcb{}!"}\PYG{p}{,} \PYG{n}{name}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+look at a variation, \code{HelloYou2.cs}, shown below.
+Both programs
+look exactly the same to the user:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{HelloYou}
+\PYG{p}{\PYGZob{}}
+    \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main} \PYG{p}{(}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}   
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"What is your name?"}\PYG{p}{)}\PYG{p}{;}
+        \PYG{k+kt}{string} \PYG{n}{name} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine} \PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Hello, \PYGZob{}0\PYGZcb{}!"}\PYG{p}{,} \PYG{n}{name}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+\code{Console.WriteLine} actually can take parameters \emph{after} an initial string,
+but only when  the string is in the form of a \emph{format string},
+with expression(s) in braces where substitutions are to be made,
+(like in fill-in-the-blanks).
+The remaining parameters, after the initial string,
+give the values to be substituted.  To
+know \emph{which} further parameter to substitute, the parameters afer the
+initial string are implicitly numbered,
+and like most other numbering sequences in C\#, the numbering starts from
+0.  So here, where there is just one value to substitute, it gets the index 0,
+and where it is substituted, the braces get 0 inside, to indicate
+that parameter 0 is to be substituted.
+Everything in the initial string that is \emph{outside} the braces is just
+repeated verbatim.  In particular, if the only parameter is a string
+with no braces, it is printed completely
+verbatim (as we have used \code{Console.WriteLine} before).
+
+A more elabortate silly examples that you could test in csharp would be:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{string} \PYG{n}{first} \PYG{p}{=} \PYG{l+s}{"Peter"}\PYG{p}{;}
+\PYG{k+kt}{string} \PYG{n}{last} \PYG{p}{=} \PYG{l+s}{"Piper"}\PYG{p}{;}
+\PYG{k+kt}{string} \PYG{n}{what} \PYG{p}{=} \PYG{l+s}{"pick"}\PYG{p}{;}
+\PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}, \PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}, \PYGZob{}2\PYGZcb{}."}\PYG{p}{,} \PYG{n}{first}\PYG{p}{,} \PYG{n}{last}\PYG{p}{,} \PYG{n}{what}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+would print:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Peter} \PYG{n}{Piper}\PYG{p}{,} \PYG{n}{Peter} \PYG{n}{Piper}\PYG{p}{,} \PYG{n}{pick}\PYG{p}{.}
+\end{Verbatim}
+
+where parameter 0 is \code{first} (value \code{"Peter"}),
+parameter 1 is \code{last} ( value \code{"Piper"}), and
+parameter 2 is \code{what} (value \code{"pick"}).
+
+Make sure you see why the given output is exactly what is printed.
+
+Or try in csharp:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{x} \PYG{p}{=} \PYG{l+m}{7}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{y} \PYG{p}{=} \PYG{l+m}{5}\PYG{p}{;}
+\PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} plus \PYGZob{}1\PYGZcb{} = \PYGZob{}2\PYGZcb{}; \PYGZob{}0\PYGZcb{} times \PYGZob{}1\PYGZcb{} = \PYGZob{}3\PYGZcb{}."}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{x}\PYG{p}{+}\PYG{n}{y}\PYG{p}{,} \PYG{n}{x}\PYG{p}{*}\PYG{n}{y}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+and see it print:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{7} \PYG{n}{plus} \PYG{l+m}{5} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{p}{;} \PYG{l+m}{7} \PYG{n}{times} \PYG{l+m}{5} \PYG{p}{=} \PYG{l+m}{3}\PYG{l+m}{5.}
+\end{Verbatim}
+
+Note the following features:
+\begin{itemize}
+\item {} 
+Parameters to be substituted can be of any type.
+
+\item {} 
+Parameters can be any expression,
+and the expressions get evaluated before printing.
+
+\item {} 
+The parameters are automatically converted to a string form, just as in the
+use of the string \code{+} operation.
+
+\end{itemize}
+
+In fact the simple use of format strings
+shown so far can be completed replaced by long expressions with \code{+},
+if that is your taste.  Miles later (on page 50) discusses fancier formatting,
+that \emph{cannot} be duplicated with a simple string \code{+} operation.
+We will just use the simple numbered substitutions for now,
+to get used to the idea of substitution.
+
+A technical point: Since braces have special meaning in a format
+string, there must be a special rule if you want braces to actually
+be included in the final \emph{formatted} string. The rule is to double
+the braces: \code{'\{\{'} and \code{'\}\}'}. The fragment
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{a} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{,} \PYG{n}{b} \PYG{p}{=} \PYG{l+m}{3}\PYG{p}{;}
+\PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"The set is \PYGZob{}\PYGZob{}\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}\PYGZcb{}\PYGZcb{}."}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+produces
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{The} \PYG{k}{set} \PYG{k}{is} \PYG{p}{\PYGZob{}}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{3}\PYG{p}{\PYGZcb{}}\PYG{p}{.}
+\end{Verbatim}
+
+\index{labs!division sentences}
+
+\section{Lab: Division Sentences}
+\label{lab-division-sentences:index-0}\label{lab-division-sentences::doc}\label{lab-division-sentences:lab-division-sentences}
 
 \chapter{Defining Functions of your Own}
 \label{functions:defining-functions-of-your-own}\label{functions::doc}\label{functions:defining-own-functions}
@@ -1138,69 +1303,6 @@ Write a program, \code{poem.cs}, that defines a function that
 prints a \emph{short} poem or song verse. Give a meaningful name to the
 function. Have the program call the function three times,
 so the poem or verse is repeated three times.
-
-See {\hyperref[funcparam:birthdayfunctionex]{\emph{Birthday Function Exercise}}}.
-
-We can combine function parameters with user input, and have the
-program be able to print Happy Birthday for anyone. Check out the
-main method and run \code{birthday\_who.cs}:
-
-\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
-
-\PYG{k}{class} \PYG{n+nc}{Birthday\PYGZus{}Who}
-\PYG{p}{\PYGZob{}}
-   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{happyBirthday}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{person}\PYG{p}{)}
-   \PYG{p}{\PYGZob{}}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday to you!"}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday to you!"}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday, dear "} \PYG{p}{+} \PYG{n}{person} \PYG{p}{+} \PYG{l+s}{"."}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Happy Birthday to you!"}\PYG{p}{)}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}
-
-   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{p}{)}
-   \PYG{p}{\PYGZob{}}
-      \PYG{k+kt}{string} \PYG{n}{userName}\PYG{p}{;}
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Who would you like to sing Happy Birthday to?"}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n}{userName} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n}{happyBirthday}\PYG{p}{(}\PYG{n}{userName}\PYG{p}{)}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}
-
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}
-
-This last version illustrates several important ideas:
-\begin{enumerate}
-\item {} 
-There are more than one way to get information into a function:
-\begin{enumerate}
-\item {} 
-Have a value passed in through a parameter (from line 10 to line 3).
-
-\item {} 
-Prompt the user, and obtain data from the keyboard (line 11).
-
-\end{enumerate}
-
-\item {} 
-It is a good idea to separate the \emph{internal} processing of data
-from the \emph{external} input from the user by the use of distinct
-functions. Here the user interaction is in \code{main}, and the data
-is manipulated in \code{happyBirthday}.
-
-\item {} 
-In the first examples of actual parameters, we used literal
-values. In general an actual parameter can be an expression. The
-expression is evaluated before it is passed in the function call.
-One of the simplest expressions is a plain variable name, which is
-evaluated by replacing it with its associated value. Since it is
-only the value of the actual parameter that is passed, not any
-variable name, there is \emph{no need} to have a variable name used in
-an actual parameter match a formal parameter name. (Here we have the
-value of \code{userName} in \code{main} becoming the value of \code{person}
-in \code{happyBirthday}.)
-
-\end{enumerate}
 
 \index{function!parameters}\index{parameters!function}
 
@@ -1905,7 +2007,38 @@ A simple example program is \code{constant.cs}:
 See that \code{PI} is used in two functions without being declared locally.
 
 By convention, names for constants are all capital letters.
+\phantomsection\label{notusereturn:string-char}
+\index{function!scope not use return value}\index{scope!not use return value, function}\index{not use return value!function scope}
 
+\section{Not using Return Values}
+\label{notusereturn:index-0}\label{notusereturn::doc}\label{notusereturn:not-using-return-values}
+\index{assignment!functions}
+
+\section{Assignment: Functions}
+\label{assignment-functions:index-0}\label{assignment-functions:assignment-functions}\label{assignment-functions::doc}
+
+\chapter{Basic String Operations}
+\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\phantomsection\label{stringchar:string-char}
+\index{string!char}\index{char!string}
+
+\section{Strings and Characters}
+\label{stringchar:index-0}\label{stringchar::doc}\label{stringchar:strings-and-characters}\phantomsection\label{stringindexing:string-char}
+\index{string!char}\index{char!string}
+
+\section{String Indexing}
+\label{stringindexing:index-0}\label{stringindexing::doc}\label{stringindexing:string-indexing}\phantomsection\label{stringmethods:string-char}
+\index{string!methods}
+
+\section{String Methods}
+\label{stringmethods:string-methods}\label{stringmethods:index-0}\label{stringmethods::doc}\phantomsection\label{problem-solving-replace:string-char}
+\index{string!problem solving}\index{problem solving!string}
+
+\section{A Creative Problem Solution}
+\label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}\phantomsection\label{lab-string-ops:string-char}
+\index{labs!string manipulations}
+
+\section{Lab: String Operations}
+\label{lab-string-ops:index-0}\label{lab-string-ops::doc}\label{lab-string-ops:lab-string-operations}
 
 \chapter{Decisions}
 \label{decisions:decisions}\label{decisions::doc}

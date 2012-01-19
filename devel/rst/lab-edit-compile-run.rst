@@ -207,7 +207,7 @@ Some Useful Resources for Learning Emacs
 #. The GNU Emacs Tutorial, http://www.gnu.org/software/emacs/tour/
 
 #. University of Chicago Libraries Emacs Tutorial,
- http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html
+   http://www2.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html
 
 Other Useful Text Editors
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -217,8 +217,8 @@ Linux/Gnome distributions. Although it allegedely runs on Windows and OS X, we
 have not had a chance to test it and cannot recommend it at this time.
 
 #. Vim,  http://www.vim.org/docs.php, is another popular editor based
- on the famous **vi** text editor that goes back a number of
- decades. There are graphical versions for Linux, Mac, and Windows.
+   on the famous **vi** text editor that goes back a number of
+   decades. There are graphical versions for Linux, Mac, and Windows.
 
 Unfortuntely, these are not available in the Windows labs yet (unlike
 Emacs); however, students working in the Linux laboratory have access

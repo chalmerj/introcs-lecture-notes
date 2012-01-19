@@ -17,6 +17,7 @@ Introductory Programming in C#
    context
    data
    functions
+   basicstringops
    decisions
    loops
    arrays

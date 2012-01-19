@@ -173,6 +173,7 @@ Here is how to do a quick sanity check of your Mono setup:
    verify that it launches correctly and then close the window.
    Ctrl-Q is a shortcut.)
 
+
 Linux
 -----
 
@@ -187,8 +188,12 @@ as Ubuntu.
    under OS X.
 
 MonoDevelop releases on Linux tend to lag behind the official stable
-release. This page,
-https://launchpad.net/~keks9n/+archive/monodevelop-latest, describes
+release. 
+
+This page,
+https://launchpad.net/~keks9n/+archive/monodevelop-latest, 
+
+describes
 how to update your MonoDevelop setup if it is not version 2.8 or later
 as we'll need for this course.
 
@@ -200,4 +205,3 @@ since the 1990s when it first appeared, we encourage you to set it up
 perhaps a bit later in the semester or consider running it using
 virtualization software (on Mac or Windows) such as VirtualBox or
 VMware.
-

@@ -16,3 +16,5 @@ Defining Functions of your Own
    writerconsumer
    localscope
    staticvariables
+   notusereturn
+   assignment-functions
