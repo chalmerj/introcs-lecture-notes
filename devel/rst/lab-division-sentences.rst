@@ -5,7 +5,7 @@
 Lab: Division Sentences
 =========================
 
-.. todo
+.. todo::
    George
    
    emacs java mode, csharp mode, Windows install csharp mode

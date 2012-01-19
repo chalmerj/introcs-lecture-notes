@@ -6,5 +6,5 @@
 Strings and Characters
 ==================================
 
-.. todo
+.. todo::
    Andy from Java version

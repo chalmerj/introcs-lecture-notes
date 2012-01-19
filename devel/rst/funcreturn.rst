@@ -139,9 +139,9 @@ printing is one possibility, done in
 
 .. literalinclude:: examples/addition2.cs
 
-.. TODO
+.. todo::
 
-   ?? Put in utility function promptInt here ? 
+   Put in utility functions for promted input
 	
 .. _QuotientStringEx:
 	

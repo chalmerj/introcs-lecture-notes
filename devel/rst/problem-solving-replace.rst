@@ -6,5 +6,5 @@
 A Creative Problem Solution
 ==================================
 
-.. todo
+.. todo::
    Andy from Java version

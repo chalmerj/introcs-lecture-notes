@@ -6,5 +6,5 @@
 Lab: String Operations
 ==================================
 
-.. todo
+.. todo::
    Andy from Java version

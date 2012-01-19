@@ -5,7 +5,7 @@
 Assignment: Functions
 =========================
 
-.. todo
+.. todo::
    George
    
    ? tie into later work; good CS example?
