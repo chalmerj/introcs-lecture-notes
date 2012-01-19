@@ -864,13 +864,13 @@ Instead of inserting user input with the \code{+} operation as in
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
 
-\PYG{k}{class} \PYG{n+nc}{HelloYou2}
+\PYG{k}{class} \PYG{n+nc}{HelloYou1}
 \PYG{p}{\PYGZob{}}
     \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main} \PYG{p}{(}\PYG{p}{)}
     \PYG{p}{\PYGZob{}}   
         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"What is your name?"}\PYG{p}{)}\PYG{p}{;}
         \PYG{k+kt}{string} \PYG{n}{name} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine} \PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Hello, \PYGZob{}0\PYGZcb{}!"}\PYG{p}{,} \PYG{n}{name}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"Hello, "} \PYG{p}{+} \PYG{n}{name} \PYG{p}{+} \PYG{l+s}{"!"}\PYG{p}{)}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
 \PYG{p}{\PYGZcb{}}
@@ -899,20 +899,23 @@ look exactly the same to the user:
 but only when  the string is in the form of a \emph{format string},
 with expression(s) in braces where substitutions are to be made,
 (like in fill-in-the-blanks).
+
 The remaining parameters, after the initial string,
 give the values to be substituted.  To
-know \emph{which} further parameter to substitute, the parameters afer the
+know \emph{which} further parameter to substitute, the parameters after the
 initial string are implicitly numbered,
-and like most other numbering sequences in C\#, the numbering starts from
-0.  So here, where there is just one value to substitute, it gets the index 0,
+\emph{starting from 0}.
+Starting with 0 is consistent with other numbering sequences in C\#.
+So here, where there is just one value to substitute, it gets the index 0,
 and where it is substituted, the braces get 0 inside, to indicate
 that parameter 0 is to be substituted.
+
 Everything in the initial string that is \emph{outside} the braces is just
 repeated verbatim.  In particular, if the only parameter is a string
 with no braces, it is printed completely
 verbatim (as we have used \code{Console.WriteLine} before).
 
-A more elabortate silly examples that you could test in csharp would be:
+A more elaborate silly examples that you could test in csharp would be:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kt}{string} \PYG{n}{first} \PYG{p}{=} \PYG{l+s}{"Peter"}\PYG{p}{;}
@@ -921,7 +924,7 @@ A more elabortate silly examples that you could test in csharp would be:
 \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}, \PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}, \PYGZob{}2\PYGZcb{}."}\PYG{p}{,} \PYG{n}{first}\PYG{p}{,} \PYG{n}{last}\PYG{p}{,} \PYG{n}{what}\PYG{p}{)}\PYG{p}{;}
 \end{Verbatim}
 
-would print:
+It would print:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{Peter} \PYG{n}{Piper}\PYG{p}{,} \PYG{n}{Peter} \PYG{n}{Piper}\PYG{p}{,} \PYG{n}{pick}\PYG{p}{.}

@@ -51,27 +51,30 @@ look exactly the same to the user:
 but only when  the string is in the form of a *format string*,
 with expression(s) in braces where substitutions are to be made,
 (like in fill-in-the-blanks).  
+
 The remaining parameters, after the initial string, 
 give the values to be substituted.  To
-know *which* further parameter to substitute, the parameters afer the
+know *which* further parameter to substitute, the parameters after the
 initial string are implicitly numbered,
-and like most other numbering sequences in C#, the numbering starts from
-0.  So here, where there is just one value to substitute, it gets the index 0,
+*starting from 0*.  
+Starting with 0 is consistent with other numbering sequences in C#.
+So here, where there is just one value to substitute, it gets the index 0,
 and where it is substituted, the braces get 0 inside, to indicate
 that parameter 0 is to be substituted.
+
 Everything in the initial string that is *outside* the braces is just
 repeated verbatim.  In particular, if the only parameter is a string 
 with no braces, it is printed completely
 verbatim (as we have used ``Console.WriteLine`` before).
 
-A more elabortate silly examples that you could test in csharp would be::
+A more elaborate silly examples that you could test in csharp would be::
 
     string first = "Peter";
     string last = "Piper";
     string what = "pick";
     Console.WriteLine("{0} {1}, {0} {1}, {2}.", first, last, what);
     
-would print::
+It would print::
 
     Peter Piper, Peter Piper, pick.
     
@@ -93,9 +96,9 @@ and see it print::
     
 Note the following features:
 
-- Parameters to be substituted can be of any type. 
 - Parameters can be any expression, 
   and the expressions get evaluated before printing.
+- Parameters to be substituted can be of any type. 
 - The parameters are automatically converted to a string form, just as in the
   use of the string ``+`` operation.  
   
