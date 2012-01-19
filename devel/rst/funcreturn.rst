@@ -141,7 +141,7 @@ printing is one possibility, done in
 
 .. todo::
 
-   Put in utility functions for promted input
+   Put in utility functions for prompted input
 	
 .. _QuotientStringEx:
 	

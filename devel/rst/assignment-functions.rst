@@ -6,6 +6,6 @@ Assignment: Functions
 =========================
 
 .. todo::
-   George
-   
+    
+   George: 
    ? tie into later work; good CS example?

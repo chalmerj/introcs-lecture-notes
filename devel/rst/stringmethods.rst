@@ -7,4 +7,5 @@ String Methods
 ==================================
 
 .. todo::
+    
    Andy from Java version
