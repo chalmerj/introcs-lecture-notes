@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 18, 2012}
+\date{January 19, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -953,11 +953,11 @@ and see it print:
 Note the following features:
 \begin{itemize}
 \item {} 
-Parameters to be substituted can be of any type.
-
-\item {} 
 Parameters can be any expression,
 and the expressions get evaluated before printing.
+
+\item {} 
+Parameters to be substituted can be of any type.
 
 \item {} 
 The parameters are automatically converted to a string form, just as in the
@@ -994,7 +994,7 @@ produces
 \label{lab-division-sentences:index-0}\label{lab-division-sentences::doc}\label{lab-division-sentences:lab-division-sentences}
 
 \chapter{Defining Functions of your Own}
-\label{functions:defining-functions-of-your-own}\label{functions::doc}\label{functions:defining-own-functions}
+\label{functions:defining-functions-of-your-own}\label{functions::doc}\label{functions:index-1}\label{functions:defining-own-functions}
 \index{syntax template!typography}\index{typography!syntax template}
 
 \section{Syntax Template Typography}
@@ -2018,10 +2018,10 @@ By convention, names for constants are all capital letters.
 \index{assignment!functions}
 
 \section{Assignment: Functions}
-\label{assignment-functions:index-0}\label{assignment-functions:assignment-functions}\label{assignment-functions::doc}
+\label{assignment-functions:index-0}\label{assignment-functions:assignment-functions}\label{assignment-functions::doc}\label{assignment-functions:index-1}
 
 \chapter{Basic String Operations}
-\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\phantomsection\label{stringchar:string-char}
+\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\label{basicstringops:index-1}\phantomsection\label{stringchar:string-char}
 \index{string!char}\index{char!string}
 
 \section{Strings and Characters}
@@ -2029,22 +2029,22 @@ By convention, names for constants are all capital letters.
 \index{string!char}\index{char!string}
 
 \section{String Indexing}
-\label{stringindexing:index-0}\label{stringindexing::doc}\label{stringindexing:string-indexing}\phantomsection\label{stringmethods:string-char}
+\label{stringindexing:index-0}\label{stringindexing::doc}\label{stringindexing:index-1}\label{stringindexing:string-indexing}\phantomsection\label{stringmethods:string-char}
 \index{string!methods}
 
 \section{String Methods}
-\label{stringmethods:string-methods}\label{stringmethods:index-0}\label{stringmethods::doc}\phantomsection\label{problem-solving-replace:string-char}
+\label{stringmethods:string-methods}\label{stringmethods:index-0}\label{stringmethods::doc}\label{stringmethods:index-1}\phantomsection\label{problem-solving-replace:string-char}
 \index{string!problem solving}\index{problem solving!string}
 
 \section{A Creative Problem Solution}
-\label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}\phantomsection\label{lab-string-ops:string-char}
+\label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}\label{problem-solving-replace:index-1}\phantomsection\label{lab-string-ops:string-char}
 \index{labs!string manipulations}
 
 \section{Lab: String Operations}
-\label{lab-string-ops:index-0}\label{lab-string-ops::doc}\label{lab-string-ops:lab-string-operations}
+\label{lab-string-ops:index-0}\label{lab-string-ops::doc}\label{lab-string-ops:index-1}\label{lab-string-ops:lab-string-operations}
 
 \chapter{Decisions}
-\label{decisions:decisions}\label{decisions::doc}
+\label{decisions:decisions}\label{decisions::doc}\label{decisions:index-1}
 
 \section{Conditions}
 \label{conditions:conditions}\label{conditions::doc}
