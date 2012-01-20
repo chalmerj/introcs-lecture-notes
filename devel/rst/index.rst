@@ -28,6 +28,7 @@ Introductory Programming in C#
    compoundtypes
    testingclasses
 
+.. todolist::
 
 Index and search
 ================

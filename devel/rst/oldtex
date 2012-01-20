@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 19, 2012}
+\date{January 20, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -1858,7 +1858,7 @@ printing is one possibility, done in
 
 \begin{notice}{note}{Todo}
 
-Put in utility functions for promted input
+Put in utility functions for prompted input
 \end{notice}
 
 
@@ -2053,8 +2053,7 @@ Andy new
 \label{assignment-functions:index-0}\label{assignment-functions:assignment-functions}\label{assignment-functions::doc}
 \begin{notice}{note}{Todo}
 
-George
-
+George:
 ? tie into later work; good CS example?
 \end{notice}
 
@@ -2149,6 +2148,85 @@ Stub
 \section{Two Dimensional Arrays}
 \label{twodim::doc}\label{twodim:two-dimensional-arrays}
 Stub
+
+\begin{notice}{note}{Todo}
+
+Andy new
+\end{notice}
+
+(The {\hyperref[learning-to-problem-solve:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/learning-to-problem-solve.rst, line 9.)
+
+\begin{notice}{note}{Todo}
+
+George:
+? tie into later work; good CS example?
+\end{notice}
+
+(The {\hyperref[assignment-functions:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/assignment-functions.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+Put in utility functions for prompted input
+\end{notice}
+
+(The {\hyperref[funcreturn:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/funcreturn.rst, line 142.)
+
+\begin{notice}{note}{Todo}
+
+George
+
+emacs java mode, csharp mode, Windows install csharp mode
+
+14 / 4 is approximately 3.5.
+
+14/4 = 3 2/4
+
+will improve ``2/4'' later....
+\end{notice}
+
+(The {\hyperref[lab-division-sentences:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-division-sentences.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+
+(The {\hyperref[lab-string-ops:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-string-ops.rst, line 9.)
+
+\begin{notice}{note}{Todo}
+
+Andy new
+\end{notice}
+
+(The {\hyperref[notusereturn:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/notusereturn.rst, line 9.)
+
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+
+(The {\hyperref[problem-solving-replace:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/problem-solving-replace.rst, line 9.)
+
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+
+(The {\hyperref[stringchar:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/stringchar.rst, line 9.)
+
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+
+(The {\hyperref[stringindexing:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/stringindexing.rst, line 9.)
+
+\begin{notice}{note}{Todo}
+
+Andy from Java version
+\end{notice}
+
+(The {\hyperref[stringmethods:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/stringmethods.rst, line 9.)
 
 
 \chapter{Index and search}
