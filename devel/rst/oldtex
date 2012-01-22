@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 20, 2012}
+\date{January 22, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -1185,18 +1185,321 @@ the stuff you did to solve the exact earlier problem.
 
 \section{Lab: Division Sentences}
 \label{lab-division-sentences:index-0}\label{lab-division-sentences::doc}\label{lab-division-sentences:lab-division-sentences}
+
+\subsection{Overview}
+\label{lab-division-sentences:overview}
+In this lab, we're going to begin to look at what makes computers \emph{do
+their thing} so to speak.
+
+It is rather insightful to look at how Wikipedia summarizes the
+computer:
+\begin{quote}
+
+A computer is a programmable machine designed to sequentially and
+automatically carry out a sequence of arithmetic or logical
+operations. The particular sequence of operations can be changed
+readily, allowing the computer to solve more than one kind of
+problem.
+\end{quote}
+
+In other words, a computer is a calculator--and much
+more. Furthermore, the definition of a computer goes on to include
+access to storage and peripherals, such as consoles (graphical displays),
+printers, and the network. We already got a glimpse of this access
+when we explored \code{Console.WriteLine} in the first lab exercise.
+
+So in this lab, we're going to explore the use of C\# as a
+calculator. We're going to begin by looking at the \textbf{csharp} command
+as opposed to the compiler (\textbf{gmcs} that we used in the first
+lab). Then we will take what we've learned in this session and use it
+to write a full program.
+
+
+\subsection{Requirements}
+\label{lab-division-sentences:requirements}
+We want to develop a program that can do the following:
+\begin{itemize}
+\item {} 
+Prompt the user for input of two integers, which we will call
+\emph{numerator} and \emph{denominator}. For clarity, we are only looking at
+integers, because this assignment is about rational numbers. A
+rational number can always be expressed as a quotient of two integers.
+
+\item {} 
+Calculate the floating point division result (e.g. 10/4 = 2.5).
+
+\item {} 
+Calculate the quotient and the remainder (e.g. 10/4 = 2 with a
+remainder of 2 = 2 2/4).
+
+\item {} 
+If the remainder is \textgreater{} 0, print the remainder / denominator as a
+fraction. Otherwise, don't print anything.
+
+\end{itemize}
+
+So we will do some basic calculations. We will also make use for the
+first time of an \emph{if} statement, which will allow us to determine
+whether a fraction is printed or not.
+
+As an example of how this program will ultimately work:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{numerator}\PYG{p}{?} \PYG{l+m}{1}\PYG{l+m}{4}
+\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{denominator}\PYG{p}{?} \PYG{l+m}{4}
+\PYG{n}{Floating} \PYG{n}{point} \PYG{n}{division} \PYG{n}{result} \PYG{p}{=} \PYG{l+m}{3.5}
+\PYG{n}{Integer} \PYG{n}{division} \PYG{n}{result} \PYG{p}{=} \PYG{l+m}{3} \PYG{n}{remainder} \PYG{l+m}{2}
+\PYG{n}{Result} \PYG{k}{as} \PYG{n}{a} \PYG{n}{fraction} \PYG{p}{=} \PYG{l+m}{3} \PYG{l+m}{2}\PYG{p}{/}\PYG{l+m}{4}
+\end{Verbatim}
+
+We will later learn how to turn the 3 2/4 into a reduced
+fraction. This will be achieved using a famous method known as the
+\emph{greatest common divisor} algorithm, which has a very simple
+formulation that is credited to Euclid, of of the great early
+mathematicians (among other things).
+
+
+\subsection{csharp}
+\label{lab-division-sentences:csharp}
+So let's get this party started by firing up the \textbf{csharp}
+command. Open a terminal (Linux or OS X) or command window for the
+Mono tools, which we know how to use from previous work:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ csharp
+Mono C\# Shell, type "help;" for help
+
+Enter statements below.
+csharp\textgreater{}
+\end{Verbatim}
+
+The \code{csharp\textgreater{}} prompt tells you that the C\# interpreter has started
+and is awaiting input. This allows you to create C\# variables and
+execute C\# statements without having to write a full program.
+
+You can also use features of the C\# programming
+library (e.g. the \code{Console.WriteLine} we learned about in the
+previous lab):
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Please enter the numerator?"}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{numerator}\PYG{p}{?}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{input} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{2}\PYG{l+m}{5}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{numerator} \PYG{p}{=} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{input}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{numerator}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{2}\PYG{l+m}{5}
+\end{Verbatim}
+
+Before we continue with this session, please note that it is ok to
+make mistakes. The C\# interpreter tends to be forgiving, although
+there are some cases where you might find yourself a bit
+confused. Here's an example of something that could happen to you in
+the course of typing a statement:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{denominator} \PYG{p}{=} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}
+\PYG{p}{\textgreater{}}
+\end{Verbatim}
+
+In this example, I accidentally hit the return/enter key after
+entering the left parenthesis. For \code{int.Parse(} to work, it needs
+more input to bring the statement to completion. For example, it needs
+to know \emph{what to parse} and must be a complete C\# statement. The
+closing parenthesis and statement terminator (semicolon) need to be
+typed for this to happen.
+
+So we can either continue entering the input:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{denominator} \PYG{p}{=} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}
+\PYG{p}{\textgreater{}} \PYG{n}{input}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+Or we can type semicolon (;) followed by return/enter to end the input
+and try again:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+csharp\textgreater{} int denominator = int.Parse(
+\textgreater{} ;
+\PYGZob{}interactive\PYGZcb{}(2,0): error CS1525: Unexpected symbol {}`;'
+\end{Verbatim}
+
+This will force the statement to be processed by the C\# interpreter
+and give an error. You can then \emph{try again} if you like!
+
+A particularly useful feature of the C\# interpreter is the
+\code{ShowVars()} function. (Yes, we know you haven't fully learned
+functions yet, but we're introducing some things by doing them and
+will be explaining more formally later.) \code{ShowVars()} prints the
+list of variables and their values that have been defined in a given
+session:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{ShowVars}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{denominator} \PYG{p}{=} \PYG{l+m}{4}
+\PYG{k+kt}{int} \PYG{n}{numerator} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{4}
+\PYG{k+kt}{string} \PYG{n}{input} \PYG{p}{=} \PYG{l+s}{"14"}
+\PYG{k+kt}{string} \PYG{n}{input2} \PYG{p}{=} \PYG{l+s}{"4"}
+\end{Verbatim}
+
+This just happens to be the list of variables/values that are defined
+in my session. Yours may vary depending on what variables you typed,
+etc.
+
+Now let's use the C\# operators to get the quotient and the remainder:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{quotient} \PYG{p}{=} \PYG{n}{numerator} \PYG{p}{/} \PYG{n}{denominator}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{quotient}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{3}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{remainder} \PYG{p}{=} \PYG{n}{numerator} \PYG{p}{\PYGZpc{}} \PYG{n}{denominator}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{remainder}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{2}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} / \PYGZob{}1\PYGZcb{} = \PYGZob{}2\PYGZcb{} remainder \PYGZob{}3\PYGZcb{}"}\PYG{p}{,} \PYG{n}{numerator}\PYG{p}{,} \PYG{n}{denominator}\PYG{p}{,} \PYG{n}{quotient}\PYG{p}{,} \PYG{n}{remainder}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3} \PYG{n}{remainder} \PYG{l+m}{2}
+\end{Verbatim}
+
+Because we are working with integer data, we need the ability to get
+the result of the division and the remainder \emph{as integers}. As shown,
+14 / 4 results in 3. That's because the remainder is not included (nor
+can it be) unless we use another data type (float) that can hold the
+full result of a division operation.
+
+C\# gives you the ability to get the remainder using a separate
+operation known as the \emph{modulus} operator. This operator is what we
+sometimes call a \emph{convenience} operator, because we all learned in
+basic mathematics that the remainder = numerator - quotient *
+denominator (here the remainder is 14 - 3 * 4 = 2).
+
+In the above, we are also introducing the ability to take the results
+of a calculation and \emph{format} them using \code{Console.WriteLine}. Here
+\{0\}, \{1\}, \{2\}, and \{3\} refer to each of the variables that follow the
+text that we wish to print. Each of these variables will be
+substituted into the string to produce the beautifully formatted
+output that is shown:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3} \PYG{n}{remainder} \PYG{l+m}{2}
+\end{Verbatim}
+
+You may find this example to be helpful to print the output according
+to the requirements:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3} \PYG{l+m}{2}\PYG{p}{/}\PYG{l+m}{4}
+\end{Verbatim}
+
+Now let's take a look at how we can get the results as a floating
+point result. To do this, we must declare a couple of float (C\#'s
+basic real number type) variables to hold each of the numerator and
+denominator integers. Then we will declare a variable to capture the
+result of the floating point division operation. Because division is
+meaningful for all numeric data types, it is exactly the same
+operator. C\# knows that the operator is being applied to floating
+point data in this case, because we declared floating point
+variables. (We will show how you can avoid declaring some of these
+variables but are erring on the side of clarity.) We named each of the
+floating-point variables with the number 2 in the name as C\# permits
+variable names that have numbers and underscores after the first
+character (which must be a \emph{letter} or an \emph{underscore}):
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{float} \PYG{n}{numerator2} \PYG{p}{=} \PYG{n}{numerator}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{float} \PYG{n}{denominator2} \PYG{p}{=} \PYG{n}{denominator}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{float} \PYG{n}{quotient2} \PYG{p}{=} \PYG{n}{numerator2}\PYG{p}{/}\PYG{n}{denominator2}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{quotient2}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{3.5}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} / \PYGZob{}1\PYGZcb{} = \PYGZob{}2\PYGZcb{} remainder \PYGZob{}3\PYGZcb{}"}\PYG{p}{,} \PYG{n}{numerator}\PYG{p}{,} \PYG{n}{denominator}\PYG{p}{,} \PYG{n}{quotient}\PYG{p}{,} \PYG{n}{remainder}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3} \PYG{n}{remainder} \PYG{l+m}{2}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} / \PYGZob{}1\PYGZcb{} = \PYGZob{}2\PYGZcb{} exactly"}\PYG{p}{,} \PYG{n}{numerator2}\PYG{p}{,} \PYG{n}{denominator2}\PYG{p}{,} \PYG{n}{quotient2}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3.5} \PYG{n}{exactly}
+\end{Verbatim}
+
+So effectively we have shown everything you need to understand to
+complete this lab. Your job in the remaining time is to see whether
+you can use a text editor to create a program, which you can name
+anything you like. We suggest calling it \code{DoTheMath.cs}. To help you
+get started, we provided this simple \emph{template}. You'll probably find
+it convenient to cut and paste code that you've already ``tried out'' (in
+the C\# interpreter) into your text editor:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
+
+\PYG{k}{namespace} \PYG{n+nn}{Comp170} \PYG{p}{\PYGZob{}}
+   \PYG{k}{class} \PYG{n+nc}{DoTheMath} \PYG{p}{\PYGZob{}}
+      \PYG{k}{public} \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+          \PYG{c+c1}{// Prompt the user for the numerator using}
+          \PYG{c+c1}{// Console.WriteLine().}
+
+          \PYG{c+c1}{// Convert this text into int numerator using}
+          \PYG{c+c1}{// int.Parse().}
+
+          \PYG{c+c1}{// Do the same for the denominator.}
+
+          \PYG{c+c1}{// Calculate quotient and remainder (as integers)}
+          \PYG{c+c1}{// Use Console.WriteLine() to make the results pretty as}
+          \PYG{c+c1}{// above.}
+
+          \PYG{c+c1}{// Do the same but using floating point division and not}
+          \PYG{c+c1}{// doing the remainder calculation.}
+      \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
 \begin{notice}{note}{Todo}
 
-George
-
-emacs java mode, csharp mode, Windows install csharp mode
-
-14 / 4 is approximately 3.5.
-
-14/4 = 3 2/4
-
-will improve ``2/4'' later....
+Add the bit about using the if statement. George to work on this
+later.
 \end{notice}
+
+
+\subsection{Proper Indentation and Emacs java-mode}
+\label{lab-division-sentences:proper-indentation-and-emacs-java-mode}
+With this exercise, we are now entering a phase where we must start
+paying a bit more attention to the basic \emph{appearance} of our code. As
+programs become larger, they also can become harder to maintain (let
+alone understand) if they are not formatted according to some basic
+style guidelines.
+
+As you'll come to learn in programming, different communities have
+different conventions. The folks who make another open source C\# tool,
+known as SharpDevelop (not used in this class but an awesome project)
+have their own style guide that is particularly well written. See
+\href{http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf}{http://www.icsharpcode.net/technotes/sharpdevelopcodingstyle03.pdf}.
+
+In any event, luckily for us, we have access to editors like Emacs and
+Gedit (in the Linux lab anyway) that support automatic source-code
+indenting. In Emacs, you can enable this support by using
+\emph{java-mode}. At the time of writing, there is actually a \emph{csharp-mode}
+but it is not yet a part of the standard Emacs distribution. For the
+most part, you can get by using \emph{java-mode}, given that C\# is very
+similar to Java in terms of its overall syntax. It doesn't understand
+keywords like \code{namespace} but otherwise seems to work in our
+testing.
+
+When in Emacs, you can enable Java mode in your buffer for
+\code{DoTheMath.cs} by typing Escape-x. The minibuffer (the space you see
+at the bottom of the screen where an \code{M-x} or similar prompt is
+shown) will wait for you to type the name of a command. Enter
+\emph{java-mode} and you will be able to take advantage of the magical
+support in Emacs for automatic formatting of your source code. Your
+instructor will show you how to make effective use of it.
+
+If you are feeling a bit adventurous, you can download \emph{csharp-mode}
+from the Emacs Wiki at
+\href{http://www.emacswiki.org/emacs/CSharpMode}{http://www.emacswiki.org/emacs/CSharpMode}. All you need to do is save
+the Emacs Lisp file (a file with the .el suffix) anywhere in your home
+folder. Then you can use Emacs to load this file (Esc-x, then type
+\emph{load-file}). You'll need to browse to the folder where you saved the
+\emph{csharp-mode} code to complete the process. Then you ca type
+\emph{csharp-mode} instead of \emph{java-mode}.
+
+As this is a bit of an advanced topic, this explanation will have to
+suffice for now. We're hopeful that future versions of Emacs will
+include \emph{csharp-mode} by default.
 
 
 \chapter{Defining Functions of your Own}
@@ -2243,33 +2546,220 @@ George:
 
 
 \chapter{Basic String Operations}
-\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\phantomsection\label{stringchar:string-char}
-\index{string!char}\index{char!string}
-
-\section{Strings and Characters}
-\label{stringchar:index-0}\label{stringchar::doc}\label{stringchar:strings-and-characters}
-\begin{notice}{note}{Todo}
-
-Andy from Java version
-\end{notice}
-\phantomsection\label{stringindexing:string-char}
-\index{string!char}\index{char!string}
+\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\phantomsection\label{stringindexing:string-indexing}
+\index{string!index}\index{index!string}
 
 \section{String Indexing}
-\label{stringindexing:index-0}\label{stringindexing::doc}\label{stringindexing:string-indexing}
-\begin{notice}{note}{Todo}
+\label{stringindexing:index-0}\label{stringindexing::doc}\label{stringindexing:id1}
+Strings are composed of characters, but be careful of the different
+kinds of quotes, single for individual characters, double for strings
+of 0 or more characters:
+`u' (single quotes) is a char type literal, while ``u'' is a string
+literal, referencing a string object. While ``you'' is a legal string
+literal, `you' generates a compiler error (too many characters - only
+one allowed).
 
-Andy from Java version
-\end{notice}
-\phantomsection\label{stringmethods:string-char}
-\index{string!methods}
+Many of the operations on strings depend upon counting positions of characters
+in the string. In C\#, positions are counted \emph{starting at 0}, not 1.
+The indices of the characters in the string ``coding'' are labeled:
 
-\section{String Methods}
-\label{stringmethods:string-methods}\label{stringmethods:index-0}\label{stringmethods::doc}
-\begin{notice}{note}{Todo}
+\begin{tabulary}{\linewidth}{|L|L|L|L|L|L|L|}
+\hline
 
-Andy from Java version
-\end{notice}
+Index
+ & 
+0
+ & 
+1
+ & 
+2
+ & 
+3
+ & 
+4
+ & 
+5
+\\\hline
+
+Character
+ & 
+c
+ & 
+o
+ & 
+d
+ & 
+i
+ & 
+n
+ & 
+g
+\\\hline
+\end{tabulary}
+
+
+The position of a character in a string is usually referred to as the
+character's \emph{index}. Note that because the indices start at 0, not 1,
+the index of the last character is one less that the length of the
+string. This is a common source of errors. Watch out.
+
+You can easily create an expression that refers
+to an individual character inside a string.  Use
+square braces around the index of the character:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"coding"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]}\PYG{p}{;}
+\PYG{l+s+sc}{'d'}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{[}\PYG{l+m}{0}\PYG{p}{]}\PYG{p}{;}
+\PYG{l+s+sc}{'c'}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{[}\PYG{l+m}{5}\PYG{p}{]}\PYG{p}{;}
+\PYG{l+s+sc}{'g'}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{]}\PYG{p}{;}
+\PYG{l+s+sc}{'o'}
+\end{Verbatim}
+
+Note from the single quotes that the result is a \code{char} in each case.
+
+\index{double string!method}
+
+\section{Some Instance Methods and the Length Property}
+\label{stringmethods:index-0}\label{stringmethods::doc}\label{stringmethods:some-instance-methods-and-the-length-property}
+Thus far we have not emphasized the use of objects, or even noted
+what is an object.  Strings are a special type in C\#. We have
+used string literals as parameters to functions and we have used the
+special concatenation operator \code{+}.
+In fact strings are objects.  Like other objects,
+strings have a general notation for functions that are specially tied to the
+particular type of object.  These functions are called \emph{instance methods}.
+They always act on an object of the particular class, but a reference to the
+object is not placed inside the parameter list, but \emph{before} the method name and
+a dot as in:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"hello"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{ToUpper}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+s}{"HELLO"}
+\end{Verbatim}
+
+\code{ToUpper} (converting to upper case) is particular action that makes sense
+with strings.  It take s (the string object reference before the dot in this example)
+and returns a new string (in upper case).  Since this action
+depends only on the string itself, no further parameters are necessary,
+and the parentheses after the method name are empty.
+
+More string methods are listed below, some with further parameters.
+
+Data can also be associated with object \emph{properties}.
+A property of a string is its length (an int).  References to property values
+use dot notation but do not have a parameter list at the end:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"Hello"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}
+\PYG{l+m}{5}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{""}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}
+\PYG{l+m}{0}
+\end{Verbatim}
+
+Be careful: Though 5 is the length of \code{s} above, \code{s{[}5{]}} does not make sense.
+The last character in \code{s} is \code{s{[}4{]}}.
+
+String objects have associated string methods which can be used to
+manipulate string values. As with any method, the method is invoked by
+writing a dot and the name of the method after the object name. Any
+arguments to the method are given in parentheses.
+
+There are an enormous number of string methods, but here are just a few
+of the most common ones to get you started (later used in the string lab). The
+string object to which the method is being applied is referred to as
+\emph{this} string in the descriptions.  The length property is also listed.
+In the left column \emph{this} object is not shown explicitly, but be careful
+when applying these methods and the length property, that they must be
+preceeded by a reference to a string, followed by a dot, as shown in the
+examples in the right column.  The reference to \emph{this} string can be
+a variable name, a literal, or any expression evaluating to a string.
+\begin{description}
+\item[{\code{int IndexOf(string string2)}}] \leavevmode
+Returns the index of the begining of the first occurrence of the string \code{string2}
+in this string object. Returns -1 if \code{string2} not found. Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{,} \PYG{n}{word} \PYG{p}{=} \PYG{l+s}{"jou"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{n}{word}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{3}
+\end{Verbatim}
+
+\item[{\code{string substring(int start)}}] \leavevmode
+Returns the substring of this string object starting from index \code{start}
+through to the end of the string object.  Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{name} \PYG{p}{=} \PYG{l+s}{"Sheryl Crow"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{name}\PYG{p}{.}\PYG{n}{substring}\PYG{p}{(}\PYG{l+m}{7}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+s}{"Crow"}
+\end{Verbatim}
+
+\item[{\code{string substring(int start, int len)}}] \leavevmode
+Returns the substring of this string object starting from index \code{start},
+including a total of \code{len} characters.  Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+csharp\textgreater{} string name = "Sheryl Crow";{}`{}`
+csharp\textgreater{} name.substring(3,5);
+"ryl C"
+\end{Verbatim}
+
+\item[{\code{string ToUpper()}}] \leavevmode
+Return this string converted to upper case.  Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"Hi Jane!"}\PYG{p}{.}\PYG{n}{ToUpper}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+s}{"HI JANE!"}
+\end{Verbatim}
+
+\item[{\code{string ToLower()}}] \leavevmode
+Return this string converted to lower case. Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"Hi Jane!"}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}
+\PYG{l+s}{"hi jane!"}
+\end{Verbatim}
+
+\item[{\code{int length}}] \leavevmode
+Property referring to the length of this string object. Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}
+\PYG{l+m}{7}
+\end{Verbatim}
+
+\end{description}
+
+
+\subsection{Testing Strings For Equality}
+\label{stringmethods:testing-strings-for-equality}
+Strings can be tested for equality like numbers,
+with \code{==}: \emph{two} equal signs, not the \emph{one} equal sign used for assignement.
+Case matters:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"Hello"}\PYG{p}{;} \PYG{c+c1}{// initial value assigned}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{t} \PYG{p}{=} \PYG{l+s}{"HELLO"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s} \PYG{p}{=}\PYG{p}{=} \PYG{n}{t}\PYG{p}{;}  \PYG{c+c1}{// test}
+\PYG{k}{false}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{ToUpper}\PYG{p}{(}\PYG{p}{)} \PYG{p}{=}\PYG{p}{=} \PYG{n}{t}\PYG{p}{;}
+\PYG{k}{true}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{u} \PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{.}\PYG{n}{substring}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{u} \PYG{p}{=}\PYG{p}{=} \PYG{l+s}{"Hi"}\PYG{p}{;}
+\PYG{k}{true}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{u} \PYG{p}{=}\PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{;}
+\PYG{k}{false}
+\end{Verbatim}
+
+Hence string expressions can be used in \code{if} statements.
 \phantomsection\label{problem-solving-replace:string-char}
 \index{string!problem solving}\index{problem solving!string}
 
@@ -2350,21 +2840,6 @@ Put in utility functions for prompted input
 
 \begin{notice}{note}{Todo}
 
-George
-
-emacs java mode, csharp mode, Windows install csharp mode
-
-14 / 4 is approximately 3.5.
-
-14/4 = 3 2/4
-
-will improve ``2/4'' later....
-\end{notice}
-
-(The {\hyperref[lab-division-sentences:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-division-sentences.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
 Andy from Java version
 \end{notice}
 
@@ -2389,21 +2864,15 @@ Andy from Java version
 Andy from Java version
 \end{notice}
 
-(The {\hyperref[stringchar:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/stringchar.rst, line 9.)
+(The \emph{original entry} is located in  /Users/anh/www/170/notes/devel/rst/stringchar.rst, line 9.)
 
 \begin{notice}{note}{Todo}
 
-Andy from Java version
+Add the bit about using the if statement. George to work on this
+later.
 \end{notice}
 
-(The {\hyperref[stringindexing:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/stringindexing.rst, line 9.)
-
-\begin{notice}{note}{Todo}
-
-Andy from Java version
-\end{notice}
-
-(The {\hyperref[stringmethods:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/stringmethods.rst, line 9.)
+(The {\hyperref[lab-division-sentences:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-division-sentences.rst, line 244.)
 
 
 \chapter{Index and search}

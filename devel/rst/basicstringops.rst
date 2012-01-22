@@ -7,7 +7,6 @@ Basic String Operations
 .. toctree::
    :maxdepth: 3
 
-   stringchar
    stringindexing
    stringmethods
    problem-solving-replace
