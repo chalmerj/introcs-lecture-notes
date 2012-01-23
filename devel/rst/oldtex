@@ -3018,6 +3018,14 @@ Put in utility functions for prompted input
 
 \begin{notice}{note}{Todo}
 
+Add the bit about using the if statement. George to work on this
+later.
+\end{notice}
+
+(The {\hyperref[lab-division-sentences:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-division-sentences.rst, line 244.)
+
+\begin{notice}{note}{Todo}
+
 Andy from Java version
 \end{notice}
 
@@ -3036,14 +3044,6 @@ Andy from Java version
 \end{notice}
 
 (The \emph{original entry} is located in  /Users/anh/www/170/notes/devel/rst/stringchar.rst, line 9.)
-
-\begin{notice}{note}{Todo}
-
-Add the bit about using the if statement. George to work on this
-later.
-\end{notice}
-
-(The {\hyperref[lab-division-sentences:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-division-sentences.rst, line 244.)
 
 
 \chapter{Index and search}

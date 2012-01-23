@@ -26,7 +26,7 @@ Function calls in expressions get
 replaced during evaluation by the value of the function.
 
 The corresponding definition and examples in C# would be the
-following, taken from example program ``return1.cs``. *Read*
+following, taken from example program :file:`return1.cs`. *Read*
 *and run*:
 
 .. literalinclude:: examples/return1.cs
@@ -77,7 +77,7 @@ resulting finally in 25 being calculated and printed.
 **C#** functions can return any type of data, not just numbers, and
 there can be any number of statements executed before the return
 statement. Read, follow, and run the example program
-``return2.cs``:
+:file:`return2.cs`:
 
 .. literalinclude:: examples/return2.cs
    :linenos:
@@ -117,7 +117,7 @@ Make sure you completely follow the details of the execution:
 #. Line 15: Use the value returned by the function and print
    ``"Harrington, Andrew"``
 
-Compare ``return2.cs`` and ``addition1.cs``, from the previous
+Compare :file:`return2.cs` and :file:`addition1.cs`, from the previous
 section. Both use functions. Both print, but where the printing *is
 done* differs. The function ``sumProblem`` prints directly inside
 the function and returns nothing explicitly. On the other hand
@@ -139,9 +139,9 @@ printing is one possibility, done in
 
 .. literalinclude:: examples/addition2.cs
 
-.. todo::
-
-   Put in utility functions for prompted input
+**In class recommendation**:  Improve Miles' original example
+with functions.  What makes sense? The original example is saved
+as :file:`GlazerCalc1.cs`.
 	
 .. _QuotientStringEx:
 	
