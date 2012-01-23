@@ -23,7 +23,9 @@ a dot as in::
 with strings.  It take s (the string object reference before the dot in this example)
 and returns a new string (in upper case).  Since this action
 depends only on the string itself, no further parameters are necessary,
-and the parentheses after the method name are empty.
+and the parentheses after the method name are empty.  The general method syntax is
+
+    *object-reference*\ ``.(``\ *further-parameters* ``)``
 
 More string methods are listed below, some with further parameters.
 
@@ -50,28 +52,28 @@ use dot notation but do not have a parameter list at the end::
     csharp> "".length;
     0
 
-Be careful: Though 5 is the length of ``s`` above, ``s[5]`` does not make sense.
-The last character in ``s`` is ``s[4]``.
+Be careful: Though 5 is the length of ``s`` in the example above, 
+the last character in ``s`` is ``s[4]``.  Using ``s[5]`` would generate
+an ``IndexOutOfRangeException``.
 
 String objects have associated string methods which can be used to
-manipulate string values. As with any method, the method is invoked by
-writing a dot and the name of the method after the object name. Any
-arguments to the method are given in parentheses.
-
+manipulate string values. 
 There are an enormous number of string methods, but here are just a few
-of the most common ones to get you started (later used in the string lab). The
+of the most common ones to get you started. The
 string object to which the method is being applied is referred to as
-*this* string in the descriptions.  The length property is also listed.
-In the left column *this* object is not shown explicitly, but be careful
-when applying these methods and the length property, that they must be
-preceeded by a reference to a string, followed by a dot, as shown in the 
-examples in the right column.  The reference to *this* string can be
+**this** string in the descriptions.  After the methods, 
+the length property is also listed.
+In the heading *this* object is not shown explicitly, so be careful
+when applying these methods and the length property: In actual use
+they must be
+preceeded by a reference to a string, followed by a dot, as shown in 
+all the  examples.  The reference to *this* string can be
 a variable name, a literal, or any expression evaluating to a string.
 
 .. ugly!
 
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-   | **METHOD or PROPERTY**                   | **DESCRIPTION**                                                                                                                                 | **EXAMPLE**                                                |
+   | **String METHOD or PROPERTY**            | **DESCRIPTION**                                                                                                                                 | **EXAMPLE**                                                |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
    | ``int IndexOf(string string2)``          | returns the index of the begining of the first occurrence of the string ``string2`` in this string object. Returns -1 if ``string2`` not found. | ``string greeting = "Bonjour", word = "jou";``             |
    |                                          |                                                                                                                                                 |  ``greeting.IndexOf(word)`` returns 3.                     |
@@ -90,19 +92,22 @@ a variable name, a literal, or any expression evaluating to a string.
    | (property)                               |                                                                                                                                                 |  ``greeting.length( )`` returns the value 7.               |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 
+.. rubric:: Some String Instance Methods and the Length Property
 
 ``int IndexOf(string string2)``
     Returns the index of the begining of the first occurrence of the string ``string2`` 
-    in this string object. Returns -1 if ``string2`` not found. Example:
+    in **this** string object. Returns -1 if ``string2`` not found. Example:
     
     :: 
     
-        csharp> string greeting = "Bonjour", word = "jou";      
-        csharp> greeting.IndexOf(word);
+        csharp> string greeting = "Bonjour", part = "jo";      
+        csharp> greeting.IndexOf(part);
         3                     
+        csharp> greeting.IndexOf("jot");
+        -1
 
 ``string substring(int start)``
-    Returns the substring of this string object starting from index ``start`` 
+    Returns the substring of **this** string object starting from index ``start`` 
     through to the end of the string object.  Example:
     
     ::    
@@ -112,7 +117,7 @@ a variable name, a literal, or any expression evaluating to a string.
         "Crow"      
 
 ``string substring(int start, int len)`` 
-    Returns the substring of this string object starting from index ``start``, 
+    Returns the substring of **this** string object starting from index ``start``, 
     including a total of ``len`` characters.  Example:
     
     ::   
@@ -122,7 +127,7 @@ a variable name, a literal, or any expression evaluating to a string.
         "ryl C"   
 
 ``string ToUpper()``   
-    Return this string converted to upper case.  Example:
+    Return a string like **this** string, except all in upper case.  Example:
     
     :: 
     
@@ -130,20 +135,20 @@ a variable name, a literal, or any expression evaluating to a string.
       "HI JANE!"
 
 ``string ToLower()``
-    Return this string converted to lower case. Example:
+    Return a string like **this** string, except all in lower case.  Example:
     
     :: 
     
-        csharp> "Hi Jane!".ToLower()
+        csharp> "Hi Jane!".ToLower();
         "hi jane!" 
 
 ``int length``                           
-    Property referring to the length of this string object. Example:
+    Property referring to the length of **this** string object. Example:
     
     ::
     
         csharp> string greeting = "Bonjour"; 
-        csharp> greeting.length;
+        csharp> greeting.length;  //no parentheses
         7       
 
 Testing Strings For Equality
@@ -151,16 +156,16 @@ Testing Strings For Equality
 
 Strings can be tested for equality like numbers,
 with ``==``: *two* equal signs, not the *one* equal sign used for assignement.
-Case matters::
+The case of letters matters::
 
     csharp> string s = "Hello"; // initial value assigned
     csharp> string t = "HELLO";
-    csharp> s == t;  // test
+    csharp> s == t;  // equality test
     false
     csharp> s.ToUpper() == t;
     true
-    csharp> string u = "High".substring(0,2);
-    csharp> u == "Hi";
+    csharp> string u = "High".substring(0,2); // assign
+    csharp> u == "Hi"; // equality test
     true
     csharp> u == "High";
     false

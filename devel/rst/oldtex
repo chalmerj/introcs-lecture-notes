@@ -2647,7 +2647,11 @@ a dot as in:
 with strings.  It take s (the string object reference before the dot in this example)
 and returns a new string (in upper case).  Since this action
 depends only on the string itself, no further parameters are necessary,
-and the parentheses after the method name are empty.
+and the parentheses after the method name are empty.  The general method syntax is
+\begin{quote}
+
+\emph{object-reference}\code{.(}\emph{further-parameters} \code{)}
+\end{quote}
 
 More string methods are listed below, some with further parameters.
 
@@ -2663,36 +2667,39 @@ use dot notation but do not have a parameter list at the end:
 \PYG{l+m}{0}
 \end{Verbatim}
 
-Be careful: Though 5 is the length of \code{s} above, \code{s{[}5{]}} does not make sense.
-The last character in \code{s} is \code{s{[}4{]}}.
+Be careful: Though 5 is the length of \code{s} in the example above,
+the last character in \code{s} is \code{s{[}4{]}}.  Using \code{s{[}5{]}} would generate
+an \code{IndexOutOfRangeException}.
 
 String objects have associated string methods which can be used to
-manipulate string values. As with any method, the method is invoked by
-writing a dot and the name of the method after the object name. Any
-arguments to the method are given in parentheses.
-
+manipulate string values.
 There are an enormous number of string methods, but here are just a few
-of the most common ones to get you started (later used in the string lab). The
+of the most common ones to get you started. The
 string object to which the method is being applied is referred to as
-\emph{this} string in the descriptions.  The length property is also listed.
-In the left column \emph{this} object is not shown explicitly, but be careful
-when applying these methods and the length property, that they must be
-preceeded by a reference to a string, followed by a dot, as shown in the
-examples in the right column.  The reference to \emph{this} string can be
+\textbf{this} string in the descriptions.  After the methods,
+the length property is also listed.
+In the heading \emph{this} object is not shown explicitly, so be careful
+when applying these methods and the length property: In actual use
+they must be
+preceeded by a reference to a string, followed by a dot, as shown in
+all the  examples.  The reference to \emph{this} string can be
 a variable name, a literal, or any expression evaluating to a string.
+\paragraph{Some String Instance Methods and the Length Property}
 \begin{description}
 \item[{\code{int IndexOf(string string2)}}] \leavevmode
 Returns the index of the begining of the first occurrence of the string \code{string2}
-in this string object. Returns -1 if \code{string2} not found. Example:
+in \textbf{this} string object. Returns -1 if \code{string2} not found. Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{,} \PYG{n}{word} \PYG{p}{=} \PYG{l+s}{"jou"}\PYG{p}{;}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{n}{word}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{,} \PYG{n}{part} \PYG{p}{=} \PYG{l+s}{"jo"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{n}{part}\PYG{p}{)}\PYG{p}{;}
 \PYG{l+m}{3}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{l+s}{"jot"}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{-}\PYG{l+m}{1}
 \end{Verbatim}
 
 \item[{\code{string substring(int start)}}] \leavevmode
-Returns the substring of this string object starting from index \code{start}
+Returns the substring of \textbf{this} string object starting from index \code{start}
 through to the end of the string object.  Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -2702,7 +2709,7 @@ through to the end of the string object.  Example:
 \end{Verbatim}
 
 \item[{\code{string substring(int start, int len)}}] \leavevmode
-Returns the substring of this string object starting from index \code{start},
+Returns the substring of \textbf{this} string object starting from index \code{start},
 including a total of \code{len} characters.  Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -2712,7 +2719,7 @@ csharp\textgreater{} name.substring(3,5);
 \end{Verbatim}
 
 \item[{\code{string ToUpper()}}] \leavevmode
-Return this string converted to upper case.  Example:
+Return a string like \textbf{this} string, except all in upper case.  Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"Hi Jane!"}\PYG{p}{.}\PYG{n}{ToUpper}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
@@ -2720,19 +2727,19 @@ Return this string converted to upper case.  Example:
 \end{Verbatim}
 
 \item[{\code{string ToLower()}}] \leavevmode
-Return this string converted to lower case. Example:
+Return a string like \textbf{this} string, except all in lower case.  Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"Hi Jane!"}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"Hi Jane!"}\PYG{p}{.}\PYG{n}{ToLower}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \PYG{l+s}{"hi jane!"}
 \end{Verbatim}
 
 \item[{\code{int length}}] \leavevmode
-Property referring to the length of this string object. Example:
+Property referring to the length of \textbf{this} string object. Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{;}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}  \PYG{c+c1}{//no parentheses}
 \PYG{l+m}{7}
 \end{Verbatim}
 
@@ -2743,32 +2750,203 @@ Property referring to the length of this string object. Example:
 \label{stringmethods:testing-strings-for-equality}
 Strings can be tested for equality like numbers,
 with \code{==}: \emph{two} equal signs, not the \emph{one} equal sign used for assignement.
-Case matters:
+The case of letters matters:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"Hello"}\PYG{p}{;} \PYG{c+c1}{// initial value assigned}
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{t} \PYG{p}{=} \PYG{l+s}{"HELLO"}\PYG{p}{;}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s} \PYG{p}{=}\PYG{p}{=} \PYG{n}{t}\PYG{p}{;}  \PYG{c+c1}{// test}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s} \PYG{p}{=}\PYG{p}{=} \PYG{n}{t}\PYG{p}{;}  \PYG{c+c1}{// equality test}
 \PYG{k}{false}
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{ToUpper}\PYG{p}{(}\PYG{p}{)} \PYG{p}{=}\PYG{p}{=} \PYG{n}{t}\PYG{p}{;}
 \PYG{k}{true}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{u} \PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{.}\PYG{n}{substring}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)}\PYG{p}{;}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{u} \PYG{p}{=}\PYG{p}{=} \PYG{l+s}{"Hi"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{u} \PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{.}\PYG{n}{substring}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{// assign}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{u} \PYG{p}{=}\PYG{p}{=} \PYG{l+s}{"Hi"}\PYG{p}{;} \PYG{c+c1}{// equality test}
 \PYG{k}{true}
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{u} \PYG{p}{=}\PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{;}
 \PYG{k}{false}
 \end{Verbatim}
 
 Hence string expressions can be used in \code{if} statements.
-\phantomsection\label{problem-solving-replace:string-char}
+\phantomsection\label{problem-solving-replace:solve-string-replace}
 \index{string!problem solving}\index{problem solving!string}
 
 \section{A Creative Problem Solution}
 \label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}
-\begin{notice}{note}{Todo}
+Thus far the exercises and examples suggested have been of
+a very simple form, where the idea of the steps should
+have been pretty clear, and the main issue was just
+translating syntax into C\#, one instruction at a time.
 
-Andy from Java version
-\end{notice}
+We still have a lot of syntax to concentrate on,
+but still, early on, we wanted to get in some real thought
+of problem solving.  To get very interesting you
+need a number of options that might be combined in
+a variety of ways.  The short list of
+string methods just introduced
+is likely give us enough to think about....
+
+Here is a basic string manipulation problem:
+given a string, like,
+\code{"It was the best of times."},
+find and replace a specified part of it by another string.
+For instance replace \code{"best"} by \code{"worst"}.
+In this example we would get the result:
+\code{"It was the worst of times."}.
+
+It is very important to give concrete examples to
+illustrate the idea desired.  Our human brains may be
+very quick to see a solution like this in a very
+concrete case, but what about making it general?
+
+First this seems like a basic logical operation worthy
+of a function or method, so we need a heading.
+(Confession:  there are methods in the class
+string for replacement, but this is a good leatrning exercise,
+so we are starting over on our own.)  Since
+we cannot change the string class, we will write a
+static function to generate the new string.
+
+For simplicity at the moment we will only change
+the first occurence, and for now we will assume the
+replacement makes sense.  The following heading
+(with documentation) should work:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    
+    \PYG{c+cm}{/** Return s with the first occurence of target}
+\PYG{c+cm}{     *  replaced by replacement.}
+\PYG{c+cm}{     */}
+    \PYG{k}{static} \PYG{k+kt}{string} \PYG{n+nf}{replaceFirst}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{,} \PYG{k+kt}{string} \PYG{n}{target}\PYG{p}{,}
+                               \PYG{k+kt}{string} \PYG{n}{replacement}\PYG{p}{)}
+\end{Verbatim}
+
+As soon as we have the calling interface, it is good to be thinking
+of the tests it should pass.  Here is a Main program written
+to test the function in different ways and display the results:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main} \PYG{p}{(}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{string} \PYG{n}{str1} \PYG{p}{=} \PYG{l+s}{"It was the best of times."}\PYG{p}{;}
+        \PYG{k+kt}{string} \PYG{n}{str2} \PYG{p}{=} \PYG{l+s}{"Of times it was the best."}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str1="} \PYG{p}{+} \PYG{n}{str1}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str2="} \PYG{p}{+} \PYG{n}{str2}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+        \PYG{c+c1}{// to embed a quote inside a string constant, precede it by backslash(\PYGZbs{}).}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Let us do some \PYGZbs{}"cutting and pasting\PYGZbs{}" of strings!"}\PYG{p}{)}\PYG{p}{;}
+        \PYG{k+kt}{string} \PYG{n}{str3} \PYG{p}{=} \PYG{n}{replaceFirst}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{l+s}{"best"}\PYG{p}{,} \PYG{l+s}{"worse"}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str3 = str1 - best to worst: "} \PYG{p}{+} \PYG{n}{str3}\PYG{p}{)}\PYG{p}{;}
+        \PYG{k+kt}{string} \PYG{n}{str4} \PYG{p}{=} \PYG{n}{replaceFirst}\PYG{p}{(}\PYG{n}{str2}\PYG{p}{,} \PYG{l+s}{"best"}\PYG{p}{,} \PYG{l+s}{"worse"}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str2 - best to worst: "} \PYG{p}{+} \PYG{n}{str4}\PYG{p}{)}\PYG{p}{;}
+        \PYG{k+kt}{string} \PYG{n}{str5} \PYG{p}{=} \PYG{n}{replaceFirst}\PYG{p}{(}\PYG{n}{str3}\PYG{p}{,} \PYG{l+s}{"worse"}\PYG{p}{,} \PYG{l+s}{"best"}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str3 - worst to best: "} \PYG{p}{+} \PYG{n}{str5}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Writing tests \emph{first} is a good idea to focus you on what really
+needs to be accomplished, and then running tests later is a snap!
+
+The human brain and eys are fabulous in the way they process
+many things in parallel and use tools you have accumulated over
+a lifetime.  In particular this substitution idea should
+seem pretty reasonable, and given any \emph{specific concrete} example,
+you are likely to be able to solve it instantly, with very little
+conscious effort.  Once it becomes a programming problem, with
+parameters stated in general with just placeholder formal names
+like \code{s} and \code{target}, and given the limited set of approaches
+you have in a programming language, the complexion of this
+problem changes completely.  Many students guess the general problem will
+be nearly as simple as the concrete exmples they do in their heads,
+and then get very discouraged when the answer does not flow out of
+them.  In fact it takes practice and experience, and it is easier
+to handle if you acknowledge that up front!
+
+So let's start in with the practice, and gain some experience.
+With \code{s}, \code{target}, and \code{replacement} all being general, this
+problem could easily be too much to contemplate at once,
+so let us replace concrete examples by generality gradually.
+The idea is to get to the end.  Rather than trying to jump a chasm,
+we can take small steps and go around.
+
+A basic idea is to make small incremental
+changes, test at each stage, and gradually see more of the tests
+(that you have already written) be satisfied.  Also, if you make a
+mistake and screw up something that worked before, you can generally
+focus on the small addition to see where the mistakes were.
+\footnote{
+We will not go far into the history of software engineering
+practice here, but these incremental problem solving methods
+were first widely
+introduced as a part of \emph{extreme programming}.
+That gives you an idea of the newness at the time.
+}
+
+This also avoids you needing to keep too much in your head at once.
+
+We do have code written already:  The test code.  Start by writing
+something that will trivially satisfy the first concrete test.
+The body of the function can be just:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{return} \PYG{l+s}{"It was the worst of times"}\PYG{p}{;}
+\end{Verbatim}
+
+This is a tiny, easy, silly looking step, but it does accomplish
+two things:  It makes sure we can produce output
+in the proper string form, and the test code runs, passing the
+first test.
+
+How we gradually get more complicated.  We will continue to assume
+\code{target} and \code{replacement} are as in the original example,
+and \code{target} is in the same place in \code{s},
+but suppose we imagine each
+of the other characters in \code{s} may be something different:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s}{"???????????best??????????"}
+\end{Verbatim}
+
+Now we have to start thinking about what we have to work with.
+We have a string, and we have string methods.
+Have a look at the ideas of the each method (exact syntax
+not important at the moment).  Clearly we are going to have to
+deal with parts of strings, and the methods to deal with parts
+involve indices, so let us add to our visual model:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Index}\PYG{p}{:} \PYG{l+m}{0}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{5}\PYG{l+m}{6}\PYG{l+m}{7}\PYG{l+m}{8}\PYG{l+m}{9}\PYG{l+m}{0}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{5}\PYG{l+m}{6}\PYG{l+m}{7}\PYG{l+m}{8}\PYG{l+m}{9}\PYG{l+m}{0}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{3}\PYG{l+m}{4}
+    \PYG{n}{s}\PYG{p}{:} \PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{n}{best}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}\PYG{p}{?}
+\end{Verbatim}
+
+Continue in class....  The example program stub is
+\code{StringmanipStub.cs}.  In general, when given a
+program with ``Stub'' in it, save it under a name without the ``Stub'',
+and develop that version further.  In stubs where you need to
+complete a function with a return value, you will often see
+a dummy choice for the return statement, just so the stub compiles.
+Where the return type is string \code{"Not implemented"} is a handy
+temporary choice.
+
+When you have that function version, test it.
+You will need to rename
+our incremental variations so the current version has the name
+used in Main.
+
+What might further advances toward full generality be,
+in small steps?  We pinned \code{best} at a specific location.
+We could remove that assumption.  The location will still be
+important, but we do not know it ahead of time....
+
+A further advance would be a version that is complete
+in all ways, except we still assume \code{target} is in \code{s},
+but beyond that, do not assume what the three parameters are.
+
+Finally we should allow s to not contain the target.
+
+The testing regime in Main is clear to understand and write,
+but pretty primitive.  You have to look at a lot of output
+every time you test.  We will come up with better testing schemes
+later.
 \phantomsection\label{lab-string-ops:string-char}
 \index{labs!string manipulations}
 
@@ -2851,13 +3029,6 @@ Andy new
 \end{notice}
 
 (The {\hyperref[notusereturn:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/notusereturn.rst, line 9.)
-
-\begin{notice}{note}{Todo}
-
-Andy from Java version
-\end{notice}
-
-(The {\hyperref[problem-solving-replace:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/problem-solving-replace.rst, line 9.)
 
 \begin{notice}{note}{Todo}
 
