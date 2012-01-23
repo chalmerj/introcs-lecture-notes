@@ -68,7 +68,7 @@ a lifetime.  In particular this substitution idea should
 seem pretty reasonable, and given any *specific concrete* example,
 you are likely to be able to solve it instantly, with very little
 conscious effort.  Once it becomes a programming problem, with
-parameters stated in general with just placeholder formal names
+parameters stated in general, with just placeholder names
 like ``s`` and ``target``, and given the limited set of approaches
 you have in a programming language, the complexion of this
 problem changes completely.  Many students guess the general problem will
@@ -104,7 +104,7 @@ two things:  It makes sure we can produce output
 in the proper string form, and the test code runs, passing the
 first test.  
 
-How we gradually get more complicated.  We will continue to assume
+Now we gradually get more complicated.  We will continue to assume
 ``target`` and ``replacement`` are as in the original example,
 and ``target`` is in the same place in ``s``, 
 but suppose we imagine each
@@ -114,7 +114,7 @@ of the other characters in ``s`` may be something different::
     
 Now we have to start thinking about what we have to work with.  
 We have a string, and we have string methods.
-Have a look at the ideas of the each method (exact syntax
+Have a look at the ideas of each method (exact syntax
 not important at the moment).  Clearly we are going to have to
 deal with parts of strings, and the methods to deal with parts
 involve indices, so let us add to our visual model::
@@ -123,7 +123,7 @@ involve indices, so let us add to our visual model::
         s: ???????????best??????????
 
 Continue in class....  The example program stub is 
-:file:`StringmanipStub.cs`.  In general, when given a
+:file:`StringManipStub.cs`.  In general, when given a
 program with "Stub" in it, save it under a name without the "Stub",
 and develop that version further.  In stubs where you need to
 complete a function with a return value, you will often see
@@ -187,4 +187,4 @@ later.
 	practice here, but these incremental problem solving methods 
 	were first widely 
 	introduced as a part of *extreme programming*.
-	That gives you an idea of the newness at the time.
+	That name gives you an idea of the newness at the time.

@@ -2801,7 +2801,7 @@ concrete case, but what about making it general?
 First this seems like a basic logical operation worthy
 of a function or method, so we need a heading.
 (Confession:  there are methods in the class
-string for replacement, but this is a good leatrning exercise,
+string for replacement, but this is a good learning exercise,
 so we are starting over on our own.)  Since
 we cannot change the string class, we will write a
 static function to generate the new string.
@@ -2852,7 +2852,7 @@ a lifetime.  In particular this substitution idea should
 seem pretty reasonable, and given any \emph{specific concrete} example,
 you are likely to be able to solve it instantly, with very little
 conscious effort.  Once it becomes a programming problem, with
-parameters stated in general with just placeholder formal names
+parameters stated in general, with just placeholder names
 like \code{s} and \code{target}, and given the limited set of approaches
 you have in a programming language, the complexion of this
 problem changes completely.  Many students guess the general problem will
@@ -2878,7 +2878,7 @@ We will not go far into the history of software engineering
 practice here, but these incremental problem solving methods
 were first widely
 introduced as a part of \emph{extreme programming}.
-That gives you an idea of the newness at the time.
+That name gives you an idea of the newness at the time.
 }
 
 This also avoids you needing to keep too much in your head at once.
@@ -2896,7 +2896,7 @@ two things:  It makes sure we can produce output
 in the proper string form, and the test code runs, passing the
 first test.
 
-How we gradually get more complicated.  We will continue to assume
+Now we gradually get more complicated.  We will continue to assume
 \code{target} and \code{replacement} are as in the original example,
 and \code{target} is in the same place in \code{s},
 but suppose we imagine each
@@ -2908,7 +2908,7 @@ of the other characters in \code{s} may be something different:
 
 Now we have to start thinking about what we have to work with.
 We have a string, and we have string methods.
-Have a look at the ideas of the each method (exact syntax
+Have a look at the ideas of each method (exact syntax
 not important at the moment).  Clearly we are going to have to
 deal with parts of strings, and the methods to deal with parts
 involve indices, so let us add to our visual model:
@@ -2919,7 +2919,7 @@ involve indices, so let us add to our visual model:
 \end{Verbatim}
 
 Continue in class....  The example program stub is
-\code{StringmanipStub.cs}.  In general, when given a
+\code{StringManipStub.cs}.  In general, when given a
 program with ``Stub'' in it, save it under a name without the ``Stub'',
 and develop that version further.  In stubs where you need to
 complete a function with a return value, you will often see
