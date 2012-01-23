@@ -2835,11 +2835,11 @@ to test the function in different ways and display the results:
         \PYG{c+c1}{// to embed a quote inside a string constant, precede it by backslash(\PYGZbs{}).}
         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Let us do some \PYGZbs{}"cutting and pasting\PYGZbs{}" of strings!"}\PYG{p}{)}\PYG{p}{;}
         \PYG{k+kt}{string} \PYG{n}{str3} \PYG{p}{=} \PYG{n}{replaceFirst}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{,} \PYG{l+s}{"best"}\PYG{p}{,} \PYG{l+s}{"worse"}\PYG{p}{)}\PYG{p}{;}
-        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str3 = str1 - best to worst: "} \PYG{p}{+} \PYG{n}{str3}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str3 = str1 with best =\textgreater{} worst: "} \PYG{p}{+} \PYG{n}{str3}\PYG{p}{)}\PYG{p}{;}
         \PYG{k+kt}{string} \PYG{n}{str4} \PYG{p}{=} \PYG{n}{replaceFirst}\PYG{p}{(}\PYG{n}{str2}\PYG{p}{,} \PYG{l+s}{"best"}\PYG{p}{,} \PYG{l+s}{"worse"}\PYG{p}{)}\PYG{p}{;}
-        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str2 - best to worst: "} \PYG{p}{+} \PYG{n}{str4}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str2 with best =\textgreater{} worst: "} \PYG{p}{+} \PYG{n}{str4}\PYG{p}{)}\PYG{p}{;}
         \PYG{k+kt}{string} \PYG{n}{str5} \PYG{p}{=} \PYG{n}{replaceFirst}\PYG{p}{(}\PYG{n}{str3}\PYG{p}{,} \PYG{l+s}{"worse"}\PYG{p}{,} \PYG{l+s}{"best"}\PYG{p}{)}\PYG{p}{;}
-        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str3 - worst to best: "} \PYG{p}{+} \PYG{n}{str5}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"str3 with worst =\textgreater{} best: "} \PYG{p}{+} \PYG{n}{str5}\PYG{p}{)}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
