@@ -47,8 +47,11 @@ This is based on the idea of Dr. Thiruvathukal's own
 legendary course syllabus.
 We're going to start
 by assuming that there is a fixed set of categories.
-As an example we assume Dr. Thiruvathukal's weights
-for each category, though your program should prompt
+As an example we assume Dr. Thiruvathukal's categories.
+
+In the example below we work out for
+Dr. Thiruvathukal's weights in each category,
+though your program should prompt
 the user for these integer percentages:
 
 - exams - 40% (integer weight is 40)
@@ -59,7 +62,23 @@ the user for these integer percentages:
 
 Your program will prompt the user for each the weights
 for each of the categories. These weights will be entered
-as integers, which must add up to 100. Then we will use
+as integers, which must add up to 100. 
+
+If the weights do not add up to 100, print a message and 
+end the program. You can use an ``if-else`` cmnstruction
+here.  An alternative is an ``if`` statement to test for a bad sum.
+In the block of statements that go with the ``if`` statement,
+you can put not only the message to the user, but also a 
+statement::
+
+    return;
+
+Recall that a function ends when a return statement is reached.
+You may not have heard that this can also be used
+with a ``void`` function.  In a ``void`` function 
+there is no return value in the ``return`` statement.
+
+Assuming the weights add to 100, then we will use
 these weights as *floating point* numbers to compute your
 grade. We will be using ``double``, which gives you the
 best precision when it comes to floating-point arithmetic.
@@ -160,7 +179,7 @@ Then you can display the grade as a percentage::
     csharp> Console.WriteLine("Your grade is {0}%", grade);
     Your grade is 70.5%
 
-Now for the fun part. We will use the ``if`` statement to 
+Now for the fun part. We will use ``if`` statements to 
 print the letter grade. You will actually need to use
 multiple ``if`` statements to test the conditions. A way
 of thinking of how you would write the logic for determining
@@ -189,8 +208,9 @@ grade.
 
 This assignment is listed in the data chapter, 
 because you can do most all of it with tools
-learned so far.  Do the last part with the letter
-grade after you have learned about ``if`` statements.
+learned so far.  Add the parts with ``if`` statements
+when you have been introduced to ``if`` statements.
+(Initially be sure to make the wirght actually add up to 100.)
 
 You should be able to write the program more concisely
 and readably if you use functions developed
@@ -199,10 +219,11 @@ in class for the prompting and user input.
 Usage
 -----
 
-Here is sample output from a run of the program. 
+Here is sample output from two runs of the program. 
 The only data entered by the user are
 show in **boldface** for illustration here.
-They are the numbers before the final average:
+
+One successful run with the data used above:
 
     | Enter weights for each part as an integer 
     | percentage of the final grade:
@@ -222,6 +243,16 @@ They are the numbers before the final average:
     | Your grade is 70.5%
     | Your letter grade is C-.
 
+A run with bad weights:
 
-
+    | Enter weights for each part as an integer 
+    | percentage of the final grade:
+    | Exams: **30**
+    | Labs: **10**
+    | Homework: **10**
+    | Project: **10**
+    | Participation: **10**
+    |
+    | Your weights add to 70, not 100.
+    | This grading program is ending. 
 
