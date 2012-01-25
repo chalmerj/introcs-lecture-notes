@@ -65,7 +65,7 @@ for each of the categories. These weights will be entered
 as integers, which must add up to 100. 
 
 If the weights do not add up to 100, print a message and 
-end the program. You can use an ``if-else`` cmnstruction
+end the program. You can use an ``if-else`` construction
 here.  An alternative is an ``if`` statement to test for a bad sum.
 In the block of statements that go with the ``if`` statement,
 you can put not only the message to the user, but also a 
@@ -210,7 +210,8 @@ This assignment is listed in the data chapter,
 because you can do most all of it with tools
 learned so far.  Add the parts with ``if`` statements
 when you have been introduced to ``if`` statements.
-(Initially be sure to make the wirght actually add up to 100.)
+(Initially be sure to use data that makes the 
+weights actually add up to 100.)
 
 You should be able to write the program more concisely
 and readably if you use functions developed
