@@ -11,5 +11,6 @@ C# Data and Operations
    writeline-substitution
    learning-to-problem-solve
    lab-division-sentences
+   homework-gradecalculation
  
 
