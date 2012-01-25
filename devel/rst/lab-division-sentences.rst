@@ -4,11 +4,11 @@
    single: labs; division sentences
 
 Lab: Division Sentences
---------------------------
+=========================
 
 
 Overview
-~~~~~~~~~~
+--------
 
 In this lab, we're going to begin to look at what makes computers *do
 their thing* so to speak. 
@@ -41,7 +41,7 @@ You may want to jump to the final section that discusses how to
 set emacs up for that.
 
 Requirements
-~~~~~~~~~~~~~~
+------------
 
 We want to develop a program that can do the following:
 
@@ -70,7 +70,7 @@ formulation that is credited to Euclid, of of the great early
 mathematicians (among other things).
 
 csharp
-~~~~~~~~~
+------
 
 So let's get this party started by firing up the **csharp**
 command. Open a terminal (Linux or OS X) or command window for the
@@ -245,7 +245,7 @@ the C# interpreter) into your text editor::
    double:emacs; java-mode
 
 Proper Indentation and Emacs java-mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
 
 With this exercise, we are now entering a phase where we must start
 paying a bit more attention to the basic *appearance* of our code. As

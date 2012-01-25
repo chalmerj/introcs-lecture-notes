@@ -2966,8 +2966,10 @@ they must be
 preceeded by a reference to a string, followed by a dot, as shown in
 all the  examples.  The reference to \emph{this} string can be
 a variable name, a literal, or any expression evaluating to a string.
-\paragraph{Some String Instance Methods and the Length Property}
-\begin{description}
+
+
+\subsection{Summary of String Length and Some Instance Methods}
+\label{stringmethods:string-methods-length}\label{stringmethods:summary-of-string-length-and-some-instance-methods}\begin{description}
 \item[{\code{int IndexOf(string string2)}}] \leavevmode
 Returns the index of the begining of the first occurrence of the string \code{string2}
 in \textbf{this} string object. Returns -1 if \code{string2} not found. Example:
@@ -3049,11 +3051,11 @@ The case of letters matters:
 \end{Verbatim}
 
 Hence string expressions can be used in \code{if} statements.
-\phantomsection\label{problem-solving-replace:solve-string-replace}
+
 \index{string!problem solving}\index{problem solving!string}
 
 \section{A Creative Problem Solution}
-\label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}
+\label{problem-solving-replace:index-0}\label{problem-solving-replace:a-creative-problem-solution}\label{problem-solving-replace::doc}\label{problem-solving-replace:solve-string-replace}
 Thus far the exercises and examples suggested have been of
 a very simple form, where the idea of the steps should
 have been pretty clear, and the main issue was just
@@ -3229,15 +3231,75 @@ The testing regime in Main is clear to understand and write,
 but pretty primitive.  You have to look at a lot of output
 every time you test.  We will come up with better testing schemes
 later.
-\phantomsection\label{lab-string-ops:string-char}
+\phantomsection\label{lab-string-ops:lab-string-ops}
 \index{labs!string manipulations}
 
 \section{Lab: String Operations}
 \label{lab-string-ops:index-0}\label{lab-string-ops::doc}\label{lab-string-ops:lab-string-operations}
-\begin{notice}{note}{Todo}
 
-Andy from Java version
-\end{notice}
+\subsection{Goals for this lab:}
+\label{lab-string-ops:goals-for-this-lab}\begin{enumerate}
+\item {} 
+Explore some of the properties of the pre-defined String class.
+
+\item {} 
+Write conditional statements.
+
+\item {} 
+Think about problem solving.
+
+\end{enumerate}
+
+This lab depends on the introductory material in earlier in this
+chapter, particularly keep handy {\hyperref[stringmethods:string-methods-length]{\emph{Summary of String Length and Some Instance Methods}}}.
+Be mindful of the processes developed in class filling in
+{\hyperref[problem-solving-replace:solve-string-replace]{\emph{A Creative Problem Solution}}}.
+
+Design, compile and run a C\# program to accomplish each of
+the following tasks. Add one part at a time and test before trying the
+next one. The program can just include a Main method, or it is neater to
+split things into separate methods, and have Main call all the ones
+you have written so far (or for testing purposes, just the one you
+are working on, with the other function calls commented out).
+All input from the user should be preceded by a meaningful prompt.
+\begin{enumerate}
+\item {} 
+Read a string from the keyboard
+and print the length of the string, with a label.
+
+\item {} 
+Read a sentence (string) from a line of input, and print whether
+it represents a \emph{declarative} sentence (i.e. ending in a period),
+\emph{interrogatory} sentence (ending in a question mark), or an
+\emph{exclamation} (ending in exclamation point) or is not a sentence
+(anything else).
+
+This may be the first time you write a conditional
+statement. It makes sense to only make small changes at once and build
+up to final code. First you might just code it to check if a sentence is
+declarative or not. Then remember you can test further cases with
+\code{else if (...)}.
+
+\item {} 
+Read a name from a line of input.  Assume first and last names
+are separated by a space.
+Print last name first followed by a comma
+and a space, followed by the first name.
+For example, if the input is
+\code{"Marcel Proust"}, the output is \code{"Proust, Marcel"}.
+
+\item {} 
+Improve the previous part,
+so it also allows a single name without spaces,
+like ``Socrates'', and prints the original without change. If there are
+two parts of the name, it should work as in the original version.
+
+\end{enumerate}
+
+Run the program (with parts 1, 2 and 4 active)
+from a terminal window and show your TA when you are
+done.  You should run it twice to show off both paths through
+part 4.  Alternately have the main program just call part 4 twice.
 
 
 \chapter{Decisions}
@@ -3319,13 +3381,6 @@ George:
 \end{notice}
 
 (The {\hyperref[assignment-functions:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/assignment-functions.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-Andy from Java version
-\end{notice}
-
-(The {\hyperref[lab-string-ops:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-string-ops.rst, line 9.)
 
 \begin{notice}{note}{Todo}
 

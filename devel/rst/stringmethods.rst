@@ -92,7 +92,10 @@ a variable name, a literal, or any expression evaluating to a string.
    | (property)                               |                                                                                                                                                 |  ``greeting.length( )`` returns the value 7.               |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 
-.. rubric:: Some String Instance Methods and the Length Property
+.. _string-methods-length:
+
+Summary of String Length and Some Instance Methods
+----------------------------------------------------
 
 ``int IndexOf(string string2)``
     Returns the index of the begining of the first occurrence of the string ``string2`` 

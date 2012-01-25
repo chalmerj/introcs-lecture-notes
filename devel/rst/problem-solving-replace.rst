@@ -1,7 +1,7 @@
-.. _solve-string-replace:
-
 .. index::
    double: string; problem solving
+
+.. _solve-string-replace:
 
 A Creative Problem Solution
 ==================================
