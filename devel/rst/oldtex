@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 22, 2012}
+\date{January 25, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -1180,7 +1180,7 @@ the ``priority'' part of your brain, so you can really learn from your effort.  
 the important ideas
 next, you do not need to play through all the details of
 the stuff you did to solve the exact earlier problem.
-
+\phantomsection\label{lab-division-sentences:lab-division}
 \index{labs!division sentences}
 
 \section{Lab: Division Sentences}
@@ -1214,6 +1214,11 @@ as opposed to the compiler (\textbf{gmcs} that we used in the first
 lab). Then we will take what we've learned in this session and use it
 to write a full program.
 
+This is a large enough program that it may be useful to have the
+editor be knowledgeable about C\# syntax and formatting conventions.
+You may want to jump to the final section that discusses how to
+set emacs up for that.
+
 
 \subsection{Requirements}
 \label{lab-division-sentences:requirements}
@@ -1232,15 +1237,7 @@ Calculate the floating point division result (e.g. 10/4 = 2.5).
 Calculate the quotient and the remainder (e.g. 10/4 = 2 with a
 remainder of 2 = 2 2/4).
 
-\item {} 
-If the remainder is \textgreater{} 0, print the remainder / denominator as a
-fraction. Otherwise, don't print anything.
-
 \end{itemize}
-
-So we will do some basic calculations. We will also make use for the
-first time of an \emph{if} statement, which will allow us to determine
-whether a fraction is printed or not.
 
 As an example of how this program will ultimately work:
 
@@ -1412,8 +1409,8 @@ character (which must be a \emph{letter} or an \emph{underscore}):
 \PYG{l+m}{3.5}
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} / \PYGZob{}1\PYGZcb{} = \PYGZob{}2\PYGZcb{} remainder \PYGZob{}3\PYGZcb{}"}\PYG{p}{,} \PYG{n}{numerator}\PYG{p}{,} \PYG{n}{denominator}\PYG{p}{,} \PYG{n}{quotient}\PYG{p}{,} \PYG{n}{remainder}\PYG{p}{)}\PYG{p}{;}
 \PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3} \PYG{n}{remainder} \PYG{l+m}{2}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} / \PYGZob{}1\PYGZcb{} = \PYGZob{}2\PYGZcb{} exactly"}\PYG{p}{,} \PYG{n}{numerator2}\PYG{p}{,} \PYG{n}{denominator2}\PYG{p}{,} \PYG{n}{quotient2}\PYG{p}{)}\PYG{p}{;}
-\PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3.5} \PYG{n}{exactly}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} / \PYGZob{}1\PYGZcb{} = \PYGZob{}2\PYGZcb{} approximately"}\PYG{p}{,} \PYG{n}{numerator2}\PYG{p}{,} \PYG{n}{denominator2}\PYG{p}{,} \PYG{n}{quotient2}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{1}\PYG{l+m}{4} \PYG{p}{/} \PYG{l+m}{4} \PYG{p}{=} \PYG{l+m}{3.5} \PYG{n}{approximately}
 \end{Verbatim}
 
 So effectively we have shown everything you need to understand to
@@ -1448,16 +1445,11 @@ the C\# interpreter) into your text editor:
    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
-
-\begin{notice}{note}{Todo}
-
-Add the bit about using the if statement. George to work on this
-later.
-\end{notice}
-
+\phantomsection\label{lab-division-sentences:java-mode}
+\index{emacs!java-mode}\index{java-mode!emacs}
 
 \subsection{Proper Indentation and Emacs java-mode}
-\label{lab-division-sentences:proper-indentation-and-emacs-java-mode}
+\label{lab-division-sentences:proper-indentation-and-emacs-java-mode}\label{lab-division-sentences:index-1}
 With this exercise, we are now entering a phase where we must start
 paying a bit more attention to the basic \emph{appearance} of our code. As
 programs become larger, they also can become harder to maintain (let
@@ -1486,7 +1478,25 @@ at the bottom of the screen where an \code{M-x} or similar prompt is
 shown) will wait for you to type the name of a command. Enter
 \emph{java-mode} and you will be able to take advantage of the magical
 support in Emacs for automatic formatting of your source code. Your
-instructor will show you how to make effective use of it.
+instructor will show you how to make effective use of it.  Two features
+are worthy of immediate notice:
+\begin{itemize}
+\item {} 
+The program becomes color-coded.  On of the most useful things
+is that literal strings have a different color.
+Forgetting the final quote mark at the end of a literal string
+ia=s a common
+error that may not be associated with good error messages.
+The color coding makes it very obvious that the editor sees the
+string as being too long.
+
+\item {} 
+Nice indentation is done with very little effort.  Pressing the
+Enter key still takes you to the beginning of the next line,
+but a single further press of the tab key
+generally indents to exactly where the line should start.
+
+\end{itemize}
 
 If you are feeling a bit adventurous, you can download \emph{csharp-mode}
 from the Emacs Wiki at
@@ -1500,6 +1510,279 @@ folder. Then you can use Emacs to load this file (Esc-x, then type
 As this is a bit of an advanced topic, this explanation will have to
 suffice for now. We're hopeful that future versions of Emacs will
 include \emph{csharp-mode} by default.
+
+\index{homework!input-output decisions}\index{input-output!decisions, homework}\index{decisions!homework input-output}
+
+\section{Homework: Grade Calculation}
+\label{homework-gradecalculation:index-0}\label{homework-gradecalculation:homework-grade-calculation}\label{homework-gradecalculation::doc}
+You are going to be
+putting together your first programming assignment where
+you will be taking the various concepts we have learned
+thus far in lecture and lab and to put together your first
+meaningful program on your own.
+
+This program will incorporate the following elements:
+\begin{itemize}
+\item {} 
+Prompt a user for input.
+
+\item {} 
+Perform some rudimentary calculations.
+
+\item {} 
+Make some decisions.
+
+\item {} 
+Produce output.
+
+\end{itemize}
+
+As we've mentioned in the early lectures, our focus is going
+to be on learning how to write computer programs that start
+with a Main() function and perhaps use other functions as
+needed to \emph{get a particular job done}. Eventually, we will
+be incorporating more and more advanced elements, such as
+classes and objects. For now, we would like you to organize
+your program according to the guidelines set forth here.
+
+
+\subsection{Program Summary}
+\label{homework-gradecalculation:program-summary}
+We're going to begin with an \emph{executive summary} of what the
+first homework assignment will actually accomplish. We want
+to train your brain early about the importance of not only
+understanding what you are doing but also the great
+importance of being able to explain your ideas to others.
+
+Our first program is based on a common task that every
+course professor/instructor needs to do: make grades. In
+any given course, there is a \emph{grading scale} and a set of
+\emph{categories}.
+
+
+\subsection{Details}
+\label{homework-gradecalculation:details}
+This is based on the idea of Dr. Thiruvathukal's own
+legendary course syllabus.
+We're going to start
+by assuming that there is a fixed set of categories.
+As an example we assume Dr. Thiruvathukal's weights
+for each category, though your program should prompt
+the user for these integer percentages:
+\begin{itemize}
+\item {} 
+exams - 40\% (integer weight is 40)
+
+\item {} 
+labs - 15\% (weight 15)
+
+\item {} 
+homework - 15\% (weight 15)
+
+\item {} 
+project - 20\% (weight 20)
+
+\item {} 
+participation - 10\% (weight 10)
+
+\end{itemize}
+
+Your program will prompt the user for each the weights
+for each of the categories. These weights will be entered
+as integers, which must add up to 100. Then we will use
+these weights as \emph{floating point} numbers to compute your
+grade. We will be using \code{double}, which gives you the
+best precision when it comes to floating-point arithmetic.
+
+We'll talk in class about why we want the weights to be
+integers. Because floating-point mathematics is not 100\%
+precise, it is important that we have an accurate way
+to know that the weights \emph{really add up} to 100. The only
+way to be assured of this is to use \emph{integers}. We will
+actually use floating-point calculations to compute the
+grade, because we have a certain tolerance for errors at
+this stage. (This is a fairly advanced topic that is
+covered extensively in courses like COMP 264/Systems
+Programming and even more advanced courses like Numerical
+Analysis, Comp 308.)
+
+We are going to pretend
+that we already know our score (as a percentage) for each
+one of these categories, so it will be fairly simple to
+compute the grade.
+
+For each category, you will define a weight (int) and a
+score (double). Then you will sum up the weight * score and
+divide by 100.0 (to get a double-precision floating-point
+result).
+
+This is best illustrated by example.
+
+George is a student in COMP 170. He has the following
+averages for each category to date:
+\begin{itemize}
+\item {} 
+exams: 50\%
+
+\item {} 
+labs: 100\%
+
+\item {} 
+homework: 100\%
+
+\item {} 
+project: 100\%
+
+\item {} 
+participation: 5\%
+
+\end{itemize}
+
+The following session with the \code{csharp} interpreter shows
+the how you would declare all of the needed variables and
+the calculation to be performed:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{exam\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{4}\PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{lab\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{5}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{hw\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{5}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{project\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{2}\PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{participation\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;}
+
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{double} \PYG{n}{exam\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{5}\PYG{l+m}{0.0}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{double} \PYG{n}{lab\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{double} \PYG{n}{homework\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{double} \PYG{n}{project\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{double} \PYG{n}{participation\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{5}\PYG{p}{;}
+
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{ShowVars}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{exam\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{4}\PYG{l+m}{0}
+\PYG{k+kt}{double} \PYG{n}{lab\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{5}
+\PYG{k+kt}{int} \PYG{n}{hw\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{5}
+\PYG{k+kt}{int} \PYG{n}{project\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{2}\PYG{l+m}{0}
+\PYG{k+kt}{int} \PYG{n}{participation\PYGZus{}weight} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}
+\PYG{k+kt}{double} \PYG{n}{exam\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{5}\PYG{l+m}{0}
+\PYG{k+kt}{double} \PYG{n}{homework\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}
+\PYG{k+kt}{double} \PYG{n}{lab\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}
+\PYG{k+kt}{double} \PYG{n}{project\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}
+\PYG{k+kt}{double} \PYG{n}{participation\PYGZus{}grade} \PYG{p}{=} \PYG{l+m}{5}
+\end{Verbatim}
+
+This is intended only to be as an example though. Your
+program must ask the user to enter each of these variables.
+
+Here is an example of how to prompt for an exam weight and
+grade:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Enter the weight for exams: "}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Enter} \PYG{n}{the} \PYG{n}{weight} \PYG{k}{for} \PYG{n}{exams}\PYG{p}{:}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{input} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{exam\PYGZus{}weight} \PYG{p}{=} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{input}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"You entered \PYGZob{}0\PYGZcb{} for exams."}\PYG{p}{,} \PYG{n}{exam\PYGZus{}weight}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{You} \PYG{n}{entered} \PYG{l+m}{4}\PYG{l+m}{0} \PYG{k}{for} \PYG{n}{exams}\PYG{p}{.}
+\end{Verbatim}
+
+The code is similar for entering the exam grade. Where you
+see the \code{int} type, you'll want to use \code{double}. We are
+going to leave this part to your imagination.
+
+Once we have all of the weights and scores entered, we
+can calculate the grade as follows.  This is a long
+expression: It is continued on multiple lines.  Recall all
+the \code{\textgreater{}} sybols are csharp prompts, not part of the
+expression:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{double} \PYG{n}{grade} \PYG{p}{=} \PYG{p}{(}\PYG{n}{exam\PYGZus{}weight} \PYG{p}{*} \PYG{n}{exam\PYGZus{}grade} \PYG{p}{+}
+      \PYG{p}{\textgreater{}} \PYG{n}{homework\PYGZus{}weight}\PYG{p}{*} \PYG{n}{homework\PYGZus{}grade} \PYG{p}{+}
+      \PYG{p}{\textgreater{}} \PYG{n}{lab\PYGZus{}weight} \PYG{p}{*} \PYG{n}{lab\PYGZus{}grade} \PYG{p}{+} \PYG{n}{project\PYGZus{}weight} \PYG{p}{*} \PYG{n}{project\PYGZus{}grade} \PYG{p}{+}
+      \PYG{p}{\textgreater{}} \PYG{n}{participation\PYGZus{}weight} \PYG{p}{*} \PYG{n}{participation\PYGZus{}grade}\PYG{p}{)} \PYG{p}{/} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0.0}\PYG{p}{;}
+\end{Verbatim}
+
+Then you can display the grade as a percentage:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Your grade is \PYGZob{}0\PYGZcb{}\PYGZpc{}"}\PYG{p}{,} \PYG{n}{grade}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Your} \PYG{n}{grade} \PYG{k}{is} \PYG{l+m}{7}\PYG{l+m}{0.5}\PYG{p}{\PYGZpc{}}
+\end{Verbatim}
+
+Now for the fun part. We will use the \code{if} statement to
+print the letter grade. You will actually need to use
+multiple \code{if} statements to test the conditions. A way
+of thinking of how you would write the logic for determining
+your grade is similar to how you tend to think of the \emph{best}
+grade you can \emph{hope for} in any given class. (We know that
+we used to do this as students.)
+
+Here is the thought process:
+\begin{itemize}
+\item {} 
+If my grade is 93 (93.0) or higher, I'm getting an A.
+
+\item {} 
+If my grade is 90 or higher (but less than 93), I
+am getting an A-.
+
+\item {} 
+If my grade is 87 or higher (but less than 90), I
+am getting a B+.
+
+\item {} 
+And so on...
+
+\item {} 
+Finally, if I am less than 60, I am unlikely to pass.
+
+\end{itemize}
+
+We'll come to see how \emph{logic} plays a major role in
+computer science--sometimes even more of a role than
+other mathematical aspects. In this particular program,
+however, we see a bit of the best of both worlds. We're
+doing \emph{arithmetic} calculations to \emph{compute} the grade.
+But we are using \emph{logic} to determine the grade in the
+cold reality that we all know and love: the bottom-line
+grade.
+
+This assignment is listed in the data chapter,
+because you can do most all of it with tools
+learned so far.  Do the last part with the letter
+grade after you have learned about \code{if} statements.
+
+You should be able to write the program more concisely
+and readably if you use functions developed
+in class for the prompting and user input.
+
+
+\subsection{Usage}
+\label{homework-gradecalculation:usage}
+Here is sample output from a run of the program.
+The only data entered by the user are
+show in \textbf{boldface} for illustration here.
+They are the numbers before the final average:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Enter weights for each part as an integer
+\item[] percentage of the final grade:
+\item[] Exams: \textbf{40}
+\item[] Labs: \textbf{15}
+\item[] Homework: \textbf{15}
+\item[] Project: \textbf{20}
+\item[] Participation: \textbf{10}
+\item[] 
+\item[] Enter decimal numbers for the averages in each part:
+\item[] Exams: \textbf{50}
+\item[] Labs: \textbf{100}
+\item[] Homework: \textbf{100}
+\item[] Project: \textbf{100}
+\item[] Participation: \textbf{5}
+\item[] 
+\item[] Your grade is 70.5\%
+\item[] Your letter grade is C-.
+\end{DUlineblock}
+\end{quote}
 
 
 \chapter{Defining Functions of your Own}
@@ -2343,10 +2626,9 @@ printing is one possibility, done in
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-\begin{notice}{note}{Todo}
-
-Put in utility functions for prompted input
-\end{notice}
+\textbf{In class recommendation}:  Improve Miles' original example
+with functions.  What makes sense? The original example is saved
+as \code{GlazerCalc1.cs}.
 
 
 \subsection{Quotient String Return Exercise}
@@ -2941,7 +3223,7 @@ A further advance would be a version that is complete
 in all ways, except we still assume \code{target} is in \code{s},
 but beyond that, do not assume what the three parameters are.
 
-Finally we should allow s to not contain the target.
+Finally we should allow \code{s} to not contain \code{target}.
 
 The testing regime in Main is clear to understand and write,
 but pretty primitive.  You have to look at a lot of output
@@ -2961,9 +3243,38 @@ Andy from Java version
 \chapter{Decisions}
 \label{decisions:decisions}\label{decisions::doc}
 
-\section{Conditions}
-\label{conditions:conditions}\label{conditions::doc}
-Stub
+\section{Conditions I}
+\label{conditions:conditions-i}\label{conditions:simple-conditions}\label{conditions::doc}
+Thus far, within a given function, instructions have been executed
+sequentially, in the same order as written.  Of course that is often
+appropriate!  On the other hands if you are planning out instructions,
+you can get to a place where you say, ``Hm, that depends....'', and
+a choice must be made.  The simplest choices are two-way: do one
+thing is a condition is true, and another (possibly nothing) if the
+contition is not true.
+
+More syntax for conditions will be introduced later,
+but for now consider simple arithmetic comparisons that directly
+translate from math into C\#. Try each line separately in csharp
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{2} \PYG{p}{\textless{}} \PYG{l+m}{5}\PYG{p}{;}
+\PYG{l+m}{3} \PYG{p}{\textgreater{}} \PYG{l+m}{7}\PYG{p}{;}
+\PYG{n}{var} \PYG{n}{x} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{1}\PYG{p}{;}
+\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;}
+\PYG{l+m}{2} \PYG{p}{*} \PYG{n}{x} \PYG{p}{\textless{}} \PYG{n}{x}\PYG{p}{;}
+\end{Verbatim}
+
+You see that conditions are either \code{true} or \code{false} (with no
+quotes!). These are the only possible \emph{Boolean} values (named after
+19th century mathematician George Boole). It is the type of the
+results of true-false conditions or tests.
+
+The simplest place to use conditions in a decision made with an
+\code{if} statement.
+
+We will consider more complicated conditions later, but this is a
+quick start.
 
 
 \section{If-Statements}
@@ -3011,21 +3322,6 @@ George:
 
 \begin{notice}{note}{Todo}
 
-Put in utility functions for prompted input
-\end{notice}
-
-(The {\hyperref[funcreturn:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/funcreturn.rst, line 142.)
-
-\begin{notice}{note}{Todo}
-
-Add the bit about using the if statement. George to work on this
-later.
-\end{notice}
-
-(The {\hyperref[lab-division-sentences:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/lab-division-sentences.rst, line 244.)
-
-\begin{notice}{note}{Todo}
-
 Andy from Java version
 \end{notice}
 
@@ -3037,13 +3333,6 @@ Andy new
 \end{notice}
 
 (The {\hyperref[notusereturn:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/notusereturn.rst, line 9.)
-
-\begin{notice}{note}{Todo}
-
-Andy from Java version
-\end{notice}
-
-(The \emph{original entry} is located in  /Users/anh/www/170/notes/devel/rst/stringchar.rst, line 9.)
 
 
 \chapter{Index and search}

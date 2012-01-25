@@ -1,13 +1,14 @@
+.. _lab-division:
 
 .. index::
    single: labs; division sentences
 
 Lab: Division Sentences
-=========================
+--------------------------
 
 
 Overview
---------
+~~~~~~~~~~
 
 In this lab, we're going to begin to look at what makes computers *do
 their thing* so to speak. 
@@ -34,8 +35,13 @@ as opposed to the compiler (**gmcs** that we used in the first
 lab). Then we will take what we've learned in this session and use it
 to write a full program.
 
+This is a large enough program that it may be useful to have the
+editor be knowledgeable about C# syntax and formatting conventions.
+You may want to jump to the final section that discusses how to
+set emacs up for that.
+
 Requirements
-------------
+~~~~~~~~~~~~~~
 
 We want to develop a program that can do the following:
 
@@ -48,14 +54,6 @@ We want to develop a program that can do the following:
 
 - Calculate the quotient and the remainder (e.g. 10/4 = 2 with a
   remainder of 2 = 2 2/4).
-
-- If the remainder is > 0, print the remainder / denominator as a
-  fraction. Otherwise, don't print anything.
-
-So we will do some basic calculations. We will also make use for the
-first time of an *if* statement, which will allow us to determine
-whether a fraction is printed or not.
-
 
 As an example of how this program will ultimately work::
 
@@ -72,7 +70,7 @@ formulation that is credited to Euclid, of of the great early
 mathematicians (among other things).
 
 csharp
-------
+~~~~~~~~~
 
 So let's get this party started by firing up the **csharp**
 command. Open a terminal (Linux or OS X) or command window for the
@@ -207,8 +205,8 @@ character (which must be a *letter* or an *underscore*)::
     3.5
     csharp> Console.WriteLine("{0} / {1} = {2} remainder {3}", numerator, denominator, quotient, remainder);
     14 / 4 = 3 remainder 2
-    csharp> Console.WriteLine("{0} / {1} = {2} exactly", numerator2, denominator2, quotient2);
-    14 / 4 = 3.5 exactly
+    csharp> Console.WriteLine("{0} / {1} = {2} approximately", numerator2, denominator2, quotient2);
+    14 / 4 = 3.5 approximately
 
 So effectively we have shown everything you need to understand to
 complete this lab. Your job in the remaining time is to see whether
@@ -241,12 +239,13 @@ the C# interpreter) into your text editor::
        }
     }
 
-.. todo::
-   Add the bit about using the if statement. George to work on this
-   later.
+.. _java-mode:
+
+.. index::
+   double:emacs; java-mode
 
 Proper Indentation and Emacs java-mode
---------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 With this exercise, we are now entering a phase where we must start
 paying a bit more attention to the basic *appearance* of our code. As
@@ -276,7 +275,21 @@ at the bottom of the screen where an ``M-x`` or similar prompt is
 shown) will wait for you to type the name of a command. Enter
 *java-mode* and you will be able to take advantage of the magical
 support in Emacs for automatic formatting of your source code. Your
-instructor will show you how to make effective use of it.
+instructor will show you how to make effective use of it.  Two features
+are worthy of immediate notice:
+
+- The program becomes color-coded.  On of the most useful things
+  is that literal strings have a different color.  
+  Forgetting the final quote mark at the end of a literal string
+  ia=s a common
+  error that may not be associated with good error messages.
+  The color coding makes it very obvious that the editor sees the
+  string as being too long.
+  
+- Nice indentation is done with very little effort.  Pressing the
+  Enter key still takes you to the beginning of the next line,
+  but a single further press of the tab key 
+  generally indents to exactly where the line should start.
 
 If you are feeling a bit adventurous, you can download *csharp-mode*
 from the Emacs Wiki at
