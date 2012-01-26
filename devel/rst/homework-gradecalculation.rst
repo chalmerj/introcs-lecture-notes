@@ -2,6 +2,8 @@
 .. index::
    triple: homework; input-output; decisions
 
+.. _homework-grade-calculation:
+
 Homework: Grade Calculation
 ===========================
 

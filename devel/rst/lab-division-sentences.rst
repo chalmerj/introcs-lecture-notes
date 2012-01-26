@@ -1,10 +1,10 @@
-.. _lab-division:
-
 .. index::
    single: labs; division sentences
 
+.. _lab-division:
+
 Lab: Division Sentences
-=========================
+=======================
 
 
 Overview

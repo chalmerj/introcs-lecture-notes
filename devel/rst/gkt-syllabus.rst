@@ -396,3 +396,24 @@ Curricula:
 
 These codes come from the ACM guidelines (PF=Programming Fundamentals,
 PL=Programmin Languges, etc.)
+
+
+Schedule and Summary
+--------------------
+
+1/17
+
+- Discussion about syllabus and expectations (the page you're reading).
+
+1/19
+
+- See :ref:`lab-edit-compile-run`.
+
+1/24 
+
+- Lab :ref:`lab-division`.
+
+1/26
+
+- Continuation of :ref:`lab-division` discussion about :ref:`homework-grade-calculation`.
+- Pair programming in a bit more detail.

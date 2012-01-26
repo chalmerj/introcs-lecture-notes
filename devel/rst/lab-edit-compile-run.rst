@@ -1,3 +1,5 @@
+.. _lab-edit-compile-run:
+
 Lab Exercise: Editing, Compiling, and Running
 ---------------------------------------------
 
