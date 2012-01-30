@@ -1,3 +1,8 @@
+.. index::
+   double: if; statement
+
+.. _If-Statements:
+    
 Decisions
 ######################
 
@@ -6,5 +11,8 @@ Decisions
 
    conditions
    ifstatements
- 
-
+   ifelse
+   comparisonops
+   ifelsechained
+   ifpitfalls
+   compoundconditions

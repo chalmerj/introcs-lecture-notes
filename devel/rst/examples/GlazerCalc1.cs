@@ -6,8 +6,10 @@ class GlazerCalc  // Miles' first C# Yellow Book example
    {
       double width, height, woodLength, glassArea;
       string widthString, heightString;
+      Console.Write ( "Enter window width: ");
       widthString = Console.ReadLine();
       width = double.Parse(widthString);
+      Console.Write ( "Enter window height: ");
       heightString = Console.ReadLine();
       height = double.Parse(heightString);
       

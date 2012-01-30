@@ -88,6 +88,19 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
+rst_prolog = """
+.. highlight:: csharp
+   
+"""
+
+rst_epilog = """
+.. |if-else| replace:: ``if``\ -``else``
+
+.. |if-else-if| replace:: ``if``\ -``else``\ -``if``
+
+"""
+
+
 
 # -- Options for HTML output ---------------------------------------------------
 

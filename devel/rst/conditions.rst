@@ -9,7 +9,7 @@ appropriate!  On the other hands if you are planning out instructions,
 you can get to a place where you say, "Hm, that depends....", and
 a choice must be made.  The simplest choices are two-way: do one
 thing is a condition is true, and another (possibly nothing) if the
-contition is not true.
+condition is not true.
 
 More syntax for conditions will be introduced later,
 but for now consider simple arithmetic comparisons that directly

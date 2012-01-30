@@ -1,4 +1,6 @@
 Foreach Statements
 ============================ 
 
-Stub
+.. todo::
+
+   for-each

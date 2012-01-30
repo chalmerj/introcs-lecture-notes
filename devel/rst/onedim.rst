@@ -1,4 +1,6 @@
 One Dimensional Arrays
 ============================ 
 
-Stub
+.. todo::
+
+   one dimensional arrays
