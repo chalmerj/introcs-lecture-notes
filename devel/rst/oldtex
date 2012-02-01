@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 31, 2012}
+\date{February 01, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -3391,7 +3391,7 @@ inputs: 30 and then 55. As you an see, you get an extra result,
 depending on the input. The main code is:
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write} \PYG{p}{(} \PYG{l+s}{"How many pounds does you suitcase weigh? "}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write} \PYG{p}{(} \PYG{l+s}{"How many pounds does your suitcase weigh? "}\PYG{p}{)}\PYG{p}{;}
       \PYG{k+kt}{double} \PYG{n}{weight} \PYG{p}{=} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
       \PYG{k}{if} \PYG{p}{(}\PYG{n}{weight} \PYG{p}{\textgreater{}} \PYG{l+m}{5}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
            \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"There is a \PYGZdl{}25 charge for luggage that heavy."}\PYG{p}{)}\PYG{p}{;}
@@ -3617,9 +3617,12 @@ for equality, and not make an assignment!
 \end{notice}
 
 Tests for equality do not make an assignment, and they do not
-require a variable on the left. All these tests work for numbers,
-and characters, and strings can be tested for
+require a variable on the left.
+
+All these tests work for numbers,
+and characters.  Strings can be tested for
 equality or inequality (!=).
+
 Predict the results and try each line in csharp:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -3639,12 +3642,12 @@ Predict the results and try each line in csharp:
 An equality check does not make an assignment. Strings are case
 sensitive.
 
-Following up on the discussion of the \emph{inexactness} of float
+\textbf{Try this}: Following up on the discussion of the \emph{inexactness} of float
 arithmetic, confirm that C\#
 does not consider .1 + .2 to be equal to .3: Write a simple
 condition into csharp to test.
 
-Here is another example: Pay with Overtime. Given a person's work
+Given a person's work
 hours for the week and regular hourly wage, calculate the total pay
 for the week, taking into account overtime. Hours worked over 40
 are overtime, paid at 1.5 times the normal rate. This is a natural
@@ -3726,10 +3729,13 @@ displaying decimal numbers:
 \end{Verbatim}
 
 Inside the format string you see \code{\{1:F2\}} and \code{\{2:F2\}}:  inside
-the braces, after the parameter index, you see a new part \code{:F2}.
-That means display in the
-\textbf{f}ixed format rounded to \textbf{2} places beyond the decimal
-point.  This is appropriate for money with dollars and cents.
+the braces, after the parameter index, you see a new part,
+\code{:F2}.
+The part after the colon gives optional formatting information.
+In this case display with the decimal point
+\textbf{f}ixed so  \textbf{2} places beyond the decimal
+point are shown.  Also the result is \emph{rounded}.
+This is appropriate for money with dollars and cents.
 Replace the 2 to display
 a different number of digits after the decimal point.
 More formatting instructions will be discussed later.
