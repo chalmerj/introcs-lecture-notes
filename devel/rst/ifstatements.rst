@@ -9,10 +9,11 @@ inputs: 30 and then 55. As you an see, you get an extra result,
 depending on the input. The main code is:
 
 .. literalinclude:: examples/Suitcase.cs
-   :lines: 7-11
+   :start-after: chunk
+   :end-before: chunk
    :linenos:
 
-The lines labeled 3-4 are an ``if`` statement. It reads pretty much
+The lines labeled 3-5 are an ``if`` statement. It reads pretty much
 like English. If it is true that the weight is greater than 50,
 then print the statement about an extra charge. If it is not true
 that the weight is greater than 50, then skip the part
@@ -37,21 +38,21 @@ what they do technically, syntactically:  braces around
 a group of statements technically makes a *single* 
 compound statement.  So the pattern commonly written is:
 
-    | ``if (`` *condition* ``)`` 
-    | ``{``
+    | ``if (`` *condition* ``) {`` 
     |       one or more statements  
     | ``}``
 
-If the condition is true, then do the indented statements. If the
+If the condition is true, then do the statement(s) in braces. If the
 condition is not true, then skip the statements in braces.  The
 indentation pattern is also illustrated.  Recall the compiler
 does not care about the amount of whitespace, but humans do.
 In general indent the statements inside a compound statement.
+We will see later that there is good reason to use this format 
+with braces *even* if there is just one statement inside the braces.
 
 Another fragment as an example::
 
-    if (balance < 0)
-    {
+    if (balance < 0) {
         transfer = -balance; 
         // transfer enough from the backup account: 
         backupAccount = backupAccount - transfer;
@@ -66,4 +67,4 @@ several steps.
 In the examples above the choice is between doing something (if the
 condition is ``true``) or nothing (if the condition is ``false``).
 Often there is a choice of two possibilities, only one of which
-will be done, depending on the truth of a condition.
+will be done, depending on the truth of a condition....

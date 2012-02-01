@@ -22,7 +22,9 @@ Be mindful of the processes developed in class filling in
 Design, compile and run a C# program to accomplish each of
 the following tasks. Add one part at a time and test before trying the
 next one. The program can just include a Main method, or it is neater to
-split things into separate methods, and have Main call all the ones
+split things into separate methods (all static void, with names like
+ShowLength, SentenceType, LastFirst1, LastFirst), 
+and have Main call all the ones
 you have written so far (or for testing purposes, just the one you
 are working on, with the other function calls commented out).
 All input from the user should be preceded by a meaningful prompt.
