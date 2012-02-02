@@ -3836,7 +3836,7 @@ remaining possibilities inside the next \code{else} clause.
 If we do this consistent with our indentation conventions so far:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{static} \PYG{k+kt}{char} \PYG{n+nf}{letterGrade}\PYG{p}{(}\PYG{n}{score}\PYG{p}{)}
+\PYG{k}{static} \PYG{k+kt}{char} \PYG{n+nf}{letterGrade}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{score}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
    \PYG{k+kt}{char} \PYG{n}{letter}\PYG{p}{;}
    \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{9}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -3857,9 +3857,9 @@ If we do this consistent with our indentation conventions so far:
             \PYG{k}{else} \PYG{p}{\PYGZob{}}
                \PYG{n}{letter} \PYG{p}{=} \PYG{l+s+sc}{'F'}\PYG{p}{;}
             \PYG{p}{\PYGZcb{}}
-         \PYG{p}{\PYGZcb{}}
-      \PYG{p}{\PYGZcb{}}
-   \PYG{p}{\PYGZcb{}}
+         \PYG{p}{\PYGZcb{}}   \PYG{c+c1}{//end else D or F}
+      \PYG{p}{\PYGZcb{}}      \PYG{c+c1}{// end of else C, D, or F}
+   \PYG{p}{\PYGZcb{}}         \PYG{c+c1}{// end of else B, C, D or F}
    \PYG{k}{return} \PYG{n}{letter}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
@@ -4790,6 +4790,21 @@ Reversing a string...
 Palindrome
 \end{notice}
 
+\begin{notice}{note}{Todo}
+
+ASCII art, triangles; see for loop lab.
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Make restructred text table with fixed rows, columns, and width empty content.
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Repeat string N times.
+\end{notice}
+
 
 \chapter{Arrays}
 \label{arrays:arrays}\label{arrays::doc}
@@ -4809,6 +4824,20 @@ one dimensional arrays
 two dimensional arrays
 \end{notice}
 
+
+\chapter{Index and search}
+\label{index:index-and-search}\begin{itemize}
+\item {} 
+\emph{genindex}
+
+\item {} 
+\emph{search}
+
+\end{itemize}
+
+
+\chapter{TODO's}
+\label{index:todo-s}
 \begin{notice}{note}{Todo}
 
 George:
@@ -4837,48 +4866,6 @@ Ordinal value of a character
 \end{notice}
 
 (The {\hyperref[foreachexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 12.)
-
-\begin{notice}{note}{Todo}
-
-Print ordinal value and actual character value of printable ASCII characters
-\end{notice}
-
-(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-Sum reworked from while to for.
-\end{notice}
-
-(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 12.)
-
-\begin{notice}{note}{Todo}
-
-Print first N multiples of a given number.
-\end{notice}
-
-(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 16.)
-
-\begin{notice}{note}{Todo}
-
-Do some of these examples backwards.
-\end{notice}
-
-(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 20.)
-
-\begin{notice}{note}{Todo}
-
-Reversing a string...
-\end{notice}
-
-(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 24.)
-
-\begin{notice}{note}{Todo}
-
-Palindrome
-\end{notice}
-
-(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 28.)
 
 \begin{notice}{note}{Todo}
 
@@ -4950,16 +4937,68 @@ two dimensional arrays
 
 (The {\hyperref[whileexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 28.)
 
+\begin{notice}{note}{Todo}
 
-\chapter{Index and search}
-\label{index:index-and-search}\begin{itemize}
-\item {} 
-\emph{genindex}
+Print ordinal value and actual character value of printable ASCII characters
+\end{notice}
 
-\item {} 
-\emph{search}
+(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 8.)
 
-\end{itemize}
+\begin{notice}{note}{Todo}
+
+Sum reworked from while to for.
+\end{notice}
+
+(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 12.)
+
+\begin{notice}{note}{Todo}
+
+Print first N multiples of a given number.
+\end{notice}
+
+(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 16.)
+
+\begin{notice}{note}{Todo}
+
+Do some of these examples backwards.
+\end{notice}
+
+(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 20.)
+
+\begin{notice}{note}{Todo}
+
+Reversing a string...
+\end{notice}
+
+(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 24.)
+
+\begin{notice}{note}{Todo}
+
+Palindrome
+\end{notice}
+
+(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 28.)
+
+\begin{notice}{note}{Todo}
+
+ASCII art, triangles; see for loop lab.
+\end{notice}
+
+(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 32.)
+
+\begin{notice}{note}{Todo}
+
+Make restructred text table with fixed rows, columns, and width empty content.
+\end{notice}
+
+(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 35.)
+
+\begin{notice}{note}{Todo}
+
+Repeat string N times.
+\end{notice}
+
+(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 38.)
 
 
 

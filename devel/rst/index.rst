@@ -21,6 +21,7 @@ Introductory Programming in C#
    decisions
    loops
    arrays
+   changelog
 
 .. no stubs yet
 
@@ -28,10 +29,14 @@ Introductory Programming in C#
    compoundtypes
    testingclasses
 
-.. todolist::
-
 Index and search
 ================
 
 * :ref:`genindex`
 * :ref:`search`
+
+TODO's
+=======
+
+.. todolist::
+

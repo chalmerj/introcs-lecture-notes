@@ -23,7 +23,7 @@ would be test for one grade at a time, and resolve all the
 remaining possibilities inside the next ``else`` clause. 
 If we do this consistent with our indentation conventions so far::
 
-    static char letterGrade(score)
+    static char letterGrade(double score)
     {
        char letter;
        if (score >= 90) {
@@ -44,9 +44,9 @@ If we do this consistent with our indentation conventions so far::
                 else { 
                    letter = 'F';
                 }
-             }
-          }
-       }
+             }   //end else D or F
+          }      // end of else C, D, or F
+       }         // end of else B, C, D or F
        return letter;
     }
 
