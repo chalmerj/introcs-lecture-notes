@@ -1,7 +1,7 @@
 using System;
 
 class Grade
-{
+{                        // function chunk
    /** Return letter grade for score. */
    static char letterGrade(double score)
    {
@@ -23,7 +23,7 @@ class Grade
       }
       return letter;
    }
-
+                        // end of function chunk
    static void Main()
    {
       double g = promptDouble("Enter a numerical grade: ");

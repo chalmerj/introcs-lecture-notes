@@ -25,7 +25,7 @@ and returns a new string (in upper case).  Since this action
 depends only on the string itself, no further parameters are necessary,
 and the parentheses after the method name are empty.  The general method syntax is
 
-    *object-reference*\ ``.(``\ *further-parameters* ``)``
+    *object-reference*\ ``.``\ **methodName** ``(``\ *further-parameters* ``)``
 
 More string methods are listed below, some with further parameters.
 
@@ -47,9 +47,9 @@ A property of a string is its length (an int).  References to property values
 use dot notation but do not have a parameter list at the end::
 
     csharp> string s = "Hello";
-    csharp> s.length;
+    csharp> s.Length;
     5
-    csharp> "".length;
+    csharp> "".Length;
     0
 
 Be careful: Though 5 is the length of ``s`` in the example above, 
@@ -79,17 +79,17 @@ a variable name, a literal, or any expression evaluating to a string.
    |                                          |                                                                                                                                                 |  ``greeting.IndexOf(word)`` returns 3.                     |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
    | ``string substring(int start)``          | returns the substring of this string object starting from index ``start`` through to the end of the string object.                              | ``string name = "Sheryl Crow";``                           |
-   |                                          |                                                                                                                                                 |  ``name.substring(7)`` returns the string ``"Crow"``       |
+   |                                          |                                                                                                                                                 |  ``name.Substring(7)`` returns the string ``"Crow"``       |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
    | ``string substring(int start, int len)`` | returns the substring of this string object starting from index ``start``, including a total of ``len`` characters                              | ``string name = "Sheryl Crow";``                           |
-   |                                          |                                                                                                                                                 |  ``name.substring(3,5)`` returns the string ``"ryl C"``    |
+   |                                          |                                                                                                                                                 |  ``name.Substring(3,5)`` returns the string ``"ryl C"``    |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
    | ``string ToUpper()``                     | return this string converted to upper case.                                                                                                     | ``"Hi Jane!".ToUpper()`` returns the string ``"HI JANE!"`` |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
    | ``string ToLower()``                     | return this string converted to lower case.                                                                                                     | ``"Hi Jane!".ToLower()`` returns the string ``"hi jane!"`` |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
    | ``int length``                           | refers to the length of this string object                                                                                                      | ``string greeting = "Bonjour";``                           |
-   | (property)                               |                                                                                                                                                 |  ``greeting.length( )`` returns the value 7.               |
+   | (property)                               |                                                                                                                                                 |  ``greeting.Length( )`` returns the value 7.               |
    +------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 
 .. _string-methods-length:
@@ -109,24 +109,24 @@ Summary of String Length and Some Instance Methods
         csharp> greeting.IndexOf("jot");
         -1
 
-``string substring(int start)``
+``string Substring(int start)``
     Returns the substring of **this** string object starting from index ``start`` 
     through to the end of the string object.  Example:
     
     ::    
     
         csharp> string name = "Sheryl Crow";                          
-        csharp> name.substring(7);
+        csharp> name.Substring(7);
         "Crow"      
 
-``string substring(int start, int len)`` 
+``string Substring(int start, int len)`` 
     Returns the substring of **this** string object starting from index ``start``, 
     including a total of ``len`` characters.  Example:
     
     ::   
     
         csharp> string name = "Sheryl Crow";``                         
-        csharp> name.substring(3,5);
+        csharp> name.Substring(3,5);
         "ryl C"   
 
 ``string ToUpper()``   
@@ -145,13 +145,13 @@ Summary of String Length and Some Instance Methods
         csharp> "Hi Jane!".ToLower();
         "hi jane!" 
 
-``int length``                           
+``int Length``                           
     Property referring to the length of **this** string object. Example:
     
     ::
     
         csharp> string greeting = "Bonjour"; 
-        csharp> greeting.length;  //no parentheses
+        csharp> greeting.Length;  //no parentheses
         7       
 
 Testing Strings For Equality
@@ -167,7 +167,7 @@ The case of letters matters::
     false
     csharp> s.ToUpper() == t;
     true
-    csharp> string u = "High".substring(0,2); // assign
+    csharp> string u = "High".Substring(0,2); // assign
     csharp> u == "Hi"; // equality test
     true
     csharp> u == "High";

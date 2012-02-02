@@ -5,6 +5,7 @@ Current Course Offerings
    :maxdepth: 3
 
    gkt-syllabus
+   gkt-schedule
    anh-syllabus
  
 

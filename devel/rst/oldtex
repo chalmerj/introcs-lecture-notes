@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{January 29, 2012}
+\date{January 31, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -2973,7 +2973,7 @@ depends only on the string itself, no further parameters are necessary,
 and the parentheses after the method name are empty.  The general method syntax is
 \begin{quote}
 
-\emph{object-reference}\code{.(}\emph{further-parameters} \code{)}
+\emph{object-reference}\code{.}\textbf{methodName} \code{(}\emph{further-parameters} \code{)}
 \end{quote}
 
 More string methods are listed below, some with further parameters.
@@ -2984,9 +2984,9 @@ use dot notation but do not have a parameter list at the end:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"Hello"}\PYG{p}{;}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{;}
 \PYG{l+m}{5}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{""}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{""}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{;}
 \PYG{l+m}{0}
 \end{Verbatim}
 
@@ -3023,23 +3023,23 @@ in \textbf{this} string object. Returns -1 if \code{string2} not found. Example:
 \PYG{p}{-}\PYG{l+m}{1}
 \end{Verbatim}
 
-\item[{\code{string substring(int start)}}] \leavevmode
+\item[{\code{string Substring(int start)}}] \leavevmode
 Returns the substring of \textbf{this} string object starting from index \code{start}
 through to the end of the string object.  Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{name} \PYG{p}{=} \PYG{l+s}{"Sheryl Crow"}\PYG{p}{;}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{name}\PYG{p}{.}\PYG{n}{substring}\PYG{p}{(}\PYG{l+m}{7}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{name}\PYG{p}{.}\PYG{n}{Substring}\PYG{p}{(}\PYG{l+m}{7}\PYG{p}{)}\PYG{p}{;}
 \PYG{l+s}{"Crow"}
 \end{Verbatim}
 
-\item[{\code{string substring(int start, int len)}}] \leavevmode
+\item[{\code{string Substring(int start, int len)}}] \leavevmode
 Returns the substring of \textbf{this} string object starting from index \code{start},
 including a total of \code{len} characters.  Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 csharp\textgreater{} string name = "Sheryl Crow";{}`{}`
-csharp\textgreater{} name.substring(3,5);
+csharp\textgreater{} name.Substring(3,5);
 "ryl C"
 \end{Verbatim}
 
@@ -3059,12 +3059,12 @@ Return a string like \textbf{this} string, except all in lower case.  Example:
 \PYG{l+s}{"hi jane!"}
 \end{Verbatim}
 
-\item[{\code{int length}}] \leavevmode
+\item[{\code{int Length}}] \leavevmode
 Property referring to the length of \textbf{this} string object. Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{;}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}  \PYG{c+c1}{//no parentheses}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{greeting}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{;}  \PYG{c+c1}{//no parentheses}
 \PYG{l+m}{7}
 \end{Verbatim}
 
@@ -3084,7 +3084,7 @@ The case of letters matters:
 \PYG{k}{false}
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{ToUpper}\PYG{p}{(}\PYG{p}{)} \PYG{p}{=}\PYG{p}{=} \PYG{n}{t}\PYG{p}{;}
 \PYG{k}{true}
-\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{u} \PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{.}\PYG{n}{substring}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{// assign}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{u} \PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{.}\PYG{n}{Substring}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{// assign}
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{u} \PYG{p}{=}\PYG{p}{=} \PYG{l+s}{"Hi"}\PYG{p}{;} \PYG{c+c1}{// equality test}
 \PYG{k}{true}
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{u} \PYG{p}{=}\PYG{p}{=} \PYG{l+s}{"High"}\PYG{p}{;}
@@ -3299,7 +3299,9 @@ Be mindful of the processes developed in class filling in
 Design, compile and run a C\# program to accomplish each of
 the following tasks. Add one part at a time and test before trying the
 next one. The program can just include a Main method, or it is neater to
-split things into separate methods, and have Main call all the ones
+split things into separate methods (all static void, with names like
+ShowLength, SentenceType, LastFirst1, LastFirst),
+and have Main call all the ones
 you have written so far (or for testing purposes, just the one you
 are working on, with the other function calls commented out).
 All input from the user should be preceded by a meaningful prompt.
@@ -3391,12 +3393,13 @@ depending on the input. The main code is:
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write} \PYG{p}{(} \PYG{l+s}{"How many pounds does you suitcase weigh? "}\PYG{p}{)}\PYG{p}{;}
       \PYG{k+kt}{double} \PYG{n}{weight} \PYG{p}{=} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
-      \PYG{k}{if} \PYG{p}{(}\PYG{n}{weight} \PYG{p}{\textgreater{}} \PYG{l+m}{5}\PYG{l+m}{0}\PYG{p}{)}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{weight} \PYG{p}{\textgreater{}} \PYG{l+m}{5}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
            \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"There is a \PYGZdl{}25 charge for luggage that heavy."}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Thank you for your business."}\PYG{p}{)}\PYG{p}{;}
 \end{Verbatim}
 
-The lines labeled 3-4 are an \code{if} statement. It reads pretty much
+The lines labeled 3-5 are an \code{if} statement. It reads pretty much
 like English. If it is true that the weight is greater than 50,
 then print the statement about an extra charge. If it is not true
 that the weight is greater than 50, then skip the part
@@ -3430,8 +3433,7 @@ compound statement.  So the pattern commonly written is:
 \begin{quote}
 
 \begin{DUlineblock}{0em}
-\item[] \code{if (} \emph{condition} \code{)}
-\item[] \code{\{}
+\item[] \code{if (} \emph{condition} \code{) \{}
 \item[]
 \begin{DUlineblock}{\DUlineblockindent}
 \item[] one or more statements
@@ -3440,17 +3442,18 @@ compound statement.  So the pattern commonly written is:
 \end{DUlineblock}
 \end{quote}
 
-If the condition is true, then do the indented statements. If the
+If the condition is true, then do the statement(s) in braces. If the
 condition is not true, then skip the statements in braces.  The
 indentation pattern is also illustrated.  Recall the compiler
 does not care about the amount of whitespace, but humans do.
 In general indent the statements inside a compound statement.
+We will see later that there is good reason to use this format
+with braces \emph{even} if there is just one statement inside the braces.
 
 Another fragment as an example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{if} \PYG{p}{(}\PYG{n}{balance} \PYG{p}{\textless{}} \PYG{l+m}{0}\PYG{p}{)}
-\PYG{p}{\PYGZob{}}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{balance} \PYG{p}{\textless{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{transfer} \PYG{p}{=} \PYG{p}{-}\PYG{n}{balance}\PYG{p}{;}
     \PYG{c+c1}{// transfer enough from the backup account:}
     \PYG{n}{backupAccount} \PYG{p}{=} \PYG{n}{backupAccount} \PYG{p}{-} \PYG{n}{transfer}\PYG{p}{;}
@@ -3466,69 +3469,77 @@ several steps.
 In the examples above the choice is between doing something (if the
 condition is \code{true}) or nothing (if the condition is \code{false}).
 Often there is a choice of two possibilities, only one of which
-will be done, depending on the truth of a condition.
+will be done, depending on the truth of a condition....
 
 \index{if-else}
 
-\section{\texttt{if-else} Statements}
+\section{\texttt{if}-\texttt{else} Statements}
 \label{ifelse:index-0}\label{ifelse:if-else-statements}\label{ifelse::doc}\label{ifelse:id1}
-Run the example program, \code{clothes.cs}. Try it at least twice, with
+Run the example program, \code{Clothes.cs}. Try it at least twice, with
 inputs 50 and then 80. As you can see, you get different results,
-depending on the input. The main code of \code{clothes.cs} is:
+depending on the input. The main code of \code{Clothes.cs} is:
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write} \PYG{p}{(} \PYG{l+s}{"What is the temperature? "}\PYG{p}{)}\PYG{p}{;}
       \PYG{k+kt}{double} \PYG{n}{temperature} \PYG{p}{=} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
-      \PYG{k}{if} \PYG{p}{(}\PYG{n}{temperature} \PYG{p}{\textgreater{}} \PYG{l+m}{7}\PYG{l+m}{0}\PYG{p}{)}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{temperature} \PYG{p}{\textgreater{}} \PYG{l+m}{7}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
            \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Wear shorts."}\PYG{p}{)}\PYG{p}{;}
-      \PYG{k}{else}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{else} \PYG{p}{\PYGZob{}}
           \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Wear long pants."}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Get some exercise outside."}\PYG{p}{)}\PYG{p}{;}
 \end{Verbatim}
 
-The lines labeled 3-6 are an \code{if-else} statement. Again it is
+The lines labeled 3-8 are an \code{if}-\code{else} statement. Again it is
 close to English, though you might say ``otherwise'' instead of
-``else'' (but else is shorter!). There are two indented statements:
+``else'' (but else is shorter!). There are two indented statements
+in braces:
 One, like in the simple \code{if} statement, comes right after the
 \code{if} condition and is executed when the condition  is true.
-In the \code{if-else} form this is followed by an
-\code{else} (on its own line by convention),
-followed by another indented statement that is only
-executed when the original condition is \emph{false}. In an \code{if-else}
-statement exactly one of two possible indented statements is executed.
+In the \code{if}-\code{else} form this is followed by an
+\code{else} (lined up under the \code{if} by convention),
+followed by another indented statement enclosed in braces that is only
+executed when the original condition is \emph{false}. In an \code{if}-\code{else}
+statement exactly one of two possible parts in braces is executed.
 
 A final line is also shown that is not indented, about getting exercise.
 The \emph{if} and \emph{else} clauses each only embed a single statement
-as option, so the last statement is not part of the \code{if-else}
+as option, so the last statement is not part of the \code{if}-\code{else}
 statement.  Instead it is a part of the normal sequential
 flow of statements.  It is \emph{always} executed after the
-\code{if-else} statement, no matter what happens inside the
-\code{if-else} statement.  Again:  inside the \code{if-else} there is a
-choice made, but the whole \code{if-else} construction is a single
+\code{if}-\code{else} statement, no matter what happens inside the
+\code{if}-\code{else} statement.  Again:  inside the \code{if}-\code{else} there is a
+choice made, but the whole \code{if}-\code{else} construction is a single
 larger statement, which exists in the normal sequential flow.
 The compiler does not require the indentation of the if-true-statement
 and the if-false-statement, but it is a standard style convention.
 
-The general C\# \code{if-else} syntax is
+The general C\# \code{if}-\code{else} syntax is
 \begin{quote}
 
 \begin{DUlineblock}{0em}
-\item[] \code{if} \emph{condition} :
+\item[] \code{if (} \emph{condition} \code{) \{}
 \item[]
 \begin{DUlineblock}{\DUlineblockindent}
-\item[] statement (or compound statement in braces) for true condition
+\item[] statement(s) for if-true
 \end{DUlineblock}
-\item[] \code{else}
+\item[] \code{\}}
+\item[] \code{else \{}
 \item[]
 \begin{DUlineblock}{\DUlineblockindent}
-\item[] statement (or compound statement in braces) for false condition
+\item[] statement(s) for if-false
 \end{DUlineblock}
+\item[] \code{\}}
 \end{DUlineblock}
 \end{quote}
 
-The statement chosen based on the condition
-can be any kind of statement.  When the statement is a compound
-statement, it can contain any kinds of statements.
+The statements chosen based on the condition
+can be any kind of statement.  This is the suggested form, but
+as with the plain \code{if} statement, the if-true compound statement or
+the if-false compound statement can be replace by a single statement
+without braces, except in one otherwise ambiguous situation discussed
+later with two \code{if}s and an \code{else}.
 
 \index{boolean expression!condition!comparison}
 
@@ -3606,8 +3617,9 @@ for equality, and not make an assignment!
 \end{notice}
 
 Tests for equality do not make an assignment, and they do not
-require a variable on the left. Any expressions can be tested for
-equality or inequality (!=). They also work for strings!
+require a variable on the left. All these tests work for numbers,
+and characters, and strings can be tested for
+equality or inequality (!=).
 Predict the results and try each line in csharp:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -3644,7 +3656,7 @@ place for a function enclosing the calculation.
    \PYG{c+cm}{/** Return the total weekly wages for a worker working totalHours,}
 \PYG{c+cm}{    with a given regular hourlyWage.  Include overtime for hours over 40.}
 \PYG{c+cm}{   */}
-   \PYG{k}{static} \PYG{k+kt}{double} \PYG{n+nf}{calcWeeklyWages}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{totalHours}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{hourlyWage}\PYG{p}{)}
+   \PYG{k}{static} \PYG{k+kt}{double} \PYG{n+nf}{CalcWeeklyWages}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{totalHours}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{hourlyWage}\PYG{p}{)}
 \end{Verbatim}
 
 The problem clearly indicates two cases: when no more than 40
@@ -3656,38 +3668,38 @@ solution before going on and examining mine.
 You can try running my complete example program, \code{Wages1.cs},
 also
 shown below. The program uses the keyboard input functions
-developed in class.  If shows an alternate convention for braces
-after \code{if} or \code{else}, with the opening brace on the same line.
+developed in class.
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
 
 \PYG{k}{class} \PYG{n+nc}{Wages}
-\PYG{p}{\PYGZob{}}
+\PYG{p}{\PYGZob{}}        \PYG{c+c1}{//heading chunk}
    \PYG{c+cm}{/** Return the total weekly wages for a worker working totalHours,}
 \PYG{c+cm}{    with a given regular hourlyWage.  Include overtime for hours over 40.}
 \PYG{c+cm}{   */}
-   \PYG{k}{static} \PYG{k+kt}{double} \PYG{n+nf}{calcWeeklyWages}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{totalHours}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{hourlyWage}\PYG{p}{)}
-   \PYG{p}{\PYGZob{}}
+   \PYG{k}{static} \PYG{k+kt}{double} \PYG{n+nf}{CalcWeeklyWages}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{totalHours}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{hourlyWage}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}     \PYG{c+c1}{//body chunk}
       \PYG{k+kt}{double} \PYG{n}{totalWages}\PYG{p}{;}
-      \PYG{k}{if} \PYG{p}{(}\PYG{n}{totalHours} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{l+m}{4}\PYG{l+m}{0}\PYG{p}{)}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{totalHours} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{l+m}{4}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
          \PYG{n}{totalWages} \PYG{p}{=} \PYG{n}{hourlyWage}\PYG{p}{*}\PYG{n}{totalHours}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
       \PYG{k}{else} \PYG{p}{\PYGZob{}}
          \PYG{k+kt}{double} \PYG{n}{overtime} \PYG{p}{=} \PYG{n}{totalHours} \PYG{p}{-} \PYG{l+m}{4}\PYG{l+m}{0}\PYG{p}{;}
          \PYG{n}{totalWages} \PYG{p}{=} \PYG{n}{hourlyWage}\PYG{p}{*}\PYG{l+m}{4}\PYG{l+m}{0} \PYG{p}{+} \PYG{p}{(}\PYG{l+m}{1.5}\PYG{p}{*}\PYG{n}{hourlyWage}\PYG{p}{)}\PYG{p}{*}\PYG{n}{overtime}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
       \PYG{k}{return} \PYG{n}{totalWages}\PYG{p}{;}
    \PYG{p}{\PYGZcb{}}
-
+                               \PYG{c+c1}{//}
    \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{p}{)}
    \PYG{p}{\PYGZob{}}
       \PYG{k+kt}{double} \PYG{n}{hours} \PYG{p}{=} \PYG{n}{promptDouble}\PYG{p}{(}\PYG{l+s}{"Enter hours worked: "}\PYG{p}{)}\PYG{p}{;}
       \PYG{k+kt}{double} \PYG{n}{wage} \PYG{p}{=} \PYG{n}{promptDouble}\PYG{p}{(}\PYG{l+s}{"Enter dollars paid per hour: "}\PYG{p}{)}\PYG{p}{;}
-      \PYG{k+kt}{double} \PYG{n}{total} \PYG{p}{=} \PYG{n}{calcWeeklyWages}\PYG{p}{(}\PYG{n}{hours}\PYG{p}{,} \PYG{n}{wage}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k+kt}{double} \PYG{n}{total} \PYG{p}{=} \PYG{n}{CalcWeeklyWages}\PYG{p}{(}\PYG{n}{hours}\PYG{p}{,} \PYG{n}{wage}\PYG{p}{)}\PYG{p}{;}  \PYG{c+c1}{//before chunk2}
       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}
          \PYG{l+s}{"Wages for \PYGZob{}0\PYGZcb{} hours at \PYGZdl{}\PYGZob{}1:F2\PYGZcb{} per hour are \PYGZdl{}\PYGZob{}2:F2\PYGZcb{}."}\PYG{p}{,}
          \PYG{n}{hours}\PYG{p}{,} \PYG{n}{wage}\PYG{p}{,} \PYG{n}{total}\PYG{p}{)}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}                                                \PYG{c+c1}{//after chunk2}
 
    \PYG{c+cm}{/** Prompt user and return a line read from the keyboard.*/}
    \PYG{k}{static} \PYG{k+kt}{string} \PYG{n+nf}{promptLine}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{)}
@@ -3705,23 +3717,30 @@ after \code{if} or \code{else}, with the opening brace on the same line.
 \end{Verbatim}
 
 This program also introduces new notation for
-displaying decimal numbers:  Inside the format string, inside
-the braces, after the parameter index, you see \code{:F2}.  That
-means display in the fixed format rounded to 2 places beyond the decimal
+displaying decimal numbers:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}
+         \PYG{l+s}{"Wages for \PYGZob{}0\PYGZcb{} hours at \PYGZdl{}\PYGZob{}1:F2\PYGZcb{} per hour are \PYGZdl{}\PYGZob{}2:F2\PYGZcb{}."}\PYG{p}{,}
+         \PYG{n}{hours}\PYG{p}{,} \PYG{n}{wage}\PYG{p}{,} \PYG{n}{total}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+Inside the format string you see \code{\{1:F2\}} and \code{\{2:F2\}}:  inside
+the braces, after the parameter index, you see a new part \code{:F2}.
+That means display in the
+\textbf{f}ixed format rounded to \textbf{2} places beyond the decimal
 point.  This is appropriate for money with dollars and cents.
 Replace the 2 to display
 a different number of digits after the decimal point.
 More formatting instructions will be discussed later.
 
 Below is an equivalent alternative version of the body of
-\code{calcWeeklyWages}, used in \code{Wages2.cs}. It uses just one
+\code{CalcWeeklyWages}, used in \code{Wages2.cs}. It uses just one
 general calculation formula and sets the parameters for the formula
 in the \code{if} statement. There are generally a number of ways you might
 solve the same problem!
 
 \begin{Verbatim}[commandchars=\\\{\}]
-   \PYG{k}{static} \PYG{k+kt}{double} \PYG{n+nf}{calcWeeklyWages}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{totalHours}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{hourlyWage}\PYG{p}{)}
-   \PYG{p}{\PYGZob{}}
       \PYG{k+kt}{double} \PYG{n}{regularHours}\PYG{p}{,} \PYG{n}{overtime}\PYG{p}{;}
       \PYG{k}{if} \PYG{p}{(}\PYG{n}{totalHours} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{l+m}{4}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
          \PYG{n}{regularHours} \PYG{p}{=} \PYG{n}{totalHours}\PYG{p}{;}
@@ -3732,20 +3751,19 @@ solve the same problem!
          \PYG{n}{overtime} \PYG{p}{=} \PYG{n}{totalHours} \PYG{p}{-} \PYG{l+m}{4}\PYG{l+m}{0}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
       \PYG{k}{return} \PYG{n}{hourlyWage}\PYG{p}{*}\PYG{n}{regularHours} \PYG{p}{+} \PYG{p}{(}\PYG{l+m}{1.5}\PYG{p}{*}\PYG{n}{hourlyWage}\PYG{p}{)}\PYG{p}{*}\PYG{n}{overtime}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
 
 \subsection{Graduate Exercise}
 \label{comparisonops:graduateex}\label{comparisonops:graduate-exercise}
-Write a program, \code{graduate.cs}, that prompts students for how
+Write a program, \code{Graduate.cs}, that prompts students for how
 many credits they have. Print whether of not they have enough
 credits for graduation. (At Loyola University Chicago 120 credits
 are needed for graduation.)
 
 \index{if-else-if!if}
 
-\section{Multiple Tests and \texttt{if-else} Statements}
+\section{Multiple Tests and \texttt{if}-\texttt{else} Statements}
 \label{ifelsechained:multiple-tests-and-if-else-statements}\label{ifelsechained:multiple-tests}\label{ifelsechained:index-0}\label{ifelsechained::doc}
 Often you want to distinguish between more than two distinct cases,
 but conditions only have two possible results, \code{true} or \code{false},
@@ -3755,36 +3773,41 @@ further questions. If there are more than two choices, a single
 test may only reduce the possibilities, but further tests can
 reduce the possibilities further and further. Since most any kind
 of statement can be placed in the sub-statements in
-an \code{if-else} statement, one
-choice is a further \code{if} or \code{if-else} statement.
+an \code{if}-\code{else} statement, one
+choice is a further \code{if} or \code{if}-\code{else} statement.
 For instance consider a
 function to convert a numerical grade to a letter grade, `A', `B',
 `C', `D' or `F', where the cutoffs for `A', `B', `C', and `D' are
 90, 80, 70, and 60 respectively. One way to write the function
 would be test for one grade at a time, and resolve all the
 remaining possibilities inside the next \code{else} clause.
-If we do this consistent with our indentation conventions so far.
-Even further indentation is avoided by noting that each the
-sub-statement for each \code{else} clause (except the last simple one)
-is a single \code{if-else} statement:
+If we do this consistent with our indentation conventions so far:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k}{static} \PYG{k+kt}{char} \PYG{n+nf}{letterGrade}\PYG{p}{(}\PYG{n}{score}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
    \PYG{k+kt}{char} \PYG{n}{letter}\PYG{p}{;}
-   \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{9}\PYG{l+m}{0}\PYG{p}{)}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{9}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
       \PYG{n}{letter} \PYG{p}{=} \PYG{l+s+sc}{'A'}\PYG{p}{;}
-   \PYG{k}{else}   \PYG{c+c1}{// grade must be B, C, D or F}
-      \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{8}\PYG{l+m}{0}\PYG{p}{)}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{else} \PYG{p}{\PYGZob{}}   \PYG{c+c1}{// grade must be B, C, D or F}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{8}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
          \PYG{n}{letter} \PYG{p}{=} \PYG{l+s+sc}{'B'}\PYG{p}{;}
-      \PYG{k}{else}  \PYG{c+c1}{// grade must be C, D or F}
-         \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{7}\PYG{l+m}{0}\PYG{p}{)}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{else} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// grade must be C, D or F}
+         \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{7}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{n}{letter} \PYG{p}{=} \PYG{l+s+sc}{'C'}\PYG{p}{;}
-         \PYG{k}{else}    \PYG{c+c1}{// grade must D or F}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{6}\PYG{l+m}{0}\PYG{p}{)}
+         \PYG{p}{\PYGZcb{}}
+         \PYG{k}{else} \PYG{p}{\PYGZob{}}   \PYG{c+c1}{// grade must D or F}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{score} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{6}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
                \PYG{n}{letter} \PYG{p}{=} \PYG{l+s+sc}{'D'}\PYG{p}{;}
-            \PYG{k}{else}\PYG{p}{:}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{else} \PYG{p}{\PYGZob{}}
                \PYG{n}{letter} \PYG{p}{=} \PYG{l+s+sc}{'F'}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+         \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
    \PYG{k}{return} \PYG{n}{letter}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
@@ -3793,7 +3816,9 @@ This repeatedly increasing indentation with an \code{if} statement in
 the \code{else} clause can be annoying and distracting. A preferred
 alternative in this situation, that avoids all this further
 indentation, is
-to combine each \code{else} and following \code{if} onto the same line:
+to combine each \code{else} and following \code{if} onto the same line,
+and note that the \code{if} part after an else is just a single
+statement, allowing some braces to be removed:
 
 \begin{Verbatim}[commandchars=\\\{\}]
    \PYG{c+cm}{/** Return letter grade for score. */}
@@ -3819,38 +3844,35 @@ to combine each \code{else} and following \code{if} onto the same line:
    \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-This example is also set up with extra braces, illustrating
-one convention for a chain of embedded \code{if-else} statements.
-Though the braces lengthen the program, there are good reasons to
-routinely include them, discussed below.
-
 A program testing the letterGrade function is in
 example program \code{Grade1.cs}.
 
 See {\hyperref[ifelsechained:gradeex]{\emph{Grade Exercise}}}.
 
-While an \code{if-else} statement always chooses an alternative to execute,
+While an \code{if}-\code{else} statement always chooses an alternative to execute,
 a plain \code{if} statement may end up executing no sub-statement.  If
-you have a more complicated embedding of \code{if-else} and \code{if}
+you have a more complicated embedding of \code{if}-\code{else} and \code{if}
 statements, you must look carefully to see how many different
 sub-statements may be chosen.  For example consider this
-fragment:
+fragment \emph{without} a final \code{else}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{if} \PYG{p}{(}\PYG{n}{weight} \PYG{p}{\textgreater{}} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{0}\PYG{p}{)}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{weight} \PYG{p}{\textgreater{}} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Sorry, we can not take a suitcase that heavy."}\PYG{p}{)}\PYG{p}{;}
-\PYG{k}{else} \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{weight} \PYG{p}{\textgreater{}} \PYG{l+m}{5}\PYG{l+m}{0}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{else} \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{weight} \PYG{p}{\textgreater{}} \PYG{l+m}{5}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"There is a \PYGZdl{}25 charge for luggage that heavy."}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-This statement only prints a line if there is a
-problem with the weight of the suitcase, and if there is a problem,
-only the correct choice of message is made.
+This statement only prints one of two lines if there is a
+problem with the weight of the suitcase.  Nothing is printed if
+there is not a problem.
 
 
 \subsection{Sign Exercise}
 \label{ifelsechained:sign-exercise}
-Write a program \code{sign.cs} to ask the user for a number. Print out
+Write a program \code{Sign.cs} to ask the user for a number. Print out
 which category the number is in: \code{'positive'}, \code{'negative'}, or
 \code{'zero'}.
 
@@ -3935,11 +3957,98 @@ while-statements
 \end{notice}
 
 
+\section{While Examples}
+\label{whileexamples:while-examples}\label{whileexamples::doc}
+\begin{notice}{note}{Todo}
+
+``number guessing game with randomness for the secret number''
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+``sum of first N numbers using loop \& Euler formula''
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+``bisection method''
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+``gcd naive (loop 2 -\textgreater{} max(a, b)''
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+``gcd subtraction method''
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+``gcd recursive definition and solution''
+\end{notice}
+
+
+\section{Foreach Statements}
+\label{foreach:foreach-statements}\label{foreach::doc}
+\begin{notice}{note}{Todo}
+
+for-each
+\end{notice}
+
+
+\section{foreach Examples}
+\label{foreachexamples::doc}\label{foreachexamples:foreach-examples}
+\begin{notice}{note}{Todo}
+
+Is a string numeric?
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Ordinal value of a character
+\end{notice}
+
+
 \section{For-Statements}
 \label{forstatements:for-statements}\label{forstatements::doc}
 \begin{notice}{note}{Todo}
 
 for-statements
+\end{notice}
+
+
+\section{Examples With \texttt{for} Statements}
+\label{forexamples:examples-with-for-statements}\label{forexamples::doc}
+\begin{notice}{note}{Todo}
+
+Print ordinal value and actual character value of printable ASCII characters
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Sum reworked from while to for.
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Print first N multiples of a given number.
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Do some of these examples backwards.
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Reversing a string...
+\end{notice}
+
+\begin{notice}{note}{Todo}
+
+Palindrome
 \end{notice}
 
 
@@ -3951,14 +4060,6 @@ for-statements
 \begin{notice}{note}{Todo}
 
 one dimensional arrays
-\end{notice}
-
-
-\section{Foreach Statements}
-\label{foreach:foreach-statements}\label{foreach::doc}
-\begin{notice}{note}{Todo}
-
-for-each
 \end{notice}
 
 
@@ -3983,6 +4084,76 @@ Compound Boolean Expression translation
 \end{notice}
 
 (The {\hyperref[compoundconditions:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/compoundconditions.rst, line 13.)
+
+\begin{notice}{note}{Todo}
+
+for-each
+\end{notice}
+
+(The {\hyperref[foreach:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreach.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+Is a string numeric?
+\end{notice}
+
+(The {\hyperref[foreachexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+Ordinal value of a character
+\end{notice}
+
+(The {\hyperref[foreachexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 12.)
+
+\begin{notice}{note}{Todo}
+
+Print ordinal value and actual character value of printable ASCII characters
+\end{notice}
+
+(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+Sum reworked from while to for.
+\end{notice}
+
+(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 12.)
+
+\begin{notice}{note}{Todo}
+
+Print first N multiples of a given number.
+\end{notice}
+
+(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 16.)
+
+\begin{notice}{note}{Todo}
+
+Do some of these examples backwards.
+\end{notice}
+
+(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 20.)
+
+\begin{notice}{note}{Todo}
+
+Reversing a string...
+\end{notice}
+
+(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 24.)
+
+\begin{notice}{note}{Todo}
+
+Palindrome
+\end{notice}
+
+(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 28.)
+
+\begin{notice}{note}{Todo}
+
+for-statements
+\end{notice}
+
+(The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
@@ -4014,20 +4185,6 @@ Andy new
 
 \begin{notice}{note}{Todo}
 
-for-each
-\end{notice}
-
-(The {\hyperref[foreach:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreach.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-for-statements
-\end{notice}
-
-(The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
 one dimensional arrays
 \end{notice}
 
@@ -4039,6 +4196,48 @@ two dimensional arrays
 \end{notice}
 
 (The {\hyperref[twodim:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/twodim.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+``number guessing game with randomness for the secret number''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+``sum of first N numbers using loop \& Euler formula''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 12.)
+
+\begin{notice}{note}{Todo}
+
+``bisection method''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 16.)
+
+\begin{notice}{note}{Todo}
+
+``gcd naive (loop 2 -\textgreater{} max(a, b)''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 20.)
+
+\begin{notice}{note}{Todo}
+
+``gcd subtraction method''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 24.)
+
+\begin{notice}{note}{Todo}
+
+``gcd recursive definition and solution''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 28.)
 
 \begin{notice}{note}{Todo}
 

@@ -2,7 +2,7 @@
         
 .. _Multiple-Tests:
 
-Multiple Tests and ``if-else`` Statements
+Multiple Tests and |if-else| Statements
 -------------------------------------------
 
 Often you want to distinguish between more than two distinct cases,
@@ -13,35 +13,40 @@ further questions. If there are more than two choices, a single
 test may only reduce the possibilities, but further tests can
 reduce the possibilities further and further. Since most any kind
 of statement can be placed in the sub-statements in 
-an ``if-else`` statement, one
-choice is a further ``if`` or ``if-else`` statement. 
+an |if-else| statement, one
+choice is a further ``if`` or |if-else| statement. 
 For instance consider a
 function to convert a numerical grade to a letter grade, 'A', 'B',
 'C', 'D' or 'F', where the cutoffs for 'A', 'B', 'C', and 'D' are
 90, 80, 70, and 60 respectively. One way to write the function
 would be test for one grade at a time, and resolve all the
 remaining possibilities inside the next ``else`` clause. 
-If we do this consistent with our indentation conventions so far.
-Even further indentation is avoided by noting that each the
-sub-statement for each ``else`` clause (except the last simple one)
-is a single ``if-else`` statement::
+If we do this consistent with our indentation conventions so far::
 
     static char letterGrade(score)
     {
        char letter;
-       if (score >= 90) 
+       if (score >= 90) {
           letter = 'A'; 
-       else   // grade must be B, C, D or F 
-          if (score >= 80) 
+       }
+       else {   // grade must be B, C, D or F 
+          if (score >= 80) { 
              letter = 'B'; 
-          else  // grade must be C, D or F 
-             if (score >= 70) 
+          }
+          else { // grade must be C, D or F 
+             if (score >= 70) { 
                 letter = 'C'; 
-             else    // grade must D or F 
-                if (score >= 60)
+             }
+             else {   // grade must D or F 
+                if (score >= 60) {
                    letter = 'D'; 
-                else: 
+                }
+                else { 
                    letter = 'F';
+                }
+             }
+          }
+       }
        return letter;
     }
 
@@ -50,41 +55,41 @@ This repeatedly increasing indentation with an ``if`` statement in
 the ``else`` clause can be annoying and distracting. A preferred
 alternative in this situation, that avoids all this further
 indentation, is
-to combine each ``else`` and following ``if`` onto the same line:
+to combine each ``else`` and following ``if`` onto the same line, 
+and note that the ``if`` part after an else is just a single
+statement, allowing some braces to be removed:
 
 .. literalinclude:: examples/Grade1.cs
-   :lines: 5-25
-
-This example is also set up with extra braces, illustrating
-one convention for a chain of embedded ``if-else`` statements.
-Though the braces lengthen the program, there are good reasons to 
-routinely include them, discussed below.
+   :start-after: chunk
+   :end-before: chunk
 
 A program testing the letterGrade function is in
 example program ``Grade1.cs``.
 
 See :ref:`gradeEx`.
 
-While an ``if-else`` statement always chooses an alternative to execute,
+While an |if-else| statement always chooses an alternative to execute,
 a plain ``if`` statement may end up executing no sub-statement.  If
-you have a more complicated embedding of ``if-else`` and ``if`` 
+you have a more complicated embedding of |if-else| and ``if`` 
 statements, you must look carefully to see how many different 
 sub-statements may be chosen.  For example consider this
-fragment::
+fragment *without* a final ``else``::
 
-    if (weight > 120) 
+    if (weight > 120) {
         Console.WriteLine("Sorry, we can not take a suitcase that heavy.");
-    else if (weight > 50) 
+    }
+    else if (weight > 50) { 
         Console.WriteLine("There is a $25 charge for luggage that heavy.");
-
-This statement only prints a line if there is a
-problem with the weight of the suitcase, and if there is a problem,
-only the correct choice of message is made.
+    }
+    
+This statement only prints one of two lines if there is a
+problem with the weight of the suitcase.  Nothing is printed if 
+there is not a problem.
 
 Sign Exercise
 ~~~~~~~~~~~~~             
    
-Write a program ``sign.cs`` to ask the user for a number. Print out
+Write a program ``Sign.cs`` to ask the user for a number. Print out
 which category the number is in: ``'positive'``, ``'negative'``, or
 ``'zero'``.
 
