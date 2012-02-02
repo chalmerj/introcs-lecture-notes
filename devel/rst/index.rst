@@ -21,6 +21,7 @@ Introductory Programming in C#
    decisions
    loops
    arrays
+   changelog
 
 .. no stubs yet
 
