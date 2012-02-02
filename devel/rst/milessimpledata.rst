@@ -1,7 +1,8 @@
 Comments on Miles Simple Data
 =============================== 
 
-Miles Chapter 2 on Simple Data Processing is also well written.  As you *read it*, 
+Miles Chapter 2 on Simple Data Processing is also well written.  
+Start by reading through section 2.3.1, ending on page 38.  As you *read it*, 
 note the specific comments below.   The chapter does not mention the Mono tool,
 csharp, which makes it very easy to test simple data operations. 
 

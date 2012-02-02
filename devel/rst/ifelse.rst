@@ -55,3 +55,48 @@ as with the plain ``if`` statement, the if-true compound statement or
 the if-false compound statement can be replace by a single statement
 without braces, except in one otherwise ambiguous situation discussed
 later with two ``if``\ s and an ``else``.
+
+.. index::
+   double scope; compound statement
+
+.. rubrick:: More on Compound Statements and Scope
+
+The section on local scope referred to function and method bodies,
+which happen to be enclosed in braces, making a compound statement.
+If fact braces limit the scope of things declared inside, 
+*wherever* they appear.
+
+As a result the following code makes no sense::
+
+    static int BadScope(int x) 
+    {
+       if ( x < 100) {
+          int val = x + 2;
+       else {
+          int val = x - 2:
+       }
+       return val;
+    }
+
+The |if-else| statement is legal, but useless, 
+because whichever compound statement gets executed,
+``val`` ceases being defined after the
+closing brace of its compound statement, 
+so the ``val`` in the return statement has
+not been declared or given a value.  
+If we want ``val`` be used inside the braces and 
+to make sense past the end of the compound statement,
+it cannot be declared inside the braces. Instead it must be
+declared before the compound statements that are parts of the 
+|if-else| statement.  The following would work::
+
+    static int OkScope(int x) 
+    {
+       int val;
+       if ( x < 100) {
+          val = x + 2;
+       else {
+          val = x - 2:
+       }
+       return val;
+    }

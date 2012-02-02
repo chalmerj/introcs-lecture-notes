@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 01, 2012}
+\date{February 02, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -704,7 +704,8 @@ for input.
 
 \section{Comments on Miles Simple Data}
 \label{milessimpledata:comments-on-miles-simple-data}\label{milessimpledata::doc}
-Miles Chapter 2 on Simple Data Processing is also well written.  As you \emph{read it},
+Miles Chapter 2 on Simple Data Processing is also well written.
+Start by reading through section 2.3.1, ending on page 38.  As you \emph{read it},
 note the specific comments below.   The chapter does not mention the Mono tool,
 csharp, which makes it very easy to test simple data operations.
 \begin{description}
@@ -3541,6 +3542,51 @@ the if-false compound statement can be replace by a single statement
 without braces, except in one otherwise ambiguous situation discussed
 later with two \code{if}s and an \code{else}.
 
+\index{double scope!compound statement}
+The section on local scope referred to function and method bodies,
+which happen to be enclosed in braces, making a compound statement.
+If fact braces limit the scope of things declared inside,
+\emph{wherever} they appear.
+
+As a result the following code makes no sense:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{BadScope}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{if} \PYG{p}{(} \PYG{n}{x} \PYG{p}{\textless{}} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{val} \PYG{p}{=} \PYG{n}{x} \PYG{p}{+} \PYG{l+m}{2}\PYG{p}{;}
+   \PYG{k}{else} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{val} \PYG{p}{=} \PYG{n}{x} \PYG{p}{-} \PYG{l+m}{2}\PYG{p}{:}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{return} \PYG{n}{val}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The \code{if}-\code{else} statement is legal, but useless,
+because whichever compound statement gets executed,
+\code{val} ceases being defined after the
+closing brace of its compound statement,
+so the \code{val} in the return statement has
+not been declared or given a value.
+If we want \code{val} be used inside the braces and
+to make sense past the end of the compound statement,
+it cannot be declared inside the braces. Instead it must be
+declared before the compound statements that are parts of the
+\code{if}-\code{else} statement.  The following would work:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{OkScope}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{val}\PYG{p}{;}
+   \PYG{k}{if} \PYG{p}{(} \PYG{n}{x} \PYG{p}{\textless{}} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{val} \PYG{p}{=} \PYG{n}{x} \PYG{p}{+} \PYG{l+m}{2}\PYG{p}{;}
+   \PYG{k}{else} \PYG{p}{\PYGZob{}}
+      \PYG{n}{val} \PYG{p}{=} \PYG{n}{x} \PYG{p}{-} \PYG{l+m}{2}\PYG{p}{:}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{return} \PYG{n}{val}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
 \index{boolean expression!condition!comparison}
 
 \section{More Conditional Expressions}
@@ -3917,50 +3963,737 @@ You may find \code{Wages2.cs} easier to adapt than \code{Wages1.cs}.
 \label{ifpitfalls:if-statement-pitfalls}\label{ifpitfalls::doc}
 \index{common error!semicolon after condition if statement}\index{semicolon after condition!if statement, common error}\index{if statement!common error semicolon after condition}
 
-\subsection{Semicolon After Condition}
-\label{ifpitfalls:semicolon-after-condition}\label{ifpitfalls:index-0}
-\begin{notice}{note}{Todo}
+\subsection{Dangerous Semicolon}
+\label{ifpitfalls:dangerous-semicolon}\label{ifpitfalls:index-0}
+Regular statements must end with a semicolon.
+It turns out that the semicolon is all you need to have a legal statement:
 
-Semicolon After Condition
-\end{notice}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{;}
+\end{Verbatim}
+
+We will see places that it is useful, but
+meanwhile it can cause errors: Although you may be hard pressed to
+remember to put semicolons at the end of all your statements, and may
+get compulsive in response about adding them at the end of statement
+lines, be careful NOT to put one at the end of a method heading or
+an if condition:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(} \PYG{n}{x} \PYG{p}{\textless{}} \PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{// WRONG PROBABLY!}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+Remember indentation and newlines are only significant for humans. The
+two lines above are equivalent to:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(} \PYG{n}{x} \PYG{p}{\textless{}} \PYG{l+m}{0}\PYG{p}{)}
+   \PYG{p}{;} \PYG{c+c1}{// Do nothing as statement when the condition is true}
+\PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{// past if statement - do it always}
+\end{Verbatim}
+
+(Whenever you do need an empty statement, you are encouraged to put the
+semicolon all by itself on a line, as above.)
+
+This code is deadly, since it compiles and is almost surely
+\emph{not} what you mean.
+
+If you always put an open brace at the end of the line of a condition,
+you are less likely to make this error.
+
+The corresponding error at the end of a method heading will at least
+generate a compiler error, though it may appear crypic:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{badSemicolon}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{x} \PYG{p}{=} \PYG{n}{x} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+    \PYG{c+c1}{// ...}
+\end{Verbatim}
 
 \index{common error!dangling else if-else}\index{dangling else!if-else, common error}\index{if-else!common error dangling else}
 
-\subsection{Dangling Else}
-\label{ifpitfalls:index-2}\label{ifpitfalls:dangling-else}
-\begin{notice}{note}{Todo}
+\subsection{Match Wrong \texttt{if} With \texttt{else}}
+\label{ifpitfalls:match-wrong-if-with-else}\label{ifpitfalls:index-1}
+The fact that the else part of an if statement is optional can cause
+problems if you do not consistently put the substatements for the true
+and false choices inside braces. Even if you do
+this consistently, you may well need to read code that does not place
+braces around single statements. If C\# understood indentation as
+in the recommended formatting style (or as required in Python),
+the following would be OK:
 
-dangling else
-\end{notice}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{y} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"positive x and y"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{else}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"x not positive, untested y"}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+Unfortunately placing the \code{else} under the first \code{if} is not enough to make
+them go together (remember the C\# compiler ignores whitespace). The
+following is equivalent to the compiler, with the else apparently going
+with the second if:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{y} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"positive x and y"}\PYG{p}{)}\PYG{p}{;}
+   \PYG{k}{else}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"x not positive, untested y"}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+The compiler is consistent with the latter visual pattern: an \code{else} goes
+with the most \emph{recent} \code{if} that could still take an \code{else}.
+Hence if \code{x} is 3
+and \code{y} is -2, the \code{else} part is executed and statement printed is
+incorrect: the else clause is only executed when \code{x} is positive and
+\code{y} (is
+tested and) is not positive. If you put braces everywhere to reinforce
+your indentation, as we suggest, or if you only add the following
+one set of braces around the inner if statement:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{y} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"positive x and y"}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{else}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"x not positive, untested y"}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+then the braces enclosing the inner \code{if} statement make it impossible for
+the inner  \code{if} to continue on to an optional \code{else} part.
+The \code{else} must go
+with the first \code{if}. Now when the \code{else} part is reached, the statement
+printed will be true: \code{x} is not positive, and the test of \code{y} is skipped.
 
 \index{common error!need braces if statement}\index{need braces!if statement, common error}\index{if statement!common error need braces}
 
 \subsection{Missing Braces}
-\label{ifpitfalls:index-4}\label{ifpitfalls:missing-braces}
-\begin{notice}{note}{Todo}
+\label{ifpitfalls:index-2}\label{ifpitfalls:missing-braces}
+Another place you can fool yourself with nice indenting style is
+something like this.  Suppose I start with a perfectly reasonable
 
-Missing braces
-\end{notice}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"x is: positive"}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+I may decide to avoid the braces, since there \emph{is} just one statement
+that I want as the if-true part, but if I later decide
+that I want this on two lines
+and change it to
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"x is:"}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"  positive"}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+I am not going to get the behavior I want.
+The positive part will \emph{always} be printed.
+
+If I had first taken a bit more effort originally to write
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"x is: positive"}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+then I could have split successfully into
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"x is:"}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"  positive"}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+This way I do not have to keep worrying when I revise:
+Have I switched to multiple lines after the \code{if}
+and need to introduce braces?
+
+All three of the pitfalls mentioned in this section are fixed or
+minimized by consistent
+use of braces in the sub-statements of \code{if} statements.
 
 \index{\&\&!and boolean operation}\index{and!boolean operation, \&\&}\index{boolean operation!\&\& and}
 
 \section{Compound Boolean Expressions}
 \label{compoundconditions:index-0}\label{compoundconditions:compound-boolean-expressions}\label{compoundconditions::doc}\label{compoundconditions:id1}
-\begin{notice}{note}{Todo}
+To be eligible to graduate from Loyola University Chicago, you must
+have 120 credits \emph{and} a GPA of at least 2.0. C\# does not use the
+word \emph{and}.  Instead it uses \code{\&\&}.  Then the statement
+translates directly into C\# as a \emph{compound condition}:
 
-Compound Boolean Expression translation
-\end{notice}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{credits} \PYG{p}{\textgreater{}}\PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{0} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{GPA} \PYG{p}{\textgreater{}}\PYG{p}{=}\PYG{l+m}{2.0}
+\end{Verbatim}
+
+This is true if both \code{credits \textgreater{}= 120} is true and
+\code{GPA \textgreater{}= 2.0} is
+true. A short example function using this would be:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+static void checkGraduation(int credits, double GPA)
+\PYGZob{}
+    if (credits \textgreater{}= 120 \&\& GPA \textgreater{}=2.0) \PYGZob{}
+        Console.WriteLine('You are eligible to graduate!')
+    \PYGZcb{}
+    else \PYGZob{}
+        Console.WriteLine('You are not eligible to graduate.')
+    \PYGZcb{}
+\PYGZcb{}
+\end{Verbatim}
+
+The new C\# syntax for the operator \code{\&\&}:
+\begin{quote}
+
+\emph{condition1} \code{\&\&} \emph{condition2}
+\end{quote}
+
+The compound condition is true if both of the component conditions
+are true. It is false if at least one of the conditions is false.
+
+Suppose we want a condition that is true if the mathematical
+condition is true: low \textless{} val \textless{} high.  Unfortunately the math is not a
+C\# expression.  The operator \code{\textless{}} is binary.  There is a C\# version:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{low} \PYG{p}{\textless{}} \PYG{n}{val} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{val} \PYG{p}{\textless{}} \PYG{n}{high}
+\end{Verbatim}
+
+Now suppose we want the opposite condition:  that val is \emph{not}
+strictly between low and high.
+There are several approaches.
+One is that \code{val} would be less than or equal to low
+\emph{or} greater than or equal to \code{high}.  C\# translate \emph{or} into \code{\textbar{}\textbar{}},
+so a C\# expression would be:
+\begin{quote}
+
+val \textless{}= low \textbar{}\textbar{} val \textgreater{}= high
+\end{quote}
+
+The new C\# syntax for the operator \code{\textbar{}\textbar{}}:
+\begin{quote}
+
+\emph{condition1} \code{\textbar{}\textbar{}} \emph{condition2}
+\end{quote}
+
+The compound condition is true if at least one of the component conditions
+are true. It is false if at both conditions are false.
+
+Another logical way to express the opposite of the condition low \textless{} val \textless{} high
+is that it is \emph{not} the case
+that low \textless{} val \&\& val \textless{}\textless{} high.  C\# translates \emph{not} as \code{!}.  Another way
+to state the condition would be
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{!}\PYG{p}{(}\PYG{n}{low} \PYG{p}{\textless{}} \PYG{n}{val} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{val} \PYG{p}{\textless{}} \PYG{n}{high}\PYG{p}{)}
+\end{Verbatim}
+
+The parentheses are needed because the \code{!}
+operator has higher precedence than
+\code{\textless{}}.
+
+A way to remember this strange \emph{not} operator is to think of the use of \code{!}
+in the not-equal operator: \code{!=}
+
+The new C\# syntax for the operator \code{!}:
+\begin{quote}
+
+\code{!} \emph{condition}
+\end{quote}
+
+This whole expression is true when \emph{condition} is false,
+and false when \emph{condition} is true.
+
+Because of the precedence of \code{!}, you are often going to write:
+\begin{quote}
+
+\code{!(} \emph{condition} \code{)}
+\end{quote}
+
+Remember when such a condition is used in an \code{if} statement, \emph{outer}
+parentheses are also needed:
+\begin{quote}
+
+\code{if (!(} \emph{condition} \code{)) \{}
+\end{quote}
+
+For other examples and different words of introduction to \code{if} statements,
+braces, and compound conditions, you might look at
+Miles, section 2.3.2.
+
+
+\subsection{Congress Exercise}
+\label{compoundconditions:congress-exercise}\label{compoundconditions:congressex}
+A person is eligible to be a US Senator who is at least 30 years
+old and has been a US citizen for at least 9 years. Write a version
+of a program \code{Congress.cs} to obtain age and length of
+citizenship from the user and print out if a person is eligible to
+be a Senator or not. A person is eligible to be a US Representative
+who is at least 25 years old and has been a US citizen for at least
+7 years. Elaborate your program \code{Congress.cs} so it obtains age
+and length of citizenship and prints whether a person is eligible
+to be a US Representative only, or is eligible for both offices, or
+is eligible for neither.
 
 
 \chapter{Loops}
 \label{loops:loops}\label{loops::doc}
+\index{while!statement}\index{statement!while}
 
 \section{While-Statements}
-\label{whilestatements::doc}\label{whilestatements:while-statements}
-\begin{notice}{note}{Todo}
+\label{whilestatements:index-0}\label{whilestatements::doc}\label{whilestatements:while-statements}\label{whilestatements:id1}
 
-while-statements
+\subsection{Simple \texttt{while} Loops}
+\label{whilestatements:id2}\label{whilestatements:simple-while-loops}
+We have seen that the sequential flow of a program
+can be altered with function calls
+and decisions.  The last important pattern is \emph{repetition} or \emph{loops}.
+There are several varieties.  The simplest place to start is with
+\code{while} loops.
+
+A C\#
+\code{while} loop behaves quite similarly to common English usage. If
+I say
+\begin{quote}
+
+While your tea is too hot, add a chip of ice.
+\end{quote}
+
+Presumably you would test your tea. If it were too hot, you would
+add a little ice. If you test again and it is still too hot, you
+would add ice again. \emph{As long as} you tested and found it was true
+that your tea was too hot, you would go back and add more ice.
+C\# has a similar syntax:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{while (} \emph{condition} \code{)}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement
+\end{DUlineblock}
+\end{DUlineblock}
+\end{quote}
+
+As with an \code{if} statement we will generally assume a compound statement,
+after the condition, so the syntax will actually be:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{while (} \emph{condition} \code{) \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement(s)
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+Setting up the English example in a similar format would be:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] while  ( \emph{your tea is too hot} ) \{
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] add a chip of ice
+\end{DUlineblock}
+\item[] \}
+\end{DUlineblock}
+\end{quote}
+
+To make things concrete and numerical, suppose the following: The
+tea starts at 115 degrees Fahrenheit. You want it at 112 degrees. A
+chip of ice turns out to lower the temperature one degree each
+time. You test the temperature each time, and also print out the
+temperature before reducing the temperature. In C\# you could
+write and run the code below, saved in example program Cool.cs:
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+      \PYG{k+kt}{int} \PYG{n}{temperature} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{1}\PYG{l+m}{5}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{temperature} \PYG{p}{\textgreater{}} \PYG{l+m}{1}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// first while loop code}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{temperature}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{temperature} \PYG{p}{=} \PYG{n}{temperature} \PYG{p}{-} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"The tea is cool enough."}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+I added a final line after the \code{while} loop to remind you that
+execution follows sequentially after a loop completes.
+
+It is extremely important to totally understand how the flow of
+execution works with loops.  One way to follow it
+closely is to make a table with a line for each instruction
+executed, keeping track of all the variables.  We call this
+\emph{playing computer}.
+
+Each row show the line number of the start of the next instruction
+executed, and the values of all the variables \emph{after} the instruction
+is executed.  The important thing to see with loops is that the same
+lline can be executed over and over, but with different variable
+values.  We leave a column for the line number, each variable
+that is involved (particularly any that change) and a place for
+comments about what is happening.
+
+If you play computer and follow the path of execution, you could
+generate the following table. Remember, that each time you reach
+the end of the block after the \code{while} heading,
+execution returns to the \code{while} heading for another test:
+
+\begin{tabulary}{\linewidth}{|L|L|L|}
+\hline
+\textbf{
+Line
+} & \textbf{
+temperature
+} & \textbf{
+Comment
+}\\\hline
+
+1
+ & 
+115
+ & \\\hline
+
+2
+ &  & 
+115 \textgreater{} 112 is true, do loop
+\\\hline
+
+3
+ &  & 
+prints 115
+\\\hline
+
+4
+ & 
+114
+ & 
+115 - 1 is 114, loop back
+\\\hline
+
+2
+ &  & 
+114 \textgreater{} 112 is true, do loop
+\\\hline
+
+3
+ &  & 
+prints 114
+\\\hline
+
+4
+ & 
+113
+ & 
+114 - 1 is 113, loop back
+\\\hline
+
+2
+ &  & 
+113 \textgreater{} 112 is true, do loop
+\\\hline
+
+3
+ &  & 
+prints 113
+\\\hline
+
+4
+ & 
+112
+ & 
+113 - 1 is 112, loop back
+\\\hline
+
+2
+ &  & 
+112 \textgreater{} 112 is false, skip loop
+\\\hline
+
+6
+ &  & 
+prints that the tea is cool
+\\\hline
+\end{tabulary}
+
+
+Each time the end of the loop body block is reached, execution
+returns to the \code{while} loop heading for another test. When the
+test is finally false, execution jumps past the indented body of
+the \code{while} loop to the next sequential statement.
+
+The biggest trick with a loop is to make the same code do the next
+thing you want each time through.  That generally involves
+the use of variables that are modified for each successive time through
+the loop.
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] initialization
+\item[] \code{while (} \emph{continuationCondition} \code{) \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] do main action to be repeated
+\item[] prepare variables for the next time through the loop
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+The simple first example follows this pattern directly.  Note
+that the variables needed for the test of the condition must be
+set up \emph{both} in the initialization \emph{and} inside the loop
+(often at the very end).  Without a change inside the loop, the loop would
+run forever!
+
+It is a big deal for beginning students, how to manage all this in general.
+We will see a number of common patterns in lots of practice.  We will use
+the term \emph{successive modification loop} for loops following this pattern.
+
+Test yourself: Following the code.  Figure out what is printed.
+If it helps, get detailed and play computer:
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{4}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{9}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{2}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Check yourself by running the example program \code{TestWhile1.cs}.
+
+\begin{notice}{note}{Note:}
+In C\#, \code{while} is not used \emph{quite} like in English. In
+English you could mean to stop \emph{as soon as} the condition you want
+to test becomes false. In C\# the test is \emph{only} made when
+execution for the loop starts (or starts again),
+\emph{not} in the middle of the loop.
 \end{notice}
+
+\emph{Predict} what will happen with this slight variation on the
+previous example, switching the order in the loop body. Follow it
+carefully, one step at a time.
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{4}\PYG{p}{;} \PYG{c+c1}{//variation on TestWhile1.cs}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{9}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{2}\PYG{p}{;}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Check yourself by running the example program \code{TestWhile2.cs}.
+
+The sequence order is important. The variable \code{i} is increased before
+it is printed, so the first number printed is 6. Another common
+error is to assume that 10 will \emph{not} be printed, since 10 is
+\emph{past} 9, but the test that may stop the loop is \emph{not} made in the
+middle of the loop. Once the body of the loop is started, it
+continues to the end, even when \code{i} becomes 10.
+
+\begin{tabulary}{\linewidth}{|L|L|L|}
+\hline
+\textbf{
+Line
+} & \textbf{
+i
+} & \textbf{
+Comment
+}\\\hline
+
+1
+ & 
+4
+ & \\\hline
+
+2
+ &  & 
+4 \textless{} 9 is true, do loop
+\\\hline
+
+3
+ & 
+6
+ & 
+4+2=6
+\\\hline
+
+4
+ &  & 
+print 6
+\\\hline
+
+2
+ &  & 
+6 \textless{} 9 is true, do loop
+\\\hline
+
+3
+ & 
+8
+ & 
+6+2= 8
+\\\hline
+
+4
+ &  & 
+print 8
+\\\hline
+
+2
+ &  & 
+8 \textless{} 9 is true, do loop
+\\\hline
+
+3
+ & 
+10
+ & 
+8+2=10  \emph{No test here}
+\\\hline
+
+4
+ &  & 
+print 10
+\\\hline
+
+2
+ &  & 
+10 \textless{} 9 is false, skip loop
+\\\hline
+\end{tabulary}
+
+
+\textbf{Problem}:  Write a program with a \code{while} loop to print:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{1}\PYG{l+m}{0}
+\PYG{l+m}{9}
+\PYG{l+m}{8}
+\PYG{l+m}{7}
+\PYG{l+m}{6}
+\PYG{l+m}{5}
+\PYG{l+m}{4}
+\PYG{l+m}{3}
+\PYG{l+m}{2}
+\PYG{l+m}{1}
+\PYG{n}{Blastoff}\PYG{p}{!}
+\end{Verbatim}
+
+\textbf{Analysis}:
+We have seen that we can produce a regular sequence of numbers in a loop.
+The ``Blastoff!'' part does not fit the pattern, so it must be a \emph{separate}
+part after the loop.  We need a name for the number that decreases.  It can
+be \code{time}.  Remember the general rubrick for a \code{while} loop:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] initialization
+\item[] \code{while (} \emph{continuationCondition} \code{) \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] do main action to be repeated
+\item[] prepare variables for the next time through the loop
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+You can consider each part separately.  Where to start is partly a
+matter of taste.
+
+The main thing to do is print the time over and over.
+The inital value of the time is 10.  We are going to want to keep printing
+until the time is down to 1, so we \emph{continue} while the time is at least 1,
+meaning the continuationCondition can be \code{time \textgreater{}= 1},
+or we could use \code{time \textgreater{} 0}.
+
+Finally we need to get ready to print a different time in
+the next pass through the loop.
+Since each successive time is one less than the previous one, the
+preparation for the next value of time is:  \code{time = time - 1}.
+
+Putting that all together, and remembering the one thing we noted
+to do after the loop,
+we get \code{Blastoff.cs}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{Blastoff}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{time} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{time} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{time}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{time} \PYG{p}{=} \PYG{n}{time} \PYG{p}{-} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Blastoff!"}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Look back and see how we fit the general rubrick.
+There are a bunch of things to think about with a while loop, so
+going one step at a time, thinking of the rubrick and the specific
+needs of the current problem, helps.
+
+There are many different (and more exciting) patterns of change coming
+for loops,
+but the simple examples so far get us started.
+
+Looking ahead to more complicated and interesting problems,
+here is a more complete list of questions to ask yourself when
+designing a function with a \code{while} loop:
+\begin{itemize}
+\item {} 
+What variables do I need?
+
+\item {} 
+What needs to be initialized and how? This certainly includes any
+variable tested in the condition.
+
+\item {} 
+What is the condition that will allow the loop to continue?
+
+\item {} 
+What is the code that should only be executed once? What action do I want to
+repeat? Where does the repetition come in the overall sequence of
+operations?
+
+\item {} 
+How do I write the action so I can modify it for the next time
+through the loop?
+
+\item {} 
+What code is needed to do modifications to make the same code work
+the next time through the loop?
+
+\item {} 
+Have I thought of variables needed in the middle and declared them;
+do other things need initialization?
+
+\item {} 
+Will the continuation condition enventually fail?
+
+\item {} 
+Separate thing to be done once before the repetition (code before the
+loop) from repetitive actions (in loop) from actions not repeated but
+done after the loop (code after the loop). Missing this distinction
+is a \emph{common error}!
+
+\end{itemize}
 
 
 \section{While Examples}
@@ -4086,13 +4819,6 @@ George:
 
 \begin{notice}{note}{Todo}
 
-Compound Boolean Expression translation
-\end{notice}
-
-(The {\hyperref[compoundconditions:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/compoundconditions.rst, line 13.)
-
-\begin{notice}{note}{Todo}
-
 for-each
 \end{notice}
 
@@ -4163,27 +4889,6 @@ for-statements
 
 \begin{notice}{note}{Todo}
 
-Semicolon After Condition
-\end{notice}
-
-(The {\hyperref[ifpitfalls:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/ifpitfalls.rst, line 15.)
-
-\begin{notice}{note}{Todo}
-
-dangling else
-\end{notice}
-
-(The {\hyperref[ifpitfalls:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/ifpitfalls.rst, line 26.)
-
-\begin{notice}{note}{Todo}
-
-Missing braces
-\end{notice}
-
-(The {\hyperref[ifpitfalls:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/ifpitfalls.rst, line 37.)
-
-\begin{notice}{note}{Todo}
-
 Andy new
 \end{notice}
 
@@ -4244,13 +4949,6 @@ two dimensional arrays
 \end{notice}
 
 (The {\hyperref[whileexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 28.)
-
-\begin{notice}{note}{Todo}
-
-while-statements
-\end{notice}
-
-(The {\hyperref[whilestatements:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whilestatements.rst, line 8.)
 
 
 \chapter{Index and search}
