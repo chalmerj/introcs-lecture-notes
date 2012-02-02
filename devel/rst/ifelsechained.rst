@@ -90,8 +90,8 @@ Sign Exercise
 ~~~~~~~~~~~~~             
    
 Write a program ``Sign.cs`` to ask the user for a number. Print out
-which category the number is in: ``'positive'``, ``'negative'``, or
-``'zero'``.
+which category the number is in: ``"positive'``, ``"negative"``, or
+``"zero"``.
 
 
 .. _gradeEx:
