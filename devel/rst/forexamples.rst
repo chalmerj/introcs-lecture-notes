@@ -16,3 +16,11 @@
 .. todo::
    Palindrome
 
+.. todo::
+   ASCII art, triangles; see for loop lab.
+
+.. todo::
+   Make restructred text table with fixed rows, columns, and width empty content.
+
+.. todo::
+   Repeat string N times.
