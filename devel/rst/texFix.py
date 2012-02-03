@@ -52,8 +52,8 @@ def main(name):
     with open(name) as f:
         s = f.read()
     s0 = s
-    s = s.replace('↤', '$\\leftarrow$').replace('≠', '$\\neq$')
-    s = s.replace('≤', '$\\leq$').replace('≥', '$\\geq$')
+##    s = s.replace('↤', '$\\leftarrow$').replace('≠', '$\\neq$')
+##    s = s.replace('≤', '$\\leq$').replace('≥', '$\\geq$')
 ##    s = fixTitlePage(s)
 ##    s = removeExtraContents(s)
     s = removeSearch(s)

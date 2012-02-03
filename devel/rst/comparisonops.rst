@@ -9,16 +9,16 @@ All the usual arithmetic comparisons may be made, but many do not
 use standard mathematical symbolism, mostly for lack of proper keys
 on a standard keyboard.
  
-=====================  ===========  ==============
-Meaning                Math Symbol  C# Symbols
-=====================  ===========  ==============
-Less than              <            ``<`` 
-Greater than           >            ``>``
-Less than or equal     ≤            ``<=``
-Greater than or equal  ≥            ``>=``
-Equals                 =            ``==``
-Not equal              ≠            ``!=``
-=====================  ===========  ============== 
+=====================  ==============   ==============
+Meaning                Math Symbol      C# Symbols
+=====================  ==============   ==============
+Less than              :math:`<`        ``<`` 
+Greater than           :math:`>`        ``>``
+Less than or equal     :math:`\leq`     ``<=``
+Greater than or equal  :math:`\geq`     ``>=``
+Equals                 =                ``==``
+Not equal              :math:`\neq`     ``!=``
+=====================  ==============   ============== 
 
 There should not be space between the two-symbol C#
 substitutes.

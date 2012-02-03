@@ -115,8 +115,631 @@
 
 
 
+\chapter{Current Course Offerings}
+\label{offerings:current-course-offerings}\label{offerings:introductory-programming-in-c}\label{offerings::doc}
+
+\section{Thiruvathukal COMP 170 Spring 2012 Syllabus}
+\label{gkt-syllabus:thiruvathukal-comp-170-spring-2012-syllabus}\label{gkt-syllabus::doc}
+COMP 170, Introduction to Computer Science (crosslisted as ISOM 370)
+
+
+\subsection{Course Instructor}
+\label{gkt-syllabus:course-instructor}
+\href{http://www.thiruvathukal.com}{Dr. George K. Thiruvathukal}
+Professor of Computer Science
+co-Director, Center for Textual Studies and Digital Humanities
+Department of Computer Science
+Lewis Towers, 531e
+
+
+\subsection{Contact Information}
+\label{gkt-syllabus:contact-information}
+E-mail is the prefered method of communication. Please use
+\href{mailto:gkt@cs.luc.edu}{gkt@cs.luc.edu} for all communication.
+
+Office hours are always provided on Tuesday and Thursday after class. If
+you absolutely need to meet me and are finding things just a tad
+crowded, you are encouraged to request an appointment. I give priority
+to all appointments, even during walk-in hours.
+
+
+\subsection{Textbook}
+\label{gkt-syllabus:textbook}
+The Yellow Book is the only \emph{required} textbook for COMP 170. Lewis is a
+\emph{recommended} textbook and is only needed by those who benefit from more
+of a ``reading'' based approach. You can use this book to supplement the
+Yellow Book and our (hopefully complete) lectures.
+
+
+\subsection{Prerequisite}
+\label{gkt-syllabus:prerequisite}
+Math 117 or Comp 163 or Comp 150 with a passing grade or better, or you
+may be taking Comp 150 now. No prior programming experience is required.
+We will do simple arithmetical calculations. The logical mindset of
+mathematics is very useful, not a head full of formulas.
+
+
+\subsection{Overview}
+\label{gkt-syllabus:overview}
+The present page is basically administrative information. For course
+content, see the page for the Course
+Introduction. If you already studied
+introductory Object-Oriented Programming, and think you may not need
+this course, see the more complete summary of the top 10
+topics, and consult with me.
+
+
+\subsection{Tentative Exam Schedule}
+\label{gkt-syllabus:tentative-exam-schedule}
+We'll have quizzes every 3-4 weeks. To allow time for the project, there
+will be no quizzes scheduled during the last 4 weeks of the course.
+Schedule to follow.
+
+The final exam slot will be used for your final project, which will be
+graded as if it were your final.
+
+
+\subsection{Exam Strategy}
+\label{gkt-syllabus:exam-strategy}
+For exams, people work at enormously different speeds. I hate to grade
+people on pure speed. I want an exam short enough for everyone to do.
+Rather than make it so short that each individual problem counts a great
+deal, I have had success with making a reasonable length exam for most
+people to do in a single class, but allowing people to stay an hour late
+on exam days, in case you need extra time. If you cannot schedule either
+time to be free on an exam day, let me\textgreater{} know as soon as possible. Try to
+plan ahead for those three days.
+
+On days when exams are scheduled, we will use the lab time to allow
+extra time to complete the exam.
+
+
+\subsection{Class periods}
+\label{gkt-syllabus:class-periods}
+I will not always be following the book. I will try to follow the topics
+listed in this syllabus but in the end am more concerned about real
+learning and fluency in computing as opposed to covering all topics.
+Information and activities in class that are not in the book will be on
+exams and used in homework. Your participation in class may help your
+grade. I do not formally count class attendance, but I strongly
+recommend that you be there to start your path in computer science well.
+
+I will have
+\href{https://github.com/introcs-cs-luc-edu/introcs-lecture-notes}{notes}
+from classes available on the web, but do not depend at all on their
+completeness. Always check in with your partner or other classmate if
+you miss class. I will generally have code examples on the web at my
+\href{https://github.com/introcs-cs-luc-edu/introcs-lecture-notes}{repository}.
+My first priority is to run a good class for the people present.
+
+I am very happy to give extensive help outside class to people who
+attend class. If my first pass on an idea was not enough for you, we can
+do better together in pass 2, and maybe pass 3 if needed, .... I am much
+less enthusiastic explaining what has already happened in class to a
+person who is frequently absent.
+
+
+\subsubsection{Cell Phones}
+\label{gkt-syllabus:cell-phones}
+I assume that my class is not the most important thing in your life.
+Only you know the relative importance of any particular connection
+through your cell phone, and whether it is important for you to answer a
+call imediately rather than later. I do want you to be respectful of my
+class and disrupt it as little as is practical. If you get cell phone
+calls with fair frequency, be sure to have the ring muted (use vibrate
+mode) before coming to class. If you rarely get calls, you might not
+mute it ahead, and your cell phone may happen to ring. Get rid of the
+noise as soon as possible, and do not get flustered. I assume you will
+move outside the classroom for a conversation. If you get fairly
+frequent calls that you are likely to consider important answering, sit
+in a place where your exit and re-entrance are as unobtrusive as
+possible.
+
+
+\subsubsection{Pair Programming}
+\label{gkt-syllabus:pair-programming}
+A recent paradigm shift in professional programming has been Pair
+Programming, two people collaborating on one problem on one computer.
+This has proven to be more efficient than each doing separate parts
+independently and merging them, particularly when error fixing time is
+included. More recently this approach has also been used in classes with
+completely new student programmers. Not only have the individual
+projects been done better with more confidence, but also students have
+learned at least as well and had more enjoyment in the process. We are
+encouraged to do pair programming in this course for labs and homework
+assignments, and you are encouraged to work in pairs on your parts of
+the final group project within overall teams of around 4 students. (Your
+exams will NOT be in pairs however!) Read the page of administrative
+guideline s for pair programming and also the
+page referenced there on how to make pair programming
+work.
+
+
+\subsubsection{Labs}
+\label{gkt-syllabus:labs}
+You are required to register for and participate in the laboratory
+session for this class. The material covered in the lab sessions will be
+an integral part of the course. In the lab you will gain hands on
+experience with the concepts we discuss in class. The lab sessions will
+be conducted by our teaching assistant who is a graduate student in
+computer science. Your grade in the lab sessions will be based on
+participation and on your final products. The grade will be one
+component of your final grade in the course. Take advantage of the help
+the TA's and I can give you in the lab! The TA's are Shruti Sudhindra
+and Vasant Parvatagiri, with Loyola mail ID's ssudhindra and
+vparvatagiri.
+
+
+\subsubsection{Programming Environment}
+\label{gkt-syllabus:programming-environment}
+We will be programming in C\#--a language developed by Microsft as part
+of the .Net framework. As this is a computer science course, however,
+our goal is to make sure you can do your work on any reasonable desktop,
+which includes Windows, OS X, or Linux. As such, we will be using an
+implementation of C\# from the \href{http://mono-project.com}{Mono Project}
+that supports the current C\# language and is entirely compatible with
+the concepts/materials we are covering in this class.
+
+You are encouraged to download and install the Mono SDK (Software
+Development Kit) for your computer/operating system right away
+(version 2.10 or later, please). In addition, you will need to
+download and install a text editor and the MonoDevelop development
+environment, which will be used once we get experience with the basics
+of editing, compiling, and running programs. Any text editor is fine
+but we plan to introduce Vim and Emacs in a first laboratory exercise,
+which are available on all platforms. We discourage the use of Windows
+Notepad, which is not the best editor for programmers, owing to many
+limitations.
+
+
+\subsection{Programming and homework assignments}
+\label{gkt-syllabus:programming-and-homework-assignments}
+There will be approximately 4 pair programming assignments linked to the
+course site. Most will extend over about a two-week period. The
+assignments will be based on material discussed in class, assigned
+reading material and lab work.
+
+Homework is turned in using (still being determined but not Blackboard).
+Assignments are due at midnight at the end of the date specified unless
+otherwise stated. Assignments should be turned in on time, running
+correctly. Please start early enough to get help if you need it, and get
+the program working completely correctly before the due date. See the
+next section for late assignment policies. You may only work with your
+pair partner on the assignment, and NOT work with other students - see
+the section below on {\hyperref[gkt-syllabus:Dishonesty]{*Academic Dishonesty*}}. Working on
+programming problems is essential to your understanding of the course
+material and will not only be a direct part of your final grade, but
+will also affect your exam performance. There may be a second component
+of programming assignments - reading another pair's submission
+critically.
+
+
+\subsection{Late assignments}
+\label{gkt-syllabus:late-assignments}
+In this class the following lateness penalties apply to the individual
+programming assignments: Assignments turned in up to one week late can
+receive a 10\% penalty. Assignments may not be accepted more than one
+week late. If there is some special reason for an assigment being turned
+in late, preferably speak to me directly first. I will consider reducing
+the penalties. If I accept your reason, ALSO make a comment at the top
+of your source code in the main program. (This reminder helps!)
+
+
+\subsection{Final Group Project}
+\label{gkt-syllabus:final-group-project}
+You will also be assigned to groups of 3-5 for a large open-ended
+project (writing a game and its instructions and other documentation),
+that should be assigned after the second exam and should mostly consume
+the last third of the course, in and out of class and lab. This will
+provide quite a different experience from the more highly specified
+individual assignments earlier in the course. Your group will be
+expected to turn in an intermediate version part way through the
+project, and you can use the feedback you get to make sure you are on a
+successful track for a final submission. Each team will present their
+game in part of the final exam period, and then we can all play other
+teams' games! This is in lieu of a final exam.
+
+At the end of the project, I will ask each team member individually to
+turn in a form identifying the principal contributions of each member of
+their group.
+
+
+\subsection{Extra help}
+\label{gkt-syllabus:extra-help}
+Learning is a spiral process, and different people need to take
+different sized steps. Self dependence and stretching yourself are
+great, but this only goes so far. Take advantage of the resourses
+provided when you need them.
+\begin{enumerate}
+\item {} 
+Please take advantage of the Pair Programming. You and your partner
+may complement each other very well.
+
+\item {} 
+I welcome questions inside class, in regular office hours, or by
+arrangement at other times.
+
+\item {} 
+When I am not available, please visit the Computer Science Department
+tutors. They have scheduled times all through much of the week. Also,
+you might try visiting several tutors: Some may fit you better than
+others. See the \href{http://www.cs.luc.edu/academics/services/tutoring}{tutoring
+schedule}.
+Hopefully this is set up by the second week of classes.
+
+\end{enumerate}
+
+Campus Network, Rights and Responsibilities: As a user of the campus
+network, you should be aware of your rights and responsibilities in at
+\href{http://www.luc.edu/its/policy\_acceptableuse\_public.shtml}{ITS Acceptable Use
+Policies}
+
+Grading Breakdown/Weights
+
+
+\begin{threeparttable}
+\capstart\caption{Grading Categories/Weights}
+
+\begin{tabulary}{\linewidth}{|L|L|L|}
+\hline
+\textbf{
+Category
+} & \textbf{
+Quantity
+} & \textbf{
+Weight
+}\\\hline
+
+Exams
+ & 
+3
+ & 
+40\%
+\\\hline
+
+Labs
+ & 
+15
+ & 
+15\%
+\\\hline
+
+Homework
+ & 
+3
+ & 
+15\%
+\\\hline
+
+Final Project
+ & 
+1
+ & 
+20\%
+\\\hline
+
+Participation
+ & 
+1
+ & 
+10\%
+\\\hline
+\end{tabulary}
+
+\end{threeparttable}
+
+
+The assignment/lab grade is a percentage of the maximum points possible.
+The maximum excludes any extra credit options. Exams may be
+scaled/curved. I convert the numerical grade from the final weighted
+average to course letter grades with the following minimum requirements:
+
+
+\begin{threeparttable}
+\capstart\caption{Grading Scale}
+
+\begin{tabulary}{\linewidth}{|L|L|}
+\hline
+\textbf{
+Grade
+} & \textbf{
+Percentage
+}\\\hline
+
+A
+ & 
+93
+\\\hline
+
+A-
+ & 
+90
+\\\hline
+
+B+
+ & 
+87
+\\\hline
+
+B
+ & 
+83
+\\\hline
+
+B-
+ & 
+80
+\\\hline
+
+C+
+ & 
+77
+\\\hline
+
+C
+ & 
+73
+\\\hline
+
+C-
+ & 
+70
+\\\hline
+
+D+
+ & 
+67
+\\\hline
+
+D
+ & 
+60
+\\\hline
+\end{tabulary}
+
+\end{threeparttable}
+
+
+It is my general policy to help students evaluate their options, if their
+work at midterm is not at 70\% or higher. Should you find yourself in the
+position of falling short of this level, please make an appointment so we
+can discuss your next steps.
+
+If you have consistently displayed more knowledg, ability, and genuine
+interest in class discussions than you show in your exams, I may raise
+this grade. Note that one way to display your effort and thought is to
+ask questions in class about your readings!
+
+
+\subsection{Exam Policy}
+\label{gkt-syllabus:exam-policy}
+
+\subsubsection{Exam coverage}
+\label{gkt-syllabus:exam-coverage}
+Exams will cover material discussed in class, reading material in the
+text and on the web, lab work, and assignments. Exams will always be
+cumulative, but they will NOT include new material from the class
+\emph{immediately} before the exam. This way there will always be time for
+questions after digesting a class.
+
+
+\subsubsection{Grading}
+\label{gkt-syllabus:grading}
+Do not write down things on exams that you can see are incomplete or
+incorrect without making some comment acknowledging this -- it is better
+to know you are wrong than to be wrong and think you are right.
+
+
+\subsubsection{Missed Exams}
+\label{gkt-syllabus:missed-exams}
+If you must miss an exam, let me know well in advance. Then if you have
+a good reason we can possibly make other arrangements. I have little
+sympathy for people who inform me after the fact for no good reason. I
+may completely excuse you from an exam if you were sick or unable to
+attend for long enough. Most often if you cannot take an exam at the
+usual time, I will want you to take it a little later, BUT I WILL NOT
+LET ANYONE TAKE A LATE EXAM AFTER THE NEXT CLASS PERIOD. If you somehow
+fail to let me know in a timely fashion that you have an excuse and want
+to take the exam late, appear at my office before the NEXT class after
+the exam, and I may be able to give you the exam.
+
+
+\subsubsection{No Do-Overs}
+\label{gkt-syllabus:no-do-overs}
+If you have an excuse for not being prepared to take an exam, but decide
+to take it anyway, you don't get to change your mind after you see a
+poor grade. Being sick is not a way to get two chances. In certain
+circumstances I may allow you to delay an exam due to illness, but I
+will not let you be reexamined due to a poor grade.
+
+As a reminder, I reserve the right to request documentation about
+illnesses and ``emergencies'' that arise, especially in the case of
+repeated absences.
+
+
+\subsubsection{Academic Dishonesty}
+\label{gkt-syllabus:id1}
+The penalty for cheating may be anywhere from a 0 on an assignment to a
+grade of ``F'' in this course. The appropriate dean will be informed in
+writing of all cheating incidents.
+
+Cheating consists of, but is not limited to:
+\begin{itemize}
+\item {} 
+Using or copying an outside person's work on an exam or assignment in
+any fashion.
+
+\item {} 
+Work includes outlines, pseudocode, code, documentation, and
+analyses.
+
+\item {} 
+Allowing your own work to be copied or used by an outside person.
+
+\item {} 
+Submitting as your own work something that has been written by an
+outside person.
+
+\item {} 
+Using any unauthorized reference on an exam or assignment
+
+\item {} 
+Using electronic communication (especially during exams) to gain an
+unfair advantage.
+
+\end{itemize}
+
+If you are working on a pair or group project, an ``outside person'' only
+refers to people other than your assigned partner or team. Note that
+cheating goes both ways: both giving and receiving.
+
+Consultation is allowed with me, the TA, or official tutors for Comp
+170. If you consult with any of these people, still make a comment at
+the top of your work about the substance and depth of the help. Hiding
+such help is also academic dishonesty.
+
+Help from any source \emph{is fine} concerning
+\begin{itemize}
+\item {} 
+The meaning of program specifications (not the plan for the solution
+or the actual solution).
+
+\item {} 
+The tools used to write programs. Feel free to ask questions on the
+programming environment you use and the use of the debugger.
+
+\item {} 
+The restrictions of C\# syntax.
+
+\end{itemize}
+
+\textbf{Questions?} Please contact me if you have questions about these
+groundrules or about anything else in the course. After class, by email,
+in my office, by phone, all work for me. I am here to help.
+
+
+\subsection{Topics}
+\label{gkt-syllabus:topics}
+We will be covering these general categories from the ACM Computing
+Curricula:
+\begin{itemize}
+\item {} 
+PF1. Fundamental programming constructs
+
+\item {} 
+PF4. Recursion
+
+\item {} 
+PL1. Overview of programming languages
+
+\item {} 
+PL2. Virtual machines
+
+\item {} 
+PL4. Declarations and types
+
+\item {} 
+PL5. Abstraction mechanisms
+
+\item {} 
+SP1. History of computing (throughout the course)
+
+\end{itemize}
+
+These codes come from the ACM guidelines (PF=Programming Fundamentals,
+PL=Programmin Languages, etc.)
+
+
+\section{Thiruvathukal WTC Lecture/Lab Schedule}
+\label{gkt-schedule:thiruvathukal-wtc-lecture-lab-schedule}\label{gkt-schedule::doc}
+1/17
+\begin{itemize}
+\item {} 
+Discussion about syllabus and expectations (the page you're reading).
+
+\end{itemize}
+
+1/19
+\begin{itemize}
+\item {} 
+See {\hyperref[lab-edit-compile-run:lab-edit-compile-run]{\emph{Lab Exercise: Editing, Compiling, and Running}}}.
+
+\end{itemize}
+
+1/24
+\begin{itemize}
+\item {} 
+Lab {\hyperref[lab-division-sentences:lab-division]{\emph{Lab: Division Sentences}}}.
+
+\end{itemize}
+
+1/26
+\begin{itemize}
+\item {} 
+Continuation of {\hyperref[lab-division-sentences:lab-division]{\emph{Lab: Division Sentences}}} discussion about {\hyperref[homework-gradecalculation:homework-grade-calculation]{\emph{Homework: Grade Calculation}}}.
+
+\item {} 
+Pair programming in a bit more detail.
+
+\end{itemize}
+
+1/31
+\begin{itemize}
+\item {} 
+Defining Functions
+
+\item {} 
+Use lab time (11:30) to get caught up on labs and homework, especially if you
+are a late addition to the class. TAs will be available to help.
+
+\end{itemize}
+
+2/2
+\begin{itemize}
+\item {} 
+For this week only, the Thursday lecture will be used for lab time. Rick
+and Sheree will do the lab on String Operations.
+
+\end{itemize}
+
+2/7
+\begin{itemize}
+\item {} 
+George attending a research workshop in Kolkata, India. Prof. Konstantin
+will be substituting both 2/7 and 2/9.
+
+\item {} 
+Homework is due by the 11:59pm. Submission instructions to follow.
+
+\item {} 
+Decisions
+
+\end{itemize}
+
+2/9
+\begin{itemize}
+\item {} 
+Loops
+
+\end{itemize}
+
+2/14
+\begin{itemize}
+\item {} 
+Lab involving loops and decision constructs.
+
+\end{itemize}
+
+2/16
+\begin{itemize}
+\item {} 
+Quiz \#1, 10:00-11:15
+
+\end{itemize}
+
+
 \chapter{Context}
-\label{context:introductory-programming-in-c}\label{context::doc}\label{context:context}
+\label{context::doc}\label{context:context}
 
 \section{Introduction to the Notes}
 \label{intro::doc}\label{intro:introduction-to-the-notes}
@@ -3607,28 +4230,28 @@ C\# Symbols
 
 Less than
  & 
-\textless{}
+$<$
  & 
 \code{\textless{}}
 \\\hline
 
 Greater than
  & 
-\textgreater{}
+$>$
  & 
 \code{\textgreater{}}
 \\\hline
 
 Less than or equal
  & 
-≤
+$\leq$
  & 
 \code{\textless{}=}
 \\\hline
 
 Greater than or equal
  & 
-≥
+$\geq$
  & 
 \code{\textgreater{}=}
 \\\hline
@@ -3642,7 +4265,7 @@ Equals
 
 Not equal
  & 
-≠
+$\neq$
  & 
 \code{!=}
 \\\hline
@@ -5787,161 +6410,161 @@ George:
 ? tie into later work; good CS example?
 \end{notice}
 
-(The {\hyperref[assignment-functions:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/assignment-functions.rst, line 12.)
+(The {\hyperref[assignment-functions:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/assignment-functions.rst, line 12.)
 
 \begin{notice}{note}{Todo}
 
 for-each
 \end{notice}
 
-(The {\hyperref[foreach:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreach.rst, line 8.)
+(The {\hyperref[foreach:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/foreach.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 Is a string numeric?
 \end{notice}
 
-(The {\hyperref[foreachexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 8.)
+(The {\hyperref[foreachexamples:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/foreachexamples.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 Ordinal value of a character
 \end{notice}
 
-(The {\hyperref[foreachexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 12.)
-
-\begin{notice}{note}{Todo}
-
-for-statements
-\end{notice}
-
-(The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-Andy new
-\end{notice}
-
-(The {\hyperref[notusereturn:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/notusereturn.rst, line 13.)
-
-\begin{notice}{note}{Todo}
-
-one dimensional arrays
-\end{notice}
-
-(The {\hyperref[onedim:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/onedim.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-two dimensional arrays
-\end{notice}
-
-(The {\hyperref[twodim:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/twodim.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-``number guessing game with randomness for the secret number''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-``sum of first N numbers using loop \& Euler formula''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 12.)
-
-\begin{notice}{note}{Todo}
-
-``bisection method''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 16.)
-
-\begin{notice}{note}{Todo}
-
-``gcd naive (loop 2 -\textgreater{} max(a, b)''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 20.)
-
-\begin{notice}{note}{Todo}
-
-``gcd subtraction method''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 24.)
-
-\begin{notice}{note}{Todo}
-
-``gcd recursive definition and solution''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 28.)
+(The {\hyperref[foreachexamples:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/foreachexamples.rst, line 12.)
 
 \begin{notice}{note}{Todo}
 
 Print ordinal value and actual character value of printable ASCII characters
 \end{notice}
 
-(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 8.)
+(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 Sum reworked from while to for.
 \end{notice}
 
-(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 12.)
+(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 12.)
 
 \begin{notice}{note}{Todo}
 
 Print first N multiples of a given number.
 \end{notice}
 
-(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 16.)
+(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 16.)
 
 \begin{notice}{note}{Todo}
 
 Do some of these examples backwards.
 \end{notice}
 
-(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 20.)
+(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 20.)
 
 \begin{notice}{note}{Todo}
 
 Reversing a string...
 \end{notice}
 
-(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 24.)
+(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 24.)
 
 \begin{notice}{note}{Todo}
 
 Palindrome
 \end{notice}
 
-(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 28.)
+(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 28.)
 
 \begin{notice}{note}{Todo}
 
 ASCII art, triangles; see for loop lab.
 \end{notice}
 
-(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 32.)
+(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 32.)
 
 \begin{notice}{note}{Todo}
 
 Make restructred text table with fixed rows, columns, and width empty content.
 \end{notice}
 
-(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 35.)
+(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 35.)
 
 \begin{notice}{note}{Todo}
 
 Repeat string N times.
 \end{notice}
 
-(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 38.)
+(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 38.)
+
+\begin{notice}{note}{Todo}
+
+for-statements
+\end{notice}
+
+(The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forstatements.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+Andy new
+\end{notice}
+
+(The {\hyperref[notusereturn:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/notusereturn.rst, line 13.)
+
+\begin{notice}{note}{Todo}
+
+one dimensional arrays
+\end{notice}
+
+(The {\hyperref[onedim:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/onedim.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+two dimensional arrays
+\end{notice}
+
+(The {\hyperref[twodim:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/twodim.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+``number guessing game with randomness for the secret number''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 8.)
+
+\begin{notice}{note}{Todo}
+
+``sum of first N numbers using loop \& Euler formula''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 12.)
+
+\begin{notice}{note}{Todo}
+
+``bisection method''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-2]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 16.)
+
+\begin{notice}{note}{Todo}
+
+``gcd naive (loop 2 -\textgreater{} max(a, b)''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-3]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 20.)
+
+\begin{notice}{note}{Todo}
+
+``gcd subtraction method''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-4]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 24.)
+
+\begin{notice}{note}{Todo}
+
+``gcd recursive definition and solution''
+\end{notice}
+
+(The {\hyperref[whileexamples:index-5]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 28.)
 
 
 
