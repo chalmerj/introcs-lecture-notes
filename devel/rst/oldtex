@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 02, 2012}
+\date{February 03, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -3925,8 +3925,8 @@ there is not a problem.
 \subsection{Sign Exercise}
 \label{ifelsechained:sign-exercise}
 Write a program \code{Sign.cs} to ask the user for a number. Print out
-which category the number is in: \code{'positive'}, \code{'negative'}, or
-\code{'zero'}.
+which category the number is in: \code{"positive'}, \code{"negative"}, or
+\code{"zero"}.
 
 
 \subsection{Grade Exercise}
@@ -4695,6 +4695,209 @@ is a \emph{common error}!
 
 \end{itemize}
 
+Let us write a function to sum the numbers from 1 to \code{n}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+For instance SumToN(5) calculates 1 + 2 + 3 + 4 + 5 and returns 15.
+We know how to generate a sequence of integers, but this is a place
+that a programmer gets tripped up by the speed of the human mind.
+You are likely
+so quick at this that you just see it all at once, with the answer.
+
+In fact, you and the computer need to do this in steps.  To help see, let
+us take a concrete example like the one above for SumToN(5), and write out a
+detailed sequence of steps like:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{3} \PYG{p}{=} \PYG{l+m}{1} \PYG{p}{+} \PYG{l+m}{2}
+\PYG{l+m}{6} \PYG{p}{=} \PYG{l+m}{3} \PYG{p}{+} \PYG{l+m}{3}
+\PYG{l+m}{1}\PYG{l+m}{0} \PYG{p}{=} \PYG{l+m}{6} \PYG{p}{+} \PYG{l+m}{4}
+\PYG{l+m}{1}\PYG{l+m}{5} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0} \PYG{p}{+} \PYG{l+m}{5}
+\end{Verbatim}
+
+You could put this in code directly for a specific sum, but if n is general,
+we need a loop, and hence we must see a pattern in code that we can repeat.
+
+Each of the second terms in the additions is a successive integer,
+that we can generate.  Starting in the second line, the first number
+in each addition
+is the sum from the previous line.  Of course the next integer and the next
+partial sum change from step to step, so in order to use the same code over and
+over we will need changeable variables, with names.  We can make the partial
+sum be \code{sum} and we can call the next integer \code{i}.  Each addition can be
+in the form:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}
+\end{Verbatim}
+
+We need to remember that result, the new sum.  you might first think to introduce
+such a name:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{newSum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+\end{Verbatim}
+
+This will work.  We can go through the \code{while} loop rubrick:
+
+The variables are \code{sum}, \code{newSum} and \code{i}.
+
+To evaluate
+\begin{quote}
+
+newSum = sum + i;
+\end{quote}
+
+the first time in the loop, we need \emph{initial} values for sum and i.
+Our concrete example leads the way:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+We need a \code{while} loop heading with a continuation condition.  How
+long do we want to add the next \code{i}?  That is for all the value up to and
+including n:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\end{Verbatim}
+
+There is one more important piece - making sure the same code
+\begin{quote}
+
+newSum = sum + i;
+\end{quote}
+
+works for the \emph{next} time through the loop.  We have dealt before with
+the idea of the next number in sequence:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+\end{Verbatim}
+
+What about \code{sum}?  What was the \code{newSum} on one line becomes the old or
+just plain \code{sum} on the next line, so we can make an assignment:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sum} \PYG{p}{=} \PYG{n}{newSum}\PYG{p}{:}
+\end{Verbatim}
+
+All together we calculate the sum with:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{newSum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+   \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{newSum}\PYG{p}{:}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+This exactly follows our general rubrick, with preparation for the next time
+through the loop at the end of the loop.
+We can condense it in this case, since \code{newSum} is only used
+once, we can do away with it, and directly change the value of sum:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+   \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Finally this was supposed to fit in a function.  The ultimate purpose
+was to \emph{return} the sum, which is the final value of the
+variable \code{sum}, so the whole function is:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+   \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+      \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{return} \PYG{n}{sum}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The comment before the function definition does not give a clear idea of the
+range of possible values for n.  How small makes sense for the comment?
+What actuyally works in the function?  The smallest expression
+starting with 1 would just be 1: (n = 1).  Does that work in the function?
+You were probably not thinking of that when developing the function!
+Now look back now at this \emph{edge case}.  You can play computer on the code
+or directly test it.  In this case the initialization of \code{sum} is 1,
+and the body of the loop \emph{never} runs (2 \textless{}= 1 is false).  The function
+moves right to the return statement, and
+does return 1, and everything is fine.
+
+Now about large n....
+
+With loops we can make programs run for a long time.
+The time taken becomes an issue.  In this case we go though the loop
+close to n times, so the total time is approximately proportional to n.
+We write that the time is O(n), spoken ``oh of n'', or ``big oh of n'' or
+``order of n''.
+
+Computers are pretty fast, so you can try the testing program
+\code{SumToNTest.cs}
+and it will go by so fast, that you will hardly notice.  Try these specific
+numbers in tests: 5, 6, 1000, 10000, 98765.  All look OK?  Now try 66000.
+On many systems you will get quite a surprise!
+This is the first place we have to deal with the limited
+size of the \code{int} type.
+On many systems the limit is a bit over 2 billion.
+(You can check out the size of \code{int.MaxValue} in csharp.)
+The answer for 66000,
+and \emph{also} 98765, is bigger.  Luckily the obviously wrong negative answer
+for 66000 pops out at you.  Did you guess before you saw the answer for
+66000, that there was an issue for
+98765?  It is a good thing that no safety component in a big bridge was being
+calculated!  It is a big deal that the system fails \emph{silently}
+in such situations.  \emph{Think} how large the data may be that you deal with!
+
+Now look at, compile, and run \code{SumToNLong.cs}.  The sum is
+a \code{long} integer here. Check out in csharp how big
+a \code{long} can be (\code{long.MaxValue}).  This version of the program
+works for 100000 and for 98765.  We can get correct
+answers for things that will take perceptible time.  Try working up to
+1 billion (1000000000, nine 0's).  It takes a while: O(n) can be slow!
+
+By hand it is a lot slower, unless you totally hange the algorithm:
+There is a classic story about how a calculation like this
+was done in gradeschool (n=100) by the famous
+mathematician Gauss. His teacher was trying to keep him busy.
+Gauss discovered the general, exact, mathematical formula:
+\begin{quote}
+
+1 + 2 + 3 + ... + n = n(n+1)/2.
+\end{quote}
+
+That is the number of terms (n), times the average term (n+1)/2.
+
+Our loop was instructive, but not the fastest approach.  The simple exact
+formula takes about the same time for any n.
+(That is as long as the result fits in
+a standard type of computer integer!)
+This is basically constant time.  In discussing
+how the speed relates to the size of n, we say it is O(1).
+The point is here that 1 is a constant.  The time is of \emph{constant order}.
+
+\emph{Working} and being \emph{efficient} are two different things in general.
+
+On to some truly useful loops....
+
 
 \section{While Examples}
 \label{whileexamples:while-examples}\label{whileexamples::doc}
@@ -4823,6 +5026,746 @@ one dimensional arrays
 
 two dimensional arrays
 \end{notice}
+
+
+\chapter{Change Log}
+\label{changelog::doc}\label{changelog:change-log}\begin{enumerate}
+\item {} \begin{description}
+\item[{Merge branch `master' of github.com:introcs-cs-luc-edu/introcs-lecture-notes}] \leavevmode\begin{itemize}
+\item {} 
+5397b6c
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+10 hours ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{modified if parts, did todos for if pitfalls and compound conditions, simple while loops}] \leavevmode\begin{itemize}
+\item {} 
+fb471fe
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+10 hours ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{Merge branch `master' of github.com:introcs-cs-luc-edu/introcs-lecture-notes}] \leavevmode\begin{itemize}
+\item {} 
+eaa77a6
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+10 hours ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{homework 2 preview}] \leavevmode\begin{itemize}
+\item {} 
+e5347a5
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+11 hours ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{typo in string in Suitcse.cs}] \leavevmode\begin{itemize}
+\item {} 
+38a46a7
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+19 hours ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{typos in string section, brace format convention fix in if, todo example sections added to index, todo syntax corrected}] \leavevmode\begin{itemize}
+\item {} 
+deb5a9c
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+35 hours ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added GKT's lecture summaries/schedule as a separate document}] \leavevmode\begin{itemize}
+\item {} 
+35d79a2
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{updates to GKT offering; breaking out into separate schedule page}] \leavevmode\begin{itemize}
+\item {} 
+dca6e3f
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added a snippets example based on my GCD F\# example developed this winter break}] \leavevmode\begin{itemize}
+\item {} 
+ba07d88
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+3 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added some examples files; Andy to insert into our TOC}] \leavevmode\begin{itemize}
+\item {} 
+6f54b9f
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+3 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added some examples files; Andy to insert into our TOC}] \leavevmode\begin{itemize}
+\item {} 
+e255689
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+3 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{lots of files for if, also replace stub by todo for later parts}] \leavevmode\begin{itemize}
+\item {} 
+308b093
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+4 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{collapsible navigation, schedule in gkt's syllabus, and some cross-referencing support}] \leavevmode\begin{itemize}
+\item {} 
+bd49c17
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+8 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{oops, it pays to save}] \leavevmode\begin{itemize}
+\item {} 
+609b493
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+8 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added abort to assignment if weight do not add to 100}] \leavevmode\begin{itemize}
+\item {} 
+e9eeba1
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+8 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added string lab and inserted ref links to us in it.}] \leavevmode\begin{itemize}
+\item {} 
+081ebf8
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+8 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added edit hw - not committed before, slight edit of lab eliminating IF, started on conditions - likely changed later}] \leavevmode\begin{itemize}
+\item {} 
+5a4c5c6
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+8 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{Merge branch `master' of github.com:introcs-cs-luc-edu/introcs-lecture-notes}] \leavevmode\begin{itemize}
+\item {} 
+819479f
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+9 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{detailed draft of first homework}] \leavevmode\begin{itemize}
+\item {} 
+056231e
+
+\item {} 
+George
+
+\item {} 
+9 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{it helps to save: todo removed from problemsolving with strings}] \leavevmode\begin{itemize}
+\item {} 
+5b9d6b3
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+11 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added Miles first example and sugest at end of funcreturn to improve it.}] \leavevmode\begin{itemize}
+\item {} 
+9cb6bda
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+11 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{oops before added StringManip.cs (ignore/delete), not StringManipStub.cs as intended.}] \leavevmode\begin{itemize}
+\item {} 
+93b9392
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+11 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{typos}] \leavevmode\begin{itemize}
+\item {} 
+91905f9
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+11 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{wrote notes part of problem solving with strings - assume draw the omitted parts out in class.  Also the rst file has parts labeled `.. forclass': look there if you have any question what I was expecting to happen.}] \leavevmode\begin{itemize}
+\item {} 
+0791426
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+11 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{String intro sections, reorganized from todos; still need replace example and lab}] \leavevmode\begin{itemize}
+\item {} 
+c1c8e1b
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+11 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{Merge branch `master' of github.com:introcs-cs-luc-edu/introcs-lecture-notes}] \leavevmode\begin{itemize}
+\item {} 
+7f144c7
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+13 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added remainders lab with notes on java/csharp mode}] \leavevmode\begin{itemize}
+\item {} 
+b99c43b
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+13 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{Did todo for learning-to-problem-solve}] \leavevmode\begin{itemize}
+\item {} 
+18777e0
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+13 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{todo list now at end of main index}] \leavevmode\begin{itemize}
+\item {} 
+a312443
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+13 days ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{todo:: needs a blank line under it!}] \leavevmode\begin{itemize}
+\item {} 
+38b9d5f
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{stub for comments on organizing learning, section in data}] \leavevmode\begin{itemize}
+\item {} 
+ce44011
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{for todo fixed conf.py param todo\_include\_todos}] \leavevmode\begin{itemize}
+\item {} 
+d41d9c8
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{:: after todo in all new stubs}] \leavevmode\begin{itemize}
+\item {} 
+215728a
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{typos in format with \{\}}] \leavevmode\begin{itemize}
+\item {} 
+e25b81f
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added lots of stubs - not see todo? new writeline-substitutions}] \leavevmode\begin{itemize}
+\item {} 
+38359e5
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{removed copied text found by Bob in end of multfunc}] \leavevmode\begin{itemize}
+\item {} 
+fd279cc
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{fixed small problem with indentation in Linux addition to monotools.rst}] \leavevmode\begin{itemize}
+\item {} 
+608f1be
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{fixed small typo in lab}] \leavevmode\begin{itemize}
+\item {} 
+33904e0
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{various fixes to syllabus, mono tools, and lab}] \leavevmode\begin{itemize}
+\item {} 
+ab7ebac
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{Hello examples, including one that uses the NAnt build tool}] \leavevmode\begin{itemize}
+\item {} 
+ef4f2f6
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{minor edits to tools}] \leavevmode\begin{itemize}
+\item {} 
+b10401a
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{edited tools, temporary explicit source code}] \leavevmode\begin{itemize}
+\item {} 
+0425f42
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{Merge branch `master' of github.com:introcs-cs-luc-edu/introcs-lecture-notes}] \leavevmode\begin{itemize}
+\item {} 
+fbe281e
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{fixed authors, edited tools}] \leavevmode\begin{itemize}
+\item {} 
+a6467f4
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{offerings and monotools updates}] \leavevmode\begin{itemize}
+\item {} 
+485ef89
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{added syllabi and first lab exercise}] \leavevmode\begin{itemize}
+\item {} 
+b4ef7ea
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+2 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{fixed typo in addition2.cs}] \leavevmode\begin{itemize}
+\item {} 
+524d804
+
+\item {} 
+Andrew N. Harrington
+
+\item {} 
+3 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{posting staged commit for monotools notes and the python script fixes}] \leavevmode\begin{itemize}
+\item {} 
+57dd305
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+3 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\item[{initial import of Andy's and George's latest text}] \leavevmode\begin{itemize}
+\item {} 
+5a24df9
+
+\item {} 
+George K. Thiruvathukal
+
+\item {} 
+3 weeks ago
+
+\end{itemize}
+
+\end{description}
+
+\end{enumerate}
 
 
 \chapter{Index and search}

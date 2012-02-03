@@ -254,6 +254,183 @@ designing a function with a ``while`` loop:
    is a *common error*!
 
 
+.. rubrick:: Sum To ``n``
+
+Let us write a function to sum the numbers from 1 to ``n``::
+
+    /** Return the sum of the numbers from 1 through n. */
+    static int SumToN(int n) 
+    {
+       ...
+    }
+
+For instance SumToN(5) calculates 1 + 2 + 3 + 4 + 5 and returns 15.
+We know how to generate a sequence of integers, but this is a place
+that a programmer gets tripped up by the speed of the human mind.  
+You are likely
+so quick at this that you just see it all at once, with the answer.
+
+In fact, you and the computer need to do this in steps.  To help see, let
+us take a concrete example like the one above for SumToN(5), and write out a 
+detailed sequence of steps like::
+
+    3 = 1 + 2
+    6 = 3 + 3 
+    10 = 6 + 4
+    15 = 10 + 5
+    
+You could put this in code directly for a specific sum, but if n is general,
+we need a loop, and hence we must see a pattern in code that we can repeat.
+
+Each of the second terms in the additions is a successive integer, 
+that we can generate.  Starting in the second line, the first number
+in each addition
+is the sum from the previous line.  Of course the next integer and the next
+partial sum change from step to step, so in order to use the same code over and
+over we will need changeable variables, with names.  We can make the partial
+sum be ``sum`` and we can call the next integer ``i``.  Each addition can be
+in the form::
+
+    sum + i
+
+We need to remember that result, the new sum.  you might first think to introduce
+such a name::
+
+    newSum = sum + i;
+    
+This will work.  We can go through the ``while`` loop rubrick:
+    
+The variables are ``sum``, ``newSum`` and ``i``.
+    
+To evaluate 
+
+    newSum = sum + i;
+
+the first time in the loop, we need *initial* values for sum and i.
+Our concrete example leads the way::
+
+   int sum = 1, i = 2;
+   
+We need a ``while`` loop heading with a continuation condition.  How
+long do we want to add the next ``i``?  That is for all the value up to and
+including n::
+
+   while (i <= n) {
+
+There is one more important piece - making sure the same code 
+
+    newSum = sum + i;
+    
+works for the *next* time through the loop.  We have dealt before with
+the idea of the next number in sequence::
+
+   i = i + 1;
+   
+What about ``sum``?  What was the ``newSum`` on one line becomes the old or
+just plain ``sum`` on the next line, so we can make an assignment::
+
+   sum = newSum:
+   
+All together we calculate the sum with::
+
+   int sum = 1, i = 2;
+   while (i <= n) {
+      newSum = sum + i;
+      i = i + 1;
+      sum = newSum:
+   }
+   
+This exactly follows our general rubrick, with preparation for the next time
+through the loop at the end of the loop.  
+We can condense it in this case, since ``newSum`` is only used
+once, we can do away with it, and directly change the value of sum::
+
+   int sum = 1, i = 2;
+   while (i <= n) {
+      sum = sum + i;
+      i = i + 1;
+   }
+
+Finally this was supposed to fit in a function.  The ultimate purpose
+was to *return* the sum, which is the final value of the
+variable ``sum``, so the whole function is::
+
+  /** Return the sum of the numbers from 1 through n. */
+  static int SumToN(int n) 
+  {
+     int sum = 1, i = 2;
+     while (i <= n) {
+        sum = sum + i;
+        i = i + 1;
+     }
+     return sum;
+  }
+
+The comment before the function definition does not give a clear idea of the 
+range of possible values for n.  How small makes sense for the comment?
+What actuyally works in the function?  The smallest expression 
+starting with 1 would just be 1: (n = 1).  Does that work in the function?
+You were probably not thinking of that when developing the function!
+Now look back now at this *edge case*.  You can play computer on the code
+or directly test it.  In this case the initialization of ``sum`` is 1,
+and the body of the loop *never* runs (2 <= 1 is false).  The function
+moves right to the return statement, and
+does return 1, and everything is fine.
+
+Now about large n....
+
+With loops we can make programs run for a long time.
+The time taken becomes an issue.  In this case we go though the loop
+close to n times, so the total time is approximately proportional to n.
+We write that the time is O(n), spoken "oh of n", or "big oh of n" or
+"order of n".
+
+Computers are pretty fast, so you can try the testing program 
+``SumToNTest.cs``
+and it will go by so fast, that you will hardly notice.  Try these specific
+numbers in tests: 5, 6, 1000, 10000, 98765.  All look OK?  Now try 66000.
+On many systems you will get quite a surprise!  
+This is the first place we have to deal with the limited 
+size of the ``int`` type.
+On many systems the limit is a bit over 2 billion.  
+(You can check out the size of ``int.MaxValue`` in csharp.)
+The answer for 66000,
+and *also* 98765, is bigger.  Luckily the obviously wrong negative answer
+for 66000 pops out at you.  Did you guess before you saw the answer for
+66000, that there was an issue for 
+98765?  It is a good thing that no safety component in a big bridge was being 
+calculated!  It is a big deal that the system fails *silently* 
+in such situations.  *Think* how large the data may be that you deal with!
+
+Now look at, compile, and run ``SumToNLong.cs``.  The sum is
+a ``long`` integer here. Check out in csharp how big
+a ``long`` can be (``long.MaxValue``).  This version of the program
+works for 100000 and for 98765.  We can get correct
+answers for things that will take perceptible time.  Try working up to 
+1 billion (1000000000, nine 0's).  It takes a while: O(n) can be slow!
+
+By hand it is a lot slower, unless you totally hange the algorithm:
+There is a classic story about how a calculation like this
+was done in gradeschool (n=100) by the famous
+mathematician Gauss. His teacher was trying to keep him busy.
+Gauss discovered the general, exact, mathematical formula:  
+    
+    1 + 2 + 3 + ... + n = n(n+1)/2.  
+    
+That is the number of terms (n), times the average term (n+1)/2.
+
+Our loop was instructive, but not the fastest approach.  The simple exact
+formula takes about the same time for any n.  
+(That is as long as the result fits in
+a standard type of computer integer!)  
+This is basically constant time.  In discussing
+how the speed relates to the size of n, we say it is O(1). 
+The point is here that 1 is a constant.  The time is of *constant order*.
+
+*Working* and being *efficient* are two different things in general.  
+
+On to some truly useful loops....
+
 ..  later
 
 	.. index::
