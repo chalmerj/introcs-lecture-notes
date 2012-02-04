@@ -10,18 +10,6 @@ While Examples
 
    "bisection method"
 
-.. todo::
-
-   "gcd naive (loop 2 -> max(a, b)"
-
-.. todo::
-
-   "gcd subtraction method"
-
-.. todo::
-
-   "gcd recursive definition and solution"
-
 Savings Exercise
 ~~~~~~~~~~~~~~~~
 
