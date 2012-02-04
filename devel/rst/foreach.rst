@@ -1,6 +1,13 @@
-Foreach Statements
-============================ 
+.. index:: 
+   double loop; foreach
 
-.. todo::
+.. _foreach:
 
-   for-each
+Foreach Loops
+######################
+
+.. toctree::
+   :maxdepth: 3
+   
+   foreachintro
+   foreachexamples

@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 03, 2012}
+\date{February 04, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -115,631 +115,8 @@
 
 
 
-\chapter{Current Course Offerings}
-\label{offerings:current-course-offerings}\label{offerings:introductory-programming-in-c}\label{offerings::doc}
-
-\section{Thiruvathukal COMP 170 Spring 2012 Syllabus}
-\label{gkt-syllabus:thiruvathukal-comp-170-spring-2012-syllabus}\label{gkt-syllabus::doc}
-COMP 170, Introduction to Computer Science (crosslisted as ISOM 370)
-
-
-\subsection{Course Instructor}
-\label{gkt-syllabus:course-instructor}
-\href{http://www.thiruvathukal.com}{Dr. George K. Thiruvathukal}
-Professor of Computer Science
-co-Director, Center for Textual Studies and Digital Humanities
-Department of Computer Science
-Lewis Towers, 531e
-
-
-\subsection{Contact Information}
-\label{gkt-syllabus:contact-information}
-E-mail is the prefered method of communication. Please use
-\href{mailto:gkt@cs.luc.edu}{gkt@cs.luc.edu} for all communication.
-
-Office hours are always provided on Tuesday and Thursday after class. If
-you absolutely need to meet me and are finding things just a tad
-crowded, you are encouraged to request an appointment. I give priority
-to all appointments, even during walk-in hours.
-
-
-\subsection{Textbook}
-\label{gkt-syllabus:textbook}
-The Yellow Book is the only \emph{required} textbook for COMP 170. Lewis is a
-\emph{recommended} textbook and is only needed by those who benefit from more
-of a ``reading'' based approach. You can use this book to supplement the
-Yellow Book and our (hopefully complete) lectures.
-
-
-\subsection{Prerequisite}
-\label{gkt-syllabus:prerequisite}
-Math 117 or Comp 163 or Comp 150 with a passing grade or better, or you
-may be taking Comp 150 now. No prior programming experience is required.
-We will do simple arithmetical calculations. The logical mindset of
-mathematics is very useful, not a head full of formulas.
-
-
-\subsection{Overview}
-\label{gkt-syllabus:overview}
-The present page is basically administrative information. For course
-content, see the page for the Course
-Introduction. If you already studied
-introductory Object-Oriented Programming, and think you may not need
-this course, see the more complete summary of the top 10
-topics, and consult with me.
-
-
-\subsection{Tentative Exam Schedule}
-\label{gkt-syllabus:tentative-exam-schedule}
-We'll have quizzes every 3-4 weeks. To allow time for the project, there
-will be no quizzes scheduled during the last 4 weeks of the course.
-Schedule to follow.
-
-The final exam slot will be used for your final project, which will be
-graded as if it were your final.
-
-
-\subsection{Exam Strategy}
-\label{gkt-syllabus:exam-strategy}
-For exams, people work at enormously different speeds. I hate to grade
-people on pure speed. I want an exam short enough for everyone to do.
-Rather than make it so short that each individual problem counts a great
-deal, I have had success with making a reasonable length exam for most
-people to do in a single class, but allowing people to stay an hour late
-on exam days, in case you need extra time. If you cannot schedule either
-time to be free on an exam day, let me\textgreater{} know as soon as possible. Try to
-plan ahead for those three days.
-
-On days when exams are scheduled, we will use the lab time to allow
-extra time to complete the exam.
-
-
-\subsection{Class periods}
-\label{gkt-syllabus:class-periods}
-I will not always be following the book. I will try to follow the topics
-listed in this syllabus but in the end am more concerned about real
-learning and fluency in computing as opposed to covering all topics.
-Information and activities in class that are not in the book will be on
-exams and used in homework. Your participation in class may help your
-grade. I do not formally count class attendance, but I strongly
-recommend that you be there to start your path in computer science well.
-
-I will have
-\href{https://github.com/introcs-cs-luc-edu/introcs-lecture-notes}{notes}
-from classes available on the web, but do not depend at all on their
-completeness. Always check in with your partner or other classmate if
-you miss class. I will generally have code examples on the web at my
-\href{https://github.com/introcs-cs-luc-edu/introcs-lecture-notes}{repository}.
-My first priority is to run a good class for the people present.
-
-I am very happy to give extensive help outside class to people who
-attend class. If my first pass on an idea was not enough for you, we can
-do better together in pass 2, and maybe pass 3 if needed, .... I am much
-less enthusiastic explaining what has already happened in class to a
-person who is frequently absent.
-
-
-\subsubsection{Cell Phones}
-\label{gkt-syllabus:cell-phones}
-I assume that my class is not the most important thing in your life.
-Only you know the relative importance of any particular connection
-through your cell phone, and whether it is important for you to answer a
-call imediately rather than later. I do want you to be respectful of my
-class and disrupt it as little as is practical. If you get cell phone
-calls with fair frequency, be sure to have the ring muted (use vibrate
-mode) before coming to class. If you rarely get calls, you might not
-mute it ahead, and your cell phone may happen to ring. Get rid of the
-noise as soon as possible, and do not get flustered. I assume you will
-move outside the classroom for a conversation. If you get fairly
-frequent calls that you are likely to consider important answering, sit
-in a place where your exit and re-entrance are as unobtrusive as
-possible.
-
-
-\subsubsection{Pair Programming}
-\label{gkt-syllabus:pair-programming}
-A recent paradigm shift in professional programming has been Pair
-Programming, two people collaborating on one problem on one computer.
-This has proven to be more efficient than each doing separate parts
-independently and merging them, particularly when error fixing time is
-included. More recently this approach has also been used in classes with
-completely new student programmers. Not only have the individual
-projects been done better with more confidence, but also students have
-learned at least as well and had more enjoyment in the process. We are
-encouraged to do pair programming in this course for labs and homework
-assignments, and you are encouraged to work in pairs on your parts of
-the final group project within overall teams of around 4 students. (Your
-exams will NOT be in pairs however!) Read the page of administrative
-guideline s for pair programming and also the
-page referenced there on how to make pair programming
-work.
-
-
-\subsubsection{Labs}
-\label{gkt-syllabus:labs}
-You are required to register for and participate in the laboratory
-session for this class. The material covered in the lab sessions will be
-an integral part of the course. In the lab you will gain hands on
-experience with the concepts we discuss in class. The lab sessions will
-be conducted by our teaching assistant who is a graduate student in
-computer science. Your grade in the lab sessions will be based on
-participation and on your final products. The grade will be one
-component of your final grade in the course. Take advantage of the help
-the TA's and I can give you in the lab! The TA's are Shruti Sudhindra
-and Vasant Parvatagiri, with Loyola mail ID's ssudhindra and
-vparvatagiri.
-
-
-\subsubsection{Programming Environment}
-\label{gkt-syllabus:programming-environment}
-We will be programming in C\#--a language developed by Microsft as part
-of the .Net framework. As this is a computer science course, however,
-our goal is to make sure you can do your work on any reasonable desktop,
-which includes Windows, OS X, or Linux. As such, we will be using an
-implementation of C\# from the \href{http://mono-project.com}{Mono Project}
-that supports the current C\# language and is entirely compatible with
-the concepts/materials we are covering in this class.
-
-You are encouraged to download and install the Mono SDK (Software
-Development Kit) for your computer/operating system right away
-(version 2.10 or later, please). In addition, you will need to
-download and install a text editor and the MonoDevelop development
-environment, which will be used once we get experience with the basics
-of editing, compiling, and running programs. Any text editor is fine
-but we plan to introduce Vim and Emacs in a first laboratory exercise,
-which are available on all platforms. We discourage the use of Windows
-Notepad, which is not the best editor for programmers, owing to many
-limitations.
-
-
-\subsection{Programming and homework assignments}
-\label{gkt-syllabus:programming-and-homework-assignments}
-There will be approximately 4 pair programming assignments linked to the
-course site. Most will extend over about a two-week period. The
-assignments will be based on material discussed in class, assigned
-reading material and lab work.
-
-Homework is turned in using (still being determined but not Blackboard).
-Assignments are due at midnight at the end of the date specified unless
-otherwise stated. Assignments should be turned in on time, running
-correctly. Please start early enough to get help if you need it, and get
-the program working completely correctly before the due date. See the
-next section for late assignment policies. You may only work with your
-pair partner on the assignment, and NOT work with other students - see
-the section below on {\hyperref[gkt-syllabus:Dishonesty]{*Academic Dishonesty*}}. Working on
-programming problems is essential to your understanding of the course
-material and will not only be a direct part of your final grade, but
-will also affect your exam performance. There may be a second component
-of programming assignments - reading another pair's submission
-critically.
-
-
-\subsection{Late assignments}
-\label{gkt-syllabus:late-assignments}
-In this class the following lateness penalties apply to the individual
-programming assignments: Assignments turned in up to one week late can
-receive a 10\% penalty. Assignments may not be accepted more than one
-week late. If there is some special reason for an assigment being turned
-in late, preferably speak to me directly first. I will consider reducing
-the penalties. If I accept your reason, ALSO make a comment at the top
-of your source code in the main program. (This reminder helps!)
-
-
-\subsection{Final Group Project}
-\label{gkt-syllabus:final-group-project}
-You will also be assigned to groups of 3-5 for a large open-ended
-project (writing a game and its instructions and other documentation),
-that should be assigned after the second exam and should mostly consume
-the last third of the course, in and out of class and lab. This will
-provide quite a different experience from the more highly specified
-individual assignments earlier in the course. Your group will be
-expected to turn in an intermediate version part way through the
-project, and you can use the feedback you get to make sure you are on a
-successful track for a final submission. Each team will present their
-game in part of the final exam period, and then we can all play other
-teams' games! This is in lieu of a final exam.
-
-At the end of the project, I will ask each team member individually to
-turn in a form identifying the principal contributions of each member of
-their group.
-
-
-\subsection{Extra help}
-\label{gkt-syllabus:extra-help}
-Learning is a spiral process, and different people need to take
-different sized steps. Self dependence and stretching yourself are
-great, but this only goes so far. Take advantage of the resourses
-provided when you need them.
-\begin{enumerate}
-\item {} 
-Please take advantage of the Pair Programming. You and your partner
-may complement each other very well.
-
-\item {} 
-I welcome questions inside class, in regular office hours, or by
-arrangement at other times.
-
-\item {} 
-When I am not available, please visit the Computer Science Department
-tutors. They have scheduled times all through much of the week. Also,
-you might try visiting several tutors: Some may fit you better than
-others. See the \href{http://www.cs.luc.edu/academics/services/tutoring}{tutoring
-schedule}.
-Hopefully this is set up by the second week of classes.
-
-\end{enumerate}
-
-Campus Network, Rights and Responsibilities: As a user of the campus
-network, you should be aware of your rights and responsibilities in at
-\href{http://www.luc.edu/its/policy\_acceptableuse\_public.shtml}{ITS Acceptable Use
-Policies}
-
-Grading Breakdown/Weights
-
-
-\begin{threeparttable}
-\capstart\caption{Grading Categories/Weights}
-
-\begin{tabulary}{\linewidth}{|L|L|L|}
-\hline
-\textbf{
-Category
-} & \textbf{
-Quantity
-} & \textbf{
-Weight
-}\\\hline
-
-Exams
- & 
-3
- & 
-40\%
-\\\hline
-
-Labs
- & 
-15
- & 
-15\%
-\\\hline
-
-Homework
- & 
-3
- & 
-15\%
-\\\hline
-
-Final Project
- & 
-1
- & 
-20\%
-\\\hline
-
-Participation
- & 
-1
- & 
-10\%
-\\\hline
-\end{tabulary}
-
-\end{threeparttable}
-
-
-The assignment/lab grade is a percentage of the maximum points possible.
-The maximum excludes any extra credit options. Exams may be
-scaled/curved. I convert the numerical grade from the final weighted
-average to course letter grades with the following minimum requirements:
-
-
-\begin{threeparttable}
-\capstart\caption{Grading Scale}
-
-\begin{tabulary}{\linewidth}{|L|L|}
-\hline
-\textbf{
-Grade
-} & \textbf{
-Percentage
-}\\\hline
-
-A
- & 
-93
-\\\hline
-
-A-
- & 
-90
-\\\hline
-
-B+
- & 
-87
-\\\hline
-
-B
- & 
-83
-\\\hline
-
-B-
- & 
-80
-\\\hline
-
-C+
- & 
-77
-\\\hline
-
-C
- & 
-73
-\\\hline
-
-C-
- & 
-70
-\\\hline
-
-D+
- & 
-67
-\\\hline
-
-D
- & 
-60
-\\\hline
-\end{tabulary}
-
-\end{threeparttable}
-
-
-It is my general policy to help students evaluate their options, if their
-work at midterm is not at 70\% or higher. Should you find yourself in the
-position of falling short of this level, please make an appointment so we
-can discuss your next steps.
-
-If you have consistently displayed more knowledg, ability, and genuine
-interest in class discussions than you show in your exams, I may raise
-this grade. Note that one way to display your effort and thought is to
-ask questions in class about your readings!
-
-
-\subsection{Exam Policy}
-\label{gkt-syllabus:exam-policy}
-
-\subsubsection{Exam coverage}
-\label{gkt-syllabus:exam-coverage}
-Exams will cover material discussed in class, reading material in the
-text and on the web, lab work, and assignments. Exams will always be
-cumulative, but they will NOT include new material from the class
-\emph{immediately} before the exam. This way there will always be time for
-questions after digesting a class.
-
-
-\subsubsection{Grading}
-\label{gkt-syllabus:grading}
-Do not write down things on exams that you can see are incomplete or
-incorrect without making some comment acknowledging this -- it is better
-to know you are wrong than to be wrong and think you are right.
-
-
-\subsubsection{Missed Exams}
-\label{gkt-syllabus:missed-exams}
-If you must miss an exam, let me know well in advance. Then if you have
-a good reason we can possibly make other arrangements. I have little
-sympathy for people who inform me after the fact for no good reason. I
-may completely excuse you from an exam if you were sick or unable to
-attend for long enough. Most often if you cannot take an exam at the
-usual time, I will want you to take it a little later, BUT I WILL NOT
-LET ANYONE TAKE A LATE EXAM AFTER THE NEXT CLASS PERIOD. If you somehow
-fail to let me know in a timely fashion that you have an excuse and want
-to take the exam late, appear at my office before the NEXT class after
-the exam, and I may be able to give you the exam.
-
-
-\subsubsection{No Do-Overs}
-\label{gkt-syllabus:no-do-overs}
-If you have an excuse for not being prepared to take an exam, but decide
-to take it anyway, you don't get to change your mind after you see a
-poor grade. Being sick is not a way to get two chances. In certain
-circumstances I may allow you to delay an exam due to illness, but I
-will not let you be reexamined due to a poor grade.
-
-As a reminder, I reserve the right to request documentation about
-illnesses and ``emergencies'' that arise, especially in the case of
-repeated absences.
-
-
-\subsubsection{Academic Dishonesty}
-\label{gkt-syllabus:id1}
-The penalty for cheating may be anywhere from a 0 on an assignment to a
-grade of ``F'' in this course. The appropriate dean will be informed in
-writing of all cheating incidents.
-
-Cheating consists of, but is not limited to:
-\begin{itemize}
-\item {} 
-Using or copying an outside person's work on an exam or assignment in
-any fashion.
-
-\item {} 
-Work includes outlines, pseudocode, code, documentation, and
-analyses.
-
-\item {} 
-Allowing your own work to be copied or used by an outside person.
-
-\item {} 
-Submitting as your own work something that has been written by an
-outside person.
-
-\item {} 
-Using any unauthorized reference on an exam or assignment
-
-\item {} 
-Using electronic communication (especially during exams) to gain an
-unfair advantage.
-
-\end{itemize}
-
-If you are working on a pair or group project, an ``outside person'' only
-refers to people other than your assigned partner or team. Note that
-cheating goes both ways: both giving and receiving.
-
-Consultation is allowed with me, the TA, or official tutors for Comp
-170. If you consult with any of these people, still make a comment at
-the top of your work about the substance and depth of the help. Hiding
-such help is also academic dishonesty.
-
-Help from any source \emph{is fine} concerning
-\begin{itemize}
-\item {} 
-The meaning of program specifications (not the plan for the solution
-or the actual solution).
-
-\item {} 
-The tools used to write programs. Feel free to ask questions on the
-programming environment you use and the use of the debugger.
-
-\item {} 
-The restrictions of C\# syntax.
-
-\end{itemize}
-
-\textbf{Questions?} Please contact me if you have questions about these
-groundrules or about anything else in the course. After class, by email,
-in my office, by phone, all work for me. I am here to help.
-
-
-\subsection{Topics}
-\label{gkt-syllabus:topics}
-We will be covering these general categories from the ACM Computing
-Curricula:
-\begin{itemize}
-\item {} 
-PF1. Fundamental programming constructs
-
-\item {} 
-PF4. Recursion
-
-\item {} 
-PL1. Overview of programming languages
-
-\item {} 
-PL2. Virtual machines
-
-\item {} 
-PL4. Declarations and types
-
-\item {} 
-PL5. Abstraction mechanisms
-
-\item {} 
-SP1. History of computing (throughout the course)
-
-\end{itemize}
-
-These codes come from the ACM guidelines (PF=Programming Fundamentals,
-PL=Programmin Languages, etc.)
-
-
-\section{Thiruvathukal WTC Lecture/Lab Schedule}
-\label{gkt-schedule:thiruvathukal-wtc-lecture-lab-schedule}\label{gkt-schedule::doc}
-1/17
-\begin{itemize}
-\item {} 
-Discussion about syllabus and expectations (the page you're reading).
-
-\end{itemize}
-
-1/19
-\begin{itemize}
-\item {} 
-See {\hyperref[lab-edit-compile-run:lab-edit-compile-run]{\emph{Lab Exercise: Editing, Compiling, and Running}}}.
-
-\end{itemize}
-
-1/24
-\begin{itemize}
-\item {} 
-Lab {\hyperref[lab-division-sentences:lab-division]{\emph{Lab: Division Sentences}}}.
-
-\end{itemize}
-
-1/26
-\begin{itemize}
-\item {} 
-Continuation of {\hyperref[lab-division-sentences:lab-division]{\emph{Lab: Division Sentences}}} discussion about {\hyperref[homework-gradecalculation:homework-grade-calculation]{\emph{Homework: Grade Calculation}}}.
-
-\item {} 
-Pair programming in a bit more detail.
-
-\end{itemize}
-
-1/31
-\begin{itemize}
-\item {} 
-Defining Functions
-
-\item {} 
-Use lab time (11:30) to get caught up on labs and homework, especially if you
-are a late addition to the class. TAs will be available to help.
-
-\end{itemize}
-
-2/2
-\begin{itemize}
-\item {} 
-For this week only, the Thursday lecture will be used for lab time. Rick
-and Sheree will do the lab on String Operations.
-
-\end{itemize}
-
-2/7
-\begin{itemize}
-\item {} 
-George attending a research workshop in Kolkata, India. Prof. Konstantin
-will be substituting both 2/7 and 2/9.
-
-\item {} 
-Homework is due by the 11:59pm. Submission instructions to follow.
-
-\item {} 
-Decisions
-
-\end{itemize}
-
-2/9
-\begin{itemize}
-\item {} 
-Loops
-
-\end{itemize}
-
-2/14
-\begin{itemize}
-\item {} 
-Lab involving loops and decision constructs.
-
-\end{itemize}
-
-2/16
-\begin{itemize}
-\item {} 
-Quiz \#1, 10:00-11:15
-
-\end{itemize}
-
-
 \chapter{Context}
-\label{context::doc}\label{context:context}
+\label{context:introductory-programming-in-c}\label{context::doc}\label{context:context}
 
 \section{Introduction to the Notes}
 \label{intro::doc}\label{intro:introduction-to-the-notes}
@@ -4165,7 +3542,8 @@ the if-false compound statement can be replace by a single statement
 without braces, except in one otherwise ambiguous situation discussed
 later with two \code{if}s and an \code{else}.
 
-\index{double scope!compound statement}
+\index{double scope!compound statement}\paragraph{More on Compound Statements and Scope}
+
 The section on local scope referred to function and method bodies,
 which happen to be enclosed in braces, making a compound statement.
 If fact braces limit the scope of things declared inside,
@@ -4315,6 +3693,7 @@ sensitive.
 arithmetic, confirm that C\#
 does not consider .1 + .2 to be equal to .3: Write a simple
 condition into csharp to test.
+\paragraph{Pay with Overtime Example}
 
 Given a person's work
 hours for the week and regular hourly wage, calculate the total pay
@@ -4866,16 +4245,14 @@ and length of citizenship and prints whether a person is eligible
 to be a US Representative only, or is eligible for both offices, or
 is eligible for neither.
 
+\index{while!loop}\index{loop!while}
 
-\chapter{Loops}
-\label{loops:loops}\label{loops::doc}
+\chapter{While Loops}
+\label{while:index-0}\label{while::doc}\label{while:while-loops}\label{while:id1}
 \index{while!statement}\index{statement!while}
 
 \section{While-Statements}
 \label{whilestatements:index-0}\label{whilestatements::doc}\label{whilestatements:while-statements}\label{whilestatements:id1}
-
-\subsection{Simple \texttt{while} Loops}
-\label{whilestatements:id2}\label{whilestatements:simple-while-loops}
 We have seen that the sequential flow of a program
 can be altered with function calls
 and decisions.  The last important pattern is \emph{repetition} or \emph{loops}.
@@ -5217,7 +4594,7 @@ print 10
 We have seen that we can produce a regular sequence of numbers in a loop.
 The ``Blastoff!'' part does not fit the pattern, so it must be a \emph{separate}
 part after the loop.  We need a name for the number that decreases.  It can
-be \code{time}.  Remember the general rubrick for a \code{while} loop:
+be \code{time}.  Remember the general rubric for a \code{while} loop:
 \begin{quote}
 
 \begin{DUlineblock}{0em}
@@ -5267,9 +4644,9 @@ we get \code{Blastoff.cs}:
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-Look back and see how we fit the general rubrick.
+Look back and see how we fit the general rubric.
 There are a bunch of things to think about with a while loop, so
-going one step at a time, thinking of the rubrick and the specific
+going one step at a time, thinking of the rubric and the specific
 needs of the current problem, helps.
 
 There are many different (and more exciting) patterns of change coming
@@ -5317,6 +4694,7 @@ done after the loop (code after the loop). Missing this distinction
 is a \emph{common error}!
 
 \end{itemize}
+\paragraph{Sum To \code{n}}
 
 Let us write a function to sum the numbers from 1 to \code{n}:
 
@@ -5368,7 +4746,7 @@ such a name:
 \PYG{n}{newSum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
 \end{Verbatim}
 
-This will work.  We can go through the \code{while} loop rubrick:
+This will work.  We can go through the \code{while} loop rubric:
 
 The variables are \code{sum}, \code{newSum} and \code{i}.
 
@@ -5418,15 +4796,15 @@ All together we calculate the sum with:
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
 \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-   \PYG{n}{newSum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{n}{newSum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
    \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
    \PYG{n}{sum} \PYG{p}{=} \PYG{n}{newSum}\PYG{p}{:}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-This exactly follows our general rubrick, with preparation for the next time
+This exactly follows our general rubric, with preparation for the next time
 through the loop at the end of the loop.
-We can condense it in this case, since \code{newSum} is only used
+We can condense it in this case: Since \code{newSum} is only used
 once, we can do away with it, and directly change the value of sum:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -5456,20 +4834,20 @@ variable \code{sum}, so the whole function is:
 
 The comment before the function definition does not give a clear idea of the
 range of possible values for n.  How small makes sense for the comment?
-What actuyally works in the function?  The smallest expression
+What actually works in the function?  The smallest expression
 starting with 1 would just be 1: (n = 1).  Does that work in the function?
 You were probably not thinking of that when developing the function!
 Now look back now at this \emph{edge case}.  You can play computer on the code
 or directly test it.  In this case the initialization of \code{sum} is 1,
 and the body of the loop \emph{never} runs (2 \textless{}= 1 is false).  The function
-moves right to the return statement, and
+execution jumps right to the return statement, and
 does return 1, and everything is fine.
 
 Now about large n....
 
 With loops we can make programs run for a long time.
 The time taken becomes an issue.  In this case we go though the loop
-close to n times, so the total time is approximately proportional to n.
+n-1 times, so the total time is approximately proportional to n.
 We write that the time is O(n), spoken ``oh of n'', or ``big oh of n'' or
 ``order of n''.
 
@@ -5481,9 +4859,10 @@ On many systems you will get quite a surprise!
 This is the first place we have to deal with the limited
 size of the \code{int} type.
 On many systems the limit is a bit over 2 billion.
-(You can check out the size of \code{int.MaxValue} in csharp.)
+You can check out the size of \code{int.MaxValue} in csharp.
 The answer for 66000,
-and \emph{also} 98765, is bigger.  Luckily the obviously wrong negative answer
+and \emph{also} 98765, is bigger than the upper limit.
+Luckily the obviously wrong negative answer
 for 66000 pops out at you.  Did you guess before you saw the answer for
 66000, that there was an issue for
 98765?  It is a good thing that no safety component in a big bridge was being
@@ -5497,7 +4876,7 @@ works for 100000 and for 98765.  We can get correct
 answers for things that will take perceptible time.  Try working up to
 1 billion (1000000000, nine 0's).  It takes a while: O(n) can be slow!
 
-By hand it is a lot slower, unless you totally hange the algorithm:
+By hand it is a lot slower, unless you totally change the algorithm:
 There is a classic story about how a calculation like this
 was done in gradeschool (n=100) by the famous
 mathematician Gauss. His teacher was trying to keep him busy.
@@ -5517,18 +4896,441 @@ This is basically constant time.  In discussing
 how the speed relates to the size of n, we say it is O(1).
 The point is here that 1 is a constant.  The time is of \emph{constant order}.
 
+We can write a ridiculously short
+function following Gauss's model.  Here I introduce the variable average,
+as in the motivation for Gauss's answer:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+   \PYG{k}{static} \PYG{k+kt}{long} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}  \PYG{c+c1}{//CHANGED:  quick and WRONG}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{average} \PYG{p}{=} \PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}    \PYG{c+c1}{//from Gausse's motivation}
+      \PYG{k}{return} \PYG{n}{n}\PYG{p}{*}\PYG{n}{average}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Compile and test the example program containing it: \code{SumToNLongBad.cs}.
+
+Test it with 5, and then try 6. ???
+
+``Ridiculously short'' does not imply correct!  The problem goes back
+to the fact that Gauss was in \emph{math class} and you are doing
+Computer Science.  Think of a subtle difference that might come in here:
+Though (n+1)/2 is fine as math, recall the division operator does not
+always give correct answers in C\#.  You get an integer answer from the
+integer (or long) operands.  Of course the exact mathematical final answer
+is an integer when \emph{adding} integers, but splitting it according to
+Gausss's motivation can put a mathematical non-integer in the middle.
+
+The C\# fix: The final answer is clearly an integer, so if we do the division
+last, when we know the answer will be an integer, things should be better:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{return} \PYG{n}{n}\PYG{p}{*}\PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+Here is a shot at the whole function:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+   \PYG{k}{static} \PYG{k+kt}{long} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}  \PYG{c+c1}{//CHANGED:  quick and still WRONG}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{long} \PYG{n}{sum} \PYG{p}{=} \PYG{n}{n}\PYG{p}{*}\PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}  \PYG{c+c1}{// final division will produce an integer}
+      \PYG{k}{return} \PYG{n}{sum}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Compile and test the example program containing it: \code{SumToNLongBad2.cs}.
+
+Test it with 5, and then try 6. Ok so far, but go on to long integer range:
+try 66000 that messed us up before.  ??? You get an answer that is not
+a multiple of 1000: not what we got before!  What other issues do we have
+between math and C\#?
+
+Further analysis:  To make sure the function always worked, it made sense
+to leave the parameter \code{n} an \code{int}.  The function would not work
+with \code{n} as the largest \code{long}.  The result can still be big enough
+to only fit in a \code{long}, so the return value is a \code{long}.  All
+this is reasonable but the C\# result is still wrong!  Look deeper.
+While the result of \code{n*(n+1)/2} is \emph{assigned} to a \code{long} variable,
+the \emph{calculation} \code{n*(n+1)/2} is done with \code{int}s not mathematical
+integers.  By the same general type rule that led to the (n+1)/2 error
+earlier, these operations on \code{int}s produce an \code{int} result, even
+when wrong.
+
+We need to force the \emph{calculation} to produce a \code{long}.
+In the correct looping version \code{sum} was a \code{long}, and that
+forced all the later arithmentic to be with longs.  Here are two variations
+that work:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{long} \PYG{n}{nLong} \PYG{p}{=} \PYG{n}{n}\PYG{p}{;}
+\PYG{k}{return} \PYG{n}{nLong}\PYG{p}{*}\PYG{p}{(}\PYG{n}{nLong}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+or we can avoid a new variable name by doing a cast to \code{long}, convering
+the first (left) operand to \code{long}, so all the later left-to-right
+operations are forced to be \code{long}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{return} \PYG{p}{(}\PYG{k+kt}{long}\PYG{p}{)}\PYG{n}{n}\PYG{p}{*}\PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+You can try example \code{SumToNLongQuick.cs} to finally get a result that
+is dependably fast and correct.
+
+Important lessons from this humble summation problem:
+\begin{itemize}
+\item {} 
 \emph{Working} and being \emph{efficient} are two different things in general.
 
+\item {} 
+\emph{Math} operations and C\# operations are not always the same.
+Knowing this in theory is not the same as remembering it in practice.
+
+\end{itemize}
+
 On to some truly useful loops....
+
+\index{interactive!loop while}\index{loop!while, interactive}\index{while!interactive loop}
+
+\section{Interactive \texttt{while} Loops}
+\label{whileinteractive:index-0}\label{whileinteractive::doc}\label{whileinteractive:interactive-while-loops}\label{whileinteractive:id1}
+Next we consider a particular form of \code{while} loops, interactive ones,
+involving input from the user each time through.
+We consider them now for three reasons:
+\begin{itemize}
+\item {} 
+Interactive \code{while} loops have one special `gotcha'
+worth illustrating.
+
+\item {} 
+We will illustrate some general techniques for understanding and developing
+\code{while} loops.
+
+\item {} 
+As a practical matter,
+we can greatly improve the utilty input functions we have been using, and
+add some more.
+
+\end{itemize}
+
+We alredy have discussed the InputInt function.  The user can choose
+any int.  Sometimes we only want an integer in a certain range.
+Miles has examples that handle this by just silently changing
+a bad value to one at the end of the allowed range.
+Another approach is to not accept a bad value, and get the user to explicitly
+enter a value in the right range.  In theory the user could make errors
+for some time, so a loop makes sense.  For instance we might have a slow
+user, and there could be an exchange like the following
+when you want a number from 0 to 100.  For illustration, user input is shown
+in boldface:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Enter a score: (0 to 100) \textbf{233}
+\item[] 233 is out of range!
+\item[] Enter a score: (0 to 100) \textbf{101}
+\item[] 101 is out of range!
+\item[] Enter a score: (0 to 100) \textbf{-1}
+\item[] -1 is out of range!
+\item[] Enter a score: (0 to 100) \textbf{100}
+\end{DUlineblock}
+\end{quote}
+
+and the value 100 would be accepted.
+
+This is a well-defined idea.  A function makes sense.  Its heading
+includes a prompt and low and high limits of the allowed range:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Continue to obtain a value from the user until it is in the}
+\PYG{c+cm}{    * range [lowLim, highLim].  Then return the value in range.}
+\PYG{c+cm}{    * Use the specified prompt, adding a reminder of the allowed range. */}
+   \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{InputIntInRange}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lowLim}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{highLim}\PYG{p}{)}
+\end{Verbatim}
+
+There is no need to put the limits in the prompt, since the function can
+create that part from the limit parameters.  For example to generate
+sequence above, the call would be:
+\begin{quote}
+
+\code{InputIntInRange("Enter a score: ", 0, 100)}
+\end{quote}
+
+There is an issue with the common term ``loop'' in programming.
+In normal English, a loop has no beginning and no end, like a circle.
+C\# loops have a sequence of statements with a definite beginning and end.
+
+Consider the sequence above in pseudocode.
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Input a number with prompt (233)
+\item[] Print error message
+\item[] Input a number with prompt (101)
+\item[] Print error message
+\item[] Input a number (-1)
+\item[] Print error message
+\item[] Input a number with prompt (100)
+\item[] Return 100
+\end{DUlineblock}
+\end{quote}
+
+We can break into a repeating
+pattern in two ways.  The most obvious is theofllowing,
+with three repetitions of a basic pattern,
+with the last two line not in the same pattern
+(so they would go after the loop).  :
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Input a number with prompt (233)
+\item[] Print error message
+\item[] 
+\item[] Input a number with prompt (101)
+\item[] Print error message
+\item[] 
+\item[] Input a number (-1)
+\item[] Print error message
+\item[] 
+\item[] Input a number with prompt (100)
+\item[] Return 100
+\end{DUlineblock}
+\end{quote}
+
+Another choice, since
+you can split a loop at any point, would be the following, with the first and
+last lines not in the  pattern repeating three times in the middle:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Input a number with prompt (233)
+\item[] 
+\item[] Print error message
+\item[] Input a number with prompt (101)
+\item[] 
+\item[] Print error message
+\item[] Input a number (-1)
+\item[] 
+\item[] Print error message
+\item[] Input a number with prompt (100)
+\item[] 
+\item[] Return 100
+\end{DUlineblock}
+\end{quote}
+
+When you consider \code{while} loops, there is a problem with the first version:
+Before the first pass through the loop and at the end of the block of code
+in the body of the loop, you must be \emph{able} to run the test in the
+while heading.  We will be testing the latest input from the user.
+
+It is the second version that has us getting new input
+\emph{before the first} loop and at the \emph{end of each} loop!
+
+Now we can think more of the basic process to turn this into a C\# solution:
+What variables do we need?   We will call the user's response \code{number}.
+
+What is the test in the while loop heading?
+The easilest thing to think of is that we are done when
+we get something correct.  That, however, is a \emph{termination} condition.
+We need to reverse it to get the \emph{continuation condition}, that the answer is
+out of range.  There are two ways to be out of range:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{number} \PYG{p}{\textless{}} \PYG{n}{lowLim}
+\PYG{n}{number} \PYG{p}{\textgreater{}} \PYG{n}{highLim}
+\end{Verbatim}
+
+How do we combine them?  Either one rules out a correct answer,
+so \code{number} is out of range
+if too high OR too low.  Remember the C\# symbolism for ``or'': \code{\textbar{}\textbar{}}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{number} \PYG{p}{\textless{}} \PYG{n}{lowLim} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{number} \PYG{p}{\textgreater{}} \PYG{n}{highLim}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\end{Verbatim}
+
+Following the sequence in the concrete example we had above,
+we can see how to put things
+together.
+We need to get input from the user \emph{before} first beginning
+the \code{while} loop, so we immediately have something to test
+in the \code{while} heading's condition.
+
+Do not reinvent the wheel!
+We can use our earlier general \code{IntInput} function.  It needs a prompt.
+As a first version, we can use the parameter \code{prompt}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+That is the initialization step before the loop.
+
+If we get into the body of the loop, it means there is an error,
+and the concrete example indicates we print a warning message.
+The concrete example \emph{also} shows another step in the loop, asking
+the user for input.  It is
+easy to think
+``I already have the code included to read a value from the user,
+so there is nothing really to do.''  WRONG!  The intitialization code with
+the input from the user is \emph{before} the loop.  C\# execution approaches the
+test in the \code{while} headings from \emph{two} places:
+the initialization \emph{and} coming back
+from the bottom of the loop.  To get a \emph{new} value to test, we must
+\emph{repeat} getting input from the user at the bottom of the loop body.
+
+You might decide to be quick
+and just copy the initialization line into the bottom of the
+loop (and indent it):
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+Luckily you will get a compiler error in that situation, avoiding
+more major troubleshooting:
+The complete copy of the line copies the declaration
+part as well as the assignment part, and mono sees the declaration of
+\code{number} already there
+from the scope outside the while block, and complains.
+
+Hence copy the line, \emph{minus} the {}`{}` int{}`{}` declaration:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+When the loop condition becomes false, and you get past the loop,
+you have a correct value in \code{number}.  You have done all the hard work.
+Do not forget to return it at the end.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Continue to obtain a value from the user until it is in the}
+\PYG{c+cm}{    * range [lowLim, highLim].  Then return the value in range.}
+\PYG{c+cm}{    * Use the specified prompt, adding a reminder of the allowed range. */}
+   \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{InputIntInRange}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lowLim}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{highLim}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{number} \PYG{p}{\textless{}} \PYG{n}{lowLim} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{number} \PYG{p}{\textgreater{}} \PYG{n}{highLim}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} is out of range!"}\PYG{p}{,} \PYG{n}{number}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{number}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+You can try this full example, \code{PromptUserLoop1.cs}.  Look at it
+and then try compiling and running.  If you ran it without looking
+at the Main code, you might be confused about what values it would accept.
+
+There are two approaches here:  The caller could give a more explicit
+prompt.  Since the limits are given as parameters, anyway, we prefer
+to have the program elaborate the prompt.  If the limits are -10 and 10,
+automatically add to the prompt something like (-10 through 10).
+
+We could use
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write}\PYG{p}{(}\PYG{l+s}{" (\PYGZob{}0\PYGZcb{} through \PYGZob{}1\PYGZcb{}) "}\PYG{p}{,} \PYG{n}{lowLim}\PYG{p}{,} \PYG{n}{highLim}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+but we need the code twice, and it is quite a mouthful.
+Thus far we have only seen the use of format strings when immediately
+printing with \code{Console.Write} (or \code{WriteLine}).
+Here we would like to generate a string, for \emph{use later}.  We introduce
+the already defined
+function \code{string.Format}, which does just what we want:  The parameters
+have the same form as for \code{Console.Write}, but the formatted string is
+\emph{returned}.
+
+Here is a revised version, in example \code{PromptUserLoop2.cs}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Continue to obtain a value from the user until it is in the}
+\PYG{c+cm}{    * range [lowLim, highLim].  Then return the value in range.}
+\PYG{c+cm}{    * Use the specified prompt, adding a reminder of the allowed range. */}
+   \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{InputIntInRange}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lowLim}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{highLim}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{string} \PYG{n}{longPrompt} \PYG{p}{=} \PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{Format}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} (\PYGZob{}1\PYGZcb{} through \PYGZob{}2\PYGZcb{}) "}\PYG{p}{,}
+                                        \PYG{n}{prompt}\PYG{p}{,} \PYG{n}{lowLim}\PYG{p}{,} \PYG{n}{highLim}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{longPrompt}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{number} \PYG{p}{\textless{}} \PYG{n}{lowLim} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{number} \PYG{p}{\textgreater{}} \PYG{n}{highLim}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} is out of range!"}\PYG{p}{,} \PYG{n}{number}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{longPrompt}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{number}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The only caveat with \code{string.Format} is that
+there is \emph{no} special function corresponding to \code{Console.WriteLine}.
+You can generate a newline with string.Format:  Remember the
+escape code \code{"\textbackslash{}n"}.  Put it at the end to go on to a newline.
+
+This time around we did the user input correctly, with the
+request for new input \emph{repeated} at the end of the loop.
+That repetition \emph{is} easy to forget.  Before we see what happens, note:
+
+\begin{notice}{warning}{Warning:}
+A \code{while} loop may be written so the continuation condition is
+\emph{always} true, and the loop \emph{never} stops by itself.
+This is an \emph{infinite loop}.
+In practice, in many operating environments, particularly
+where you are geting input from the user,
+you can abort the execution of a program in
+an infinite loop by entering
+\code{Ctrl-C}.
+\end{notice}
+
+In particular you get an infinite loop
+if you fail to get new input from the user at the
+end of the loop.  The condition uses the bad
+original choice forever.  Here is the mistaken version,
+from example  \code{PromptUserLoop2Bad.cs}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Continue to obtain a value from the user until it is in the}
+\PYG{c+cm}{    * range [lowLim, highLim].  Then return the value in range.}
+\PYG{c+cm}{    * Use the specified prompt, adding a reminder of the allowed range. */}
+   \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{InputIntInRange}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lowLim}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{highLim}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{string} \PYG{n}{longPrompt} \PYG{p}{=} \PYG{k+kt}{string}\PYG{p}{.}\PYG{n}{Format}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} (\PYGZob{}1\PYGZcb{} through \PYGZob{}2\PYGZcb{}) "}\PYG{p}{,}
+                                        \PYG{n}{prompt}\PYG{p}{,} \PYG{n}{lowLim}\PYG{p}{,} \PYG{n}{highLim}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{number} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{n}{longPrompt}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{number} \PYG{p}{\textless{}} \PYG{n}{lowLim} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{number} \PYG{p}{\textgreater{}} \PYG{n}{highLim}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} is out of range!"}\PYG{p}{,} \PYG{n}{number}\PYG{p}{)}\PYG{p}{;}
+         \PYG{c+c1}{// number = InputInt(longPrompt);  //comentted out new input}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{number}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+You can run it.  Remember \code{Ctrl-C} !
+There are two tests.  If you give a legal answer immediately in the first test,
+it works fine (never getting into the loop body).  If you
+give a bad input in the second test, you see that you can never fix it!
+Remember \code{Ctrl-C} !
+
+A more extreme abort is to close the entire console/terminal window
+running the program.
+
+\begin{notice}{note}{Todo}
+
+more interactive while loops
+\end{notice}
+
+
+\subsection{Interactive Sum Exercise}
+\label{whileinteractive:interactive-sumex}\label{whileinteractive:interactive-sum-exercise}
+Write a program \code{SumAll.cs} that prompts the user to enter
+numbers, one per line, ending with a line containing 0, and keep a
+running sum of the numbers. Only print out the sum after all the
+numbers are entered (at least in your \emph{final} version).
 
 
 \section{While Examples}
 \label{whileexamples:while-examples}\label{whileexamples::doc}
-\begin{notice}{note}{Todo}
-
-``number guessing game with randomness for the secret number''
-\end{notice}
-
 \begin{notice}{note}{Todo}
 
 ``sum of first N numbers using loop \& Euler formula''
@@ -5555,11 +5357,42 @@ On to some truly useful loops....
 \end{notice}
 
 
-\section{Foreach Statements}
-\label{foreach:foreach-statements}\label{foreach::doc}
+\subsection{Savings Exercise}
+\label{whileexamples:savings-exercise}
+The idea here is to see how many years it will take a bank account to grow
+to at least a given value, assuming a fixed annual interest.
+Write a program \code{Savings.cs}.
+Prompts the user for three numbers: an initial balance, the annual percentage
+for interest as a decimal. like .04 for 4\%, and the final balance desired.
+Print the initial balance, and the balance each year until
+the desired amount is reached. Round displayed amounts
+to two decimal places, as usual.
+
+The math:  The amount next year is the amount now times
+(1 + interest fraction),
+so if I have \$500 now and the interest rate is .04,
+I have \$500*(1.04) = \$520 after one year, and after two years I have,
+\$520*(1.04) = \$540.80.
+If I enter into the program a \$500 starting balance, .04 interest rate and
+a target of \$550, the program prints:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{5}\PYG{l+m}{0}\PYG{l+m}{0.00}
+\PYG{l+m}{5}\PYG{l+m}{2}\PYG{l+m}{0.00}
+\PYG{l+m}{5}\PYG{l+m}{4}\PYG{l+m}{0.80}
+\PYG{l+m}{5}\PYG{l+m}{6}\PYG{l+m}{3.42}
+\end{Verbatim}
+
+\index{double loop!foreach}
+
+\chapter{Foreach Loops}
+\label{foreach:foreach-loops}\label{foreach:index-0}\label{foreach::doc}\label{foreach:foreach}
+
+\section{Foreach Statement Syntax}
+\label{foreachintro::doc}\label{foreachintro:foreach-statement-syntax}
 \begin{notice}{note}{Todo}
 
-for-each
+for-each intro
 \end{notice}
 
 
@@ -5575,6 +5408,10 @@ Is a string numeric?
 Ordinal value of a character
 \end{notice}
 
+\index{for!loop}\index{loop!for}
+
+\chapter{For Loops}
+\label{for:index-0}\label{for::doc}\label{for:for-loops}\label{for:id1}
 
 \section{For-Statements}
 \label{forstatements:for-statements}\label{forstatements::doc}
@@ -6410,161 +6247,161 @@ George:
 ? tie into later work; good CS example?
 \end{notice}
 
-(The {\hyperref[assignment-functions:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/assignment-functions.rst, line 12.)
-
-\begin{notice}{note}{Todo}
-
-for-each
-\end{notice}
-
-(The {\hyperref[foreach:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/foreach.rst, line 8.)
+(The {\hyperref[assignment-functions:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/assignment-functions.rst, line 12.)
 
 \begin{notice}{note}{Todo}
 
 Is a string numeric?
 \end{notice}
 
-(The {\hyperref[foreachexamples:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/foreachexamples.rst, line 8.)
+(The {\hyperref[foreachexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 Ordinal value of a character
 \end{notice}
 
-(The {\hyperref[foreachexamples:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/foreachexamples.rst, line 12.)
+(The {\hyperref[foreachexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 12.)
+
+\begin{notice}{note}{Todo}
+
+for-each intro
+\end{notice}
+
+(The {\hyperref[foreachintro:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachintro.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 Print ordinal value and actual character value of printable ASCII characters
 \end{notice}
 
-(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 8.)
+(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 Sum reworked from while to for.
 \end{notice}
 
-(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 12.)
+(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 12.)
 
 \begin{notice}{note}{Todo}
 
 Print first N multiples of a given number.
 \end{notice}
 
-(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 16.)
+(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 16.)
 
 \begin{notice}{note}{Todo}
 
 Do some of these examples backwards.
 \end{notice}
 
-(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 20.)
+(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 20.)
 
 \begin{notice}{note}{Todo}
 
 Reversing a string...
 \end{notice}
 
-(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 24.)
+(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 24.)
 
 \begin{notice}{note}{Todo}
 
 Palindrome
 \end{notice}
 
-(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 28.)
+(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 28.)
 
 \begin{notice}{note}{Todo}
 
 ASCII art, triangles; see for loop lab.
 \end{notice}
 
-(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 32.)
+(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 32.)
 
 \begin{notice}{note}{Todo}
 
 Make restructred text table with fixed rows, columns, and width empty content.
 \end{notice}
 
-(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 35.)
+(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 35.)
 
 \begin{notice}{note}{Todo}
 
 Repeat string N times.
 \end{notice}
 
-(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forexamples.rst, line 38.)
+(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 38.)
 
 \begin{notice}{note}{Todo}
 
 for-statements
 \end{notice}
 
-(The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/forstatements.rst, line 8.)
+(The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 Andy new
 \end{notice}
 
-(The {\hyperref[notusereturn:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/notusereturn.rst, line 13.)
+(The {\hyperref[notusereturn:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/notusereturn.rst, line 13.)
 
 \begin{notice}{note}{Todo}
 
 one dimensional arrays
 \end{notice}
 
-(The {\hyperref[onedim:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/onedim.rst, line 8.)
+(The {\hyperref[onedim:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/onedim.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 two dimensional arrays
 \end{notice}
 
-(The {\hyperref[twodim:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/twodim.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-``number guessing game with randomness for the secret number''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-0]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 8.)
+(The {\hyperref[twodim:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/twodim.rst, line 8.)
 
 \begin{notice}{note}{Todo}
 
 ``sum of first N numbers using loop \& Euler formula''
 \end{notice}
 
-(The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 12.)
+(The {\hyperref[whileexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 9.)
 
 \begin{notice}{note}{Todo}
 
 ``bisection method''
 \end{notice}
 
-(The {\hyperref[whileexamples:index-2]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 16.)
+(The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 13.)
 
 \begin{notice}{note}{Todo}
 
 ``gcd naive (loop 2 -\textgreater{} max(a, b)''
 \end{notice}
 
-(The {\hyperref[whileexamples:index-3]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 20.)
+(The {\hyperref[whileexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 17.)
 
 \begin{notice}{note}{Todo}
 
 ``gcd subtraction method''
 \end{notice}
 
-(The {\hyperref[whileexamples:index-4]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 24.)
+(The {\hyperref[whileexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 21.)
 
 \begin{notice}{note}{Todo}
 
 ``gcd recursive definition and solution''
 \end{notice}
 
-(The {\hyperref[whileexamples:index-5]{\emph{original entry}}} is located in  /home/gkt/Work/introcs-lecture-notes/devel/rst/whileexamples.rst, line 28.)
+(The {\hyperref[whileexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 25.)
+
+\begin{notice}{note}{Todo}
+
+more interactive while loops
+\end{notice}
+
+(The {\hyperref[whileinteractive:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileinteractive.rst, line 260.)
 
 
 

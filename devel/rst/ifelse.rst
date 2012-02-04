@@ -59,7 +59,7 @@ later with two ``if``\ s and an ``else``.
 .. index::
    double scope; compound statement
 
-.. rubrick:: More on Compound Statements and Scope
+.. rubric:: More on Compound Statements and Scope
 
 The section on local scope referred to function and method bodies,
 which happen to be enclosed in braces, making a compound statement.
