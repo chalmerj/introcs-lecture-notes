@@ -61,7 +61,7 @@ arithmetic, confirm that C#
 does not consider .1 + .2 to be equal to .3: Write a simple
 condition into csharp to test.
 
-.. rubrick:: Pay with Overtime Example 
+.. rubric:: Pay with Overtime Example 
 
 Given a person's work
 hours for the week and regular hourly wage, calculate the total pay

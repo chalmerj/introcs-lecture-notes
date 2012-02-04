@@ -13,12 +13,15 @@ Introductory Programming in C#
    :maxdepth: 2
    :numbered:
 
+   offerings
    context
    data
    functions
    basicstringops
    decisions
-   loops
+   while
+   foreach
+   for
    arrays
    changelog
 

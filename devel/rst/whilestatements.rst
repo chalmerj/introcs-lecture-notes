@@ -7,12 +7,6 @@
 While-Statements
 ============================ 
 
-
-.. _Simple-while-Loops:
-   
-Simple ``while`` Loops
-----------------------
-
 We have seen that the sequential flow of a program 
 can be altered with function calls
 and decisions.  The last important pattern is *repetition* or *loops*.
@@ -193,7 +187,7 @@ Line   i  Comment
 We have seen that we can produce a regular sequence of numbers in a loop.
 The "Blastoff!" part does not fit the pattern, so it must be a *separate*
 part after the loop.  We need a name for the number that decreases.  It can
-be ``time``.  Remember the general rubrick for a ``while`` loop:
+be ``time``.  Remember the general rubric for a ``while`` loop:
 
     | initialization
     | ``while (`` *continuationCondition* ``) {`` 
@@ -221,9 +215,9 @@ we get ``Blastoff.cs``:
 
 .. literalinclude:: examples/Blastoff.cs
 
-Look back and see how we fit the general rubrick.  
+Look back and see how we fit the general rubric.  
 There are a bunch of things to think about with a while loop, so
-going one step at a time, thinking of the rubrick and the specific
+going one step at a time, thinking of the rubric and the specific
 needs of the current problem, helps.
 
 There are many different (and more exciting) patterns of change coming
@@ -254,7 +248,7 @@ designing a function with a ``while`` loop:
    is a *common error*!
 
 
-.. rubrick:: Sum To ``n``
+.. rubric:: Sum To ``n``
 
 Let us write a function to sum the numbers from 1 to ``n``::
 
@@ -298,7 +292,7 @@ such a name::
 
     newSum = sum + i;
     
-This will work.  We can go through the ``while`` loop rubrick:
+This will work.  We can go through the ``while`` loop rubric:
     
 The variables are ``sum``, ``newSum`` and ``i``.
     
@@ -335,14 +329,14 @@ All together we calculate the sum with::
 
    int sum = 1, i = 2;
    while (i <= n) {
-      newSum = sum + i;
+      int newSum = sum + i;
       i = i + 1;
       sum = newSum:
    }
    
-This exactly follows our general rubrick, with preparation for the next time
+This exactly follows our general rubric, with preparation for the next time
 through the loop at the end of the loop.  
-We can condense it in this case, since ``newSum`` is only used
+We can condense it in this case: Since ``newSum`` is only used
 once, we can do away with it, and directly change the value of sum::
 
    int sum = 1, i = 2;
@@ -368,20 +362,20 @@ variable ``sum``, so the whole function is::
 
 The comment before the function definition does not give a clear idea of the 
 range of possible values for n.  How small makes sense for the comment?
-What actuyally works in the function?  The smallest expression 
+What actually works in the function?  The smallest expression 
 starting with 1 would just be 1: (n = 1).  Does that work in the function?
 You were probably not thinking of that when developing the function!
 Now look back now at this *edge case*.  You can play computer on the code
 or directly test it.  In this case the initialization of ``sum`` is 1,
 and the body of the loop *never* runs (2 <= 1 is false).  The function
-moves right to the return statement, and
+execution jumps right to the return statement, and
 does return 1, and everything is fine.
 
 Now about large n....
 
 With loops we can make programs run for a long time.
 The time taken becomes an issue.  In this case we go though the loop
-close to n times, so the total time is approximately proportional to n.
+n-1 times, so the total time is approximately proportional to n.
 We write that the time is O(n), spoken "oh of n", or "big oh of n" or
 "order of n".
 
@@ -393,9 +387,10 @@ On many systems you will get quite a surprise!
 This is the first place we have to deal with the limited 
 size of the ``int`` type.
 On many systems the limit is a bit over 2 billion.  
-(You can check out the size of ``int.MaxValue`` in csharp.)
+You can check out the size of ``int.MaxValue`` in csharp.
 The answer for 66000,
-and *also* 98765, is bigger.  Luckily the obviously wrong negative answer
+and *also* 98765, is bigger than the upper limit.  
+Luckily the obviously wrong negative answer
 for 66000 pops out at you.  Did you guess before you saw the answer for
 66000, that there was an issue for 
 98765?  It is a good thing that no safety component in a big bridge was being 
@@ -409,7 +404,7 @@ works for 100000 and for 98765.  We can get correct
 answers for things that will take perceptible time.  Try working up to 
 1 billion (1000000000, nine 0's).  It takes a while: O(n) can be slow!
 
-By hand it is a lot slower, unless you totally hange the algorithm:
+By hand it is a lot slower, unless you totally change the algorithm:
 There is a classic story about how a calculation like this
 was done in gradeschool (n=100) by the famous
 mathematician Gauss. His teacher was trying to keep him busy.
@@ -427,265 +422,78 @@ This is basically constant time.  In discussing
 how the speed relates to the size of n, we say it is O(1). 
 The point is here that 1 is a constant.  The time is of *constant order*.
 
-*Working* and being *efficient* are two different things in general.  
+We can write a ridiculously short
+function following Gauss's model.  Here I introduce the variable average,
+as in the motivation for Gauss's answer:
+
+.. literalinclude:: examples/SumToNLongBad.cs
+   :start-after: chunk
+   :end-before: chunk
+
+Compile and test the example program containing it: ``SumToNLongBad.cs``.
+
+Test it with 5, and then try 6. ???
+
+"Ridiculously short" does not imply correct!  The problem goes back
+to the fact that Gauss was in *math class* and you are doing 
+Computer Science.  Think of a subtle difference that might come in here:
+Though (n+1)/2 is fine as math, recall the division operator does not
+always give correct answers in C#.  You get an integer answer from the
+integer (or long) operands.  Of course the exact mathematical final answer
+is an integer when *adding* integers, but splitting it according to
+Gausss's motivation can put a mathematical non-integer in the middle.
+
+The C# fix: The final answer is clearly an integer, so if we do the division
+last, when we know the answer will be an integer, things should be better::
+
+   return n*(n+1)/2;
+
+Here is a shot at the whole function:
+
+.. literalinclude:: examples/SumToNLongBad2.cs
+   :start-after: chunk
+   :end-before: chunk
+
+Compile and test the example program containing it: ``SumToNLongBad2.cs``.
+
+Test it with 5, and then try 6. Ok so far, but go on to long integer range:
+try 66000 that messed us up before.  ??? You get an answer that is not
+a multiple of 1000: not what we got before!  What other issues do we have
+between math and C#?
+
+Further analysis:  To make sure the function always worked, it made sense
+to leave the parameter ``n`` an ``int``.  The function would not work
+with ``n`` as the largest ``long``.  The result can still be big enough
+to only fit in a ``long``, so the return value is a ``long``.  All
+this is reasonable but the C# result is still wrong!  Look deeper.
+While the result of ``n*(n+1)/2`` is *assigned* to a ``long`` variable,
+the *calculation* ``n*(n+1)/2`` is done with ``int``\ s not mathematical
+integers.  By the same general type rule that led to the (n+1)/2 error 
+earlier, these operations on ``int``\ s produce an ``int`` result, even
+when wrong.
+
+We need to force the *calculation* to produce a ``long``. 
+In the correct looping version ``sum`` was a ``long``, and that
+forced all the later arithmentic to be with longs.  Here are two variations
+that work::
+    
+    long nLong = n;
+    return nLong*(nLong+1)/2;
+    
+or we can avoid a new variable name by doing a cast to ``long``, convering
+the first (left) operand to ``long``, so all the later left-to-right
+operations are forced to be ``long``::
+
+    return (long)n*(n+1)/2;
+    
+You can try example ``SumToNLongQuick.cs`` to finally get a result that
+is dependably fast and correct.
+
+Important lessons from this humble summation problem:
+
+- *Working* and being *efficient* are two different things in general.  
+
+- *Math* operations and C# operations are not always the same. 
+  Knowing this in theory is not the same as remembering it in practice.
 
 On to some truly useful loops....
-
-..  later
-
-	.. index::
-	   triple: interactive; loop; while
-	
-	   
-	.. _Interactive-while-Loops:
-		
-	Interactive ``while`` Loops
-	---------------------------
-	
-	The earlier examples of while loops were chosen for their
-	simplicity. Obviously they could have been rewritten with range
-	function calls. Now lets try a more interesting example. Suppose
-	you want to let a user enter a sequence of lines of text, and want
-	to remember each line in a list. This could easily be done with a
-	simple repeat loop if you knew the number of lines to enter. For
-	example, in ``readLines0.cs``, the user is prompted for the exact
-	number of lines to be entered:
-	
-	.. literalinclude:: examples/readLines0.cs
-	   :lines: 3-
-	
-	The user may want to enter a bunch of lines and not count them all
-	ahead of time. This means the number of repetitions would not be
-	known ahead of time. A ``while`` loop is appropriate here. There is
-	still the question of how to test whether the user wants to
-	continue. An obvious but verbose way to do this is to ask before
-	every line if the user wants to continue, as shown below and in the
-	example file ``readLines1.cs``. Read it and then run it:
-	
-	.. literalinclude:: examples/readLines1.cs
-	   :lines: 3-
-	
-	See the *two* statements setting ``testAnswer``:  
-	one before the ``while`` loop and one at the bottom of the loop body.
-	
-	.. note::
-	   The data must be initialized *before* the loop, in order for the
-	   first test of the while condition to work. Also the test must work
-	   when you loop back from the end of the loop body. This means the
-	   data for the test must also be set up a second time, *in* the loop
-	   body.  It is easy to forget the second time!
-	
-	The ``readLines1.cs`` code works, but it may be more annoying than
-	counting ahead! Two lines must be entered for every one you
-	actually want! A practical alternative is to use a *sentinel*: a
-	piece of data that would *not* make sense in the regular sequence,
-	and which is used to indicate the *end* of the input. You could
-	agree to use the line ``DONE!`` Even simpler: if you assume all the
-	real lines of data will actually have some text on them, use an
-	*empty* line as a sentinel. (If you think about it, the C#
-	Shell uses this approach when you enter a statement with an
-	indented body.) This way you only need to enter one extra (very
-	simple) line, no matter how many lines of real data you have.
-	
-	What should the while condition be now? Since the sentinel is an
-	empty line, you might think ``line == ''``, but that is the
-	*termination* condition, not the *continuation* condition: You need
-	the *opposite* condition. To negate a condition in C#, you may
-	use ``not``, like in English,  ::
-	
-		not line == ''
-	
-	Of course in this situation there is a shorter way, ::
-	
-		line != ''
-		
-	Run the example program ``readLines2.cs``, shown below:
-	
-	.. literalinclude:: examples/readLines2.cs
-	   :lines: 3-
-	
-	Again the data for the test in the while loop heading must be
-	initialized before the first time the ``while`` statement is
-	executed and the test data must *also* be made ready inside the
-	loop for the test after the body has executed. Hence you see the
-	statements setting the variable ``line`` both before the loop and
-	at the end of the loop body. It is easy to forget the second place
-	inside the loop!
-	
-	*After* reading the rest of this paragraph,
-	comment the last line of the loop out, and run it again:
-	It will never stop! The
-	variable ``line`` will forever have the initial value you gave it!
-	You actually can stop the program by entering :kbd:`Ctrl-C`. That means
-	hold the :kbd:`Ctrl` key and press :kbd:`c`.
-	
-	.. note::
-	   As you finish coding a ``while`` loop, it is good practice to
-	   always double-check: Did I make a change to the variables, *inside*
-	   the loop, that will eventually make the loop condition ``False``?
-	
-	The earliest ``while`` loop examples had numerical tests and the code
-	to get ready for the next loop just incremented a numerical variable
-	by a fixed amount.  Those were simple examples but ``while`` loops
-	are much more general!  In the interactive loop we have seen a continuation
-	condition with a string test, and getting ready for the next time through
-	the loop involves input from the user.
-	
-	Some of the exercises that follow involve interactive while loops.
-	Others were delayed until here just because they have a wider variety of
-	continuation condition tests and ways to prepare for the next time through
-	the loop.  What is *consistent* is the general steps to think of and
-	questions to ask yourself.  They keep on applying!  Keep these in mind!
-	
-	  * the need to see whether there *is* a kind of
-		repetition, even without a fixed collection of values to work through
-	
-	  * to think from the specific situation and figure out the
-		continuation condition that makes sense for your loop
-	
-	  * to think what specific processing or results you want each time through
-		the loop, using the *same* code
-	
-	  * to figure out what supporting code you need to make you ready for the
-		next time through the loop:  how to make the *same* results code
-		have *new* data values to process each time through, and eventually reach
-		a stopping point.
-		
-	
-	.. _interactive-sumEx:
-		
-	Interactive Sum Exercise
-	~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	Write a program ``sumAll.cs`` that prompts the user to enter
-	numbers, one per line, ending with a line containing 0, and keep a
-	running sum of the numbers. Only print out the sum after all the
-	numbers are entered (at least in your *final* version).
-	Do *not* create a list!  Each time you read in a number, you can
-	immediately use it for your sum, and then be done with the number
-	just entered.
-	
-	.. _Safe-Num-Input-Ex:
-	
-	Safe Number Input Exercise
-	~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	\* There is an issue with reading in numbers with the input statement.
-	If you make a typo and enter something that cannot be converted from a
-	string to the right kind of number, a naive program will bomb.
-	This is avoidable if you test the string and repeat if the string is illegal.
-	In this exercise write safe utility function replacements
-	for the input function that work to read in a whole number, an integer or
-	a decimal number.
-	
-	All parts refer to the previous
-	:ref:`Is-Number-String-Ex`.  Part a. refers to the introduction in the
-	previous exercise.
-	Parts b. and c. refer to functions in the solution, ``isNumberStr.cs``, of
-	the previous exercise.
-	Make sure you look back at these first.
-	
-	Save the example ``safeNumberInputStub.cs`` as ``safeNumberInput.cs``,
-	and complete it.
-	It contains headings and documentation strings
-	for the functions in each part of this exercise.
-	
-	a.  This part considers the simplest case,
-		where you are trying to enter a whole number.
-		Complete the definition of the function ``safeWholeNumber``.
-	
-	b.  Complete the function ``safeInt``.  This easily parallels part a.
-		if you copy in and use the function (not method) ``isIntegerStr``.
-	
-	c.  Complete the function ``safeDecimal``.  This easily parallels part b.
-		if you copy in and use the function ``isDecimalStr``.
-	
-	Savings Exercise
-	~~~~~~~~~~~~~~~~
-	
-	The idea here is to see how many years it will take a bank account to grow
-	to at least a given value, assuming a fixed annual interest.
-	Write a program ``savings.cs``.
-	Prompts the user for three numbers: an initial balance, the annual percentage
-	for interest as a decimal. like .04 for 4%, and the final balance desired.
-	Print the initial balance, and the balance each year until
-	the desired amount is reached. Round displayed amounts
-	to two decimal places, as usual.
-	
-	The math:  The amount next year is the amount now times
-	(1 + interest fraction),
-	so if I have $500 now and the interest rate is .04,
-	I have $500*(1.04) = $520 after one year and after two years I have,
-	$520*(1.04) = $540.80.
-	If I enter into the program a $500 starting balance, .04 interest rate and
-	a target of $550, the program prints::
-	
-	   500.00
-	   520.00
-	   540.80
-	   563.42
-	
-	.. _Strange-Seq-Ex:   
-	
-	Strange Sequence Exercise
-	~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	\* Recall :ref:`Strange-Func-Ex` and its ``jumpFunc.cs`` 
-	which contains the function ``jump``:
-	For any integer n, jump(n) is n//2 if n is even, and 3*n+1 if n is odd.
-	
-	You can start with one number, say n = 3, and *keep* applying the
-	jump function to the *last* number given, and see how the numbers jump around!
-	::
-	
-		jump(3) = 3*3+1 = 10; jump(10) = 10//2 = 5;
-		jump(5) = 3*5+1 = 16; jump(16) = 16//2 = 8;
-		jump(8) = 8//2 = 4; jump(4) = 4//2 = 2;
-		jump(2) = 2//2 = 1
-	
-	This process of repeatedly applying the same function to the most recent result
-	is called function *iteration*.  In this case you see that iterating the
-	jump function, starting from n=3, eventually reaches the value 1.
-	
-	It is an open research question whether iterating the jump function
-	from an integer n will eventually reach 1,
-	for *every* starting integer n greater than 1.
-	Researchers have only found examples of n where it is true.
-	Still, no general argument has been made to apply to the
-	*infinite* number of possible starting integers.
-	
-	In this exercise you iterate the jump function for specific
-	starting values n, until the result is 1.
-	
-	a.  Save example ``jumpSeqStub.cs`` as ``jumpSeq.cs`` and complete the missing
-		function bodies.  If you coded the function ``jump`` before in
-		``jumpFunc.cs``, you can copy it.
-		You can complete either ``printJumps`` or
-		``listJumps`` first, and test before completing the other. Hint [#]_
-	
-	
-	b.  After you have finished and saved ``jumpSeq.cs`` copy it and save
-		the file as ``jumpSeqLengths.cs``.
-	
-		First modify the main method so it prompts the user
-		for a value of n, and then prints just the length of the iterative sequence
-		from listJumps(n).  Hint [#]_
-	
-		Then elaborate the program so it prompts the user for two integers:
-		a lowest starting value of n
-		and a highest starting value of n.
-		For all integers n in the range from the lowest start through
-		the highest start, including the highest,
-		print a sentence giving the starting value of n
-		and the length of the list from ``listJumps(n)``.  An example run::
-	
-			Enter lowest start: 3
-			Enter highest start: 6
-			Starting from 3, jump sequence length 8.
-			Starting from 4, jump sequence length 3.
-			Starting from 5, jump sequence length 6.
-			Starting from 6, jump sequence length 9.
-		
-	
-	
-	
