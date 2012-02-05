@@ -1,23 +1,24 @@
 using System;
 
-class Euclid
-{
+class GreatestCommonDivisorSubtraction {
 
-   /* chunk-Euclid-begin */
-   public static int GCDEuclid(int a, int b)
-   {
-      if (b == 0) {
-         Console.WriteLine("gcd({0}, {1}) = {0}", a, b);
-         return a;
+   // chunk-GCDSM-begin
+   public static int GCDUsingSubtraction(int a, int b) {
+      int c;
+      while (a != b) {
+         while (a > b) {
+            c = a - b;
+            a = c;
+         }
+         while (b > a) {
+            c = b - a;
+            b = c;
+         }
       }
-      else {
-         Console.WriteLine(
-            "gcd({0}, {1}) = gcd({1}, {0} mod {1} = gcd({1}, {2})",
-             a, b, a % b);
-         return GCDEuclid(b, a % b);
-      }
+      return a;
    }
-   /* chunk-Euclid-end */
+   // chunk-GCDSM-end
+
 
    static string InputLine(string prompt)
    {
@@ -36,7 +37,7 @@ class Euclid
       int a = InputInt("Enter an integer: ");
       int b = InputInt("Enter another integer: ");
       Console.WriteLine("The final result is: gcd({0}, {1}) = {2}",
-                        a, b, GCDEuclid(a, b));
+                        a, b, GCDUsingSubtraction(a, b));
    }
 
 }

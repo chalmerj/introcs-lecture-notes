@@ -13,7 +13,7 @@ is not in *reduced* form.
 Consider the fraction :math:`\frac{2}{4}`, which is the same as
 :math:`\frac{1}{2}`. This fraction can be reduced, because the
 numerator and denominator both have greatest common factor of 2. That
-is, :math:`\frac{2}{4} = \frac{1 . 2}{2 . 2}`. So the factor of 2 can
+is, :math:`\frac{2}{4} = \frac{1 \cdot 2}{2 \cdot 2}`. So the factor of 2 can
 be canceled from both the numerator and the denominator.
 
 Euclid (the mathematician from classic times and author of *Elements*)
@@ -68,12 +68,24 @@ GCD "Brute Force" Method
 
    "gcd naive (loop 2 -> max(a, b)"
 
+.. literalinclude:: examples/gcdbruteforce.cs
+   :start-after: chunk-GCDBF-begin
+   :end-before: chunk-GCDBF-end
+   :linenos:
+
+
 GCD Subtraction Method
 ----------------------
 
 .. todo::
 
    "gcd subtraction method"
+
+
+.. literalinclude:: examples/gcdsubtraction.cs
+   :start-after: chunk-GCDSM-begin
+   :end-before: chunk-GCDSM-end
+   :linenos:
 
 
 Preview: Recursive GCD

@@ -1,23 +1,22 @@
 using System;
 
-class Euclid
-{
+class GreatestCommonDivisorBruteForce {
 
-   /* chunk-Euclid-begin */
-   public static int GCDEuclid(int a, int b)
-   {
-      if (b == 0) {
-         Console.WriteLine("gcd({0}, {1}) = {0}", a, b);
-         return a;
+   // chunk-GCDBF-begin
+   public static int GCDUsingSearch(int a, int b) {
+      int n = Math.Max(a, b);
+      int gcd, i;
+
+      i = gcd = 1;
+      while (i <= n) {
+         if (a % i == 0 && b % i == 0)
+            gcd = i;
+         i = i + 1;
       }
-      else {
-         Console.WriteLine(
-            "gcd({0}, {1}) = gcd({1}, {0} mod {1} = gcd({1}, {2})",
-             a, b, a % b);
-         return GCDEuclid(b, a % b);
-      }
+      return gcd;
    }
-   /* chunk-Euclid-end */
+   // chunk-GCDBF-end
+
 
    static string InputLine(string prompt)
    {
@@ -36,7 +35,7 @@ class Euclid
       int a = InputInt("Enter an integer: ");
       int b = InputInt("Enter another integer: ");
       Console.WriteLine("The final result is: gcd({0}, {1}) = {2}",
-                        a, b, GCDEuclid(a, b));
+                        a, b, GCDUsingSearch(a, b));
    }
 
 }
