@@ -52,12 +52,12 @@ If we do this consistent with our indentation conventions so far::
 
 
 This repeatedly increasing indentation with an ``if`` statement in
-the ``else`` clause can be annoying and distracting. A preferred
+the ``else`` clause can be annoying and distracting. Here is a preferred
 alternative in this situation, that avoids all this further
-indentation, is
-to combine each ``else`` and following ``if`` onto the same line, 
-and note that the ``if`` part after an else is just a single
-statement, allowing some braces to be removed:
+indentation:  
+Combine each ``else`` and following ``if`` onto the same line, 
+and note that the ``if`` part after an else is just a *single*
+(possibly very complicated) statement, allowing some braces to be removed:
 
 .. literalinclude:: examples/Grade1.cs
    :start-after: chunk

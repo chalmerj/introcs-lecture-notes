@@ -62,13 +62,16 @@ closely is to make a table with a line for each instruction
 executed, keeping track of all the variables.  We call this
 *playing computer*.
 
-Each row show the line number of the start of the next instruction
+Each row shows the line number of the start of the next instruction
 executed, and the values of all the variables *after* the instruction
 is executed.  The important thing to see with loops is that the same
-lline can be executed over and over, but with different variable
+line can be executed over and over, but with different variable
 values.  We leave a column for the line number, each variable
 that is involved (particularly any that change) and a place for
-comments about what is happening.
+comments about what is happening.  The comment line can be used any time
+it is helpful.  If should be used in particular when something
+is printed and when something is returned, since neither of these
+important actions appear int he variable list.
 
 If you play computer and follow the path of execution, you could
 generate the following table. Remember, that each time you reach
@@ -97,6 +100,9 @@ returns to the ``while`` loop heading for another test. When the
 test is finally false, execution jumps past the indented body of
 the ``while`` loop to the next sequential statement.
 
+.. index::
+   double: while; rubric
+   
 The biggest trick with a loop is to make the same code do the next
 thing you want each time through.  That generally involves 
 the use of variables that are modified for each successive time through
@@ -118,7 +124,7 @@ It is a big deal for beginning students, how to manage all this in general.
 We will see a number of common patterns in lots of practice.  We will use
 the term *successive modification loop* for loops following this pattern.
 
-Test yourself: Following the code.  Figure out what is printed.
+Test yourself: Follow the code.  Figure out what is printed.
 If it helps, get detailed and play computer:
 
 .. literalinclude:: examples/TestWhile1.cs
@@ -224,6 +230,9 @@ There are many different (and more exciting) patterns of change coming
 for loops, 
 but the simple examples so far get us started.
 
+.. index::
+   double: while; questions
+   
 Looking ahead to more complicated and interesting problems,
 here is a more complete list of questions to ask yourself when
 designing a function with a ``while`` loop:
@@ -263,6 +272,8 @@ We know how to generate a sequence of integers, but this is a place
 that a programmer gets tripped up by the speed of the human mind.  
 You are likely
 so quick at this that you just see it all at once, with the answer.
+
+.. index:: concrete example
 
 In fact, you and the computer need to do this in steps.  To help see, let
 us take a concrete example like the one above for SumToN(5), and write out a 
@@ -360,6 +371,9 @@ variable ``sum``, so the whole function is::
      return sum;
   }
 
+.. index::
+   triple: testing; edge case; range testing
+   
 The comment before the function definition does not give a clear idea of the 
 range of possible values for n.  How small makes sense for the comment?
 What actually works in the function?  The smallest expression 
@@ -373,12 +387,18 @@ does return 1, and everything is fine.
 
 Now about large n....
 
+.. index::
+   double: big oh; order of n
+   
 With loops we can make programs run for a long time.
 The time taken becomes an issue.  In this case we go though the loop
 n-1 times, so the total time is approximately proportional to n.
 We write that the time is O(n), spoken "oh of n", or "big oh of n" or
 "order of n".
 
+.. index::
+   double: pitfall; limit on number size
+   
 Computers are pretty fast, so you can try the testing program 
 ``SumToNTest.cs``
 and it will go by so fast, that you will hardly notice.  Try these specific
@@ -404,6 +424,9 @@ works for 100000 and for 98765.  We can get correct
 answers for things that will take perceptible time.  Try working up to 
 1 billion (1000000000, nine 0's).  It takes a while: O(n) can be slow!
 
+.. index::
+   double: Gauss; sum through n
+   
 By hand it is a lot slower, unless you totally change the algorithm:
 There is a classic story about how a calculation like this
 was done in gradeschool (n=100) by the famous
@@ -414,6 +437,9 @@ Gauss discovered the general, exact, mathematical formula:
     
 That is the number of terms (n), times the average term (n+1)/2.
 
+.. index::
+   double: big oh; constant order
+   
 Our loop was instructive, but not the fastest approach.  The simple exact
 formula takes about the same time for any n.  
 (That is as long as the result fits in
@@ -422,6 +448,9 @@ This is basically constant time.  In discussing
 how the speed relates to the size of n, we say it is O(1). 
 The point is here that 1 is a constant.  The time is of *constant order*.
 
+.. index::
+   double: pitfall; division
+   
 We can write a ridiculously short
 function following Gauss's model.  Here I introduce the variable average,
 as in the motivation for Gauss's answer:
@@ -448,6 +477,9 @@ last, when we know the answer will be an integer, things should be better::
 
    return n*(n+1)/2;
 
+.. index::
+   double: pitfall; cast
+   
 Here is a shot at the whole function:
 
 .. literalinclude:: examples/SumToNLongBad2.cs

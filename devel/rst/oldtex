@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 04, 2012}
+\date{February 05, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -2946,7 +2946,7 @@ square braces around the index of the character:
 
 Note from the single quotes that the result is a \code{char} in each case.
 
-\index{double string!method}
+\index{string!method}\index{method!string}
 
 \section{Some Instance Methods and the Length Property}
 \label{stringmethods:index-0}\label{stringmethods::doc}\label{stringmethods:some-instance-methods-and-the-length-property}
@@ -3867,12 +3867,12 @@ If we do this consistent with our indentation conventions so far:
 \end{Verbatim}
 
 This repeatedly increasing indentation with an \code{if} statement in
-the \code{else} clause can be annoying and distracting. A preferred
+the \code{else} clause can be annoying and distracting. Here is a preferred
 alternative in this situation, that avoids all this further
-indentation, is
-to combine each \code{else} and following \code{if} onto the same line,
-and note that the \code{if} part after an else is just a single
-statement, allowing some braces to be removed:
+indentation:
+Combine each \code{else} and following \code{if} onto the same line,
+and note that the \code{if} part after an else is just a \emph{single}
+(possibly very complicated) statement, allowing some braces to be removed:
 
 \begin{Verbatim}[commandchars=\\\{\}]
    \PYG{c+cm}{/** Return letter grade for score. */}
@@ -3963,7 +3963,7 @@ You may find \code{Wages2.cs} easier to adapt than \code{Wages1.cs}.
 
 \section{If-statement Pitfalls}
 \label{ifpitfalls:if-statement-pitfalls}\label{ifpitfalls::doc}
-\index{common error!semicolon after condition if statement}\index{semicolon after condition!if statement, common error}\index{if statement!common error semicolon after condition}
+\index{pitfall!semicolon after condition if statement}\index{semicolon after condition!if statement, pitfall}\index{if statement!pitfall semicolon after condition}
 
 \subsection{Dangerous Semicolon}
 \label{ifpitfalls:dangerous-semicolon}\label{ifpitfalls:index-0}
@@ -4014,7 +4014,7 @@ generate a compiler error, though it may appear crypic:
     \PYG{c+c1}{// ...}
 \end{Verbatim}
 
-\index{common error!dangling else if-else}\index{dangling else!if-else, common error}\index{if-else!common error dangling else}
+\index{pitfall!dangling else if-else}\index{dangling else!if-else, pitfall}\index{if-else!pitfall dangling else}
 
 \subsection{Match Wrong \texttt{if} With \texttt{else}}
 \label{ifpitfalls:match-wrong-if-with-else}\label{ifpitfalls:index-1}
@@ -4072,7 +4072,7 @@ The \code{else} must go
 with the first \code{if}. Now when the \code{else} part is reached, the statement
 printed will be true: \code{x} is not positive, and the test of \code{y} is skipped.
 
-\index{common error!need braces if statement}\index{need braces!if statement, common error}\index{if statement!common error need braces}
+\index{pitfall!need braces if statement}\index{need braces!if statement, pitfall}\index{if statement!pitfall need braces}
 
 \subsection{Missing Braces}
 \label{ifpitfalls:index-2}\label{ifpitfalls:missing-braces}
@@ -4335,13 +4335,16 @@ closely is to make a table with a line for each instruction
 executed, keeping track of all the variables.  We call this
 \emph{playing computer}.
 
-Each row show the line number of the start of the next instruction
+Each row shows the line number of the start of the next instruction
 executed, and the values of all the variables \emph{after} the instruction
 is executed.  The important thing to see with loops is that the same
-lline can be executed over and over, but with different variable
+line can be executed over and over, but with different variable
 values.  We leave a column for the line number, each variable
 that is involved (particularly any that change) and a place for
-comments about what is happening.
+comments about what is happening.  The comment line can be used any time
+it is helpful.  If should be used in particular when something
+is printed and when something is returned, since neither of these
+important actions appear int he variable list.
 
 If you play computer and follow the path of execution, you could
 generate the following table. Remember, that each time you reach
@@ -4431,6 +4434,7 @@ returns to the \code{while} loop heading for another test. When the
 test is finally false, execution jumps past the indented body of
 the \code{while} loop to the next sequential statement.
 
+\index{while!rubric}\index{rubric!while}
 The biggest trick with a loop is to make the same code do the next
 thing you want each time through.  That generally involves
 the use of variables that are modified for each successive time through
@@ -4459,7 +4463,7 @@ It is a big deal for beginning students, how to manage all this in general.
 We will see a number of common patterns in lots of practice.  We will use
 the term \emph{successive modification loop} for loops following this pattern.
 
-Test yourself: Following the code.  Figure out what is printed.
+Test yourself: Follow the code.  Figure out what is printed.
 If it helps, get detailed and play computer:
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
@@ -4653,6 +4657,7 @@ There are many different (and more exciting) patterns of change coming
 for loops,
 but the simple examples so far get us started.
 
+\index{while!questions}\index{questions!while}
 Looking ahead to more complicated and interesting problems,
 here is a more complete list of questions to ask yourself when
 designing a function with a \code{while} loop:
@@ -4712,6 +4717,7 @@ that a programmer gets tripped up by the speed of the human mind.
 You are likely
 so quick at this that you just see it all at once, with the answer.
 
+\index{concrete example}
 In fact, you and the computer need to do this in steps.  To help see, let
 us take a concrete example like the one above for SumToN(5), and write out a
 detailed sequence of steps like:
@@ -4832,6 +4838,7 @@ variable \code{sum}, so the whole function is:
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
+\index{testing!edge case range testing}\index{edge case!range testing, testing}\index{range testing!testing edge case}
 The comment before the function definition does not give a clear idea of the
 range of possible values for n.  How small makes sense for the comment?
 What actually works in the function?  The smallest expression
@@ -4845,12 +4852,14 @@ does return 1, and everything is fine.
 
 Now about large n....
 
+\index{big oh!order of n}\index{order of n!big oh}
 With loops we can make programs run for a long time.
 The time taken becomes an issue.  In this case we go though the loop
 n-1 times, so the total time is approximately proportional to n.
 We write that the time is O(n), spoken ``oh of n'', or ``big oh of n'' or
 ``order of n''.
 
+\index{pitfall!limit on number size}\index{limit on number size!pitfall}
 Computers are pretty fast, so you can try the testing program
 \code{SumToNTest.cs}
 and it will go by so fast, that you will hardly notice.  Try these specific
@@ -4876,6 +4885,7 @@ works for 100000 and for 98765.  We can get correct
 answers for things that will take perceptible time.  Try working up to
 1 billion (1000000000, nine 0's).  It takes a while: O(n) can be slow!
 
+\index{Gauss!sum through n}\index{sum through n!Gauss}
 By hand it is a lot slower, unless you totally change the algorithm:
 There is a classic story about how a calculation like this
 was done in gradeschool (n=100) by the famous
@@ -4888,6 +4898,7 @@ Gauss discovered the general, exact, mathematical formula:
 
 That is the number of terms (n), times the average term (n+1)/2.
 
+\index{big oh!constant order}\index{constant order!big oh}
 Our loop was instructive, but not the fastest approach.  The simple exact
 formula takes about the same time for any n.
 (That is as long as the result fits in
@@ -4896,6 +4907,7 @@ This is basically constant time.  In discussing
 how the speed relates to the size of n, we say it is O(1).
 The point is here that 1 is a constant.  The time is of \emph{constant order}.
 
+\index{pitfall!division}\index{division!pitfall}
 We can write a ridiculously short
 function following Gauss's model.  Here I introduce the variable average,
 as in the motivation for Gauss's answer:
@@ -4929,6 +4941,7 @@ last, when we know the answer will be an integer, things should be better:
 \PYG{k}{return} \PYG{n}{n}\PYG{p}{*}\PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}
 \end{Verbatim}
 
+\index{pitfall!cast}\index{cast!pitfall}
 Here is a shot at the whole function:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -5058,6 +5071,7 @@ sequence above, the call would be:
 \code{InputIntInRange("Enter a score: ", 0, 100)}
 \end{quote}
 
+\index{concrete example!splitting a loop}\index{splitting a loop!concrete example}
 There is an issue with the common term ``loop'' in programming.
 In normal English, a loop has no beginning and no end, like a circle.
 C\# loops have a sequence of statements with a definite beginning and end.
@@ -5167,6 +5181,7 @@ As a first version, we can use the parameter \code{prompt}:
 
 That is the initialization step before the loop.
 
+\index{pitfall!repeat interactive input}\index{repeat interactive input!pitfall}
 If we get into the body of the loop, it means there is an error,
 and the concrete example indicates we print a warning message.
 The concrete example \emph{also} shows another step in the loop, asking
@@ -5180,6 +5195,7 @@ the initialization \emph{and} coming back
 from the bottom of the loop.  To get a \emph{new} value to test, we must
 \emph{repeat} getting input from the user at the bottom of the loop body.
 
+\index{pitfall!repeat declaration}\index{repeat declaration!pitfall}
 You might decide to be quick
 and just copy the initialization line into the bottom of the
 loop (and indent it):
@@ -5238,9 +5254,12 @@ We could use
 but we need the code twice, and it is quite a mouthful.
 Thus far we have only seen the use of format strings when immediately
 printing with \code{Console.Write} (or \code{WriteLine}).
-Here we would like to generate a string, for \emph{use later}.  We introduce
-the already defined
-function \code{string.Format}, which does just what we want:  The parameters
+Here we would like to generate a string, for \emph{use later}.
+
+\index{string!Format}\index{Format!string}
+We introduce
+the C\# library function  \code{string.Format}, which does just what we want:
+The parameters
 have the same form as for \code{Console.Write}, but the formatted string is
 \emph{returned}.
 
@@ -5272,6 +5291,7 @@ This time around we did the user input correctly, with the
 request for new input \emph{repeated} at the end of the loop.
 That repetition \emph{is} easy to forget.  Before we see what happens, note:
 
+\index{pitfall!infinite loop}\index{infinite loop!pitfall}
 \begin{notice}{warning}{Warning:}
 A \code{while} loop may be written so the continuation condition is
 \emph{always} true, and the loop \emph{never} stops by itself.
@@ -5382,7 +5402,7 @@ is not in \emph{reduced} form.
 Consider the fraction $\frac{2}{4}$, which is the same as
 $\frac{1}{2}$. This fraction can be reduced, because the
 numerator and denominator both have greatest common factor of 2. That
-is, $\frac{2}{4} = \frac{1 . 2}{2 . 2}$. So the factor of 2 can
+is, $\frac{2}{4} = \frac{1 \cdot 2}{2 \cdot 2}$. So the factor of 2 can
 be canceled from both the numerator and the denominator.
 
 Euclid (the mathematician from classic times and author of \emph{Elements})
@@ -5443,6 +5463,21 @@ these two numbers is always 5 as the order doesn't matter.
 ``gcd naive (loop 2 -\textgreater{} max(a, b)''
 \end{notice}
 
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GCDUsingSearch}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Max}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{gcd}\PYG{p}{,} \PYG{n}{i}\PYG{p}{;}
+
+      \PYG{n}{i} \PYG{p}{=} \PYG{n}{gcd} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{i} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{b} \PYG{p}{\PYGZpc{}} \PYG{n}{i} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{)}
+            \PYG{n}{gcd} \PYG{p}{=} \PYG{n}{i}\PYG{p}{;}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{gcd}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
 
 \subsection{GCD Subtraction Method}
 \label{gcdexamples:gcd-subtraction-method}
@@ -5451,18 +5486,35 @@ these two numbers is always 5 as the order doesn't matter.
 ``gcd subtraction method''
 \end{notice}
 
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GCDUsingSubtraction}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{a} \PYG{p}{!}\PYG{p}{=} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k}{while} \PYG{p}{(}\PYG{n}{a} \PYG{p}{\textgreater{}} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{c} \PYG{p}{=} \PYG{n}{a} \PYG{p}{-} \PYG{n}{b}\PYG{p}{;}
+            \PYG{n}{a} \PYG{p}{=} \PYG{n}{c}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
+         \PYG{k}{while} \PYG{p}{(}\PYG{n}{b} \PYG{p}{\textgreater{}} \PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{c} \PYG{p}{=} \PYG{n}{b} \PYG{p}{-} \PYG{n}{a}\PYG{p}{;}
+            \PYG{n}{b} \PYG{p}{=} \PYG{n}{c}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{a}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
 
 \subsection{Preview: Recursive GCD}
 \label{gcdexamples:preview-recursive-gcd}
 As it turns out, we can transform the earlier definition of greatest
 common divisor (as formulated by Euclid) directly into C\# using a
-technique known as \emph{recursion}, where a function calls itself
+technique known as \emph{recursion}, where a function calls \emph{itself}
 inside its definition. We don't expect you to master this
 technique immediately but do feel that it is important you at least
 \emph{hear} about it and see its tremendous power:
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GreatestCommonDivisorEuclid}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
+   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GCDEuclid}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
    \PYG{p}{\PYGZob{}}
       \PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
          \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"gcd(\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}) = \PYGZob{}0\PYGZcb{}"}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
@@ -5472,7 +5524,7 @@ technique immediately but do feel that it is important you at least
          \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}
             \PYG{l+s}{"gcd(\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}) = gcd(\PYGZob{}1\PYGZcb{}, \PYGZob{}0\PYGZcb{} mod \PYGZob{}1\PYGZcb{} = gcd(\PYGZob{}1\PYGZcb{}, \PYGZob{}2\PYGZcb{})"}\PYG{p}{,}
              \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
-	      \PYG{k}{return} \PYG{n+nf}{GreatestCommonDivisorEuclid}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+         \PYG{k}{return} \PYG{n+nf}{GCDEuclid}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
    \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
@@ -5505,7 +5557,7 @@ there is a direct final answer.
 \section{Homework: Grade Calculation from Individual Scores}
 \label{homework-gradecalculation2:homework-grade-calculation-from-individual-scores}\label{homework-gradecalculation2:homework-grade-calculation2}\label{homework-gradecalculation2:index-0}\label{homework-gradecalculation2::doc}
 In the previous assignment, we calculated grades based on a \emph{memorized}
-grade within each of the categories below:
+overall grade within each of the categories below:
 \begin{itemize}
 \item {} 
 exams - 40\% (integer weight is 40)
@@ -5526,51 +5578,54 @@ participation - 10\% (weight 10)
 
 In this assignment, we are going to change the specification slightly
 to make the program a bit smarter. Instead of someone having to remember
-what their grade for each category was, we will prompt the user for
+what their average grade was for each category, we will prompt the user for
 the number of items within each category (e.g. number of exams, number
-of labs, etc.)
+of labs, etc.), have the user enter individual grades, and have the program
+calculate the average for the category.
 
 As usual, we will begin by specifying \emph{requirements}. Whenever required,
 we will explain how you would approach the solution to the requirement
-in C\#.
+in C\#.  User responses are shown \textbf{bold faced}.
 
 
 \subsection{Requirements}
 \label{homework-gradecalculation2:requirements}\begin{enumerate}
 \item {} 
 Add code to prompt the user for the number of items in each category:
+\begin{quote}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{number} \PYG{n}{of} \PYG{n}{exams}\PYG{p}{?}
-\PYG{l+m}{3}
-\end{Verbatim}
+Please enter the number of exams: \textbf{3}
+\end{quote}
 
 \item {} 
-Instead of prompting the user for an exam grade, use a loop to
+Instead of prompting the user for an overall average
+exam grade, use a loop to
 read one grade at a time. The grades will be added together (on the fly)
 to give the grade for that category. For example, after you have asked
 for the number of exams, you'd prompt the user to enter each exam
-grade and compute the sum. To make sure everyone understands what should
+grade and have the program compute the sum.
+To make sure everyone understands what should
 be happening, you should also print a \emph{running total} of the grade
 category you're calculating:
+\begin{quote}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{grade} \PYG{k}{for} \PYG{n}{exam} \PYG{l+m}{1}\PYG{p}{:}
-\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}
-\PYG{n}{Total} \PYG{n}{exam} \PYG{n}{points}\PYG{p}{:} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}
+\begin{DUlineblock}{0em}
+\item[] Please enter the grade for exam 1: \textbf{100}
+\item[] Total exam points: 100
+\item[] 
+\item[] Please enter the grade for exam 2: \textbf{90}
+\item[] Total exam points: 190
+\item[] 
+\item[] Please enter the grade for exam 3: \textbf{80}
+\item[] Total exam points: 270
+\item[] 
+\item[] Calculated average exam grade = 90.0
+\end{DUlineblock}
+\end{quote}
 
-\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{grade} \PYG{k}{for} \PYG{n}{exam} \PYG{l+m}{2}\PYG{p}{:}
-\PYG{l+m}{9}\PYG{l+m}{0}
-\PYG{n}{Total} \PYG{n}{exam} \PYG{n}{points}\PYG{p}{:} \PYG{l+m}{1}\PYG{l+m}{9}\PYG{l+m}{0}
-
-\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{grade} \PYG{k}{for} \PYG{n}{exam} \PYG{l+m}{3}\PYG{p}{:}
-\PYG{l+m}{8}\PYG{l+m}{0}
-\PYG{n}{Total} \PYG{n}{exam} \PYG{n}{points}\PYG{p}{:} \PYG{l+m}{2}\PYG{l+m}{7}\PYG{l+m}{0}
-
-\PYG{n}{Calculated} \PYG{n}{exam} \PYG{n}{grade} \PYG{p}{=} \PYG{l+m}{9}\PYG{l+m}{0.0}
-\end{Verbatim}
-
-This will be repeated for all categories.
+Write a function to do this that can be reused for each
+category.  (Since it works for each category, the category
+name will need to be a parameter.)
 
 \item {} 
 Once you have read in the data for each of the items within a category,
@@ -5586,35 +5641,42 @@ This assignment will be the first one where you need to start using
 functions. Otherwise, you'll find yourself getting tired within minutes
 of starting your work.{}`
 
-You need to have two functions to prompt the user for integer and double
-data. We're going to give you the code for these here, but your job is to
-copy them into your program and make use of them in your solution.
-
-This function (or method) will prompt the user to enter an integer.
-\begin{quote}
-
-\begin{Verbatim}[commandchars=\\\{\}]
-      \PYG{k}{public} \PYG{k+kt}{int} \PYG{n+nf}{ReadInteger}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{message}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-         \PYG{k+kt}{string} \PYG{n}{input}\PYG{p}{;}
-         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{message}\PYG{p}{)}\PYG{p}{;}
-         \PYG{n}{input} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-         \PYG{k}{return} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{input}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}
-\end{Verbatim}
-\end{quote}
-
-This function (or method)  will prompt the user to enter a double.
-\begin{quote}
+You need to have two functions to prompt the user to input
+integer and double
+data. We're going to give you the code for these here and in
+example \code{PromptUser1.cs}.  Your job is to
+copy them into your program and make use of them in your solution.  The
+first function is
+a supporting function to return a string in response to a prompt.
+These versions are sufficient for the assignment,
+though you are \emph{welcomed} to replace these
+with more \emph{robust} versions that get developed in class later:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-      \PYG{k}{public} \PYG{k+kt}{double} \PYG{n+nf}{ReadDouble}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{message}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-         \PYG{k+kt}{string} \PYG{n}{input}\PYG{p}{;}
-         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{message}\PYG{p}{)}\PYG{p}{;}
-         \PYG{n}{input} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-         \PYG{k}{return} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{input}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}
+   \PYG{c+cm}{/** Return a line from the keyboard}
+\PYG{c+cm}{    * after displaying the prompt. */}
+   \PYG{k}{static} \PYG{k+kt}{string} \PYG{n+nf}{InputLine}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k}{return} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+
+   \PYG{c+cm}{/** Return an integer entered from the keyboard}
+\PYG{c+cm}{    * after displaying the prompt. */}
+   \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{InputInt}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{string} \PYG{n}{nStr} \PYG{p}{=} \PYG{n}{InputLine}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{//Trim removes enclosing blanks}
+      \PYG{k}{return} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{nStr}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+
+   \PYG{c+cm}{/** Return a double entered from the keyboard}
+\PYG{c+cm}{    * after displaying the prompt. */}
+   \PYG{k}{static} \PYG{k+kt}{double} \PYG{n+nf}{InputDouble}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{string} \PYG{n}{nStr} \PYG{p}{=} \PYG{n}{InputLine}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{//Trim removes enclosing blanks}
+      \PYG{k}{return} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{nStr}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
-\end{quote}
 
 \index{double loop!foreach}
 
@@ -6610,13 +6672,6 @@ two dimensional arrays
 
 \begin{notice}{note}{Todo}
 
-more interactive while loops
-\end{notice}
-
-(The {\hyperref[whileinteractive:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileinteractive.rst, line 260.)
-
-\begin{notice}{note}{Todo}
-
 ``gcd naive (loop 2 -\textgreater{} max(a, b)''
 \end{notice}
 
@@ -6627,7 +6682,14 @@ more interactive while loops
 ``gcd subtraction method''
 \end{notice}
 
-(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 78.)
+(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 84.)
+
+\begin{notice}{note}{Todo}
+
+more interactive while loops
+\end{notice}
+
+(The {\hyperref[whileinteractive:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileinteractive.rst, line 276.)
 
 
 

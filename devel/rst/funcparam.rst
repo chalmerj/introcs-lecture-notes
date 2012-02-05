@@ -1,6 +1,6 @@
 
 .. index::
-   double: function; parameters
+   double: function; parameter
 
 .. _Function-Parameters:
 

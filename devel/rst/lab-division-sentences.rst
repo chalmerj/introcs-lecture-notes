@@ -242,7 +242,7 @@ the C# interpreter) into your text editor::
 .. _java-mode:
 
 .. index::
-   double:emacs; java-mode
+   double: emacs; java-mode
 
 Proper Indentation and Emacs java-mode
 --------------------------------------
