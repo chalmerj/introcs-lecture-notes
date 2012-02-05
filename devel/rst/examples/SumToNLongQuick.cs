@@ -1,21 +1,22 @@
 using System;
 
-class SumToNTest  // INCORRECT!
+class SumToNTest  // finally quick and correct
 {
-                              // bad chunk
+                              // good chunk
    /** Return the sum of the numbers from 1 through n. */
-   static long SumToN(int n)  //CHANGED:  quick and still WRONG
+   static long SumToN(int n)
    {
-      long sum = n*(n+1)/2;  // final division will produce an integer
-      return sum;
+      return (long)n*(n+1)/2;
    }
-                              // end bad chunk
+                              // end good chunk
    static void Main()
    {
       int n = InputInt("Enter the largest number in the sum: ");
       Console.WriteLine("The sum of 1 through {0} is {1}.", n, SumToN(n));
    }
 
+   // standard utility functions hereafter
+   
    static string InputLine(string prompt)
    {
       Console.Write(prompt);

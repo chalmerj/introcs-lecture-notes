@@ -81,7 +81,7 @@ Preview: Recursive GCD
 
 As it turns out, we can transform the earlier definition of greatest
 common divisor (as formulated by Euclid) directly into C# using a
-technique known as *recursion*, where a function calls itself
+technique known as *recursion*, where a function calls *itself*
 inside its definition. We don't expect you to master this
 technique immediately but do feel that it is important you at least
 *hear* about it and see its tremendous power:
