@@ -2141,7 +2141,7 @@ prints a \emph{short} poem or song verse. Give a meaningful name to the
 function. Have the program call the function three times,
 so the poem or verse is repeated three times.
 
-\index{function!parameters}\index{parameters!function}
+\index{function!parameter}\index{parameter!function}
 
 \section{Function Parameters}
 \label{funcparam:index-0}\label{funcparam::doc}\label{funcparam:function-parameters}\label{funcparam:id1}
