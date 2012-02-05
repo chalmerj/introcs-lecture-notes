@@ -11,15 +11,15 @@ example to illustrate the power of loops. Everyone learns about the
 is not in *reduced* form.
 
 Consider the fraction :math:`\frac{2}{4}`, which is the same as
-:math:`\frac{1}{2}`. This fraction can be reduced, becuase the
+:math:`\frac{1}{2}`. This fraction can be reduced, because the
 numerator and denominator both have greatest common factor of 2. That
 is, :math:`\frac{2}{4} = \frac{1 . 2}{2 . 2}`. So the factor of 2 can
-be cancelled from both the numerator and the denominator.
+be canceled from both the numerator and the denominator.
 
 Euclid (the mathematician from classic times and author of *Elements*)
 is credited with having come up with a clever algorithm for how to
 compute the greatest common divisor efficiently. It is written as
-follows:
+follows, where :math:`a \bmod b` means ``a % b`` in C#.
 
 .. math::
 
@@ -42,7 +42,7 @@ To gain some appreciation of how the definition *always* allows you to
 compute the greatest common divisor, it is worthwhile to try it out
 for a couple of numbers where you *know* the greatest common
 divisor. For example, we already know that the greatest common divisor
-of 25 and 35 is 5. Let's use Euclid's method to verify this:
+of 10 and 15 is 5. Let's use Euclid's method to verify this:
 
 - :math:`gcd(10, 15) = gcd(15, 10 \bmod 15) = gcd(15, 10)`
 
@@ -53,18 +53,14 @@ of 25 and 35 is 5. Let's use Euclid's method to verify this:
 - :math:`gcd(5, 0) = 5`
 
 
-It's also worthwhile to take a look at what happens when you try to
-compute the greatest common divisor of 15 and 10 (i.e. where the
-values are swapped):
-
-- :math:`gcd(15, 10) = gcd(10, 15 \bmod 10) = gcd(10, 5)`
-- :math:`gcd(10, 5) = gcd(5, 10 \bmod 5) = gcd(5, 0)`
-- :math:`gcd(5, 0) = 5`
+Notice that in the example above, the first number (10) was smaller than 
+the second (15), and the first transformation just swapped the numbers,
+so the larger number was first.  Thereafter the first number is always
+larger.
 
 In other words, Euclid's method is smart enough to work for 10 and 15
 and 15 and 10. And it must. After all, the greatest common divisor of
 these two numbers is always 5 as the order doesn't matter.
-
 
 GCD "Brute Force" Method
 ------------------------
@@ -85,21 +81,31 @@ Preview: Recursive GCD
 
 As it turns out, we can transform the earlier definition of greatest
 common divisor (as formulated by Euclid) directly into C# using a
-technique known as *recursion*. We don't expect you to master this
+technique known as *recursion*, where a function calls itself
+inside its definition. We don't expect you to master this
 technique immediately but do feel that it is important you at least
 *hear* about it and see its tremendous power:
 
 .. literalinclude:: examples/gcd.cs
-   :start-after: snip-Euclid-begin
-   :end-before: snip-Euclid-end
+   :start-after: chunk-Euclid-begin
+   :end-before: chunk-Euclid-end
    :linenos:
 
 
 - Recalling our earlier definition, the case :math:`gcd(a, 0) = a` is
-  handled by lines 2-4.
+  handled by lines 3-6.
 
 - And the case :math:`gcd(a, b) = gcd(b, a \bmod b)` is handled by
-  line 7.
+  line 11.
 
-- Lines 3 and 6 exist to show you all of the *steps* that Euclid's
+- Lines 4 and 8-10 exist to show you all of the *steps* that Euclid's
   algorithm takes to compute the greatest common divisor.
+
+The mathematical definition of gcd *refers to itself* in its own definition.  
+The recursive version of the ``gcd`` function *refers to itself*
+by *calling* itself.  Though this seems circular, you can see
+from the examples that it works very well.  The important point is that
+the calls to the same function are not completely the same:
+*Successive* calls have *smaller* second numbers, and the second
+number eventually reaches 0, and in that case 
+there is a direct final answer.

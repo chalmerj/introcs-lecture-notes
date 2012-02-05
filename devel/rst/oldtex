@@ -5341,21 +5341,6 @@ numbers are entered (at least in your \emph{final} version).
 ``bisection method''
 \end{notice}
 
-\begin{notice}{note}{Todo}
-
-``gcd naive (loop 2 -\textgreater{} max(a, b)''
-\end{notice}
-
-\begin{notice}{note}{Todo}
-
-``gcd subtraction method''
-\end{notice}
-
-\begin{notice}{note}{Todo}
-
-``gcd recursive definition and solution''
-\end{notice}
-
 
 \subsection{Savings Exercise}
 \label{whileexamples:savings-exercise}
@@ -5382,6 +5367,254 @@ a target of \$550, the program prints:
 \PYG{l+m}{5}\PYG{l+m}{4}\PYG{l+m}{0.80}
 \PYG{l+m}{5}\PYG{l+m}{6}\PYG{l+m}{3.42}
 \end{Verbatim}
+
+
+\section{More While Examples}
+\label{gcdexamples:more-while-examples}\label{gcdexamples::doc}
+
+\subsection{Greatest Common Divisor}
+\label{gcdexamples:greatest-common-divisor}
+The \emph{greatest common divisor} of two non-zero integers is a great
+example to illustrate the power of loops. Everyone learns about the
+\emph{concept} of a greatest common divisor when faced with a fraction that
+is not in \emph{reduced} form.
+
+Consider the fraction $\frac{2}{4}$, which is the same as
+$\frac{1}{2}$. This fraction can be reduced, because the
+numerator and denominator both have greatest common factor of 2. That
+is, $\frac{2}{4} = \frac{1 . 2}{2 . 2}$. So the factor of 2 can
+be canceled from both the numerator and the denominator.
+
+Euclid (the mathematician from classic times and author of \emph{Elements})
+is credited with having come up with a clever algorithm for how to
+compute the greatest common divisor efficiently. It is written as
+follows, where $a \bmod b$ means \code{a \% b} in C\#.
+\begin{gather}
+\begin{split}gcd(a, b) = gcd(b, a \bmod b)\end{split}\notag\\\begin{split}gcd(a, 0) = a\end{split}\notag
+\end{gather}
+It is common in mathematics to list functions as one or more
+\emph{cases}. The way you read this is as follows:
+\begin{itemize}
+\item {} 
+In general, the greatest common divisor of \code{a} and \code{b} is the
+same as computing the greatest common divisor of \code{b} and the
+remainder of \code{a} divided by \code{b}.
+
+\item {} 
+In the case where \code{b} is zero, the result is \code{a}. This makes
+sense because \code{a} divides itself and 0.
+
+\end{itemize}
+
+To gain some appreciation of how the definition \emph{always} allows you to
+compute the greatest common divisor, it is worthwhile to try it out
+for a couple of numbers where you \emph{know} the greatest common
+divisor. For example, we already know that the greatest common divisor
+of 10 and 15 is 5. Let's use Euclid's method to verify this:
+\begin{itemize}
+\item {} 
+$gcd(10, 15) = gcd(15, 10 \bmod 15) = gcd(15, 10)$
+
+\item {} 
+$gcd(15, 10) = gcd(10, 15 \bmod 10) = gcd(10, 5)$
+
+\item {} 
+$gcd(10, 5) = gcd(5, 10 \bmod 5) = gcd(5, 0)$
+
+\item {} 
+$gcd(5, 0) = 5$
+
+\end{itemize}
+
+Notice that in the example above, the first number (10) was smaller than
+the second (15), and the first transformation just swapped the numbers,
+so the larger number was first.  Thereafter the first number is always
+larger.
+
+In other words, Euclid's method is smart enough to work for 10 and 15
+and 15 and 10. And it must. After all, the greatest common divisor of
+these two numbers is always 5 as the order doesn't matter.
+
+
+\subsection{GCD ``Brute Force'' Method}
+\label{gcdexamples:gcd-brute-force-method}
+\begin{notice}{note}{Todo}
+
+``gcd naive (loop 2 -\textgreater{} max(a, b)''
+\end{notice}
+
+
+\subsection{GCD Subtraction Method}
+\label{gcdexamples:gcd-subtraction-method}
+\begin{notice}{note}{Todo}
+
+``gcd subtraction method''
+\end{notice}
+
+
+\subsection{Preview: Recursive GCD}
+\label{gcdexamples:preview-recursive-gcd}
+As it turns out, we can transform the earlier definition of greatest
+common divisor (as formulated by Euclid) directly into C\# using a
+technique known as \emph{recursion}, where a function calls itself
+inside its definition. We don't expect you to master this
+technique immediately but do feel that it is important you at least
+\emph{hear} about it and see its tremendous power:
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GreatestCommonDivisorEuclid}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"gcd(\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}) = \PYGZob{}0\PYGZcb{}"}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+         \PYG{k}{return} \PYG{n}{a}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{else} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}
+            \PYG{l+s}{"gcd(\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}) = gcd(\PYGZob{}1\PYGZcb{}, \PYGZob{}0\PYGZcb{} mod \PYGZob{}1\PYGZcb{} = gcd(\PYGZob{}1\PYGZcb{}, \PYGZob{}2\PYGZcb{})"}\PYG{p}{,}
+             \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+	      \PYG{k}{return} \PYG{n+nf}{GreatestCommonDivisorEuclid}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\begin{itemize}
+\item {} 
+Recalling our earlier definition, the case $gcd(a, 0) = a$ is
+handled by lines 3-6.
+
+\item {} 
+And the case $gcd(a, b) = gcd(b, a \bmod b)$ is handled by
+line 11.
+
+\item {} 
+Lines 4 and 8-10 exist to show you all of the \emph{steps} that Euclid's
+algorithm takes to compute the greatest common divisor.
+
+\end{itemize}
+
+The mathematical definition of gcd \emph{refers to itself} in its own definition.
+The recursive version of the \code{gcd} function \emph{refers to itself}
+by \emph{calling} itself.  Though this seems circular, you can see
+from the examples that it works very well.  The important point is that
+the calls to the same function are not completely the same:
+\emph{Successive} calls have \emph{smaller} second numbers, and the second
+number eventually reaches 0, and in that case
+there is a direct final answer.
+
+\index{homework!input-output decisions}\index{input-output!decisions, homework}\index{decisions!homework input-output}\index{homework!input-output loops}\index{input-output!loops, homework}\index{loops!homework input-output}
+
+\section{Homework: Grade Calculation from Individual Scores}
+\label{homework-gradecalculation2:homework-grade-calculation-from-individual-scores}\label{homework-gradecalculation2:homework-grade-calculation2}\label{homework-gradecalculation2:index-0}\label{homework-gradecalculation2::doc}
+In the previous assignment, we calculated grades based on a \emph{memorized}
+grade within each of the categories below:
+\begin{itemize}
+\item {} 
+exams - 40\% (integer weight is 40)
+
+\item {} 
+labs - 15\% (weight 15)
+
+\item {} 
+homework - 15\% (weight 15)
+
+\item {} 
+project - 20\% (weight 20)
+
+\item {} 
+participation - 10\% (weight 10)
+
+\end{itemize}
+
+In this assignment, we are going to change the specification slightly
+to make the program a bit smarter. Instead of someone having to remember
+what their grade for each category was, we will prompt the user for
+the number of items within each category (e.g. number of exams, number
+of labs, etc.)
+
+As usual, we will begin by specifying \emph{requirements}. Whenever required,
+we will explain how you would approach the solution to the requirement
+in C\#.
+
+
+\subsection{Requirements}
+\label{homework-gradecalculation2:requirements}\begin{enumerate}
+\item {} 
+Add code to prompt the user for the number of items in each category:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{number} \PYG{n}{of} \PYG{n}{exams}\PYG{p}{?}
+\PYG{l+m}{3}
+\end{Verbatim}
+
+\item {} 
+Instead of prompting the user for an exam grade, use a loop to
+read one grade at a time. The grades will be added together (on the fly)
+to give the grade for that category. For example, after you have asked
+for the number of exams, you'd prompt the user to enter each exam
+grade and compute the sum. To make sure everyone understands what should
+be happening, you should also print a \emph{running total} of the grade
+category you're calculating:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{grade} \PYG{k}{for} \PYG{n}{exam} \PYG{l+m}{1}\PYG{p}{:}
+\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}
+\PYG{n}{Total} \PYG{n}{exam} \PYG{n}{points}\PYG{p}{:} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}
+
+\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{grade} \PYG{k}{for} \PYG{n}{exam} \PYG{l+m}{2}\PYG{p}{:}
+\PYG{l+m}{9}\PYG{l+m}{0}
+\PYG{n}{Total} \PYG{n}{exam} \PYG{n}{points}\PYG{p}{:} \PYG{l+m}{1}\PYG{l+m}{9}\PYG{l+m}{0}
+
+\PYG{n}{Please} \PYG{n}{enter} \PYG{n}{the} \PYG{n}{grade} \PYG{k}{for} \PYG{n}{exam} \PYG{l+m}{3}\PYG{p}{:}
+\PYG{l+m}{8}\PYG{l+m}{0}
+\PYG{n}{Total} \PYG{n}{exam} \PYG{n}{points}\PYG{p}{:} \PYG{l+m}{2}\PYG{l+m}{7}\PYG{l+m}{0}
+
+\PYG{n}{Calculated} \PYG{n}{exam} \PYG{n}{grade} \PYG{p}{=} \PYG{l+m}{9}\PYG{l+m}{0.0}
+\end{Verbatim}
+
+This will be repeated for all categories.
+
+\item {} 
+Once you have read in the data for each of the items within a category,
+you'll basically be able to \emph{reuse} the code that you developed in the
+previous assignment.
+
+\end{enumerate}
+
+
+\subsection{Hints}
+\label{homework-gradecalculation2:hints}
+This assignment will be the first one where you need to start using
+functions. Otherwise, you'll find yourself getting tired within minutes
+of starting your work.{}`
+
+You need to have two functions to prompt the user for integer and double
+data. We're going to give you the code for these here, but your job is to
+copy them into your program and make use of them in your solution.
+
+This function (or method) will prompt the user to enter an integer.
+\begin{quote}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{k}{public} \PYG{k+kt}{int} \PYG{n+nf}{ReadInteger}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{message}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k+kt}{string} \PYG{n}{input}\PYG{p}{;}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{message}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{input} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+         \PYG{k}{return} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{input}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\end{quote}
+
+This function (or method)  will prompt the user to enter a double.
+\begin{quote}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{k}{public} \PYG{k+kt}{double} \PYG{n+nf}{ReadDouble}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{message}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k+kt}{string} \PYG{n}{input}\PYG{p}{;}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{message}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{input} \PYG{p}{=} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+         \PYG{k}{return} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{input}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\end{quote}
 
 \index{double loop!foreach}
 
@@ -6377,31 +6610,24 @@ two dimensional arrays
 
 \begin{notice}{note}{Todo}
 
+more interactive while loops
+\end{notice}
+
+(The {\hyperref[whileinteractive:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileinteractive.rst, line 260.)
+
+\begin{notice}{note}{Todo}
+
 ``gcd naive (loop 2 -\textgreater{} max(a, b)''
 \end{notice}
 
-(The {\hyperref[whileexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 17.)
+(The {\hyperref[gcdexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 71.)
 
 \begin{notice}{note}{Todo}
 
 ``gcd subtraction method''
 \end{notice}
 
-(The {\hyperref[whileexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 21.)
-
-\begin{notice}{note}{Todo}
-
-``gcd recursive definition and solution''
-\end{notice}
-
-(The {\hyperref[whileexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 25.)
-
-\begin{notice}{note}{Todo}
-
-more interactive while loops
-\end{notice}
-
-(The {\hyperref[whileinteractive:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileinteractive.rst, line 260.)
+(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 78.)
 
 
 

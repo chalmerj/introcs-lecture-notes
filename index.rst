@@ -24,6 +24,6 @@ For a quick look, you may also
 `browse the example code online <examples>`_.
 
 The notes continue to be updated and expanded. You can see an outline of
-the latest major changes in the `change log <changelog.html>`_.  
+the latest major changes in the `change log <CSharpHtml/changelog.html>`_.  
 If you use a downloaded version, be sure to check for updates frequently.
 The PDF title page shows the date of the latest version.
