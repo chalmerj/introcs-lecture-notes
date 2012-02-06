@@ -19,9 +19,9 @@ class Vowels
    static void PrintVowels(string s)
    {
       int i = 0;
-      string vowels = "aeiou";
-      while (i < s.length) {
-         if (vowels.IndexOf(s[i]) >= 0) {
+      while (i < s.Length) {
+         if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' ||
+             s[i] == 'o' || s[i] == 'u') {
             Console.WriteLine(s[i]);
          }
          i = i+1;
