@@ -62,7 +62,38 @@ Requirements
 
 #. Once you have read in the data for each of the items within a category,
    you'll basically be able to *reuse* the code that you developed in the
-   previous assignment.
+   previous assignment to compute the weighted average and print the
+   final letter grade.
+
+#. For this assignment, you are expected to start using functions for all
+   aspects of the assignment. For example, it can become tedious in a hurry
+   to write code to prompt for each of exams, labs, homeworks, etc. when 
+   a single function (with parameter named *category*) could be used to
+   avoid repeating yourself. (And per the Hints section, you will also
+   want to write your function to take advantage of our *input* 
+   functions.
+
+#. Also beginning with this assignment, it is expected that your work 
+   will be presented neatly. That is, we expect the following:
+
+   - proper indentation that makes your program more readable by other
+     humans.
+
+   - proper naming of variables and functions. In C#, the convention is to
+     begin a name with a capital letter. You can have multiple words in a
+     function name, but these should be capitalized using a method known as 
+     CamelCase [CamelCase]_. We also recommend this same naming convention
+     for variables but with a lowercase first letter. For variables, we are also
+     ok with the use of underscores. For example, in homework 1 we used
+     names like `exam_grade`. If you use CamelCase, you can name this
+     variable `examGrade`. 
+
+   - If you have any questions about the neatness or appearance of your 
+     code, please talk to the instructor or teaching assistant.
+
+   - This guide from CIS 193 at [UPennCSharp]_ provides a nice set of conventions
+     to follow. We include this here so you know that other faculty at 
+     other universities also consider neatness/apperance to be important.
 
 Hints
 -----
@@ -86,3 +117,6 @@ with more *robust* versions that get developed in class later:
    :start-after: chunk
    :end-before: chunk
    
+.. [CamelCase] http://en.wikipedia.org/wiki/CamelCase
+
+.. [UPennCSharp] http://www.cis.upenn.edu/~cis193/csstyle.html
