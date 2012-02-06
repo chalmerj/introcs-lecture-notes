@@ -28,15 +28,21 @@ As usual, we will begin by specifying *requirements*. Whenever required,
 we will explain how you would approach the solution to the requirement
 in C#.  User responses are shown **bold faced**.
 
-Requirements
-------------
+Functional Requirements
+-----------------------
+
+#. Instead of bombing out if the weights don't add up to 100, use a 
+   ``do { ... } while`` loop (see Miles 43-44) to prompt the user again
+   for all of the weights until they do add up to 100. The ``do { ... } while``
+   loop is the right choice here, because you can test all of the weights
+   after they have been entered at least once (in the loop).
 
 #. Add code to prompt the user for the number of items in each category:
 
       Please enter the number of exams: **3**
 
 #. Instead of prompting the user for an overall average 
-   exam grade, use a loop to 
+   exam grade, use a loop  to 
    read one grade at a time. The grades will be added together (on the fly)
    to give the grade for that category. For example, after you have asked
    for the number of exams, you'd prompt the user to enter each exam 
@@ -64,6 +70,9 @@ Requirements
    you'll basically be able to *reuse* the code that you developed in the
    previous assignment to compute the weighted average and print the
    final letter grade.
+
+Style Requirements
+------------------
 
 #. For this assignment, you are expected to start using functions for all
    aspects of the assignment. For example, it can become tedious in a hurry
@@ -120,3 +129,29 @@ with more *robust* versions that get developed in class later:
 .. [CamelCase] http://en.wikipedia.org/wiki/CamelCase
 
 .. [UPennCSharp] http://www.cis.upenn.edu/~cis193/csstyle.html
+
+
+Grading Rubric
+--------------
+
+.. warning::
+
+   As a general rule, we expect programs to be complete, compile correctly, run, and be
+   thoroughly tested. We are able to grade an incomplete program but will only give 10/25
+   for effort. You are encouraged to complete your program and submit it per the late policy.
+   If any of these appears to be missing, expect a substantial deduction.
+
+25 points broken down as follows:
+
+- Loop until weights add to 100: 5
+
+- Average any number of grades in a category: 5
+
+- One function that is reused and works for each category: 5
+
+- Previous program features still work: 5
+
+- Style: 5
+
+
+
