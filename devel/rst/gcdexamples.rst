@@ -1,6 +1,13 @@
 More While Examples
 ===================
 
+.. index::
+   double:  %; binary operation
+   double:  %; remainder
+   double:  remainder; binary operation
+   double:  PF4; recursion
+   double:  SP1; history
+   double:  history; Euclid
 
 Greatest Common Divisor
 -----------------------
@@ -64,24 +71,67 @@ these two numbers is always 5 as the order doesn't matter.
 
 GCD "Brute Force" Method
 ------------------------
-.. todo::
 
-   "gcd naive (loop 2 -> max(a, b)"
+Now that we've gotten the preliminaries out of the way and have a basic mathematical explanation for how
+to calculate the greatest common divisor, we'll take a look at how to translate this into code using the
+machinery of while loops that you've recently learned.
 
+The way GCD is formulated above is, indeed, the most clever way to calculate the greatest common divisor.
+Yet the way we learn about the greatest common divisor in elementary school (at least at first) is to 
+learn how to factor the numbers a and b, often in a brute force way. So for example, when calculating the 
+greatest common divisor of 10 and 15, we can immediately see it, because we know that both of these 
+numbers are divisible by 5 (e.g. 5 * 2 = 10 and 5 * 3 = 15). So the greatest common divisor is 5.
+
+But if we had something more tricky to do like 810 and 729, we might have to think a bit more.
+
+Before we learn to find the factors of numbers, we will often just "try" numbers until we get the 
+greatest common divisor. This sort of trial process can take place in a loop, where we start at 1 and end at
+min(a, b)? Why the minimum? Well, we know that none of the values after the minimum can divide both a and b
+(in integer division) because either a / b = 0 or b / a = 0, if a != b.
+
+You can verify this by picking any two different values of a and b. For example 810/729 > 0 and 729/810 = 0.
+
+Without further ado, let's take a look at a basic version of GCD:
 
 .. literalinclude:: projects/GCD/GCDBasic/GCDBasic.cs
    :start-after: chunk-gcd-begin
    :end-before: chunk-gcd-end
    :linenos:
 
+This code works as follows:
+
+- We begin by finding ``Math.Min(a, b)``. This is how to compute the minimum of any two
+  values in C#. Techically, we don't need to use the minimum of a and b, but there is no
+  point in doing any more work than necessary. We'll use the variable ``i`` as the loop index
+  and the variable ``gcd`` will hold the currently known value of the GCD.
+
+- The line ``i = gcd = 1`` means we'll start i at 1 and assume that the GCD is one until
+  we find a higher value that also divides a and b.
+
+- The line ``while (i <= n)`` is used to indicate that we are iterating the values of
+  ``i`` until the minimum of ``a`` and ``b`` (computed earlier) is reached.
+
+- The line ``if (a % i == 0 && b % i == 0)`` is used to check whether we have found a
+  new value that replaces our previous *candidate* for the GCD. A value can only be
+  a candidate for the GCD if it divides a and b without a remainder. The modulus 
+  operator ``%`` is our way of determining whether there is a remainder from the
+  division operation ``a / i`` or ``b / i``. 
+
+- The line ``i = i + 1`` is our way of going to the next value of ``i`` to be tested
+  as the new GCD.
+
+- When this loop terminates, the greatest common divisor has been found. 
+
+So this gives you a relatively straightforward way of calculating the greatest common
+divisor. While simple, it is not necessarily the most efficient way of determining
+the GCD? If you think about what is going on, this loop could run a significant number
+of times. For example, if you were calculating the GCD two very large numbers, say,
+one billion (1,000,000,000) and two billion (2,000,000,000) it is painfully evident
+that you would consider a large number of values (a billion, in fact) before obtaining
+the candidate GCD, which we know is 1,000,000,000.
 
 GCD Subtraction Method
 ----------------------
-
-.. todo::
-
-   "gcd subtraction method"
-
 
 .. literalinclude:: projects/GCD/GCDSubtractionMethod/GCDSubtractionMethod.cs
    :start-after: chunk-gcd-begin

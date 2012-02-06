@@ -7,7 +7,7 @@ namespace GCDBasic
       // chunk-gcd-begin
       public static int GreatestCommonDivisor (int a, int b)
       {
-         int n = Math.Max (a, b);
+         int n = Math.Min (a, b);
          int gcd, i;
 
          i = gcd = 1;
