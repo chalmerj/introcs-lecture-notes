@@ -4579,20 +4579,22 @@ print 10
 
 
 \textbf{Problem}:  Write a program with a \code{while} loop to print:
+\begin{quote}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{l+m}{1}\PYG{l+m}{0}
-\PYG{l+m}{9}
-\PYG{l+m}{8}
-\PYG{l+m}{7}
-\PYG{l+m}{6}
-\PYG{l+m}{5}
-\PYG{l+m}{4}
-\PYG{l+m}{3}
-\PYG{l+m}{2}
-\PYG{l+m}{1}
-\PYG{n}{Blastoff}\PYG{p}{!}
-\end{Verbatim}
+\begin{DUlineblock}{0em}
+\item[] 10
+\item[] 9
+\item[] 8
+\item[] 7
+\item[] 6
+\item[] 5
+\item[] 4
+\item[] 3
+\item[] 2
+\item[] 1
+\item[] Blastoff!
+\end{DUlineblock}
+\end{quote}
 
 \textbf{Analysis}:
 We have seen that we can produce a regular sequence of numbers in a loop.
@@ -5002,8 +5004,6 @@ Important lessons from this humble summation problem:
 Knowing this in theory is not the same as remembering it in practice.
 
 \end{itemize}
-
-On to some truly useful loops....
 
 \index{interactive!loop while}\index{loop!while, interactive}\index{while!interactive loop}
 
@@ -6637,6 +6637,20 @@ for-statements
 
 \begin{notice}{note}{Todo}
 
+``gcd naive (loop 2 -\textgreater{} max(a, b)''
+\end{notice}
+
+(The {\hyperref[gcdexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 71.)
+
+\begin{notice}{note}{Todo}
+
+``gcd subtraction method''
+\end{notice}
+
+(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 84.)
+
+\begin{notice}{note}{Todo}
+
 Andy new
 \end{notice}
 
@@ -6669,20 +6683,6 @@ two dimensional arrays
 \end{notice}
 
 (The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 13.)
-
-\begin{notice}{note}{Todo}
-
-``gcd naive (loop 2 -\textgreater{} max(a, b)''
-\end{notice}
-
-(The {\hyperref[gcdexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 71.)
-
-\begin{notice}{note}{Todo}
-
-``gcd subtraction method''
-\end{notice}
-
-(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 84.)
 
 \begin{notice}{note}{Todo}
 
