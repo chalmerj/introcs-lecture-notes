@@ -4,7 +4,7 @@ namespace GCDEuclidRecursive
 {
    class MainClass
    {
-      /* chunk-Euclid-begin */
+      // chunk-gcd-begin
       public static int GreatestCommonDivisor (int a, int b)
       {
          if (b == 0) {
@@ -17,7 +17,7 @@ namespace GCDEuclidRecursive
             return GreatestCommonDivisor (b, a % b);
          }
       }
-      /* chunk-Euclid-end */
+      // chunk-gcd-end
 
       static string InputLine (string prompt)
       {

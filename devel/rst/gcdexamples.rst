@@ -68,9 +68,10 @@ GCD "Brute Force" Method
 
    "gcd naive (loop 2 -> max(a, b)"
 
-.. literalinclude:: examples/gcdbruteforce.cs
-   :start-after: chunk-GCDBF-begin
-   :end-before: chunk-GCDBF-end
+
+.. literalinclude:: projects/GCD/GCDBasic/GCDBasic.cs
+   :start-after: chunk-gcd-begin
+   :end-before: chunk-gcd-end
    :linenos:
 
 
@@ -82,9 +83,9 @@ GCD Subtraction Method
    "gcd subtraction method"
 
 
-.. literalinclude:: examples/gcdsubtraction.cs
-   :start-after: chunk-GCDSM-begin
-   :end-before: chunk-GCDSM-end
+.. literalinclude:: projects/GCD/GCDSubtractionMethod/GCDSubtractionMethod.cs
+   :start-after: chunk-gcd-begin
+   :end-before: chunk-gcd-end
    :linenos:
 
 
@@ -98,11 +99,10 @@ inside its definition. We don't expect you to master this
 technique immediately but do feel that it is important you at least
 *hear* about it and see its tremendous power:
 
-.. literalinclude:: examples/gcd.cs
-   :start-after: chunk-Euclid-begin
-   :end-before: chunk-Euclid-end
+.. literalinclude:: projects/GCD/GCDEuclidRecursive/GCDEuclidRecursive.cs
+   :start-after: chunk-gcd-begin
+   :end-before: chunk-gcd-end
    :linenos:
-
 
 - Recalling our earlier definition, the case :math:`gcd(a, 0) = a` is
   handled by lines 3-6.

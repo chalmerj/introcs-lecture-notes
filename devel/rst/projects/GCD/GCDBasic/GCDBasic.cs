@@ -4,6 +4,7 @@ namespace GCDBasic
 {
    class MainClass
    {
+      // chunk-gcd-begin
       public static int GreatestCommonDivisor (int a, int b)
       {
          int n = Math.Max (a, b);
@@ -17,7 +18,7 @@ namespace GCDBasic
          }
          return gcd;
       }
-      // chunk-GCDBF-end
+      // chunk-gcd-end
 
 
       static string InputLine (string prompt)

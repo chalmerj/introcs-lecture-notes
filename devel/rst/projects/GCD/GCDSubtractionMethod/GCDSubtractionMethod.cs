@@ -4,7 +4,7 @@ namespace GCDSubtractionMethod
 {
    class MainClass
    {
-      // chunk-GCDSM-begin
+      // chunk-gcd-begin
       public static int GreatestCommonDivisor (int a, int b)
       {
          int c;
@@ -20,7 +20,7 @@ namespace GCDSubtractionMethod
          }
          return a;
       }
-      // chunk-GCDSM-end
+      // chunk-gcd-end
 
 
       static string InputLine (string prompt)
