@@ -66,7 +66,7 @@ release = '1.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build','stringchar.rst', 'gcdfp.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -137,7 +137,6 @@ html_short_title = 'C# Intro'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-exclude_patterns = ['stringchar.rst']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
