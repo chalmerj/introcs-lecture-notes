@@ -5005,6 +5005,762 @@ Knowing this in theory is not the same as remembering it in practice.
 
 \end{itemize}
 
+\index{while!statement}\index{statement!while}
+
+\section{While-Statements}
+\label{while-with-sequence:index-0}\label{while-with-sequence::doc}\label{while-with-sequence:while-statements}\label{while-with-sequence:id1}
+We have seen that the sequential flow of a program
+can be altered with function calls
+and decisions.  The last important pattern is \emph{repetition} or \emph{loops}.
+There are several varieties.  The simplest place to start is with
+\code{while} loops.
+
+A C\#
+\code{while} loop behaves quite similarly to common English usage. If
+I say
+\begin{quote}
+
+While your tea is too hot, add a chip of ice.
+\end{quote}
+
+Presumably you would test your tea. If it were too hot, you would
+add a little ice. If you test again and it is still too hot, you
+would add ice again. \emph{As long as} you tested and found it was true
+that your tea was too hot, you would go back and add more ice.
+C\# has a similar syntax:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{while (} \emph{condition} \code{)}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement
+\end{DUlineblock}
+\end{DUlineblock}
+\end{quote}
+
+As with an \code{if} statement we will generally assume a compound statement,
+after the condition, so the syntax will actually be:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{while (} \emph{condition} \code{) \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement(s)
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+Setting up the English example in a similar format would be:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] while  ( \emph{your tea is too hot} ) \{
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] add a chip of ice
+\end{DUlineblock}
+\item[] \}
+\end{DUlineblock}
+\end{quote}
+
+To make things concrete and numerical, suppose the following: The
+tea starts at 115 degrees Fahrenheit. You want it at 112 degrees. A
+chip of ice turns out to lower the temperature one degree each
+time. You test the temperature each time, and also print out the
+temperature before reducing the temperature. In C\# you could
+write and run the code below, saved in example program Cool.cs:
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+      \PYG{k+kt}{int} \PYG{n}{temperature} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{1}\PYG{l+m}{5}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{temperature} \PYG{p}{\textgreater{}} \PYG{l+m}{1}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// first while loop code}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{temperature}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{temperature} \PYG{p}{=} \PYG{n}{temperature} \PYG{p}{-} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"The tea is cool enough."}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+I added a final line after the \code{while} loop to remind you that
+execution follows sequentially after a loop completes.
+
+It is extremely important to totally understand how the flow of
+execution works with loops.  One way to follow it
+closely is to make a table with a line for each instruction
+executed, keeping track of all the variables.  We call this
+\emph{playing computer}.
+
+Each row shows the line number of the start of the next instruction
+executed, and the values of all the variables \emph{after} the instruction
+is executed.  The important thing to see with loops is that the same
+line can be executed over and over, but with different variable
+values.  We leave a column for the line number, each variable
+that is involved (particularly any that change) and a place for
+comments about what is happening.  The comment line can be used any time
+it is helpful.  If should be used in particular when something
+is printed and when something is returned, since neither of these
+important actions appear int he variable list.
+
+If you play computer and follow the path of execution, you could
+generate the following table. Remember, that each time you reach
+the end of the block after the \code{while} heading,
+execution returns to the \code{while} heading for another test:
+
+\begin{tabulary}{\linewidth}{|L|L|L|}
+\hline
+\textbf{
+Line
+} & \textbf{
+temperature
+} & \textbf{
+Comment
+}\\\hline
+
+1
+ & 
+115
+ & \\\hline
+
+2
+ &  & 
+115 \textgreater{} 112 is true, do loop
+\\\hline
+
+3
+ &  & 
+prints 115
+\\\hline
+
+4
+ & 
+114
+ & 
+115 - 1 is 114, loop back
+\\\hline
+
+2
+ &  & 
+114 \textgreater{} 112 is true, do loop
+\\\hline
+
+3
+ &  & 
+prints 114
+\\\hline
+
+4
+ & 
+113
+ & 
+114 - 1 is 113, loop back
+\\\hline
+
+2
+ &  & 
+113 \textgreater{} 112 is true, do loop
+\\\hline
+
+3
+ &  & 
+prints 113
+\\\hline
+
+4
+ & 
+112
+ & 
+113 - 1 is 112, loop back
+\\\hline
+
+2
+ &  & 
+112 \textgreater{} 112 is false, skip loop
+\\\hline
+
+6
+ &  & 
+prints that the tea is cool
+\\\hline
+\end{tabulary}
+
+
+Each time the end of the loop body block is reached, execution
+returns to the \code{while} loop heading for another test. When the
+test is finally false, execution jumps past the indented body of
+the \code{while} loop to the next sequential statement.
+
+\index{while!rubric}\index{rubric!while}
+The biggest trick with a loop is to make the same code do the next
+thing you want each time through.  That generally involves
+the use of variables that are modified for each successive time through
+the loop.
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] initialization
+\item[] \code{while (} \emph{continuationCondition} \code{) \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] do main action to be repeated
+\item[] prepare variables for the next time through the loop
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+The simple first example follows this pattern directly.  Note
+that the variables needed for the test of the condition must be
+set up \emph{both} in the initialization \emph{and} inside the loop
+(often at the very end).  Without a change inside the loop, the loop would
+run forever!
+
+It is a big deal for beginning students, how to manage all this in general.
+We will see a number of common patterns in lots of practice.  We will use
+the term \emph{successive modification loop} for loops following this pattern.
+
+Test yourself: Follow the code.  Figure out what is printed.
+If it helps, get detailed and play computer:
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{4}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{9}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{2}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Check yourself by running the example program \code{TestWhile1.cs}.
+
+\begin{notice}{note}{Note:}
+In C\#, \code{while} is not used \emph{quite} like in English. In
+English you could mean to stop \emph{as soon as} the condition you want
+to test becomes false. In C\# the test is \emph{only} made when
+execution for the loop starts (or starts again),
+\emph{not} in the middle of the loop.
+\end{notice}
+
+\emph{Predict} what will happen with this slight variation on the
+previous example, switching the order in the loop body. Follow it
+carefully, one step at a time.
+
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{4}\PYG{p}{;} \PYG{c+c1}{//variation on TestWhile1.cs}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{9}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{2}\PYG{p}{;}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Check yourself by running the example program \code{TestWhile2.cs}.
+
+The sequence order is important. The variable \code{i} is increased before
+it is printed, so the first number printed is 6. Another common
+error is to assume that 10 will \emph{not} be printed, since 10 is
+\emph{past} 9, but the test that may stop the loop is \emph{not} made in the
+middle of the loop. Once the body of the loop is started, it
+continues to the end, even when \code{i} becomes 10.
+
+\begin{tabulary}{\linewidth}{|L|L|L|}
+\hline
+\textbf{
+Line
+} & \textbf{
+i
+} & \textbf{
+Comment
+}\\\hline
+
+1
+ & 
+4
+ & \\\hline
+
+2
+ &  & 
+4 \textless{} 9 is true, do loop
+\\\hline
+
+3
+ & 
+6
+ & 
+4+2=6
+\\\hline
+
+4
+ &  & 
+print 6
+\\\hline
+
+2
+ &  & 
+6 \textless{} 9 is true, do loop
+\\\hline
+
+3
+ & 
+8
+ & 
+6+2= 8
+\\\hline
+
+4
+ &  & 
+print 8
+\\\hline
+
+2
+ &  & 
+8 \textless{} 9 is true, do loop
+\\\hline
+
+3
+ & 
+10
+ & 
+8+2=10  \emph{No test here}
+\\\hline
+
+4
+ &  & 
+print 10
+\\\hline
+
+2
+ &  & 
+10 \textless{} 9 is false, skip loop
+\\\hline
+\end{tabulary}
+
+
+\textbf{Problem}:  Write a program with a \code{while} loop to print:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] 10
+\item[] 9
+\item[] 8
+\item[] 7
+\item[] 6
+\item[] 5
+\item[] 4
+\item[] 3
+\item[] 2
+\item[] 1
+\item[] Blastoff!
+\end{DUlineblock}
+\end{quote}
+
+\textbf{Analysis}:
+We have seen that we can produce a regular sequence of numbers in a loop.
+The ``Blastoff!'' part does not fit the pattern, so it must be a \emph{separate}
+part after the loop.  We need a name for the number that decreases.  It can
+be \code{time}.  Remember the general rubric for a \code{while} loop:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] initialization
+\item[] \code{while (} \emph{continuationCondition} \code{) \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] do main action to be repeated
+\item[] prepare variables for the next time through the loop
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+You can consider each part separately.  Where to start is partly a
+matter of taste.
+
+The main thing to do is print the time over and over.
+The inital value of the time is 10.  We are going to want to keep printing
+until the time is down to 1, so we \emph{continue} while the time is at least 1,
+meaning the continuationCondition can be \code{time \textgreater{}= 1},
+or we could use \code{time \textgreater{} 0}.
+
+Finally we need to get ready to print a different time in
+the next pass through the loop.
+Since each successive time is one less than the previous one, the
+preparation for the next value of time is:  \code{time = time - 1}.
+
+Putting that all together, and remembering the one thing we noted
+to do after the loop,
+we get \code{Blastoff.cs}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n+nn}{System}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{Blastoff}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main}\PYG{p}{(}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{time} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{time} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{time}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{time} \PYG{p}{=} \PYG{n}{time} \PYG{p}{-} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Blastoff!"}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Look back and see how we fit the general rubric.
+There are a bunch of things to think about with a while loop, so
+going one step at a time, thinking of the rubric and the specific
+needs of the current problem, helps.
+
+There are many different (and more exciting) patterns of change coming
+for loops,
+but the simple examples so far get us started.
+
+\index{while!questions}\index{questions!while}
+Looking ahead to more complicated and interesting problems,
+here is a more complete list of questions to ask yourself when
+designing a function with a \code{while} loop:
+\begin{itemize}
+\item {} 
+What variables do I need?
+
+\item {} 
+What needs to be initialized and how? This certainly includes any
+variable tested in the condition.
+
+\item {} 
+What is the condition that will allow the loop to continue?
+
+\item {} 
+What is the code that should only be executed once? What action do I want to
+repeat? Where does the repetition come in the overall sequence of
+operations?
+
+\item {} 
+How do I write the action so I can modify it for the next time
+through the loop?
+
+\item {} 
+What code is needed to do modifications to make the same code work
+the next time through the loop?
+
+\item {} 
+Have I thought of variables needed in the middle and declared them;
+do other things need initialization?
+
+\item {} 
+Will the continuation condition enventually fail?
+
+\item {} 
+Separate thing to be done once before the repetition (code before the
+loop) from repetitive actions (in loop) from actions not repeated but
+done after the loop (code after the loop). Missing this distinction
+is a \emph{common error}!
+
+\end{itemize}
+\paragraph{Sum To \code{n}}
+
+Let us write a function to sum the numbers from 1 to \code{n}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+For instance SumToN(5) calculates 1 + 2 + 3 + 4 + 5 and returns 15.
+We know how to generate a sequence of integers, but this is a place
+that a programmer gets tripped up by the speed of the human mind.
+You are likely
+so quick at this that you just see it all at once, with the answer.
+
+\index{concrete example}
+In fact, you and the computer need to do this in steps.  To help see, let
+us take a concrete example like the one above for SumToN(5), and write out a
+detailed sequence of steps like:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{3} \PYG{p}{=} \PYG{l+m}{1} \PYG{p}{+} \PYG{l+m}{2}
+\PYG{l+m}{6} \PYG{p}{=} \PYG{l+m}{3} \PYG{p}{+} \PYG{l+m}{3}
+\PYG{l+m}{1}\PYG{l+m}{0} \PYG{p}{=} \PYG{l+m}{6} \PYG{p}{+} \PYG{l+m}{4}
+\PYG{l+m}{1}\PYG{l+m}{5} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0} \PYG{p}{+} \PYG{l+m}{5}
+\end{Verbatim}
+
+You could put this in code directly for a specific sum, but if n is general,
+we need a loop, and hence we must see a pattern in code that we can repeat.
+
+Each of the second terms in the additions is a successive integer,
+that we can generate.  Starting in the second line, the first number
+in each addition
+is the sum from the previous line.  Of course the next integer and the next
+partial sum change from step to step, so in order to use the same code over and
+over we will need changeable variables, with names.  We can make the partial
+sum be \code{sum} and we can call the next integer \code{i}.  Each addition can be
+in the form:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}
+\end{Verbatim}
+
+We need to remember that result, the new sum.  you might first think to introduce
+such a name:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{newSum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+\end{Verbatim}
+
+This will work.  We can go through the \code{while} loop rubric:
+
+The variables are \code{sum}, \code{newSum} and \code{i}.
+
+To evaluate
+\begin{quote}
+
+newSum = sum + i;
+\end{quote}
+
+the first time in the loop, we need \emph{initial} values for sum and i.
+Our concrete example leads the way:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+We need a \code{while} loop heading with a continuation condition.  How
+long do we want to add the next \code{i}?  That is for all the value up to and
+including n:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\end{Verbatim}
+
+There is one more important piece - making sure the same code
+\begin{quote}
+
+newSum = sum + i;
+\end{quote}
+
+works for the \emph{next} time through the loop.  We have dealt before with
+the idea of the next number in sequence:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+\end{Verbatim}
+
+What about \code{sum}?  What was the \code{newSum} on one line becomes the old or
+just plain \code{sum} on the next line, so we can make an assignment:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sum} \PYG{p}{=} \PYG{n}{newSum}\PYG{p}{:}
+\end{Verbatim}
+
+All together we calculate the sum with:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{newSum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+   \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{newSum}\PYG{p}{:}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+This exactly follows our general rubric, with preparation for the next time
+through the loop at the end of the loop.
+We can condense it in this case: Since \code{newSum} is only used
+once, we can do away with it, and directly change the value of sum:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+   \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Finally this was supposed to fit in a function.  The ultimate purpose
+was to \emph{return} the sum, which is the final value of the
+variable \code{sum}, so the whole function is:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{sum} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+   \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+      \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{return} \PYG{n}{sum}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+\index{testing!edge case range testing}\index{edge case!range testing, testing}\index{range testing!testing edge case}
+The comment before the function definition does not give a clear idea of the
+range of possible values for n.  How small makes sense for the comment?
+What actually works in the function?  The smallest expression
+starting with 1 would just be 1: (n = 1).  Does that work in the function?
+You were probably not thinking of that when developing the function!
+Now look back now at this \emph{edge case}.  You can play computer on the code
+or directly test it.  In this case the initialization of \code{sum} is 1,
+and the body of the loop \emph{never} runs (2 \textless{}= 1 is false).  The function
+execution jumps right to the return statement, and
+does return 1, and everything is fine.
+
+Now about large n....
+
+\index{big oh!order of n}\index{order of n!big oh}
+With loops we can make programs run for a long time.
+The time taken becomes an issue.  In this case we go though the loop
+n-1 times, so the total time is approximately proportional to n.
+We write that the time is O(n), spoken ``oh of n'', or ``big oh of n'' or
+``order of n''.
+
+\index{pitfall!limit on number size}\index{limit on number size!pitfall}
+Computers are pretty fast, so you can try the testing program
+\code{SumToNTest.cs}
+and it will go by so fast, that you will hardly notice.  Try these specific
+numbers in tests: 5, 6, 1000, 10000, 98765.  All look OK?  Now try 66000.
+On many systems you will get quite a surprise!
+This is the first place we have to deal with the limited
+size of the \code{int} type.
+On many systems the limit is a bit over 2 billion.
+You can check out the size of \code{int.MaxValue} in csharp.
+The answer for 66000,
+and \emph{also} 98765, is bigger than the upper limit.
+Luckily the obviously wrong negative answer
+for 66000 pops out at you.  Did you guess before you saw the answer for
+66000, that there was an issue for
+98765?  It is a good thing that no safety component in a big bridge was being
+calculated!  It is a big deal that the system fails \emph{silently}
+in such situations.  \emph{Think} how large the data may be that you deal with!
+
+Now look at, compile, and run \code{SumToNLong.cs}.  The sum is
+a \code{long} integer here. Check out in csharp how big
+a \code{long} can be (\code{long.MaxValue}).  This version of the program
+works for 100000 and for 98765.  We can get correct
+answers for things that will take perceptible time.  Try working up to
+1 billion (1000000000, nine 0's).  It takes a while: O(n) can be slow!
+
+\index{Gauss!sum through n}\index{sum through n!Gauss}
+By hand it is a lot slower, unless you totally change the algorithm:
+There is a classic story about how a calculation like this
+was done in gradeschool (n=100) by the famous
+mathematician Gauss. His teacher was trying to keep him busy.
+Gauss discovered the general, exact, mathematical formula:
+\begin{quote}
+
+1 + 2 + 3 + ... + n = n(n+1)/2.
+\end{quote}
+
+That is the number of terms (n), times the average term (n+1)/2.
+
+\index{big oh!constant order}\index{constant order!big oh}
+Our loop was instructive, but not the fastest approach.  The simple exact
+formula takes about the same time for any n.
+(That is as long as the result fits in
+a standard type of computer integer!)
+This is basically constant time.  In discussing
+how the speed relates to the size of n, we say it is O(1).
+The point is here that 1 is a constant.  The time is of \emph{constant order}.
+
+\index{pitfall!division}\index{division!pitfall}
+We can write a ridiculously short
+function following Gauss's model.  Here I introduce the variable average,
+as in the motivation for Gauss's answer:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+   \PYG{k}{static} \PYG{k+kt}{long} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}  \PYG{c+c1}{//CHANGED:  quick and WRONG}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{average} \PYG{p}{=} \PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}    \PYG{c+c1}{//from Gausse's motivation}
+      \PYG{k}{return} \PYG{n}{n}\PYG{p}{*}\PYG{n}{average}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Compile and test the example program containing it: \code{SumToNLongBad.cs}.
+
+Test it with 5, and then try 6. ???
+
+``Ridiculously short'' does not imply correct!  The problem goes back
+to the fact that Gauss was in \emph{math class} and you are doing
+Computer Science.  Think of a subtle difference that might come in here:
+Though (n+1)/2 is fine as math, recall the division operator does not
+always give correct answers in C\#.  You get an integer answer from the
+integer (or long) operands.  Of course the exact mathematical final answer
+is an integer when \emph{adding} integers, but splitting it according to
+Gausss's motivation can put a mathematical non-integer in the middle.
+
+The C\# fix: The final answer is clearly an integer, so if we do the division
+last, when we know the answer will be an integer, things should be better:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{return} \PYG{n}{n}\PYG{p}{*}\PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+\index{pitfall!cast}\index{cast!pitfall}
+Here is a shot at the whole function:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Return the sum of the numbers from 1 through n. */}
+   \PYG{k}{static} \PYG{k+kt}{long} \PYG{n+nf}{SumToN}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}  \PYG{c+c1}{//CHANGED:  quick and still WRONG}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{long} \PYG{n}{sum} \PYG{p}{=} \PYG{n}{n}\PYG{p}{*}\PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}  \PYG{c+c1}{// final division will produce an integer}
+      \PYG{k}{return} \PYG{n}{sum}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Compile and test the example program containing it: \code{SumToNLongBad2.cs}.
+
+Test it with 5, and then try 6. Ok so far, but go on to long integer range:
+try 66000 that messed us up before.  ??? You get an answer that is not
+a multiple of 1000: not what we got before!  What other issues do we have
+between math and C\#?
+
+Further analysis:  To make sure the function always worked, it made sense
+to leave the parameter \code{n} an \code{int}.  The function would not work
+with \code{n} as the largest \code{long}.  The result can still be big enough
+to only fit in a \code{long}, so the return value is a \code{long}.  All
+this is reasonable but the C\# result is still wrong!  Look deeper.
+While the result of \code{n*(n+1)/2} is \emph{assigned} to a \code{long} variable,
+the \emph{calculation} \code{n*(n+1)/2} is done with \code{int}s not mathematical
+integers.  By the same general type rule that led to the (n+1)/2 error
+earlier, these operations on \code{int}s produce an \code{int} result, even
+when wrong.
+
+We need to force the \emph{calculation} to produce a \code{long}.
+In the correct looping version \code{sum} was a \code{long}, and that
+forced all the later arithmentic to be with longs.  Here are two variations
+that work:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{long} \PYG{n}{nLong} \PYG{p}{=} \PYG{n}{n}\PYG{p}{;}
+\PYG{k}{return} \PYG{n}{nLong}\PYG{p}{*}\PYG{p}{(}\PYG{n}{nLong}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+or we can avoid a new variable name by doing a cast to \code{long}, convering
+the first (left) operand to \code{long}, so all the later left-to-right
+operations are forced to be \code{long}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{return} \PYG{p}{(}\PYG{k+kt}{long}\PYG{p}{)}\PYG{n}{n}\PYG{p}{*}\PYG{p}{(}\PYG{n}{n}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{)}\PYG{p}{/}\PYG{l+m}{2}\PYG{p}{;}
+\end{Verbatim}
+
+You can try example \code{SumToNLongQuick.cs} to finally get a result that
+is dependably fast and correct.
+
+Important lessons from this humble summation problem:
+\begin{itemize}
+\item {} 
+\emph{Working} and being \emph{efficient} are two different things in general.
+
+\item {} 
+\emph{Math} operations and C\# operations are not always the same.
+Knowing this in theory is not the same as remembering it in practice.
+
+\end{itemize}
+
 \index{interactive!loop while}\index{loop!while, interactive}\index{while!interactive loop}
 
 \section{Interactive \texttt{while} Loops}
@@ -5464,18 +6220,19 @@ these two numbers is always 5 as the order doesn't matter.
 \end{notice}
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GCDUsingSearch}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Max}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
-      \PYG{k+kt}{int} \PYG{n}{gcd}\PYG{p}{,} \PYG{n}{i}\PYG{p}{;}
+      \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GreatestCommonDivisor} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
+      \PYG{p}{\PYGZob{}}
+         \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Max} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+         \PYG{k+kt}{int} \PYG{n}{gcd}\PYG{p}{,} \PYG{n}{i}\PYG{p}{;}
 
-      \PYG{n}{i} \PYG{p}{=} \PYG{n}{gcd} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;}
-      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-         \PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{i} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{b} \PYG{p}{\PYGZpc{}} \PYG{n}{i} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{)}
-            \PYG{n}{gcd} \PYG{p}{=} \PYG{n}{i}\PYG{p}{;}
-         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{gcd} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;}
+         \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{i} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{b} \PYG{p}{\PYGZpc{}} \PYG{n}{i} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{)}
+               \PYG{n}{gcd} \PYG{p}{=} \PYG{n}{i}\PYG{p}{;}
+            \PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{l+m}{1}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
+         \PYG{k}{return} \PYG{n}{gcd}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
-      \PYG{k}{return} \PYG{n}{gcd}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
 
@@ -5487,20 +6244,21 @@ these two numbers is always 5 as the order doesn't matter.
 \end{notice}
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GCDUsingSubtraction}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{;}
-      \PYG{k}{while} \PYG{p}{(}\PYG{n}{a} \PYG{p}{!}\PYG{p}{=} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-         \PYG{k}{while} \PYG{p}{(}\PYG{n}{a} \PYG{p}{\textgreater{}} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{n}{c} \PYG{p}{=} \PYG{n}{a} \PYG{p}{-} \PYG{n}{b}\PYG{p}{;}
-            \PYG{n}{a} \PYG{p}{=} \PYG{n}{c}\PYG{p}{;}
+      \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GreatestCommonDivisor} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
+      \PYG{p}{\PYGZob{}}
+         \PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{;}
+         \PYG{k}{while} \PYG{p}{(}\PYG{n}{a} \PYG{p}{!}\PYG{p}{=} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{while} \PYG{p}{(}\PYG{n}{a} \PYG{p}{\textgreater{}} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+               \PYG{n}{c} \PYG{p}{=} \PYG{n}{a} \PYG{p}{-} \PYG{n}{b}\PYG{p}{;}
+               \PYG{n}{a} \PYG{p}{=} \PYG{n}{c}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{while} \PYG{p}{(}\PYG{n}{b} \PYG{p}{\textgreater{}} \PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+               \PYG{n}{c} \PYG{p}{=} \PYG{n}{b} \PYG{p}{-} \PYG{n}{a}\PYG{p}{;}
+               \PYG{n}{b} \PYG{p}{=} \PYG{n}{c}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
          \PYG{p}{\PYGZcb{}}
-         \PYG{k}{while} \PYG{p}{(}\PYG{n}{b} \PYG{p}{\textgreater{}} \PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{n}{c} \PYG{p}{=} \PYG{n}{b} \PYG{p}{-} \PYG{n}{a}\PYG{p}{;}
-            \PYG{n}{b} \PYG{p}{=} \PYG{n}{c}\PYG{p}{;}
-         \PYG{p}{\PYGZcb{}}
+         \PYG{k}{return} \PYG{n}{a}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
-      \PYG{k}{return} \PYG{n}{a}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
 
@@ -5514,19 +6272,18 @@ technique immediately but do feel that it is important you at least
 \emph{hear} about it and see its tremendous power:
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-   \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GCDEuclid}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
-   \PYG{p}{\PYGZob{}}
-      \PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"gcd(\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}) = \PYGZob{}0\PYGZcb{}"}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
-         \PYG{k}{return} \PYG{n}{a}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}
-      \PYG{k}{else} \PYG{p}{\PYGZob{}}
-         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}
+      \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GreatestCommonDivisor} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
+      \PYG{p}{\PYGZob{}}
+         \PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}\PYG{l+s}{"gcd(\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}) = \PYGZob{}0\PYGZcb{}"}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+            \PYG{k}{return} \PYG{n}{a}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine} \PYG{p}{(}
             \PYG{l+s}{"gcd(\PYGZob{}0\PYGZcb{}, \PYGZob{}1\PYGZcb{}) = gcd(\PYGZob{}1\PYGZcb{}, \PYGZob{}0\PYGZcb{} mod \PYGZob{}1\PYGZcb{} = gcd(\PYGZob{}1\PYGZcb{}, \PYGZob{}2\PYGZcb{})"}\PYG{p}{,}
              \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
-         \PYG{k}{return} \PYG{n+nf}{GCDEuclid}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+            \PYG{k}{return} \PYG{n+nf}{GreatestCommonDivisor} \PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{p}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
       \PYG{p}{\PYGZcb{}}
-   \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -5630,7 +6387,46 @@ name will need to be a parameter.)
 \item {} 
 Once you have read in the data for each of the items within a category,
 you'll basically be able to \emph{reuse} the code that you developed in the
-previous assignment.
+previous assignment to compute the weighted average and print the
+final letter grade.
+
+\item {} 
+For this assignment, you are expected to start using functions for all
+aspects of the assignment. For example, it can become tedious in a hurry
+to write code to prompt for each of exams, labs, homeworks, etc. when
+a single function (with parameter named \emph{category}) could be used to
+avoid repeating yourself. (And per the Hints section, you will also
+want to write your function to take advantage of our \emph{input}
+functions.
+
+\item {} 
+Also beginning with this assignment, it is expected that your work
+will be presented neatly. That is, we expect the following:
+\begin{itemize}
+\item {} 
+proper indentation that makes your program more readable by other
+humans.
+
+\item {} 
+proper naming of variables and functions. In C\#, the convention is to
+begin a name with a capital letter. You can have multiple words in a
+function name, but these should be capitalized using a method known as
+CamelCase {\hyperref[homework-gradecalculation2:camelcase]{{[}CamelCase{]}}}. We also recommend this same naming convention
+for variables but with a lowercase first letter. For variables, we are also
+ok with the use of underscores. For example, in homework 1 we used
+names like \emph{exam\_grade}. If you use CamelCase, you can name this
+variable \emph{examGrade}.
+
+\item {} 
+If you have any questions about the neatness or appearance of your
+code, please talk to the instructor or teaching assistant.
+
+\item {} 
+This guide from CIS 193 at {\hyperref[homework-gradecalculation2:upenncsharp]{{[}UPennCSharp{]}}} provides a nice set of conventions
+to follow. We include this here so you know that other faculty at
+other universities also consider neatness/apperance to be important.
+
+\end{itemize}
 
 \end{enumerate}
 
@@ -6647,7 +7443,7 @@ for-statements
 ``gcd subtraction method''
 \end{notice}
 
-(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 84.)
+(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 85.)
 
 \begin{notice}{note}{Todo}
 
@@ -6690,6 +7486,15 @@ more interactive while loops
 \end{notice}
 
 (The {\hyperref[whileinteractive:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileinteractive.rst, line 276.)
+
+\begin{thebibliography}{UPennCSharp}
+\bibitem[CamelCase]{CamelCase}{\phantomsection\label{homework-gradecalculation2:camelcase} 
+\href{http://en.wikipedia.org/wiki/CamelCase}{http://en.wikipedia.org/wiki/CamelCase}
+}
+\bibitem[UPennCSharp]{UPennCSharp}{\phantomsection\label{homework-gradecalculation2:upenncsharp} 
+\href{http://www.cis.upenn.edu/~cis193/csstyle.html}{http://www.cis.upenn.edu/\textasciitilde{}cis193/csstyle.html}
+}
+\end{thebibliography}
 
 
 
