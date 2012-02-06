@@ -175,19 +175,19 @@ Line   i  Comment
 2         10 < 9 is false, skip loop
 ====  ==  ======= 
 
-**Problem**:  Write a program with a ``while`` loop to print::
+**Problem**:  Write a program with a ``while`` loop to print:
 
-    10
-    9
-    8
-    7
-    6
-    5
-    4
-    3
-    2
-    1
-    Blastoff!
+    | 10
+    | 9
+    | 8
+    | 7
+    | 6
+    | 5
+    | 4
+    | 3
+    | 2
+    | 1
+    | Blastoff!
 
 **Analysis**:  
 We have seen that we can produce a regular sequence of numbers in a loop.
@@ -528,4 +528,4 @@ Important lessons from this humble summation problem:
 - *Math* operations and C# operations are not always the same. 
   Knowing this in theory is not the same as remembering it in practice.
 
-On to some truly useful loops....
+
