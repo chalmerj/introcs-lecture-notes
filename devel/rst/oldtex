@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 05, 2012}
+\date{February 07, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -5096,6 +5096,8 @@ This is a very common pattern.
 We could do anything we want with each individual character,
 no just print it.
 
+\index{string!PrintVowels}\index{PrintVowels!string}\paragraph{PrintVowels}
+
 Let us get more complicated.  Consider the function described:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -5135,7 +5137,71 @@ a \code{while} statement.
 
 Next problem:  convert the pseudocode ``s{[}i{]} is a vowel'' to C\#.
 
-To be continued....
+There are multiple approaches.  The one you get by following your
+nose is just to consider all the cases where it is true:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'a'}
+\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'e'}
+\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'i'}
+\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'o'}
+\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'u'}
+\end{Verbatim}
+
+How do you combine them into a condition?
+The letter can be a \emph{or} e \emph{or} i \emph{or} o \emph{or} u.  We get the code:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Print the vowels (aeiou) in s, one per line. */}
+   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{PrintVowels}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'a'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'e'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'i'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}}
+             \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'o'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{=}\PYG{p}{=} \PYG{l+s+sc}{'u'}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+That has a long condition!  Here is a nice trick to shorten that:
+We want to check if a character is in a group of letters.  We have
+already seen the string method IndexOf.  Recall we can use it to see if
+a character is in or not in a string.  We can use \code{"aeiou".IndexOf(s{[}i{]})}.
+We do not care where \code{s{[}i{]}} comes in the string fo vowels.
+All we care is that \code{"aeiou".IndexOf(s{[}i{]}) \textgreater{}= 0}.
+
+\index{string!Contains}\index{Contains!string}
+This is still a bit of a mouthful.  Often it is just important if a
+character or string is contained in another string, so it is easier to
+use the string method \code{Contains}.  Though IndexOf takes either a string
+or a character as parameter, \code{Contains} only takes a string.  There is a
+nice quick idiom to convert anything to a string:  use \code{""+}.
+The condtion could be \code{"aeiou".Contains(""+s{[}i{]})}.
+
+By the way, \code{Contains} can take either a character or
+a string as parameter.  We are still not as general as we might be:
+Only lowercase vowels are listed.  We could do something with
+ToUpper, or just use the condtion: \code{"aeiouAEIOU".Contains(s{[}i{]})}
+
+This variation is in \code{Vowels2.cs}.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Print the vowels (aeiou) in s, one per line. */}
+   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{PrintVowels}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+      \PYG{k+kt}{string} \PYG{n}{vowels} \PYG{p}{=} \PYG{l+s}{"aeiouAEIOU"}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k}{if} \PYG{p}{(}\PYG{n}{vowels}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{l+s}{""}\PYG{p}{+}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
+         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
 
 Next problem after this one:  see if a string contains only digits.
 
@@ -5525,9 +5591,10 @@ a target of \$550, the program prints:
 
 \section{More While Examples}
 \label{gcdexamples:more-while-examples}\label{gcdexamples::doc}
+\index{\%!binary operation}\index{binary operation!\%}\index{\%!remainder}\index{remainder!\%}\index{remainder!binary operation}\index{binary operation!remainder}\index{PF4!recursion}\index{recursion!PF4}\index{SP1!history}\index{history!SP1}\index{history!Euclid}\index{Euclid!history}
 
 \subsection{Greatest Common Divisor}
-\label{gcdexamples:greatest-common-divisor}
+\label{gcdexamples:index-0}\label{gcdexamples:greatest-common-divisor}
 The \emph{greatest common divisor} of two non-zero integers is a great
 example to illustrate the power of loops. Everyone learns about the
 \emph{concept} of a greatest common divisor when faced with a fraction that
@@ -5592,15 +5659,31 @@ these two numbers is always 5 as the order doesn't matter.
 
 \subsection{GCD ``Brute Force'' Method}
 \label{gcdexamples:gcd-brute-force-method}
-\begin{notice}{note}{Todo}
+Now that we've gotten the preliminaries out of the way and have a basic mathematical explanation for how
+to calculate the greatest common divisor, we'll take a look at how to translate this into code using the
+machinery of while loops that you've recently learned.
 
-``gcd naive (loop 2 -\textgreater{} max(a, b)''
-\end{notice}
+The way GCD is formulated above is, indeed, the most clever way to calculate the greatest common divisor.
+Yet the way we learn about the greatest common divisor in elementary school (at least at first) is to
+learn how to factor the numbers a and b, often in a brute force way. So for example, when calculating the
+greatest common divisor of 10 and 15, we can immediately see it, because we know that both of these
+numbers are divisible by 5 (e.g. 5 * 2 = 10 and 5 * 3 = 15). So the greatest common divisor is 5.
+
+But if we had something more tricky to do like 810 and 729, we might have to think a bit more.
+
+Before we learn to find the factors of numbers, we will often just ``try'' numbers until we get the
+greatest common divisor. This sort of trial process can take place in a loop, where we start at 1 and end at
+min(a, b)? Why the minimum? Well, we know that none of the values after the minimum can divide both a and b
+(in integer division) because either a / b = 0 or b / a = 0, if a != b.
+
+You can verify this by picking any two different values of a and b. For example 810/729 \textgreater{} 0 and 729/810 = 0.
+
+Without further ado, let's take a look at a basic version of GCD:
 
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
       \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GreatestCommonDivisor} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
       \PYG{p}{\PYGZob{}}
-         \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Max} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
+         \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Min} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}\PYG{p}{;}
          \PYG{k+kt}{int} \PYG{n}{gcd}\PYG{p}{,} \PYG{n}{i}\PYG{p}{;}
 
          \PYG{n}{i} \PYG{p}{=} \PYG{n}{gcd} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;}
@@ -5613,14 +5696,49 @@ these two numbers is always 5 as the order doesn't matter.
       \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
+This code works as follows:
+\begin{itemize}
+\item {} 
+We begin by finding \code{Math.Min(a, b)}. This is how to compute the minimum of any two
+values in C\#. Techically, we don't need to use the minimum of a and b, but there is no
+point in doing any more work than necessary. We'll use the variable \code{i} as the loop index
+and the variable \code{gcd} will hold the currently known value of the GCD.
+
+\item {} 
+The line \code{i = gcd = 1} means we'll start i at 1 and assume that the GCD is one until
+we find a higher value that also divides a and b.
+
+\item {} 
+The line \code{while (i \textless{}= n)} is used to indicate that we are iterating the values of
+\code{i} until the minimum of \code{a} and \code{b} (computed earlier) is reached.
+
+\item {} 
+The line \code{if (a \% i == 0 \&\& b \% i == 0)} is used to check whether we have found a
+new value that replaces our previous \emph{candidate} for the GCD. A value can only be
+a candidate for the GCD if it divides a and b without a remainder. The modulus
+operator \code{\%} is our way of determining whether there is a remainder from the
+division operation \code{a / i} or \code{b / i}.
+
+\item {} 
+The line \code{i = i + 1} is our way of going to the next value of \code{i} to be tested
+as the new GCD.
+
+\item {} 
+When this loop terminates, the greatest common divisor has been found.
+
+\end{itemize}
+
+So this gives you a relatively straightforward way of calculating the greatest common
+divisor. While simple, it is not necessarily the most efficient way of determining
+the GCD? If you think about what is going on, this loop could run a significant number
+of times. For example, if you were calculating the GCD two very large numbers, say,
+one billion (1,000,000,000) and two billion (2,000,000,000) it is painfully evident
+that you would consider a large number of values (a billion, in fact) before obtaining
+the candidate GCD, which we know is 1,000,000,000.
+
 
 \subsection{GCD Subtraction Method}
 \label{gcdexamples:gcd-subtraction-method}
-\begin{notice}{note}{Todo}
-
-``gcd subtraction method''
-\end{notice}
-
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
       \PYG{k}{public} \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{GreatestCommonDivisor} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)}
       \PYG{p}{\PYGZob{}}
@@ -5687,12 +5805,359 @@ the calls to the same function are not completely the same:
 number eventually reaches 0, and in that case
 there is a direct final answer.
 
+\index{labs!string manipulations}
+
+\section{Number Guessing Game Lab}
+\label{lab-number-game:index-0}\label{lab-number-game::doc}\label{lab-number-game:number-guessing-game-lab}\label{lab-number-game:lab-number-game}
+\textbf{Objectives}:
+\begin{itemize}
+\item {} 
+Work with functions
+
+\item {} 
+Work with interactive while loops
+
+\item {} 
+Use decisions
+
+\item {} 
+Introduce random values
+
+\end{itemize}
+
+This lab is inspired by a famous game played by children (and grown-ups,
+too) known as the number-guessing game. It is often played by two
+people but could be played by any number of people.
+
+The rules are:
+\begin{itemize}
+\item {} 
+Person A chooses a positive integer less than N and keeps it in his or
+her head.
+
+\item {} 
+Person B makes repeated guesses to determine the number. Person A
+must indicate whether the guess is higher or lower.
+
+\item {} 
+Person A must tell the truth.
+
+\end{itemize}
+
+So as an example:
+\begin{itemize}
+\item {} 
+George and Andy are playing the game.
+
+\item {} 
+George chooses a positive number less than 100 (29) and puts it in his
+head.
+
+\item {} 
+Andy guesses 50. George says ``Lower''. Andy now knows that
+$1 \leq number < 50$.
+
+\item {} 
+Andy guesses 25. George says ``Higher''. Andy now knows that
+$26 \leq number < 50$.
+
+\item {} 
+Andy guesses 30. George says ``Lower''. Andy now knows that the
+$26 \leq number < 30$.
+
+\item {} 
+Andy starts thinking that he is close to knowing the correct answer. He
+decides to guess 29. Andy guesses the correct number. So George
+says, ``Good job! You win.''
+
+\end{itemize}
+
+We are going to elaborate this game in small steps.  You might save
+the intermediate versions under new names.
+
+The computer code for the
+game is going to be acting like Player A.
+
+
+\subsection{Part 1: No Hints; Fixed Secret Number}
+\label{lab-number-game:part-1-no-hints-fixed-secret-number}
+You are going to play a game, and later may repeat it, so put the code
+for playing the number game in a function called \code{Game}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Game}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+For now your Main function can just call \code{Game()}.
+
+Copy in the functions from previous code so you can use \code{InputInt}.
+
+In \code{Game}:
+\begin{enumerate}
+\item {} 
+For the simplest versions, which help testing, have the
+program assign a specific
+secret number (like 29), and call it \code{secret}.
+Admittedly, this is not much fun for the player the second time!
+
+\item {} 
+Prompt the player for a guess.  Every time the player guesses wrong,
+print ``Wrong!''.  A later version will give clues.  Keep
+prompting for another number until the player guesses correctly.
+(Since you, the programmer, knows the secret number, this need not go
+on forever.)
+
+\item {} 
+When the player guesses the right number, print ``Correct!  You win!''
+
+\end{enumerate}
+
+Sample play could look like:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Guess the number: \textbf{55}
+\item[] Wrong!
+\item[] Guess the number: \textbf{12}
+\item[] Wrong!
+\item[] Guess the number:  \textbf{29}
+\item[] Good job!  You win!
+\end{DUlineblock}
+\end{quote}
+
+You could alspo make the game stop immediately,
+(since you know the secret number):
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Guess the number:  \textbf{29}
+\item[] Good job!  You win!
+\end{DUlineblock}
+\end{quote}
+
+
+\subsection{Part 2: Add Hints}
+\label{lab-number-game:part-2-add-hints}
+In \code{Game}:
+Instead of just printing ``Wrong!'' when the player is incorrect,
+print ``Lower!'' or ``Higher!''  as appropriate.  For example:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Guess the number: \textbf{55}
+\item[] Lower!
+\item[] Guess the number: \textbf{12}
+\item[] Higher!
+\item[] Guess the number: \textbf{25}
+\item[] Higher!
+\item[] Guess the number:  \textbf{29}
+\item[] Good job!  You win!
+\end{DUlineblock}
+\end{quote}
+
+
+\subsection{Part 3:  Add a Random Secret Number}
+\label{lab-number-game:part-3-add-a-random-secret-number}
+In \code{Game}, make the following alterations and additions:
+\begin{enumerate}
+\item {} 
+For now set an \code{int} variable \code{big} to 100.  We will make sure
+the secret number is less than \code{big}.
+
+\item {} 
+Have the program print
+``In this game you guess a positive number less than 100.''
+For future use it is best if you have the printing statement
+reference the variable \code{big}, rather than the literal \code{100}.
+
+\end{enumerate}
+
+\index{random number generator}\begin{enumerate}
+\item {} 
+Thus far the secret number was fixed in the program.  Now we are
+going to let it vary, by having the game generate a \emph{random} number.
+For your convenience, we are going to give you the C\#
+code to compute the random number.  Assuming we want a secret number
+so $1 \leq secret < big$, we can use the code:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Random} \PYG{n}{r} \PYG{p}{=} \PYG{k}{new} \PYG{n}{Random}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{secret} \PYG{p}{=} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,} \PYG{n}{big}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+In case you are wondering, we are creating a \emph{new object}
+of the \emph{class} \code{Random} which serves as the
+random number generator. We'll cover this in more detail when we
+get to the Classes and Objects section. Here is some illustration
+in csharp.  Your answers will not be the same!
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{Random} \PYG{n}{r} \PYG{p}{=} \PYG{k}{new} \PYG{n}{Random}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{5}\PYG{l+m}{5}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{3}\PYG{l+m}{1}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{7}\PYG{l+m}{9}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{3}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{4}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{3}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{2}
+\end{Verbatim}
+
+In general the minimum possible value of the number returned by \code{r.Next}
+is the first parameter, and the value returned is always less than
+the second parameter.
+
+You can see that \code{r.Next()} is smart enough to give what appears to
+be a randomly chosen number every time. If you call it 100 times, it is
+likely that you'll see the same number twice!
+
+Example (where \code{secret} ended up as 68):
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Guess a number less than 100!
+\item[] Guess the number: \textbf{60}
+\item[] Higher!
+\item[] Guess the number: \textbf{72}
+\item[] Lower!
+\item[] Guess the number: \textbf{66}
+\item[] Lower!
+\item[] Guess the number: \textbf{68}
+\item[] Good job!  You win!
+\end{DUlineblock}
+\end{quote}
+
+For degugging purposes, you might want to have \code{secret}
+be printed out right away
+(but eliminate that part when everything works)!
+
+\end{enumerate}
+
+
+\subsection{Part 4:  Let the Player Set the Range of Values}
+\label{lab-number-game:part-4-let-the-player-set-the-range-of-values}
+In \code{Game}:
+Instead of setting \code{big} automatically to 100, make \code{big}
+be a parameter, so the heading looks like:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Game}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{big}\PYG{p}{)}
+\end{Verbatim}
+
+In \code{Main}:
+\begin{enumerate}
+\item {} 
+Prompt the player for the limit on the secret number.
+An exchange might look like:
+\begin{quote}
+
+Enter a secret number bound: \textbf{10}
+\end{quote}
+
+\item {} 
+Pass the value given by the player to the \code{Game} function.
+
+\end{enumerate}
+
+Hence the program might start with:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] Enter a secret number bound: \textbf{10}
+\item[] Guess a number less than 10!
+\item[] Guess the number: \textbf{5}
+\item[] Higher!
+\item[] Guess the number: \textbf{7}
+\item[] Lower!
+\item[] Guess the number: \textbf{6}
+\item[] Good job!  You win!
+\end{DUlineblock}
+\end{quote}
+
+
+\subsection{Part 5:  Count the Guesses}
+\label{lab-number-game:part-5-count-the-guesses}
+In \code{Game}: When the player finally wins, print the number of guesses
+the player made.  For example, for the game sequence shown above,
+the last line would become:
+\begin{quote}
+
+Good job!  You win on guess 3!
+\end{quote}
+
+You need to keep a count, adding 1 with each guess.
+
+
+\subsection{Possible Extra Credit Improvements or Variations}
+\label{lab-number-game:possible-extra-credit-improvements-or-variations}
+Should you finish everything early, try the following:
+\begin{enumerate}
+\item {} 
+\textbf{(20\% extra credit)}  In \code{Main}:
+
+Use an outer \code{while} loop to allow the game to be played
+repeatedly. Change the prompt for the bound in \code{Main} to:
+\begin{quote}
+
+Enter a secret number bound (or 0 to quit):
+\end{quote}
+
+Continue to play games until the player enters 0 for the bound.
+
+\item {} 
+\textbf{(40\% extra credit)}
+Write the opposite program, where the user is the one who knows the secret
+number and the computer guesses numbers until the answer
+is obtained. You can keep the same \code{Main}, that sets \code{big}.
+The new Game will tell the user to put a number in
+his/her head, and press return to continue.
+(You can throw away the string entered - this is just to cause a pause.)
+Then the computer guesses.
+For simpicity let the human enter ``L'' for lower, ``H'' for higher, and
+``E'' for equal (when the computer wins).
+As you saw in the initial example with George and Andy,
+each hint reduces the range of the possible secret numbers.
+Have the computer guess a random number in the \emph{exact} range that
+remains possible.
+
+To do this you must note the asymmetry of the parameters for the method
+\code{Next}:  suppose \code{n = r.Next(low, higher)}, then
+\begin{quote}
+
+$low \leq number < higher$
+\end{quote}
+
+The first parameter \emph{may} be returned, but second
+parameter is \emph{never} returned.
+
+You will need two parameters \code{low} and \code{higher} that keep
+bracketing the allowed range.  The simplest thing is to set them so they
+will be the parameters for the following call to \code{Next}.
+
+That would mean initially \code{low}
+is 1 and \code{higher} is equal to \code{big}.
+With each hint you adjust one or the other of \code{low} and \code{higher} so they
+get closer together.
+The game ends after the human enters ``E''.
+
+Have the computer complain that the human is cheating (and stop the game)
+if the computer
+guesses the only posible value, and the human does \emph{not} respond with ``E''.
+
+\end{enumerate}
+
 \index{homework!input-output decisions}\index{input-output!decisions, homework}\index{decisions!homework input-output}\index{homework!input-output loops}\index{input-output!loops, homework}\index{loops!homework input-output}
 
 \section{Homework: Grade Calculation from Individual Scores}
 \label{homework-gradecalculation2:homework-grade-calculation-from-individual-scores}\label{homework-gradecalculation2:homework-grade-calculation2}\label{homework-gradecalculation2:index-0}\label{homework-gradecalculation2::doc}
 In the previous assignment, we calculated grades based on a \emph{memorized}
-overall grade within each of the categories below:
+overall grade within each of the categories below, as in this example:
 \begin{itemize}
 \item {} 
 exams - 40\% (integer weight is 40)
@@ -5723,8 +6188,16 @@ we will explain how you would approach the solution to the requirement
 in C\#.  User responses are shown \textbf{bold faced}.
 
 
-\subsection{Requirements}
-\label{homework-gradecalculation2:requirements}\begin{enumerate}
+\subsection{Functional Requirements}
+\label{homework-gradecalculation2:functional-requirements}\begin{enumerate}
+\item {} 
+Instead of bombing out if the weights don't add up to 100, use a
+\code{do \{ ... \} while} loop (see Miles p. 43-44) to prompt the user again
+for all of the weights until they do add up to 100. The \code{do \{ ... \} while}
+loop is the right choice here, because you can test all of the weights
+at the end of the loop, after each time they have been entered
+in the loop.
+
 \item {} 
 Add code to prompt the user for the number of items in each category:
 \begin{quote}
@@ -5734,7 +6207,7 @@ Please enter the number of exams: \textbf{3}
 
 \item {} 
 Instead of prompting the user for an overall average
-exam grade, use a loop to
+exam grade, use a loop  to
 read one grade at a time. The grades will be added together (on the fly)
 to give the grade for that category. For example, after you have asked
 for the number of exams, you'd prompt the user to enter each exam
@@ -5758,9 +6231,10 @@ category you're calculating:
 \end{DUlineblock}
 \end{quote}
 
-Write a function to do this that can be reused for each
+Write a function, \code{FindAverage},
+to do this, and that can be reused for each
 category.  (Since it works for each category, the category
-name will need to be a parameter.)
+\emph{name} will need to be a parameter to \code{FindAverage}.)
 
 \item {} 
 Once you have read in the data for each of the items within a category,
@@ -5768,6 +6242,11 @@ you'll basically be able to \emph{reuse} the code that you developed in the
 previous assignment to compute the weighted average and print the
 final letter grade.
 
+\end{enumerate}
+
+
+\subsection{Style Requirements}
+\label{homework-gradecalculation2:style-requirements}\begin{enumerate}
 \item {} 
 For this assignment, you are expected to start using functions for all
 aspects of the assignment. For example, it can become tedious in a hurry
@@ -5783,14 +6262,16 @@ will be presented neatly. That is, we expect the following:
 \begin{itemize}
 \item {} 
 proper indentation that makes your program more readable by other
-humans.
+humans. Use all spaces, not tabs to indent.  You never know what
+default tabs your grader will have set up.
 
 \item {} 
-proper naming of variables and functions. In C\#, the convention is to
+proper naming of classes and functions. In C\#, the convention is to
 begin a name with a capital letter. You can have multiple words in a
-function name, but these should be capitalized using a method known as
+name, but these should be capitalized using a method known as
 CamelCase {\hyperref[homework-gradecalculation2:camelcase]{{[}CamelCase{]}}}. We also recommend this same naming convention
-for variables but with a lowercase first letter. For variables, we are also
+for variables but with a lowercase first letter.
+For variables, we are also
 ok with the use of underscores. For example, in homework 1 we used
 names like \emph{exam\_grade}. If you use CamelCase, you can name this
 variable \emph{examGrade}.
@@ -5800,7 +6281,8 @@ If you have any questions about the neatness or appearance of your
 code, please talk to the instructor or teaching assistant.
 
 \item {} 
-This guide from CIS 193 at {\hyperref[homework-gradecalculation2:upenncsharp]{{[}UPennCSharp{]}}} provides a nice set of conventions
+This guide from CIS 193 at {\hyperref[homework-gradecalculation2:upenncsharp]{{[}UPennCSharp{]}}}
+provides a nice set of conventions
 to follow. We include this here so you know that other faculty at
 other universities also consider neatness/apperance to be important.
 
@@ -5851,6 +6333,79 @@ with more \emph{robust} versions that get developed in class later:
       \PYG{k}{return} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{nStr}\PYG{p}{)}\PYG{p}{;}
    \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
+
+
+\subsection{Grading Rubric}
+\label{homework-gradecalculation2:grading-rubric}
+\begin{notice}{warning}{Warning:}
+As a general rule, we expect programs to be complete,
+compile correctly, run, and be
+thoroughly tested. We are able to grade an incomplete program
+but will only give at most 10/25
+for effort. Instead of submitting something incomplete,
+you are encouraged to complete your program and
+submit it per the late policy.  Start early and get help!
+\end{notice}
+
+25 point assignment broken down as follows:
+\begin{itemize}
+\item {} 
+Loop until weights add to 100: 5
+
+\item {} 
+Average any number of grades in a category: 5
+
+\item {} 
+One function that is reused and works for the average in each category: 5
+
+\item {} 
+Previous program features still work: 5
+
+\item {} 
+Style: 5
+
+\end{itemize}
+
+
+\subsection{Logs and Partners}
+\label{homework-gradecalculation2:logs-and-partners}
+You may work with a partner, following good pair-programming practice,
+sharing responsibility for all parts.
+
+Only one of a pair needs to submit the actual programming assignment.
+However \emph{both} students, \emph{independently}, should write and
+include a log in their
+Homework submission.  Students working alone should also submit a log,
+with fewer parts.
+
+Each individual's log should indicate each of the following clearly:
+\begin{itemize}
+\item {} 
+Your name and who your partner is (if you have one)
+
+\item {} 
+Your approximate total number of hours working on the homework
+
+\item {} 
+Some comment about how it went - what was hard ...
+
+\item {} 
+An assessment of your contribution (if you have a partner)
+
+\item {} 
+An assessment of your partner's contribution (if you have a partner).
+
+\end{itemize}
+
+Just omit the parts about a partner if you do not have one.
+
+\begin{notice}{note}{Note:}
+Name the log file with the exact file name:
+``log.txt'' and make it a plain text file.
+You can create it in a program editor or in a fancy document editor.
+If you use a fancy document editor, be sure to save it an a plain text file,
+usually indicated by the ''.txt'' suffix.
+\end{notice}
 
 \index{double loop!foreach}
 
@@ -6808,20 +7363,6 @@ for-statements
 \end{notice}
 
 (The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-``gcd naive (loop 2 -\textgreater{} max(a, b)''
-\end{notice}
-
-(The {\hyperref[gcdexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 71.)
-
-\begin{notice}{note}{Todo}
-
-``gcd subtraction method''
-\end{notice}
-
-(The {\hyperref[gcdexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/gcdexamples.rst, line 85.)
 
 \begin{notice}{note}{Todo}
 

@@ -9,7 +9,7 @@ Homework: Grade Calculation from Individual Scores
 ==================================================
 
 In the previous assignment, we calculated grades based on a *memorized* 
-overall grade within each of the categories below:
+overall grade within each of the categories below, as in this example:
 
 - exams - 40% (integer weight is 40)
 - labs - 15% (weight 15)
@@ -32,10 +32,11 @@ Functional Requirements
 -----------------------
 
 #. Instead of bombing out if the weights don't add up to 100, use a 
-   ``do { ... } while`` loop (see Miles 43-44) to prompt the user again
+   ``do { ... } while`` loop (see Miles p. 43-44) to prompt the user again
    for all of the weights until they do add up to 100. The ``do { ... } while``
    loop is the right choice here, because you can test all of the weights
-   after they have been entered at least once (in the loop).
+   at the end of the loop, after each time they have been entered 
+   in the loop.
 
 #. Add code to prompt the user for the number of items in each category:
 
@@ -62,9 +63,10 @@ Functional Requirements
      |
      | Calculated average exam grade = 90.0
 
-   Write a function to do this that can be reused for each
+   Write a function, ``FindAverage``, 
+   to do this, and that can be reused for each
    category.  (Since it works for each category, the category
-   name will need to be a parameter.)
+   *name* will need to be a parameter to ``FindAverage``.)
 
 #. Once you have read in the data for each of the items within a category,
    you'll basically be able to *reuse* the code that you developed in the
@@ -86,13 +88,15 @@ Style Requirements
    will be presented neatly. That is, we expect the following:
 
    - proper indentation that makes your program more readable by other
-     humans.
+     humans. Use all spaces, not tabs to indent.  You never know what
+     default tabs your grader will have set up.
 
-   - proper naming of variables and functions. In C#, the convention is to
+   - proper naming of classes and functions. In C#, the convention is to
      begin a name with a capital letter. You can have multiple words in a
-     function name, but these should be capitalized using a method known as 
+     name, but these should be capitalized using a method known as 
      CamelCase [CamelCase]_. We also recommend this same naming convention
-     for variables but with a lowercase first letter. For variables, we are also
+     for variables but with a lowercase first letter. 
+     For variables, we are also
      ok with the use of underscores. For example, in homework 1 we used
      names like `exam_grade`. If you use CamelCase, you can name this
      variable `examGrade`. 
@@ -100,7 +104,8 @@ Style Requirements
    - If you have any questions about the neatness or appearance of your 
      code, please talk to the instructor or teaching assistant.
 
-   - This guide from CIS 193 at [UPennCSharp]_ provides a nice set of conventions
+   - This guide from CIS 193 at [UPennCSharp]_ 
+     provides a nice set of conventions
      to follow. We include this here so you know that other faculty at 
      other universities also consider neatness/apperance to be important.
 
@@ -136,22 +141,54 @@ Grading Rubric
 
 .. warning::
 
-   As a general rule, we expect programs to be complete, compile correctly, run, and be
-   thoroughly tested. We are able to grade an incomplete program but will only give 10/25
-   for effort. You are encouraged to complete your program and submit it per the late policy.
-   If any of these appears to be missing, expect a substantial deduction.
+   As a general rule, we expect programs to be complete, 
+   compile correctly, run, and be
+   thoroughly tested. We are able to grade an incomplete program 
+   but will only give at most 10/25
+   for effort. Instead of submitting something incomplete,
+   you are encouraged to complete your program and 
+   submit it per the late policy.  Start early and get help!
 
-25 points broken down as follows:
+25 point assignment broken down as follows:
 
 - Loop until weights add to 100: 5
 
 - Average any number of grades in a category: 5
 
-- One function that is reused and works for each category: 5
+- One function that is reused and works for the average in each category: 5
 
 - Previous program features still work: 5
 
 - Style: 5
 
+
+Logs and Partners
+-------------------
+
+You may work with a partner, following good pair-programming practice,
+sharing responsibility for all parts.
+
+Only one of a pair needs to submit the actual programming assignment.
+However *both* students, *independently*, should write and
+include a log in their
+Homework submission.  Students working alone should also submit a log, 
+with fewer parts.
+
+Each individual's log should indicate each of the following clearly:
+
+- Your name and who your partner is (if you have one)
+- Your approximate total number of hours working on the homework
+- Some comment about how it went - what was hard ...
+- An assessment of your contribution (if you have a partner) 
+- An assessment of your partner's contribution (if you have a partner).  
+
+Just omit the parts about a partner if you do not have one.
+
+.. note::
+   Name the log file with the exact file name: 
+   "log.txt" and make it a plain text file.  
+   You can create it in a program editor or in a fancy document editor.
+   If you use a fancy document editor, be sure to save it an a plain text file,
+   usually indicated by the ".txt" suffix.
 
 
