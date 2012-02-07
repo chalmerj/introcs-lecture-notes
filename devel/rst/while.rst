@@ -14,4 +14,5 @@ While Loops
    whileinteractive
    whileexamples
    gcdexamples
+   lab-number-game
    homework-gradecalculation2
