@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 07, 2012}
+\date{February 11, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -2870,7 +2870,7 @@ George:
 
 
 \chapter{Basic String Operations}
-\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\phantomsection\label{stringindexing:string-indexing}
+\label{basicstringops:basic-string-operations}\label{basicstringops::doc}\label{basicstringops:basic-string-ops}\phantomsection\label{stringindexing:string-indexing}
 \index{string!index}\index{index!string}
 
 \section{String Indexing}
@@ -3012,9 +3012,10 @@ a variable name, a literal, or any expression evaluating to a string.
 
 \subsection{Summary of String Length and Some Instance Methods}
 \label{stringmethods:string-methods-length}\label{stringmethods:summary-of-string-length-and-some-instance-methods}\begin{description}
-\item[{\code{int IndexOf(string string2)}}] \leavevmode
-Returns the index of the begining of the first occurrence of the string \code{string2}
-in \textbf{this} string object. Returns -1 if \code{string2} not found. Example:
+\item[{\code{int IndexOf(string target)}}] \leavevmode
+Returns the index of the begining of the first occurrence of the
+string \code{target}
+in \textbf{this} string object. Returns -1 if \code{target} not found. Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{greeting} \PYG{p}{=} \PYG{l+s}{"Bonjour"}\PYG{p}{,} \PYG{n}{part} \PYG{p}{=} \PYG{l+s}{"jo"}\PYG{p}{;}
@@ -3070,6 +3071,8 @@ Property referring to the length of \textbf{this} string object. Example:
 \end{Verbatim}
 
 \end{description}
+
+Further string methods are introduced in {\hyperref[stringmethods2:more-string-methods]{\emph{More String Methods}}}.
 
 
 \subsection{Testing Strings For Equality}
@@ -5085,7 +5088,7 @@ So all together:
       \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
       \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
          \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
-         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{;}
+         \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
    \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
@@ -5170,23 +5173,25 @@ That has a long condition!  Here is a nice trick to shorten that:
 We want to check if a character is in a group of letters.  We have
 already seen the string method IndexOf.  Recall we can use it to see if
 a character is in or not in a string.  We can use \code{"aeiou".IndexOf(s{[}i{]})}.
-We do not care where \code{s{[}i{]}} comes in the string fo vowels.
+We do not care where \code{s{[}i{]}} comes in the string of vowels.
 All we care is that \code{"aeiou".IndexOf(s{[}i{]}) \textgreater{}= 0}.
 
 \index{string!Contains}\index{Contains!string}
 This is still a bit of a mouthful.  Often it is just important if a
-character or string is contained in another string, so it is easier to
+character or string is \emph{contained} in another string, not where it appears,
+so it is easier to
 use the string method \code{Contains}.  Though IndexOf takes either a string
 or a character as parameter, \code{Contains} only takes a string.  There is a
 nice quick idiom to convert anything to a string:  use \code{""+}.
 The condtion could be \code{"aeiou".Contains(""+s{[}i{]})}.
+This adds
+the string version of \code{s{[}i{]}} to the empty string.
 
-By the way, \code{Contains} can take either a character or
-a string as parameter.  We are still not as general as we might be:
+The functon is still not as general as it might be:
 Only lowercase vowels are listed.  We could do something with
-ToUpper, or just use the condtion: \code{"aeiouAEIOU".Contains(s{[}i{]})}
+\code{ToLower}, or just use the condtion: \code{"aeiouAEIOU".Contains(""+s{[}i{]})}
 
-This variation is in \code{Vowels2.cs}.
+This variation is in example \code{Vowels2.cs}.
 
 \begin{Verbatim}[commandchars=\\\{\}]
    \PYG{c+cm}{/** Print the vowels (aeiou) in s, one per line. */}
@@ -5198,12 +5203,214 @@ This variation is in \code{Vowels2.cs}.
          \PYG{k}{if} \PYG{p}{(}\PYG{n}{vowels}\PYG{p}{.}\PYG{n}{Contains}\PYG{p}{(}\PYG{l+s}{""}\PYG{p}{+}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
          \PYG{p}{\PYGZcb{}}
-         \PYG{n}{i} \PYG{p}{=} \PYG{n}{i}\PYG{p}{+}\PYG{l+m}{1}\PYG{p}{;}
+         \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
       \PYG{p}{\PYGZcb{}}
    \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-Next problem after this one:  see if a string contains only digits.
+\index{double example!IsDigits}\phantomsection\label{while-with-sequence:isdigits}\paragraph{IsDigits}
+
+Consider a variation, determining if \emph{all} the characters
+in a string are vowels.  We could work on that, but it is
+nit very useful.  Instead let us consider if all the
+characters are digits.  This is a true-false question, so function
+to determine this would return a Boolean result:
+
+There are several ways to check if a character is a digit.  We could use the
+\code{Contains} idiom from above, but here is another option:
+The codes for digits are sequential,
+and since characters are technically a kind of integer, we can
+compare:  \code{s{[}i{]}} is a digit if it is in the range from \code{'0'}
+to \code{'9'}, so the condition can be written:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sc}{'0'} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{l+s+sc}{'9'}
+\end{Verbatim}
+
+Similarly  the condition \code{s{[}i{]}} is not a digit, can be written
+negating the condition above or using the sam ideas as when we
+considered out of range values:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textless{}} \PYG{l+s+sc}{'0'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textgreater{}} \PYG{l+s+sc}{'9'}
+\end{Verbatim}
+
+If you think of going through by hand and checking,
+you would check through the
+characters sequentially and if you find a non-digit,
+you would want to remember that the string is not only digits.
+
+One way to do this is have a variable holding an answer so far:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Boolean} \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{true}\PYG{p}{;}
+\end{Verbatim}
+
+Of course intially, you have not found any non-digits, so it starts off true.
+As you go through
+the string, you want to make sure that answer is changed to \code{false}
+if a non-digit is encountered:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{p}{(}\PYG{l+s+sc}{'0'} \PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textgreater{}} \PYG{l+s+sc}{'9'}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+When we get all the way throught the string, the answer so far is the
+final answer to be returned:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/** Return true if s contains one or more digits}
+\PYG{c+cm}{ * and nothing else. Otherwise return false. */}
+\PYG{k}{static} \PYG{n}{Boolean} \PYG{n+nf}{IsDigits}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{n}{Boolean} \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{true}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+   \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textless{}} \PYG{l+s+sc}{'0'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textgreater{}} \PYG{l+s+sc}{'9'}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{false}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{return} \PYG{n}{allDigitsSoFar}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Remember something to always consider:  edge cases.
+In the description it says it is true for a string of \emph{one or more} digits.
+
+Check examples of length 1 and 0.
+Length 1 is fine, but it fails for the empty string,
+since the loop is skipped and the intial answer, \code{true} is returned.
+
+There are many ways to fix this.  We will know right up front that the answer
+is false if the length is 0, and we could immediately set
+\code{allDigitsSoFar} to false.  We would need to change the initialization
+so it checks the length and chooses the right value for \code{allDigitsSoFar},
+true or false, appropriate.  since we are selecting between two values,
+an \code{if} statement should occur to you:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Boolean} \PYG{n}{allDigitsSoFar}\PYG{p}{;}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{true}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{else} \PYG{p}{\PYGZob{}}
+    \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+If we substitute this intialization for \code{allDigitsSoFar},
+the code will satisfy the edge case, and the code will always
+work.
+
+Examine the \code{if} statement more closely:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] if the condition is  \code{true}, \code{allDigitsSoFar} is \code{true};
+\item[] if the condition is \code{false}, \code{allDigitsSoFar} is \code{false};
+\end{DUlineblock}
+\end{quote}
+
+See the symmetry: the value assigned to \code{allDigitsSoFar} is always
+the \emph{value of the condition}.
+
+A \emph{much} more concise and still equivalent initialization is just:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Boolean} \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{p}{(}\PYG{n}{s}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+In more gnerality this
+conciseness comes ifrom the fact that it is a \emph{Boolean} value that
+you are trying to set, based on a \emph{Boolean} condition:  You do not
+need to do that with an \code{if} statement!  You just need an
+assignment statement!  If you use an \code{if} statement in such a situation,
+you mark yourself as a novice.
+
+It could even be slightly more concise:  The precedence of assignment is
+very low, lower than the comparison \code{\textgreater{}},
+so the parentheses could be omited.  We think the
+code is easier to read with the parentheses left in, as written above,
+and below.
+
+The whole function would be:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Return true if s contains one or more digits}
+\PYG{c+cm}{    * and nothing else. Otherwise return false. */}
+   \PYG{k}{static} \PYG{n}{Boolean} \PYG{n+nf}{IsDigits}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{n}{Boolean} \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{p}{(}\PYG{n}{s}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textless{}} \PYG{l+s+sc}{'0'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textgreater{}} \PYG{l+s+sc}{'9'}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{false}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
+         \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{allDigitsSoFar}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+You can try this code in example \code{CheckDigits1.cs}.
+
+\index{return!from inside loop}
+We are not done.  This code is still inefficient.  If an early
+character in a long string is not a digit, we already know the
+final answer, but this code goes through and still checks all the
+other characters in the string!  People checking by hand
+would stop as soon as they found a
+non-digit.  We can do that in several ways with C\#, too.
+Since this is a function, and we would know the final answer
+where we find a non-digit,
+the simplest thing is to use the fact that a return statement
+\emph{immediately terminates} the function (even if in a loop).
+
+Instead of setting a variable to \code{false} to \emph{later} be returned,
+we can return right away, using the loop:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textless{}} \PYG{l+s+sc}{'0'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textgreater{}} \PYG{l+s+sc}{'9'}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{return} \PYG{k}{false}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+What if the loop terminates normally (no return from inside)?
+That means no
+non-digit was found, so if there are any characters at all,
+they are all digits. There are
+\emph{one or more} digits as long as the string length is \emph{positive}.
+Again we do not need an \code{if} statement for a check.  Look in the full
+code for the function:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Return true if s contains one or more digits}
+\PYG{c+cm}{    * and nothing else. Otherwise return false. */}
+   \PYG{k}{static} \PYG{n}{Boolean} \PYG{n+nf}{IsDigits}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textless{}} \PYG{l+s+sc}{'0'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{p}{\textgreater{}} \PYG{l+s+sc}{'9'}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{k}{false}\PYG{p}{;}
+         \PYG{p}{\PYGZcb{}}
+         \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{p}{(}\PYG{n}{s}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The full code with a \code{Main} testing program is in
+example \code{CheckDigits2.cs}.
+
+Returning put of a loop
+is a good pattern to remember for when you are searching for something,
+and you know the final answer for your function as soon as you find it.
 
 \index{interactive!loop while}\index{loop!while, interactive}\index{while!interactive loop}
 
@@ -5527,7 +5734,8 @@ from example  \code{PromptUserLoop2Bad.cs}:
 \end{Verbatim}
 
 You can run it.  Remember \code{Ctrl-C} !
-There are two tests.  If you give a legal answer immediately in the first test,
+There are two tests in \code{Main}.
+If you give a legal answer immediately in the first test,
 it works fine (never getting into the loop body).  If you
 give a bad input in the second test, you see that you can never fix it!
 Remember \code{Ctrl-C} !
@@ -5535,10 +5743,22 @@ Remember \code{Ctrl-C} !
 A more extreme abort is to close the entire console/terminal window
 running the program.
 
-\begin{notice}{note}{Todo}
+\index{exercise!Agree}\index{Agree!exercise}
 
-more interactive while loops
-\end{notice}
+\subsection{Agree Function Exercise}
+\label{whileinteractive:index-6}\label{whileinteractive:agree-function-exercise}\label{whileinteractive:id2}
+Save example \code{PrompUserLoop4Stub.cs} as \code{PromptUserLoop4.cs}.
+
+Yes-no (true/false) questions are common.
+How might you write an input utility function \code{Agree}?
+You can speed things
+up by considering only the first letter of responses.
+If it is important that the user enter correctly, you should
+consider three categories of answer:  ones accepted as true,
+ones accepted as false, and ambiguous ones.
+You need to allow for
+the possibility that the user keeps
+giving ambiguous answers....
 
 
 \subsection{Interactive Sum Exercise}
@@ -5547,6 +5767,25 @@ Write a program \code{SumAll.cs} that prompts the user to enter
 numbers, one per line, ending with a line containing 0, and keep a
 running sum of the numbers. Only print out the sum after all the
 numbers are entered (at least in your \emph{final} version).
+
+
+\subsection{Safe Whole Number Input Exercise}
+\label{whileinteractive:safe-whole-number-input}\label{whileinteractive:safe-whole-number-input-exercise}
+Save example \code{TestInputWholeStub.cs} as
+\code{TestInputWhole.cs} that tests
+a function \code{InputWhole}, as described below.
+
+There is an issue with reading in numbers with the InputInt function.
+If you make a typo and enter something that cannot be converted from a
+string to the right kind of number, a naive program will bomb.
+This is avoidable if you test the string and repeat if the string is illegal.
+Places where more complicated tests for illegality are needed are
+considered in {\hyperref[stringmethods2:safe-input-number]{\emph{Safe InputInt and InputDouble Exercise}}}.  For now we just consider
+reading in whole numbers (integers greater than or equal to 0).
+Note that such
+a number is written as just a sequence of digits.
+Follow the interactive model of InputIntInRange, looping until
+the user enters something that is legal: in this case, all digits.
 
 
 \section{While Examples}
@@ -5587,6 +5826,232 @@ a target of \$550, the program prints:
 \PYG{l+m}{5}\PYG{l+m}{4}\PYG{l+m}{0.80}
 \PYG{l+m}{5}\PYG{l+m}{6}\PYG{l+m}{3.42}
 \end{Verbatim}
+
+
+\subsection{Strange Sequence Exercise}
+\label{whileexamples:strange-sequence-exercise}\label{whileexamples:strange-seq-ex}
+Save the example program \code{StrangeSeqStub.cs} as \code{StrangeSeq.cs},
+
+There are three functions to complete.  Do one at a time and test.
+
+\code{Jump}: First complete the definitions of function \code{Jump}.
+For any integer \code{n}, \code{Jump(n)} is \code{n/2} if \code{n} is even,
+and \code{3*n+1} if \code{n} is odd.
+In the \code{Jump} function definition use an \code{if}-\code{else}
+statement.  Hint \footnote{
+If you divide an even number by 2, what is the remainder?  Use this idea
+in your \code{if} condition.
+}
+
+\code{PrintStrangeSequence}:
+You can start with one number, say n = 3, and \emph{keep} applying the
+\code{Jump} function to the \emph{last} number given,
+and see how the numbers jump around!
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Jump}\PYG{p}{(}\PYG{l+m}{3}\PYG{p}{)} \PYG{p}{=} \PYG{l+m}{3}\PYG{p}{*}\PYG{l+m}{3}\PYG{p}{+}\PYG{l+m}{1} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;} \PYG{n}{Jump}\PYG{p}{(}\PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{)} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{/}\PYG{l+m}{2} \PYG{p}{=} \PYG{l+m}{5}\PYG{p}{;}
+\PYG{n}{Jump}\PYG{p}{(}\PYG{l+m}{5}\PYG{p}{)} \PYG{p}{=} \PYG{l+m}{3}\PYG{p}{*}\PYG{l+m}{5}\PYG{p}{+}\PYG{l+m}{1} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{6}\PYG{p}{;} \PYG{n}{Jump}\PYG{p}{(}\PYG{l+m}{1}\PYG{l+m}{6}\PYG{p}{)} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{6}\PYG{p}{/}\PYG{l+m}{2} \PYG{p}{=} \PYG{l+m}{8}\PYG{p}{;}
+\PYG{n}{Jump}\PYG{p}{(}\PYG{l+m}{8}\PYG{p}{)} \PYG{p}{=} \PYG{l+m}{8}\PYG{p}{/}\PYG{l+m}{2}  \PYG{p}{=}   \PYG{l+m}{4}\PYG{p}{;} \PYG{n}{Jump}\PYG{p}{(}\PYG{l+m}{4}\PYG{p}{)} \PYG{p}{=}   \PYG{l+m}{4}\PYG{p}{/}\PYG{l+m}{2} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\PYG{n}{Jump}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{)} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{/}\PYG{l+m}{2}  \PYG{p}{=}   \PYG{l+m}{1}
+\end{Verbatim}
+
+This process of repeatedly applying the same function to the most recent result
+is called function \emph{iteration}.  In this case you see that iterating the
+\code{Jump} function, starting from n=3, eventually reaches the value 1.
+
+It is an \emph{open research question} whether iterating the Jump function
+from an integer \code{n} will eventually reach 1,
+for \emph{every} starting integer \code{n} greater than 1.
+Researchers have only found examples of \code{n} where it is true.
+Still, no general argument has been made to apply to the
+\emph{infinite} number of possible starting integers.
+
+In the PrintStrangeSequence you iterate the \code{Jump} function
+starting from parameter value \code{n}, until the result is 1.
+
+\code{CountStrangeSequence}:  Iterate the \code{Jump} function as in
+\code{PrintStrangeSequence}.  Instead of printing each number in the sequence,
+just count them, and return the count.
+
+\index{string!methods}
+
+\section{More String Methods}
+\label{stringmethods2:more-string-methods}\label{stringmethods2:index-0}\label{stringmethods2::doc}\label{stringmethods2:id1}
+Before we do more elaborate things with strings, some more string methods
+will be helpful.  Be sure you are familiar with the earlier discussion of
+strings in
+{\hyperref[basicstringops:basic-string-ops]{\emph{Basic String Operations}}}.
+
+Play with the new string methods in csharp!
+
+This variation of \code{IndexOf} has a second parameter:
+
+\index{string!IndexOf}\index{IndexOf!string}\begin{description}
+\item[{\code{int IndexOf(string target, int start)}}] \leavevmode
+Returns the index of the begining of the first occurrence of the string
+\code{target}
+in \textbf{this} string object, starting at index \code{start} or after.
+Returns -1 if \code{target} is not found. Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{state} \PYG{p}{=} \PYG{l+s}{"Mississippi"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{print}\PYG{p}{(}\PYG{l+s}{"01234567890\PYGZbs{}n"}\PYG{p}{+}\PYG{n}{state}\PYG{p}{)} \PYG{c+c1}{// to see indices}
+\PYG{l+m}{0}\PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{5}\PYG{l+m}{6}\PYG{l+m}{7}\PYG{l+m}{8}\PYG{l+m}{9}\PYG{l+m}{0}
+\PYG{n}{Mississippi}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{state}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{l+s}{"is"}\PYG{p}{,} \PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{// same as state.IndexOf("is");}
+\PYG{l+m}{1}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{state}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{l+s}{"is"}\PYG{p}{,} \PYG{l+m}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{4}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{state}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{l+s}{"is"}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{-}\PYG{l+m}{1}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{state}\PYG{p}{.}\PYG{n}{IndexOf}\PYG{p}{(}\PYG{l+s}{"i"}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m}{7}
+\end{Verbatim}
+
+\end{description}
+
+\index{string!Trim}\index{Trim!string}\begin{description}
+\item[{\code{string Trim()}}] \leavevmode
+Returns a string formed from \textbf{this} string object, but
+with leading and trailing whitespace removed. Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+csharp\textgreater{} string s = "\PYGZbs{}n  123    ";
+csharp\textgreater{} "\#" + s + "\#";
+\#
+  123   \#
+csharp\textgreater{} "\#" + s.Trim() + "\#";
+\#123\#
+\end{Verbatim}
+
+\end{description}
+
+\index{string!Replace}\index{Replace!string}\begin{description}
+\item[{\code{string Replace(string target, string replacement)}}] \leavevmode
+Returns a string formed from \textbf{this} string by replacing
+all occurences of the substring \code{target} by \code{replacement}.
+Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"This is it!"}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Replace}\PYG{p}{(}\PYG{l+s}{" "}\PYG{p}{,} \PYG{l+s}{"/"}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+s}{"This/is/it!"}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{Replace}\PYG{p}{(}\PYG{l+s}{"is"}\PYG{p}{,} \PYG{l+s}{"at"}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+s}{"That at it!"}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"oooooh"}\PYG{p}{.}\PYG{n}{Replace}\PYG{p}{(}\PYG{l+s}{"oo"}\PYG{p}{,} \PYG{l+s}{"ah"}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+s}{"ahahoh"}
+\end{Verbatim}
+
+\end{description}
+
+\index{string!StartsWith}\index{StartsWith!string}\begin{description}
+\item[{\code{Boolean StartsWith(string prefix)}}] \leavevmode
+Returns \code{true} if  \textbf{this} string object starts
+with string \code{prefix}, and \code{false} otherwise.
+Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"-123"}\PYG{p}{.}\PYG{n}{StartsWith}\PYG{p}{(}\PYG{l+s}{"-"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{true}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"downstairs"}\PYG{p}{.}\PYG{n}{StartsWith}\PYG{p}{(}\PYG{l+s}{"down"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{true}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"1 - 2 - 3"}\PYG{p}{.}\PYG{n}{StartsWith}\PYG{p}{(}\PYG{l+s}{"-"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{false}
+\end{Verbatim}
+
+\end{description}
+
+\index{string!EndsWith}\index{EndsWith!string}\begin{description}
+\item[{\code{Boolean EndsWith(string suffix)}}] \leavevmode
+Returns \code{true} if  \textbf{this} string object ends
+with string \code{suffix}, and \code{false} otherwise.
+Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"-123"}\PYG{p}{.}\PYG{n}{EndsWith}\PYG{p}{(}\PYG{l+s}{"-"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{false}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"downstairs"}\PYG{p}{.}\PYG{n}{EndsWith}\PYG{p}{(}\PYG{l+s}{"airs"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{true}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{l+s}{"downstairs"}\PYG{p}{.}\PYG{n}{EndsWith}\PYG{p}{(}\PYG{l+s}{"air"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{false}
+\end{Verbatim}
+
+\end{description}
+
+\index{exercise!CountRep}\index{CountRep!exercise}
+
+\subsection{Count Repetitions in a String}
+\label{stringmethods2:index-6}\label{stringmethods2:count-repetitions-in-a-string}\label{stringmethods2:countrep}
+Write a program \code{TestCountRep.cs}, with a Main testing method,
+that tests a function with the following heading:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{c+cm}{/**Return the number of separate repetitions of target}
+\PYG{c+cm}{  * in s. */}
+\PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{CountRep}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{,} \PYG{k+kt}{string} \PYG{n}{target}\PYG{p}{)}
+\end{Verbatim}
+
+For example here is what \code{CountRep( "Mississippi", target)}
+would return with various values for \code{target}:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{"i"}: 4
+\item[] \code{"is"}: 2
+\item[] \code{"sss"}: 0
+\end{DUlineblock}
+\end{quote}
+
+Assume each repetition is completely separate, so
+\code{CountRep("Wheee!", "ee")} returns 1.  The last
+two e's do not count, since the middle e is already
+used int he match of the first two e's.
+
+\index{exercise!safe InputInt}\index{safe InputInt!exercise}\index{exercise!safe InputDouble}\index{safe InputDouble!exercise}
+
+\subsection{Safe InputInt and InputDouble Exercise}
+\label{stringmethods2:safe-inputint-and-inputdouble-exercise}\label{stringmethods2:index-7}\label{stringmethods2:safe-input-number}
+Save the example \code{SafeNumberInputStub.cs} as \code{SafeNumberInput.cs}.
+
+The idea is to write safe versions of the utility functions
+InputInt and InputDouble (which can then be used in further
+places like InputIntInRange).
+
+Be sure you are familiar with {\hyperref[whileinteractive:safe-whole-number-input]{\emph{Safe Whole Number Input Exercise}}},
+and the development of its \code{InputWhole} function.
+
+A legal whole number string consists entirely of digits.  We have
+already written example \code{IsDigis} to identify a string for a
+whole number.
+
+The  improvements to InputInt and InputDouble are
+very similar and straightforward \emph{if} you have developed the two main
+Boolean support functions,
+\code{IsIntString} and{}`{}`IsDecimalString{}`{}` respectively.
+
+The issue with integer and decimal strings
+is that they may include parts other than
+digits.  An integer may start with a minus sign.  A
+decmial number can also contain a decimal point in an appropriate
+place.  The suggestion is to confirm that these other characters appear in
+legal places, remove them, and see that what is left is digits.
+The recently introduced string methods should help....
+
+Develop the functions in order and test after each one:
+write \code{IsIntString}, revise \code{InputInt},
+write \code{IsDecimalString}, and revise \code{InputDouble}.
+
+Be sure to test carefully.  Not only confirm that all
+appropriate strings return \code{true}:
+Also be sure to test that you return \code{false"}
+for \emph{all} sorts of bad strings.
+
+Hopefully
+you learned something from writing the earlier InputWhole.
+Probably it is not worth keeping in our utility library
+any longer, since we have
+the more general and safe InputInt, and we can
+restrict to many ranges with InputIntInRange.
 
 
 \section{More While Examples}
@@ -6491,6 +6956,35 @@ Make restructred text table with fixed rows, columns, and width empty content.
 
 Repeat string N times.
 \end{notice}
+
+
+\subsection{Head or Tails Exercise}
+\label{forexamples:head-or-tails-exercise}
+Write a program \code{HeadsTails.cs}. It should include a function \code{Flip()},
+that will randomly prints \code{Heads} or \code{Tails}.
+Accomplish this by choosing 0 or 1 arbitrarily with a random
+number generator.  Recall in {\hyperref[lab-number-game:lab-number-game]{\emph{Number Guessing Game Lab}}}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Random} \PYG{n}{r} \PYG{p}{=} \PYG{k}{new} \PYG{n}{Random}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+Then, for \code{int}s \code{low} and \code{higher}, with \code{low \textless{} higher}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{n}{r}\PYG{p}{.}\PYG{n}{Next}\PYG{p}{(}\PYG{n}{low}\PYG{p}{,} \PYG{n}{higher}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+returns a (pseudo) random \code{int}, satisfying \code{low \textless{}= n \textless{} higher}.
+If you select \code{low} and \code{higher} so there are only two possible values
+for n,
+then you can choose to print \code{Heads} or \code{Tails} with an
+\code{if}-\code{else} statement based on the result.
+
+In your Main method have a \code{for} loop calling  \code{Flip()}
+10 times to test it, so you generate a random sequence of
+10 \code{Heads} and/or
+\code{Tails}.
 
 
 \chapter{Arrays}
@@ -7398,13 +7892,6 @@ two dimensional arrays
 \end{notice}
 
 (The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 13.)
-
-\begin{notice}{note}{Todo}
-
-more interactive while loops
-\end{notice}
-
-(The {\hyperref[whileinteractive:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileinteractive.rst, line 276.)
 
 \begin{thebibliography}{UPennCSharp}
 \bibitem[CamelCase]{CamelCase}{\phantomsection\label{homework-gradecalculation2:camelcase} 

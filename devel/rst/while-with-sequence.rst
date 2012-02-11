@@ -141,28 +141,196 @@ That has a long condition!  Here is a nice trick to shorten that:
 We want to check if a character is in a group of letters.  We have
 already seen the string method IndexOf.  Recall we can use it to see if
 a character is in or not in a string.  We can use ``"aeiou".IndexOf(s[i])``.
-We do not care where ``s[i]`` comes in the string fo vowels.  
+We do not care where ``s[i]`` comes in the string of vowels.  
 All we care is that ``"aeiou".IndexOf(s[i]) >= 0``.
 
 .. index::
    double: string; Contains
    
 This is still a bit of a mouthful.  Often it is just important if a
-character or string is contained in another string, so it is easier to
+character or string is *contained* in another string, not where it appears,
+so it is easier to
 use the string method ``Contains``.  Though IndexOf takes either a string
 or a character as parameter, ``Contains`` only takes a string.  There is a 
-nice quick idiom to convert anything to a string:  use ``""+``.  
-The condtion could be ``"aeiou".Contains(""+s[i])``.
+nice quick idiom to convert anything to a string:  use ``""+``. 
+The condtion could be ``"aeiou".Contains(""+s[i])``.  
+This adds
+the string version of ``s[i]`` to the empty string.
 
-By the way, ``Contains`` can take either a character or
-a string as parameter.  We are still not as general as we might be:
+The functon is still not as general as it might be:
 Only lowercase vowels are listed.  We could do something with
-ToUpper, or just use the condtion: ``"aeiouAEIOU".Contains(s[i])``
+``ToLower``, or just use the condtion: ``"aeiouAEIOU".Contains(""+s[i])``
 
-This variation is in ``Vowels2.cs``.
+This variation is in example ``Vowels2.cs``.
 
 .. literalinclude:: examples/Vowels2.cs
    :start-after: chunk
    :end-before: chunk
 
-Next problem after this one:  see if a string contains only digits.
+
+.. index::
+   double example; IsDigits
+   
+.. _IsDigits:
+
+.. rubric:: IsDigits
+
+Consider a variation, determining if *all* the characters
+in a string are vowels.  We could work on that, but it is 
+nit very useful.  Instead let us consider if all the 
+characters are digits.  This is a true-false question, so function
+to determine this would return a Boolean result:
+
+
+
+There are several ways to check if a character is a digit.  We could use the
+``Contains`` idiom from above, but here is another option:
+The codes for digits are sequential,
+and since characters are technically a kind of integer, we can 
+compare:  ``s[i]`` is a digit if it is in the range from ``'0'``
+to ``'9'``, so the condition can be written::
+
+    '0' <= s[i] && s[i] <= '9'
+    
+Similarly  the condition ``s[i]`` is not a digit, can be written 
+negating the condition above or using the sam ideas as when we 
+considered out of range values::
+
+    s[i] < '0' || s[i] > '9'
+    
+If you think of going through by hand and checking, 
+you would check through the 
+characters sequentially and if you find a non-digit,
+you would want to remember that the string is not only digits.
+
+One way to do this is have a variable holding an answer so far::
+
+     Boolean allDigitsSoFar = true;
+     
+Of course intially, you have not found any non-digits, so it starts off true.  
+As you go through
+the string, you want to make sure that answer is changed to ``false`` 
+if a non-digit is encountered::
+
+     if ('0' > s[i] || s[i] > '9') {
+         allDigitsSoFar = false;
+     }
+
+When we get all the way throught the string, the answer so far is the
+final answer to be returned::
+
+   /** Return true if s contains one or more digits
+    * and nothing else. Otherwise return false. */
+   static Boolean IsDigits(string s)
+   {
+      Boolean allDigitsSoFar = true;
+      int i = 0;
+      while (i < s.Length) {
+         if (s[i] < '0' || s[i] > '9') {
+            allDigitsSoFar = false;
+         }
+         i++;
+      }
+      return allDigitsSoFar;
+   }
+
+Remember something to always consider:  edge cases.
+In the description it says it is true for a string of *one or more* digits.
+
+Check examples of length 1 and 0.  
+Length 1 is fine, but it fails for the empty string,
+since the loop is skipped and the intial answer, ``true`` is returned.
+
+There are many ways to fix this.  We will know right up front that the answer
+is false if the length is 0, and we could immediately set
+``allDigitsSoFar`` to false.  We would need to change the initialization 
+so it checks the length and chooses the right value for ``allDigitsSoFar``,
+true or false, appropriate.  since we are selecting between two values,
+an ``if`` statement should occur to you::
+
+  Boolean allDigitsSoFar;
+  if (s.Length > 0) {
+      allDigitsSoFar = true;
+  }
+  else {
+      allDigitsSoFar = false;
+  }
+      
+If we substitute this intialization for ``allDigitsSoFar``, 
+the code will satisfy the edge case, and the code will always 
+work. 
+
+Examine the ``if`` statement more closely:
+
+    | if the condition is  ``true``, ``allDigitsSoFar`` is ``true``; 
+    | if the condition is ``false``, ``allDigitsSoFar`` is ``false``; 
+
+See the symmetry: the value assigned to ``allDigitsSoFar`` is always
+the *value of the condition*.
+
+A *much* more concise and still equivalent initialization is just::
+
+    Boolean allDigitsSoFar = (s.Length > 0); 
+    
+In more gnerality this 
+conciseness comes ifrom the fact that it is a *Boolean* value that
+you are trying to set, based on a *Boolean* condition:  You do not
+need to do that with an ``if`` statement!  You just need an 
+assignment statement!  If you use an ``if`` statement in such a situation,
+you mark yourself as a novice.
+
+It could even be slightly more concise:  The precedence of assignment is
+very low, lower than the comparison ``>``, 
+so the parentheses could be omited.  We think the
+code is easier to read with the parentheses left in, as written above,
+and below.
+
+The whole function would be:
+
+.. literalinclude:: examples/CheckDigits1.cs
+   :start-after: chunk
+   :end-before: chunk
+
+You can try this code in example :file:`CheckDigits1.cs`.
+
+.. index::  return; from inside loop
+   
+We are not done.  This code is still inefficient.  If an early
+character in a long string is not a digit, we already know the 
+final answer, but this code goes through and still checks all the
+other characters in the string!  People checking by hand 
+would stop as soon as they found a
+non-digit.  We can do that in several ways with C#, too.  
+Since this is a function, and we would know the final answer
+where we find a non-digit, 
+the simplest thing is to use the fact that a return statement
+*immediately terminates* the function (even if in a loop).
+
+Instead of setting a variable to ``false`` to *later* be returned,
+we can return right away, using the loop::
+
+      while (i < s.Length) {
+         if (s[i] < '0' || s[i] > '9') {
+            return false;
+         }
+         i++;
+      }
+
+What if the loop terminates normally (no return from inside)?  
+That means no
+non-digit was found, so if there are any characters at all,
+they are all digits. There are 
+*one or more* digits as long as the string length is *positive*.
+Again we do not need an ``if`` statement for a check.  Look in the full
+code for the function:
+
+.. literalinclude:: examples/CheckDigits2.cs
+   :start-after: chunk
+   :end-before: chunk
+
+The full code with a ``Main`` testing program is in 
+example :file:`CheckDigits2.cs`.
+
+Returning put of a loop 
+is a good pattern to remember for when you are searching for something, 
+and you know the final answer for your function as soon as you find it.

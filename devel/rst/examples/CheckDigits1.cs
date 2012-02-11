@@ -1,12 +1,12 @@
 using System;
 
-class Vowels
+class CheckDigits  // test IsDigits (long way)
 {
 
    static void Main() //testing routine
    {
       string s = InputLine("Enter a line: ");
-      PrintVowels(s);
+      Console.WriteLine("Only digits in {0} ?: ", IsDigits(s));
    }
 
    static string InputLine(string prompt)
@@ -15,17 +15,19 @@ class Vowels
       return Console.ReadLine();
    }
                                             // new chunk
-   /** Print the vowels (aeiou) in s, one per line. */
-   static void PrintVowels(string s)
+   /** Return true if s contains one or more digits
+    * and nothing else. Otherwise return false. */
+   static Boolean IsDigits(string s)
    {
+      Boolean allDigitsSoFar = (s.Length > 0);
       int i = 0;
-      string vowels = "aeiouAEIOU";
       while (i < s.Length) {
-         if (vowels.Contains(""+s[i])) {
-            Console.WriteLine(s[i]);
+         if (s[i] < '0' || s[i] > '9') {
+            allDigitsSoFar = false;
          }
          i++;
       }
+      return allDigitsSoFar;
    }
 }                                           // past new chunk
 

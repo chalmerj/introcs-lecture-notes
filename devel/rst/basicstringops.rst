@@ -1,6 +1,8 @@
 .. index
    single: string
 
+.. _basic-string-ops:
+
 Basic String Operations
 #######################
 

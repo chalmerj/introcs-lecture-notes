@@ -2,25 +2,27 @@
 
 
 A - Arithmetic Calculator
-        essential primitive types
-        essential conversions
-        random numbers using math rand?
+       / essential primitive types : mostly ref to Miles at this pont
+       / essential conversions : mostly ref to Miles
+       / random numbers using math rand? in guess lab - not double though 
         our approach: conversions is the only use of cast.
 
 
-B - Strings
-        int.Parse(“100”)
-        formatting output
+B - Strings   
+      x  int.Parse(“100”)
+      x  formatting output
+      x  basics methods in string lab and intro
+         more methods
 
-
-C - Parameterless Functions
-        reading input?
+C - Parameterless Functions   Done
+      x  reading input in Main
 
 
 D - Conditions
-        read data in range
-        min, max, sign
-        preview: number game (one guess)
+      x  read data in range
+         min, max, 
+      x   sign  exercise
+      x  preview: number game (one guess)
 
 
 E - Loops

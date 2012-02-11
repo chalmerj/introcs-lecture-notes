@@ -97,11 +97,10 @@ a variable name, a literal, or any expression evaluating to a string.
 Summary of String Length and Some Instance Methods
 ----------------------------------------------------
 
-``int IndexOf(string string2)``
-    Returns the index of the begining of the first occurrence of the string ``string2`` 
-    in **this** string object. Returns -1 if ``string2`` not found. Example:
-    
-    :: 
+``int IndexOf(string target)``
+    Returns the index of the begining of the first occurrence of the 
+    string ``target`` 
+    in **this** string object. Returns -1 if ``target`` not found. Example:: 
     
         csharp> string greeting = "Bonjour", part = "jo";      
         csharp> greeting.IndexOf(part);
@@ -130,29 +129,26 @@ Summary of String Length and Some Instance Methods
         "ryl C"   
 
 ``string ToUpper()``   
-    Return a string like **this** string, except all in upper case.  Example:
-    
-    :: 
+    Return a string like **this** string, except all in upper case.  Example:: 
     
       csharp> "Hi Jane!".ToUpper(); 
       "HI JANE!"
 
 ``string ToLower()``
-    Return a string like **this** string, except all in lower case.  Example:
-    
-    :: 
+    Return a string like **this** string, except all in lower case.  Example:: 
     
         csharp> "Hi Jane!".ToLower();
         "hi jane!" 
 
 ``int Length``                           
-    Property referring to the length of **this** string object. Example:
-    
-    ::
+    Property referring to the length of **this** string object. Example::
     
         csharp> string greeting = "Bonjour"; 
         csharp> greeting.Length;  //no parentheses
         7       
+
+Further string methods are introduced in :ref:`more-string-methods`.
+
 
 Testing Strings For Equality
 ------------------------------

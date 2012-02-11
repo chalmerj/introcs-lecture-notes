@@ -13,6 +13,7 @@ While Loops
    while-with-sequence
    whileinteractive
    whileexamples
+   stringmethods2
    gcdexamples
    lab-number-game
    homework-gradecalculation2

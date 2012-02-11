@@ -260,7 +260,8 @@ from example  ``PromptUserLoop2Bad.cs``:
    :end-before: chunk
 
 You can run it.  Remember :kbd:`Ctrl-C` !
-There are two tests.  If you give a legal answer immediately in the first test, 
+There are two tests in ``Main``.  
+If you give a legal answer immediately in the first test, 
 it works fine (never getting into the loop body).  If you 
 give a bad input in the second test, you see that you can never fix it!
 Remember :kbd:`Ctrl-C` !
@@ -268,10 +269,26 @@ Remember :kbd:`Ctrl-C` !
 A more extreme abort is to close the entire console/terminal window 
 running the program.
 
+.. index::
+   double: exercise; Agree
+   
+.. _agree-function-exercise:
 
-.. todo::
+Agree Function Exercise
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   more interactive while loops
+Save example ``PrompUserLoop4Stub.cs`` as ``PromptUserLoop4.cs``.
+
+Yes-no (true/false) questions are common.
+How might you write an input utility function ``Agree``? 
+You can speed things
+up by considering only the first letter of responses.
+If it is important that the user enter correctly, you should
+consider three categories of answer:  ones accepted as true, 
+ones accepted as false, and ambiguous ones.  
+You need to allow for 
+the possibility that the user keeps
+giving ambiguous answers....  
 
 
 .. _interactive-sumEx:
@@ -285,7 +302,31 @@ running sum of the numbers. Only print out the sum after all the
 numbers are entered (at least in your *final* version).
 
 
+.. index;
+   double: exercise; InputWhole
+   
+.. _safe-whole-number-input:
 
+Safe Whole Number Input Exercise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Save example :file:`TestInputWholeStub.cs` as
+``TestInputWhole.cs`` that tests
+a function ``InputWhole``, as described below.
+
+There is an issue with reading in numbers with the InputInt function.
+If you make a typo and enter something that cannot be converted from a
+string to the right kind of number, a naive program will bomb.
+This is avoidable if you test the string and repeat if the string is illegal.
+Places where more complicated tests for illegality are needed are
+considered in :ref:`safe-input-number`.  For now we just consider
+reading in whole numbers (integers greater than or equal to 0).  
+Note that such
+a number is written as just a sequence of digits.   
+Follow the interactive model of InputIntInRange, looping until
+the user enters something that is legal: in this case, all digits.
+
+	
 .. later  some after arrays, some just more work for exercises (strange func)
 
 	Now that we have you cautious, let us try the program
@@ -406,104 +447,6 @@ numbers are entered (at least in your *final* version).
 		
 	
 	
-	.. _Safe-Num-Input-Ex:
-	
-	Safe Number Input Exercise
-	~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	There is an issue with reading in numbers with the InputInt function.
-	If you make a typo and enter something that cannot be converted from a
-	string to the right kind of number, a naive program will bomb.
-	This is avoidable if you test the string and repeat if the string is illegal.
-	In this exercise write safe utility function replacements
-	for the input function that work to read in a whole number, an integer or
-	a decimal number.
-	
-	All parts refer to the previous
-	:ref:`Is-Number-String-Ex`.  Part a. refers to the introduction in the
-	previous exercise.
-	Parts b. and c. refer to functions in the solution, ``isNumberStr.cs``, of
-	the previous exercise.
-	Make sure you look back at these first.
-	
-	Save the example ``safeNumberInputStub.cs`` as ``safeNumberInput.cs``,
-	and complete it.
-	It contains headings and documentation strings
-	for the functions in each part of this exercise.
-	
-	a.  This part considers the simplest case,
-		where you are trying to enter a whole number.
-		Complete the definition of the function ``safeWholeNumber``.
-	
-	b.  Complete the function ``safeInt``.  This easily parallels part a.
-		if you copy in and use the function (not method) ``isIntegerStr``.
-	
-	c.  Complete the function ``safeDecimal``.  This easily parallels part b.
-		if you copy in and use the function ``isDecimalStr``.
-	
-	
-	
-	.. _Strange-Seq-Ex:   
-	
-	Strange Sequence Exercise
-	~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	\* Recall :ref:`Strange-Func-Ex` and its ``jumpFunc.cs`` 
-	which contains the function ``jump``:
-	For any integer n, jump(n) is n//2 if n is even, and 3*n+1 if n is odd.
-	
-	You can start with one number, say n = 3, and *keep* applying the
-	jump function to the *last* number given, and see how the numbers jump around!
-	::
-	
-		jump(3) = 3*3+1 = 10; jump(10) = 10//2 = 5;
-		jump(5) = 3*5+1 = 16; jump(16) = 16//2 = 8;
-		jump(8) = 8//2 = 4; jump(4) = 4//2 = 2;
-		jump(2) = 2//2 = 1
-	
-	This process of repeatedly applying the same function to the most recent result
-	is called function *iteration*.  In this case you see that iterating the
-	jump function, starting from n=3, eventually reaches the value 1.
-	
-	It is an open research question whether iterating the jump function
-	from an integer n will eventually reach 1,
-	for *every* starting integer n greater than 1.
-	Researchers have only found examples of n where it is true.
-	Still, no general argument has been made to apply to the
-	*infinite* number of possible starting integers.
-	
-	In this exercise you iterate the jump function for specific
-	starting values n, until the result is 1.
-	
-	a.  Save example ``jumpSeqStub.cs`` as ``jumpSeq.cs`` and complete the missing
-		function bodies.  If you coded the function ``jump`` before in
-		``jumpFunc.cs``, you can copy it.
-		You can complete either ``printJumps`` or
-		``listJumps`` first, and test before completing the other. Hint [#]_
-	
-	
-	b.  After you have finished and saved ``jumpSeq.cs`` copy it and save
-		the file as ``jumpSeqLengths.cs``.
-	
-		First modify the main method so it prompts the user
-		for a value of n, and then prints just the length of the iterative sequence
-		from listJumps(n).  Hint [#]_
-	
-		Then elaborate the program so it prompts the user for two integers:
-		a lowest starting value of n
-		and a highest starting value of n.
-		For all integers n in the range from the lowest start through
-		the highest start, including the highest,
-		print a sentence giving the starting value of n
-		and the length of the list from ``listJumps(n)``.  An example run::
-	
-			Enter lowest start: 3
-			Enter highest start: 6
-			Starting from 3, jump sequence length 8.
-			Starting from 4, jump sequence length 3.
-			Starting from 5, jump sequence length 6.
-			Starting from 6, jump sequence length 9.
-		
 	
 	
 	

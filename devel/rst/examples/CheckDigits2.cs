@@ -1,12 +1,12 @@
 using System;
 
-class CharLoop
+class CheckDigits  // IsDigits with return shortcut; test
 {
 
    static void Main() //testing routine
    {
       string s = InputLine("Enter a line: ");
-      OneCharPerLine(s);
+      Console.WriteLine("Only digits in {0} ?: ", IsDigits(s));
    }
 
    static string InputLine(string prompt)
@@ -15,14 +15,18 @@ class CharLoop
       return Console.ReadLine();
    }
                                             // new chunk
-   /** Print the characters of s, one per line. */
-   static void OneCharPerLine(string s)
+   /** Return true if s contains one or more digits
+    * and nothing else. Otherwise return false. */
+   static Boolean IsDigits(string s)
    {
       int i = 0;
-      while (i < s.length) {
-         Console.WriteLine(s[i]);
+      while (i < s.Length) {
+         if (s[i] < '0' || s[i] > '9') {
+            return false;
+         }
          i++;
       }
+      return (s.Length > 0);
    }
 }                                           // past new chunk
 

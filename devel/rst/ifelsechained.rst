@@ -122,63 +122,6 @@ with a regular wage of $10 per hour would work at $10 per hour for
 
 You may find ``Wages2.cs`` easier to adapt than ``Wages1.cs``.
 
-.. when time - should be ok here
-
-	.. _Is-Number-String-Ex:
-	
-	Is Number String Exercise
-	~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	\*\* In the later :ref:`Safe-Num-Input-Ex`, it will be important to know if
-	a string can be converted to the desired type of number.  Explore that here.
-	Save example ``isNumberStringStub.cs`` as ``isNumberString.cs`` and complete
-	it.  It contains headings and documentation strings
-	for the functions in both parts of this exercise.
-	
-	A legal whole number string consists entirely of digits.
-	Luckily strings have an
-	``isdigit`` method, which is true when a nonempty string consists
-	entirely of digits, so
-	``'2397'.isdigit()`` returns ``true``, and ``'23a'.isdigit()``
-	returns ``False``, exactly corresponding to the situations when the string
-	represents a whole number!
-	
-	In both parts be sure to test carefully.  Not only confirm that all
-	appropriate strings return ``true``.
-	Also be sure to test that you return ``false`` for *all* sorts of bad strings.
-	
-	a.  Recognizing an integer string is more involved,
-		since it can start with a minus sign (or not).
-		Hence the ``isdigit`` method is not enough by itself.
-		This part is the most straightforward if you have worked on
-		the sections :ref:`string-indices` and :ref:`string-slices`.
-		An alternate approach works if you note a few more string methods:
-	
-		* The count method from :ref:`object-orientation`.
-	
-		* *s*\ ``.startswith(`` *pre* ``)``
-	
-		  returns true if string *s* starts with string *pre*:
-		  Both ``'-123'.startswith('-')`` and ``'downstairs'.startswith('down')``
-		  are ``true``, but ``'1 - 2 - 3'.startswith('-')`` is ``False``.
-	
-		* *s*\ ``.replace(`` *sub* ``,`` *replacement* ``,`` *count* ``)``
-	
-		  returns a new string with up to the first *count* occurences of string
-		  *sub* replaced by *replacement*.  The *replacement* can be empty to
-		  delete parts.  For example::
-	
-			  s = '-123'
-			  t = s.replace('-', '', 1) # t equals '123'
-			  t = t.replace('-', '', 1) # t is still equal to '123'
-			  u = '.2.3.4.'
-			  v = u.replace('.', '', 2) # v equals '23.4.'
-		
-		Complete the function ``isIntStr``.      
-	
-	b.  Complete the function ``isDecimalStr``.  The string methods introduced
-		in the previous part remain useful.
-
 
 .. [#grade]
    4 tests to distinguish the 5 cases, as in the previous version
