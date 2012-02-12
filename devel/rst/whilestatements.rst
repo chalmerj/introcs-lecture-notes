@@ -256,6 +256,7 @@ designing a function with a ``while`` loop:
    done after the loop (code after the loop). Missing this distinction
    is a *common error*!
 
+.. _SumToN:
 
 .. rubric:: Sum To ``n``
 
@@ -372,7 +373,9 @@ variable ``sum``, so the whole function is::
   }
 
 .. index::
-   triple: testing; edge case; range testing
+   double: testing; edge case
+   double: testing; range testing
+   double: edge case; range testing
    
 The comment before the function definition does not give a clear idea of the 
 range of possible values for n.  How small makes sense for the comment?

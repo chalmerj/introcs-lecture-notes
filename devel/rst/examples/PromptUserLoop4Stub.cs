@@ -19,6 +19,7 @@ class PromptUser  //version with range added to prompt
       return Console.ReadLine();
    }
 
+   /** Prompt the user for an integer ans
    static int InputInt(string prompt)
    {
       string nStr = InputLine(prompt).Trim(); //Removes blanks at either end
@@ -39,26 +40,17 @@ class PromptUser  //version with range added to prompt
       }
       return number;
    }
+
+   static double InputDouble(string prompt)  //FIX so loops until legal
+   {
+      string nStr = InputLine(prompt).Trim(); //Removes blanks at either end
+      return double.Parse(nStr);
+   }
+
    /** Prompt the user with a question; return true of false.  */
    static Boolean Agree(string question)
    {
-      string meanYes = "ytYT", meanNo = "nfNF", 
-             validResponses = meanYes + meanNo;
-      string answer = InputLine(question);
-      // BOMBS with empty string!
-      while (!validResponses.Contains(""+answer[0])) {
-         Console.WriteLine("Enter y or n!");
-         answer = InputLine(question);
-      }
-      return meanYes.Contains(""+answer[0]);
-      /*  //LONG WAY!
-      if (meanYes.Contains(answer[0])) {
-         return true;
-      }
-      else {
-         return false;
-      } 
-      */
+      return true;  // so stub compiles
    }
 }                                          
 

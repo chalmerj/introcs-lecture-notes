@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 11, 2012}
+\date{February 12, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -4704,7 +4704,7 @@ done after the loop (code after the loop). Missing this distinction
 is a \emph{common error}!
 
 \end{itemize}
-\paragraph{Sum To \code{n}}
+\phantomsection\label{whilestatements:sumton}\paragraph{Sum To \code{n}}
 
 Let us write a function to sum the numbers from 1 to \code{n}:
 
@@ -4843,7 +4843,7 @@ variable \code{sum}, so the whole function is:
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-\index{testing!edge case range testing}\index{edge case!range testing, testing}\index{range testing!testing edge case}
+\index{testing!edge case}\index{edge case!testing}\index{testing!range testing}\index{range testing!testing}\index{edge case!range testing}\index{range testing!edge case}
 The comment before the function definition does not give a clear idea of the
 range of possible values for n.  How small makes sense for the comment?
 What actually works in the function?  The smallest expression
@@ -5015,7 +5015,8 @@ Knowing this in theory is not the same as remembering it in practice.
 We will process many sequences or collections.  At this point
 the only collection we have discussed is a string - a sequence of
 characters that we can index.
-
+\phantomsection\label{while-with-sequence:onecharperline}
+\index{example!OneCharPerLine}\index{OneCharPerLine!example}
 Consider the following silly function description and heading as a start:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -5099,7 +5100,7 @@ This is a very common pattern.
 We could do anything we want with each individual character,
 no just print it.
 
-\index{string!PrintVowels}\index{PrintVowels!string}\paragraph{PrintVowels}
+\index{string!PrintVowels}\index{PrintVowels!string}\phantomsection\label{while-with-sequence:printvowels}\paragraph{PrintVowels}
 
 Let us get more complicated.  Consider the function described:
 
@@ -7058,26 +7059,112 @@ for-each intro
 
 \section{foreach Examples}
 \label{foreachexamples::doc}\label{foreachexamples:foreach-examples}
-\begin{notice}{note}{Todo}
+\index{char!underlying numeric code}
+In {\hyperref[while-with-sequence:isdigits]{\emph{IsDigits}}} we use the underlying int code value
+of the characters in comparisons.
+When printing, you cannot see this code directly,
+since the \code{char} type prints as \emph{characters}!
+To see the underlying code value for a character, ch,
+it can be cast to an int:  \emph{(int)ch{}`}
 
-Is a string numeric?
-\end{notice}
+We can easily write a loop to print the unicode value of each character in a
+string, \code{s}.  We do not need indices here, so a \code{foreach} loop is
+appropriate:
 
-\begin{notice}{note}{Todo}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{foreach} \PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{ch} \PYG{k}{in} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Code for \PYGZob{}0\PYGZcb{} is \PYGZob{}1\PYGZcb{}."}\PYG{p}{,} \PYG{n}{ch}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{ch}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
 
-Ordinal value of a character
-\end{notice}
+Many more examples will come when we introduce more kinds of sequence.
 
 \index{for!loop}\index{loop!for}
 
 \chapter{For Loops}
 \label{for:index-0}\label{for::doc}\label{for:for-loops}\label{for:id1}
+\index{statement!for}
 
-\section{For-Statements}
-\label{forstatements:for-statements}\label{forstatements::doc}
+\section{For-Statement Syntax}
+\label{forstatements:index-0}\label{forstatements::doc}\label{forstatements:for-statement-syntax}
+We now introduce the last kind of loop syntax: \code{for} loops.
+
+A \code{for} loop is an example of \emph{syntactic sugar}:  syntax that can simplify
+things for the programmer, but can be immediately translated into an
+equivalent syntax by the compiler.  For example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+is exactly equivalent to this code simliar to part of
+{\color{red}\bfseries{}:ref:{}`SumToN \textless{}SumToN\textgreater{}{}`\_}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i}\PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+   \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+More generally:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{for (} \emph{assignment} \code{;} \emph{condition} ; \emph{modification} \code{)} \{
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement(s)
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+translates to
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \emph{assignment} \code{;}
+\item[] \code{while (} \emph{condition} \code{)} \{
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement(s)
+\item[] \emph{modification}
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+In the example above, \emph{assignment} is \code{i=2}, \emph{condition} is \code{i \textless{}= n},
+and \emph{modification} is \code{i++}.
+
+Why bother with this rearrangement?  It is a matter of taste,
+but the heading:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\end{Verbatim}
+
+puts all the information about the variable controlling the loop
+into one place at the top.  If you use this format, and get used to the
+three parts you are less likely to forget the \code{i++}
+than when it comes tacked on to the end of a while loop body, after all
+the specific things you were trying to accomplish.
+
+Again: a matter of taste.
+
 \begin{notice}{note}{Todo}
 
-for-statements
+Further details:
+
+declaration in heading
+
+omitting parts
+
+examples
 \end{notice}
 
 
@@ -7940,20 +8027,6 @@ George:
 
 \begin{notice}{note}{Todo}
 
-Is a string numeric?
-\end{notice}
-
-(The {\hyperref[foreachexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-Ordinal value of a character
-\end{notice}
-
-(The {\hyperref[foreachexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachexamples.rst, line 12.)
-
-\begin{notice}{note}{Todo}
-
 for-each intro
 \end{notice}
 
@@ -8024,13 +8097,6 @@ Repeat string N times.
 
 \begin{notice}{note}{Todo}
 
-for-statements
-\end{notice}
-
-(The {\hyperref[forstatements:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
 Andy new
 \end{notice}
 
@@ -8063,6 +8129,19 @@ two dimensional arrays
 \end{notice}
 
 (The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 13.)
+
+\begin{notice}{note}{Todo}
+
+Further details:
+
+declaration in heading
+
+omitting parts
+
+examples
+\end{notice}
+
+(The {\hyperref[forstatements:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 60.)
 
 \begin{thebibliography}{UPennCSharp}
 \bibitem[CamelCase]{CamelCase}{\phantomsection\label{homework-gradecalculation2:camelcase} 

@@ -11,6 +11,11 @@ We will process many sequences or collections.  At this point
 the only collection we have discussed is a string - a sequence of
 characters that we can index.
 
+.. _OneCharPerLine:
+
+.. index::
+   double:  example; OneCharPerLine
+   
 Consider the following silly function description and heading as a start:
 
 .. literalinclude:: examples/CharLoop1.cs
@@ -86,6 +91,8 @@ no just print it.
 
 .. index::
    double: string; PrintVowels
+   
+.. _PrintVowels:
    
 .. rubric:: PrintVowels
 
