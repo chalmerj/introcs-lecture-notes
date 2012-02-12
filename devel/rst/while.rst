@@ -12,8 +12,10 @@ While Loops
    whilestatements
    while-with-sequence
    whileinteractive
+   condition-short-circuit
    whileexamples
    stringmethods2
    gcdexamples
+   do-while
    lab-number-game
    homework-gradecalculation2

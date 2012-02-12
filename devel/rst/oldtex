@@ -5787,6 +5787,108 @@ a number is written as just a sequence of digits.
 Follow the interactive model of InputIntInRange, looping until
 the user enters something that is legal: in this case, all digits.
 
+\index{\&\&!short- circuit}\index{short- circuit!\&\&}\index{\textbackslash{}\textbar{}\textbackslash{}\textbar{}!short- circuit}\index{short- circuit!\textbackslash{}\textbar{}\textbackslash{}\textbar{}}
+
+\section{Short-Circuiting \&\& and \textbar{}\textbar{}}
+\label{condition-short-circuit:short-circuiting-and}\label{condition-short-circuit:short-circuit}\label{condition-short-circuit:index-0}\label{condition-short-circuit::doc}
+Follow along with the following silly, but illustrative csharp sequence:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{k+kt}{int} \PYG{n}{x} \PYG{p}{=} \PYG{l+m}{5}\PYG{p}{,} \PYG{n}{y} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{,} \PYG{n}{z} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{y}\PYG{p}{/}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{n}{z} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{x} \PYG{p}{!}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+\PYG{k}{false}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{x} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;} \PYG{n}{y} \PYG{p}{=} \PYG{l+m}{5}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{y}\PYG{p}{/}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{n}{z} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{x} \PYG{p}{!}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+\PYG{k}{true}
+\end{Verbatim}
+
+The compound condition includes \code{x != 0},
+so what happens if we change x to 0 and
+try the condition again.  Will you get \code{false}?
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{x} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{y}\PYG{p}{/}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{n}{z} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{x} \PYG{p}{!}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{System}\PYG{p}{.}\PYG{n}{DivideByZeroException}\PYG{p}{:} \PYG{n}{Division} \PYG{n}{by} \PYG{n}{zero}
+\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\end{Verbatim}
+
+No, one of the parts invoves dividing by zero, and you see the result.
+What if we swap the two conditions to get the \emph{logically equivalent}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{x} \PYG{p}{!}\PYG{p}{=} \PYG{l+m}{0} \PYG{p}{\&}\PYG{p}{\&} \PYG{n}{y}\PYG{p}{/}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{n}{z}\PYG{p}{;}
+\PYG{k}{false}
+\end{Verbatim}
+
+Something is going on here besides pure mathematical logic.
+Remember the final version in {\hyperref[while-with-sequence:isdigits]{\emph{IsDigits}}}.  We did not
+need to continue processing when we knew the final answer
+already.  The \code{\&\&} and \code{\textbar{}\textbar{}} operators work the same way,
+evaluating from left to right.  If \code{x != 0} is \code{false},
+then \code{x != 0 \&\& y/x \textgreater{} z} starts off being evaluated like
+\code{false \&\& ??}.  We do no need the second part evaluated to
+know the overall result is \code{false}, so C\#
+\emph{does not evaluate further}.  This behavior has
+acquired the jargon \emph{short-circuiting}.  Many computer languages share
+this feature.
+
+It also applies to \code{\textbar{}\textbar{}}.  In what situation do you know
+what the final result is after evaluating
+the first conditon?  In this case you know:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{true} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{p}{?}\PYG{p}{?}
+\end{Verbatim}
+
+evaluates to true.  Continuing with the same csharp sequence above
+(where x is 0, y is 5, and z is 1):
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{x} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{y}\PYG{p}{/}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{n}{z}\PYG{p}{;}
+\PYG{k}{true}
+\end{Verbatim}
+
+The division by 0 in the second condition \emph{never happens}.
+It is short-circuited.
+
+For completeness, try the other order:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{csharp}\PYG{p}{\textgreater{}} \PYG{n}{y}\PYG{p}{/}\PYG{n}{x} \PYG{p}{\textgreater{}} \PYG{n}{z} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{x} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+\PYG{n}{System}\PYG{p}{.}\PYG{n}{DivideByZeroException}\PYG{p}{:} \PYG{n}{Division} \PYG{n}{by} \PYG{n}{zero}
+\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\end{Verbatim}
+
+This idea is useful in the \code{Agree} function, where you
+want to deal with the first character in the user's answer.
+
+In situations where you want to
+test conditionThatWillBombWithBadData, you want to avoid
+causing an Exception.
+When there is good data, you want the result to actually
+come from conditionThatWillBombWithBadData.  There are two cases,
+however, depending on what result
+you want if the data for this condition \emph{is bad}, so you cannot evaluate it:
+\begin{itemize}
+\item {} 
+If you want ther result to be \code{false} with bad data for the dangerous
+condition, use
+\begin{quote}
+
+falseConditionIfDataBad \code{\&\&} conditionThatWillBombWithBadData
+\end{quote}
+
+\item {} 
+If you want the result to be \code{true} with bad data for
+the dangerous condition, use
+\begin{quote}
+
+trueConditionIfDataBad \code{\textbar{}\textbar{}} conditionThatWillBombWithBadData
+\end{quote}
+
+\end{itemize}
+
 
 \section{While Examples}
 \label{whileexamples:while-examples}\label{whileexamples::doc}
@@ -6269,6 +6371,75 @@ the calls to the same function are not completely the same:
 \emph{Successive} calls have \emph{smaller} second numbers, and the second
 number eventually reaches 0, and in that case
 there is a direct final answer.
+
+\index{statement!do while}\index{do while!statement}
+
+\section{Do-While Loops}
+\label{do-while:index-0}\label{do-while:do-while}\label{do-while::doc}\label{do-while:do-while-loops}
+Suppose you want the user to enter three integers for sides of a
+right triangle.  If they do not make a right triangle, say so
+and make the user try again.
+
+One way to look at the while statement rubric is:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{set} \PYG{n}{data} \PYG{k}{for} \PYG{n}{conditions}
+\PYG{n+nf}{while} \PYG{p}{(}\PYG{n}{condition}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{accompish} \PYG{n}{something}
+   \PYG{k}{set} \PYG{n}{data} \PYG{k}{for} \PYG{n}{condition}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+As we have pointed out before this involves setting data in two places.
+With the triangle problem, three pieces fo data need to be entered,
+while the condition to test is fairly simple (and in any case could be
+calculated in a function).
+
+A \code{do}-\code{while} loop will help here.  It tests the condition at the end of the
+loop, so there is no need to gather data before the loop:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{;}
+\PYG{k}{do} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Think of integer sides for a right triangle."}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{a} \PYG{p}{=} \PYG{n}{IntInput}\PYG{p}{(}\PYG{l+s}{"Enter integer leg: "}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{b} \PYG{p}{=} \PYG{n}{IntInput}\PYG{p}{(}\PYG{l+s}{"Enter another integer leg: "}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{c} \PYG{p}{=} \PYG{n}{IntInput}\PYG{p}{(}\PYG{l+s}{"Enter integer hypotenuse: "}\PYG{p}{)}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{a}\PYG{p}{*}\PYG{n}{a} \PYG{p}{+} \PYG{n}{b}\PYG{p}{*}\PYG{n}{b} \PYG{p}{!}\PYG{p}{=} \PYG{n}{c}\PYG{p}{*}\PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Not a right triangle: Try again!"}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{a}\PYG{p}{*}\PYG{n}{a} \PYG{p}{+} \PYG{n}{b}\PYG{p}{*}\PYG{n}{b} \PYG{p}{!}\PYG{p}{=} \PYG{n}{c}\PYG{p}{*}\PYG{n}{c}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+The general form of a \code{do}-\code{while} statement is
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{do \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement(s)
+\end{DUlineblock}
+\item[] \code{\} while (} \emph{continuationCondition} \code{);}
+\end{DUlineblock}
+\end{quote}
+
+Here the block of statement(s) is always executed, but it continues
+to be executed in a loop only so long as the condition tested
+after the loop body is true.
+
+A \code{do}-\code{while} loop that accomplishes exactly the same thing as the \code{while}
+loop rubric above, can have the form:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{do} \PYG{p}{\PYGZob{}}
+   \PYG{k}{set} \PYG{n}{data} \PYG{k}{for} \PYG{n}{condition}
+   \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{condition}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+       \PYG{n}{accompish} \PYG{n}{something}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}} \PYG{k}{while} \PYG{p}{(}\PYG{n}{condition}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+It only sets the data to be tested once.
 
 \index{labs!string manipulations}
 

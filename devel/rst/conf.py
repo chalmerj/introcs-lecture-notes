@@ -98,6 +98,8 @@ rst_epilog = """
 
 .. |if-else-if| replace:: ``if``\ -``else``\ -``if``
 
+.. |do-while| replace:: ``do``\ -``while``
+
 """
 
 
