@@ -12,7 +12,7 @@ More While Examples
 Greatest Common Divisor
 -----------------------
 
-The *greatest common divisor* of two non-zero integers is a great
+The greatest common divisor of two non-zero integers is a great
 example to illustrate the power of loops. Everyone learns about the
 *concept* of a greatest common divisor when faced with a fraction that
 is not in *reduced* form.
