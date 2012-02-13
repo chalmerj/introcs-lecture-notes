@@ -3078,7 +3078,7 @@ Further string methods are introduced in {\hyperref[stringmethods2:more-string-m
 \subsection{Testing Strings For Equality}
 \label{stringmethods:testing-strings-for-equality}
 Strings can be tested for equality like numbers,
-with \code{==}: \emph{two} equal signs, not the \emph{one} equal sign used for assignement.
+with \code{==}: \emph{two} equal signs, not the \emph{one} equal sign used for assignment.
 The case of letters matters:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -4622,7 +4622,7 @@ You can consider each part separately.  Where to start is partly a
 matter of taste.
 
 The main thing to do is print the time over and over.
-The inital value of the time is 10.  We are going to want to keep printing
+The initial value of the time is 10.  We are going to want to keep printing
 until the time is down to 1, so we \emph{continue} while the time is at least 1,
 meaning the continuationCondition can be \code{time \textgreater{}= 1},
 or we could use \code{time \textgreater{} 0}.
@@ -4695,7 +4695,7 @@ Have I thought of variables needed in the middle and declared them;
 do other things need initialization?
 
 \item {} 
-Will the continuation condition enventually fail?
+Will the continuation condition eventually fail?
 
 \item {} 
 Separate thing to be done once before the repetition (code before the
@@ -5042,7 +5042,7 @@ For now our only option is a \code{while} loop.  We can follow
 our basic rubric, one step at a time:
 The index is changing in a simple repetitive sequence.
 We can call the
-index \code{i}.  Its intitial value is clearly 0.
+index \code{i}.  Its initial value is clearly 0.
 That is our initialization.  We need a \code{while} loop continuation
 condition.
 For the 3-character string example, the last index above is 2.
@@ -5125,7 +5125,7 @@ This new description seems like a problem.  We do \emph{not} appear to want to d
 the same thing each time:  We only want to print \emph{some} of the
 characters.  Again your eyes and mind are so fast, you likely miss what you
 need to do when go through \code{PrintVowels} by hand.  Your
-eyes let you just grab the vowels easily, but think, wht is actually
+eyes let you just grab the vowels easily, but think, what is actually
 happening?  You are checking each character to see if it is a vowel,
 and printing it if it is:  You are doing the same thing each time -
 \emph{testing} \textbf{if} the character is a vowel.  The pseudocode is
@@ -5184,13 +5184,13 @@ so it is easier to
 use the string method \code{Contains}.  Though IndexOf takes either a string
 or a character as parameter, \code{Contains} only takes a string.  There is a
 nice quick idiom to convert anything to a string:  use \code{""+}.
-The condtion could be \code{"aeiou".Contains(""+s{[}i{]})}.
+The condition could be \code{"aeiou".Contains(""+s{[}i{]})}.
 This adds
 the string version of \code{s{[}i{]}} to the empty string.
 
-The functon is still not as general as it might be:
+The function is still not as general as it might be:
 Only lowercase vowels are listed.  We could do something with
-\code{ToLower}, or just use the condtion: \code{"aeiouAEIOU".Contains(""+s{[}i{]})}
+\code{ToLower}, or just use the condition: \code{"aeiouAEIOU".Contains(""+s{[}i{]})}
 
 This variation is in example \code{Vowels2.cs}.
 
@@ -5247,7 +5247,7 @@ One way to do this is have a variable holding an answer so far:
 \PYG{n}{Boolean} \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{k}{true}\PYG{p}{;}
 \end{Verbatim}
 
-Of course intially, you have not found any non-digits, so it starts off true.
+Of course initially, you have not found any non-digits, so it starts off true.
 As you go through
 the string, you want to make sure that answer is changed to \code{false}
 if a non-digit is encountered:
@@ -5258,7 +5258,7 @@ if a non-digit is encountered:
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-When we get all the way throught the string, the answer so far is the
+When we get all the way through the string, the answer so far is the
 final answer to be returned:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -5283,7 +5283,7 @@ In the description it says it is true for a string of \emph{one or more} digits.
 
 Check examples of length 1 and 0.
 Length 1 is fine, but it fails for the empty string,
-since the loop is skipped and the intial answer, \code{true} is returned.
+since the loop is skipped and the initial answer, \code{true} is returned.
 
 There are many ways to fix this.  We will know right up front that the answer
 is false if the length is 0, and we could immediately set
@@ -5302,7 +5302,7 @@ an \code{if} statement should occur to you:
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-If we substitute this intialization for \code{allDigitsSoFar},
+If we substitute this initialization for \code{allDigitsSoFar},
 the code will satisfy the edge case, and the code will always
 work.
 
@@ -5324,8 +5324,8 @@ A \emph{much} more concise and still equivalent initialization is just:
 \PYG{n}{Boolean} \PYG{n}{allDigitsSoFar} \PYG{p}{=} \PYG{p}{(}\PYG{n}{s}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
 \end{Verbatim}
 
-In more gnerality this
-conciseness comes ifrom the fact that it is a \emph{Boolean} value that
+In more generality this
+conciseness comes from the fact that it is a \emph{Boolean} value that
 you are trying to set, based on a \emph{Boolean} condition:  You do not
 need to do that with an \code{if} statement!  You just need an
 assignment statement!  If you use an \code{if} statement in such a situation,
@@ -5333,7 +5333,7 @@ you mark yourself as a novice.
 
 It could even be slightly more concise:  The precedence of assignment is
 very low, lower than the comparison \code{\textgreater{}},
-so the parentheses could be omited.  We think the
+so the parentheses could be omitted.  We think the
 code is easier to read with the parentheses left in, as written above,
 and below.
 
@@ -5895,11 +5895,6 @@ trueConditionIfDataBad \code{\textbar{}\textbar{}} conditionThatWillBombWithBadD
 \label{whileexamples:while-examples}\label{whileexamples::doc}
 \begin{notice}{note}{Todo}
 
-``sum of first N numbers using loop \& Euler formula''
-\end{notice}
-
-\begin{notice}{note}{Todo}
-
 ``bisection method''
 \end{notice}
 
@@ -5991,7 +5986,7 @@ This variation of \code{IndexOf} has a second parameter:
 
 \index{string!IndexOf}\index{IndexOf!string}\begin{description}
 \item[{\code{int IndexOf(string target, int start)}}] \leavevmode
-Returns the index of the begining of the first occurrence of the string
+Returns the index of the beginning of the first occurrence of the string
 \code{target}
 in \textbf{this} string object, starting at index \code{start} or after.
 Returns -1 if \code{target} is not found. Example:
@@ -6032,7 +6027,7 @@ csharp\textgreater{} "\#" + s.Trim() + "\#";
 \index{string!Replace}\index{Replace!string}\begin{description}
 \item[{\code{string Replace(string target, string replacement)}}] \leavevmode
 Returns a string formed from \textbf{this} string by replacing
-all occurences of the substring \code{target} by \code{replacement}.
+all occurrences of the substring \code{target} by \code{replacement}.
 Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -6124,7 +6119,7 @@ Be sure you are familiar with {\hyperref[whileinteractive:safe-whole-number-inpu
 and the development of its \code{InputWhole} function.
 
 A legal whole number string consists entirely of digits.  We have
-already written example \code{IsDigis} to identify a string for a
+already written example \code{IsDigits} to identify a string for a
 whole number.
 
 The  improvements to InputInt and InputDouble are
@@ -6135,7 +6130,7 @@ Boolean support functions,
 The issue with integer and decimal strings
 is that they may include parts other than
 digits.  An integer may start with a minus sign.  A
-decmial number can also contain a decimal point in an appropriate
+decimal number can also contain a decimal point in an appropriate
 place.  The suggestion is to confirm that these other characters appear in
 legal places, remove them, and see that what is left is digits.
 The recently introduced string methods should help....
@@ -6386,7 +6381,7 @@ One way to look at the while statement rubric is:
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k}{set} \PYG{n}{data} \PYG{k}{for} \PYG{n}{conditions}
 \PYG{n+nf}{while} \PYG{p}{(}\PYG{n}{condition}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-   \PYG{n}{accompish} \PYG{n}{something}
+   \PYG{n}{accomplish} \PYG{n}{something}
    \PYG{k}{set} \PYG{n}{data} \PYG{k}{for} \PYG{n}{condition}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
@@ -6435,7 +6430,7 @@ loop rubric above, can have the form:
 \PYG{k}{do} \PYG{p}{\PYGZob{}}
    \PYG{k}{set} \PYG{n}{data} \PYG{k}{for} \PYG{n}{condition}
    \PYG{n+nf}{if} \PYG{p}{(}\PYG{n}{condition}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-       \PYG{n}{accompish} \PYG{n}{something}
+       \PYG{n}{accomplish} \PYG{n}{something}
    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}} \PYG{k}{while} \PYG{p}{(}\PYG{n}{condition}\PYG{p}{)}\PYG{p}{;}
 \end{Verbatim}
@@ -7049,17 +7044,134 @@ usually indicated by the ''.txt'' suffix.
 \chapter{Foreach Loops}
 \label{foreach:foreach-loops}\label{foreach:index-0}\label{foreach::doc}\label{foreach:foreach}
 
-\section{Foreach Statement Syntax}
-\label{foreachintro::doc}\label{foreachintro:foreach-statement-syntax}
-\begin{notice}{note}{Todo}
+\section{\texttt{foreach} Syntax}
+\label{foreachintro:foreach-syntax}\label{foreachintro::doc}\label{foreachintro:id1}
+\index{statement!foreach}\index{foreach!statement}
+This sections on \code{foreach} loops and the later {\hyperref[for:for-loops]{\emph{For Loops}}}
+introduce new looping statements.
+Neither is absolutely necessary:
+You could do all the same things with \code{while} loops,
+but there are many situations where \code{foreach} loops and \code{for} loops
+are more convenient and easier to read.
 
-for-each intro
-\end{notice}
+A \code{foreach} statement
+only works with an object that holds a sequence or collection.
+We will see many more kinds of sequences later.  For now we can illustrate
+with a string, which is a sequence of characters.
+
+We have already processed strings a character at a time, with \code{while} loops.
+We took advantage of the fact that strings could be indexed, and our \code{while}
+loops directly controlled the sequence of indices, and then we could
+look up the character at each index:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{use} \PYG{k}{value} \PYG{n}{of} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+   \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Examples have been in {\hyperref[while-with-sequence:while-sequence]{\emph{While-Statements with Sequences}}}, like
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Print the characters of s, one per line. */}
+   \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{OneCharPerLine}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{;}
+      \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{s}\PYG{p}{.}\PYG{n}{length}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+         \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+In this example we really only care about the characters, not the indices.
+Managing the indices is just a way to get at the
+underlying sequence of characters.
+
+A conceptually simpler view is just:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{each} \PYG{n}{character} \PYG{k}{in} \PYG{n}{s}
+    \PYG{n}{use} \PYG{n}{the} \PYG{k}{value} \PYG{n}{of} \PYG{n}{the} \PYG{n}{character}
+\end{Verbatim}
+
+To \emph{use} ``the character'' in C\#, we must be able to refer to it.
+We might name the current character \code{ch}.
+The following is a variant of \code{OneCharPerLine} with a \code{foreach}
+loop:
+\begin{quote}
+
+static void OneCharPerLine(string s)
+\{
+\begin{quote}
+\begin{description}
+\item[{foreach (char ch in s) \{}] \leavevmode
+Console.WriteLine(ch);
+
+\end{description}
+
+\}
+\end{quote}
+
+\}
+\end{quote}
+
+That is all you need!   The \code{foreach} heading feeds us one
+character from \code{s} each time through, using the name \code{ch}
+to refer to it.
+Of course any new variable name must be declared in C\#, so \code{ch}
+is preceded in the heading by its type, \code{char}.
+Then we can use \code{ch} inside the body of the loop.
+Advancing to the next element in the sequence is automatic in the next
+time through the loop.  No \code{i++} to remember;
+no possibility of an infinite loop!
+
+The general syntax of a \code{foreach} loop is
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{foreach (} \textbf{type itemName} \code{in} \emph{sequence} \code{) \{}
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] statement(s) using \textbf{itemName}
+\end{DUlineblock}
+\item[] \code{\}}
+\end{DUlineblock}
+\end{quote}
+
+Here is a version of IsDigits:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static} \PYG{n}{Boolean} \PYG{n+nf}{IsDigits}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{foreach} \PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{ch} \PYG{k}{in} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+       \PYG{k}{if} \PYG{p}{(}\PYG{n}{ch} \PYG{p}{\textless{}} \PYG{l+s+sc}{'0'} \PYG{p}{\textbar{}}\PYG{p}{\textbar{}} \PYG{n}{ch} \PYG{p}{\textgreater{}} \PYG{l+s+sc}{'9'}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+          \PYG{k}{return} \PYG{k}{false}\PYG{p}{;}
+       \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{return} \PYG{p}{(}\PYG{n}{s}\PYG{p}{.}\PYG{n}{Length} \PYG{p}{\textgreater{}} \PYG{l+m}{0}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+See the advantages of \code{foreach} in these examples:
+- They are more concise than the indexing versions.
+- They keep the emphasis on the characters, not the secondary indicies.
+- The \code{foreach} heading emphasizes that a particular sequence is being
+\begin{quote}
+
+processed.
+\end{quote}
+
+\emph{If} you have explicit need to refer to the indices of the items in the sequence,
+then this pattern does not work.  You can use a \code{while} loop, or perhaps a
+\code{for} loop, introduced soon....
 
 
 \section{foreach Examples}
 \label{foreachexamples::doc}\label{foreachexamples:foreach-examples}
-\index{char!underlying numeric code}
+\index{char!underlying numeric code}\phantomsection\label{foreachexamples:codeofstringchar}
 In {\hyperref[while-with-sequence:isdigits]{\emph{IsDigits}}} we use the underlying int code value
 of the characters in comparisons.
 When printing, you cannot see this code directly,
@@ -7100,7 +7212,7 @@ equivalent syntax by the compiler.  For example:
 \end{Verbatim}
 
 is exactly equivalent to this code simliar to part of
-{\color{red}\bfseries{}:ref:{}`SumToN \textless{}SumToN\textgreater{}{}`\_}:
+{\hyperref[whilestatements:sumton]{\emph{SumToN}}}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n}{i}\PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
@@ -7114,7 +7226,7 @@ More generally:
 \begin{quote}
 
 \begin{DUlineblock}{0em}
-\item[] \code{for (} \emph{assignment} \code{;} \emph{condition} ; \emph{modification} \code{)} \{
+\item[] \code{for (} \emph{initialization} \code{;} \emph{condition} ; \emph{modification} \code{)} \{
 \item[]
 \begin{DUlineblock}{\DUlineblockindent}
 \item[] statement(s)
@@ -7127,7 +7239,7 @@ translates to
 \begin{quote}
 
 \begin{DUlineblock}{0em}
-\item[] \emph{assignment} \code{;}
+\item[] \emph{initialization} \code{;}
 \item[] \code{while (} \emph{condition} \code{)} \{
 \item[]
 \begin{DUlineblock}{\DUlineblockindent}
@@ -7138,7 +7250,7 @@ translates to
 \end{DUlineblock}
 \end{quote}
 
-In the example above, \emph{assignment} is \code{i=2}, \emph{condition} is \code{i \textless{}= n},
+In the example above, \emph{initialization} is \code{i=2}, \emph{condition} is \code{i \textless{}= n},
 and \emph{modification} is \code{i++}.
 
 Why bother with this rearrangement?  It is a matter of taste,
@@ -7149,41 +7261,239 @@ but the heading:
 \end{Verbatim}
 
 puts all the information about the variable controlling the loop
-into one place at the top.  If you use this format, and get used to the
+into one place at the top, which may help quickly visualize the overall
+sequence in the loop.  If you use this format, and get used to the
 three parts you are less likely to forget the \code{i++}
 than when it comes tacked on to the end of a while loop body, after all
 the specific things you were trying to accomplish.
 
-Again: a matter of taste.
+Although the \code{for} loop syntax is very general,
+a strongly recommended convention
+is to only use a \code{for} statement when all the control of variables
+determining loop repetition are in the heading.
 
-\begin{notice}{note}{Todo}
+For example if a \code{for}
+loop uses \code{i} in the heading, \code{i} can have a value assigned or
+reassigned in the heading, but should \emph{not} have its value modified
+anywhere inside the loop body.
+If you want more complicated behavior, use a \code{while} loop.
 
-Further details:
+A \code{for} loop can also include variable declaration in the initialization,
+as in:
 
-declaration in heading
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
 
-omitting parts
+This is close, but not quite equivalent to:
 
-examples
-\end{notice}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{2}\PYG{p}{;}
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{sum} \PYG{p}{=} \PYG{n}{sum} \PYG{p}{+} \PYG{n}{i}\PYG{p}{;}
+   \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Variables declared in a \code{for} loop heading are local to the
+\code{for} loop heading and body.  The variable \code{i} declared before
+the \code{while} statement above is still defined after the \code{while} loop.
+
+The two semicolons are always needed in the \code{for} heading, but any of the
+parts they normally separate may be omitted.
+If the condition part is omitted, the condition is
+interpreted as always true, leading to an infinite loop, that can only
+terminate due to a \code{return} or \code{break} statement in the body.
+See Miles, page 46, for a discussion of \code{break}.
+
+\textbf{Other variations}
+
+As in a regular local variable declaration,
+there may be several variables of the
+same type initialized at the beginning of a \code{for} loop heading,
+separated by commas.  Also, at the end of the \code{for} loop heading
+there may be more than one
+modification expression, separated by commas.  For example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{,} \PYG{n}{j} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{j}\PYG{p}{;} \PYG{n}{i} \PYG{p}{=} \PYG{n}{i}\PYG{p}{+}\PYG{l+m}{2}\PYG{p}{,} \PYG{n}{j}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}"}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The comma separated lists in a \code{for} statement heading
+are mentioned here for completeness.  Later we will find a situation
+where this is actually useful.
 
 
 \section{Examples With \texttt{for} Statements}
 \label{forexamples:examples-with-for-statements}\label{forexamples::doc}
+Thus far all of our \code{for} loops have used a sequence of successive integers.
+Suppose you want to print the first \code{n} multiples of \code{k},
+like the first 5 multiples
+of 3:  3, 6, 9, 12, 15.  This could be handled by generating
+a sequence \code{i} = 1 through \code{n}, and multiply each \code{i} by \code{k}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{i}\PYG{p}{*}\PYG{n}{k}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Another approach is to note that the numbers you want to print advance
+in a regular fashion, too, but with an increment 3 in the example above,
+or k in general:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{n}{k}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{n}{n}\PYG{p}{*}\PYG{n}{k}\PYG{p}{;} \PYG{n}{i} \PYG{p}{=} \PYG{n}{i}\PYG{p}{+}\PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i} \PYG{p}{=} \PYG{n}{i} \PYG{p}{+} \PYG{n}{k}\PYG{p}{;}
+\end{Verbatim}
+
+is a common pattern, less common than incrementing by one,
+but still very common.  C\# and many other languages allow a shorter version:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i} \PYG{p}{+}\PYG{p}{=} \PYG{n}{k}\PYG{p}{;}
+\end{Verbatim}
+
+This means to increment the variable i by k.  Be careful, the \code{+=} must be in
+that order, with no space between.  Unfortunately
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i} \PYG{p}{=}\PYG{p}{+}\PYG{n}{k}\PYG{p}{;}
+\end{Verbatim}
+
+is also legal, and just assigns the value of k to i.
+
+\index{double operator!+=}\index{double operator!-=}\index{double operator!*=}\index{double operator!/=}\index{double operator!\%=}
+Most C\# binary operations have a similar variation.  For instance
+if \emph{op} is \code{+}, \code{-}, \code{*}, \code{/} or \code{\%},
+\begin{quote}
+
+\textbf{variable} \emph{op}= \emph{expression}
+\end{quote}
+
+means the same as
+\begin{quote}
+
+\textbf{variable} = \textbf{variable} op \emph{expression}
+\end{quote}
+
+For example
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{x} \PYG{p}{*}\PYG{p}{=} \PYG{l+m}{5}\PYG{p}{;}
+\end{Verbatim}
+
+is the same as
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{x} \PYG{p}{=} \PYG{n}{x} \PYG{p}{*} \PYG{l+m}{5}\PYG{p}{;}
+\end{Verbatim}
+
 \begin{notice}{note}{Todo}
 
-Print ordinal value and actual character value of printable ASCII characters
+table of square, cube, and square root.
+
+field width formatting
 \end{notice}
 
-\begin{notice}{note}{Todo}
+\index{ASCII!example}\index{example!ASCII}\phantomsection\label{forexamples:ascii}
+Here is the reverse of the
+{\hyperref[foreachexamples:codeofstringchar]{\emph{Numeric Code of String Characters}}}:
+Find the characters for a list of numeric codes. Just as we can cast a
+\code{char} to an \code{int}, we can cast an \code{int} 0-127 to a \code{char}.
 
-Sum reworked from while to for.
-\end{notice}
+The Unicode used
+by C\# is an extension of the ASCII codes corresponding to the
+characters on a US keyboard.  The codes were originally
+USED to drive printers,
+and the first 32 codes are non-printable instructions to the printer.
+Characters 32 - 126 yield the 95 characters on a standard US keyboard.
 
-\begin{notice}{note}{Todo}
+A loop to print each code followed by a space and the corresponding
+printable character
+would be:
 
-Print first N multiples of a given number.
-\end{notice}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{3}\PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{7}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}"}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The first line printed does not appear to have a character:  That is the
+blank character.  All the other characters are visible.
+
+Part of the output is:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{9}\PYG{l+m}{8} \PYG{n}{b}
+\PYG{l+m}{9}\PYG{l+m}{9} \PYG{n}{c}
+\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{n}{d}
+\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{1} \PYG{n}{e}
+\end{Verbatim}
+
+The characters do not line up, because the
+integer codes do not all have the same number of digits.
+That is a formatting issue.We have already seen how we can give formatting
+instructions to get decimal answers rounded to a specified number of digits.
+We can also pad values so they take up the same number of columns.
+The only change below is replacing \code{\{0\}} by \code{\{0, 3\}}.  This means that
+is the resulting string is less than 3 characters long,
+it is padded on the left with blanks to be 3 characters wide:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{3}\PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{7}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0, 3\PYGZcb{} \PYGZob{}1\PYGZcb{}"}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Now the same part of the output is:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{l+m}{9}\PYG{l+m}{8} \PYG{n}{b}
+ \PYG{l+m}{9}\PYG{l+m}{9} \PYG{n}{c}
+\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{n}{d}
+\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{1} \PYG{n}{e}
+\end{Verbatim}
+
+Let us make a more concise table, putting 8 entries per line.
+We can print successive parts use \code{Write} not \code{WriteLine},
+but we still need to advance to the next line after every 8th
+entry, for 39, 47, 55, ....
+Since they are 8 apart, their remainder when divided by 8 is always
+the same:
+\begin{quote}
+
+7 = 39 \% 8 = 47 \% 8 = 55 \% 8 = ....
+\end{quote}
+
+We can add a newline after each of these is printed.  This requires a test:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{3}\PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{7}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0, 3\PYGZcb{} \PYGZob{}1\PYGZcb{}  "}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{p}{\PYGZpc{}} \PYG{l+m}{8} \PYG{p}{=}\PYG{p}{=} \PYG{l+m}{7}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+Paste that whole code at once into csharp to see the result.
+
+The next csharp\textgreater{} prompt appears right after \code{126 \textasciitilde{}}.
+There is no eighth entry on the last line, and hence no advance to the
+next line.  A program printing this table should include an extra
+\code{Console.WriteLine()} after the loop.
 
 \begin{notice}{note}{Todo}
 
@@ -7207,7 +7517,7 @@ ASCII art, triangles; see for loop lab.
 
 \begin{notice}{note}{Todo}
 
-Make restructred text table with fixed rows, columns, and width empty content.
+Make restructured text table with fixed rows, columns, and width empty content.
 \end{notice}
 
 \begin{notice}{note}{Todo}
@@ -8027,76 +8337,6 @@ George:
 
 \begin{notice}{note}{Todo}
 
-for-each intro
-\end{notice}
-
-(The {\hyperref[foreachintro:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/foreachintro.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-Print ordinal value and actual character value of printable ASCII characters
-\end{notice}
-
-(The {\hyperref[forexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 8.)
-
-\begin{notice}{note}{Todo}
-
-Sum reworked from while to for.
-\end{notice}
-
-(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 12.)
-
-\begin{notice}{note}{Todo}
-
-Print first N multiples of a given number.
-\end{notice}
-
-(The {\hyperref[forexamples:index-2]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 16.)
-
-\begin{notice}{note}{Todo}
-
-Do some of these examples backwards.
-\end{notice}
-
-(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 20.)
-
-\begin{notice}{note}{Todo}
-
-Reversing a string...
-\end{notice}
-
-(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 24.)
-
-\begin{notice}{note}{Todo}
-
-Palindrome
-\end{notice}
-
-(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 28.)
-
-\begin{notice}{note}{Todo}
-
-ASCII art, triangles; see for loop lab.
-\end{notice}
-
-(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 32.)
-
-\begin{notice}{note}{Todo}
-
-Make restructred text table with fixed rows, columns, and width empty content.
-\end{notice}
-
-(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 35.)
-
-\begin{notice}{note}{Todo}
-
-Repeat string N times.
-\end{notice}
-
-(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 38.)
-
-\begin{notice}{note}{Todo}
-
 Andy new
 \end{notice}
 
@@ -8118,30 +8358,61 @@ two dimensional arrays
 
 \begin{notice}{note}{Todo}
 
-``sum of first N numbers using loop \& Euler formula''
+``bisection method''
 \end{notice}
 
 (The {\hyperref[whileexamples:index-0]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 9.)
 
 \begin{notice}{note}{Todo}
 
-``bisection method''
+table of square, cube, and square root.
+
+field width formatting
 \end{notice}
 
-(The {\hyperref[whileexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/whileexamples.rst, line 13.)
+(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 66.)
 
 \begin{notice}{note}{Todo}
 
-Further details:
-
-declaration in heading
-
-omitting parts
-
-examples
+Do some of these examples backwards.
 \end{notice}
 
-(The {\hyperref[forstatements:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forstatements.rst, line 60.)
+(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 152.)
+
+\begin{notice}{note}{Todo}
+
+Reversing a string...
+\end{notice}
+
+(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 156.)
+
+\begin{notice}{note}{Todo}
+
+Palindrome
+\end{notice}
+
+(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 160.)
+
+\begin{notice}{note}{Todo}
+
+ASCII art, triangles; see for loop lab.
+\end{notice}
+
+(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 164.)
+
+\begin{notice}{note}{Todo}
+
+Make restructured text table with fixed rows, columns, and width empty content.
+\end{notice}
+
+(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 167.)
+
+\begin{notice}{note}{Todo}
+
+Repeat string N times.
+\end{notice}
+
+(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 170.)
 
 \begin{thebibliography}{UPennCSharp}
 \bibitem[CamelCase]{CamelCase}{\phantomsection\label{homework-gradecalculation2:camelcase} 

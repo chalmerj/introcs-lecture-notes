@@ -205,7 +205,7 @@ You can consider each part separately.  Where to start is partly a
 matter of taste.
 
 The main thing to do is print the time over and over.
-The inital value of the time is 10.  We are going to want to keep printing 
+The initial value of the time is 10.  We are going to want to keep printing 
 until the time is down to 1, so we *continue* while the time is at least 1,
 meaning the continuationCondition can be ``time >= 1``, 
 or we could use ``time > 0``.
@@ -250,7 +250,7 @@ designing a function with a ``while`` loop:
    the next time through the loop?
 -  Have I thought of variables needed in the middle and declared them;
    do other things need initialization?
--  Will the continuation condition enventually fail?
+-  Will the continuation condition eventually fail?
 -  Separate thing to be done once before the repetition (code before the
    loop) from repetitive actions (in loop) from actions not repeated but
    done after the loop (code after the loop). Missing this distinction

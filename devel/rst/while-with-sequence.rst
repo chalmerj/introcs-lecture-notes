@@ -36,7 +36,7 @@ For now our only option is a ``while`` loop.  We can follow
 our basic rubric, one step at a time:
 The index is changing in a simple repetitive sequence.  
 We can call the
-index ``i``.  Its intitial value is clearly 0. 
+index ``i``.  Its initial value is clearly 0. 
 That is our initialization.  We need a ``while`` loop continuation 
 condition.
 For the 3-character string example, the last index above is 2.
@@ -87,7 +87,7 @@ no just print it.
 	- You do not want to go on to the next line, so use ``Write``, 
 	  not ``WriteLine``.
 	- It is still a regular sequence of character indices, but
-	  everythng needs to be reworked.
+	  everything needs to be reworked.
 
 .. index::
    double: string; PrintVowels
@@ -114,7 +114,7 @@ This new description seems like a problem.  We do *not* appear to want to do
 the same thing each time:  We only want to print *some* of the 
 characters.  Again your eyes and mind are so fast, you likely miss what you
 need to do when go through ``PrintVowels`` by hand.  Your
-eyes let you just grab the vowels easily, but think, wht is actually
+eyes let you just grab the vowels easily, but think, what is actually
 happening?  You are checking each character to see if it is a vowel,
 and printing it if it is:  You are doing the same thing each time -
 *testing* **if** the character is a vowel.  The pseudocode is   ::
@@ -160,13 +160,13 @@ so it is easier to
 use the string method ``Contains``.  Though IndexOf takes either a string
 or a character as parameter, ``Contains`` only takes a string.  There is a 
 nice quick idiom to convert anything to a string:  use ``""+``. 
-The condtion could be ``"aeiou".Contains(""+s[i])``.  
+The condition could be ``"aeiou".Contains(""+s[i])``.  
 This adds
 the string version of ``s[i]`` to the empty string.
 
-The functon is still not as general as it might be:
+The function is still not as general as it might be:
 Only lowercase vowels are listed.  We could do something with
-``ToLower``, or just use the condtion: ``"aeiouAEIOU".Contains(""+s[i])``
+``ToLower``, or just use the condition: ``"aeiouAEIOU".Contains(""+s[i])``
 
 This variation is in example ``Vowels2.cs``.
 
@@ -214,7 +214,7 @@ One way to do this is have a variable holding an answer so far::
 
      Boolean allDigitsSoFar = true;
      
-Of course intially, you have not found any non-digits, so it starts off true.  
+Of course initially, you have not found any non-digits, so it starts off true.  
 As you go through
 the string, you want to make sure that answer is changed to ``false`` 
 if a non-digit is encountered::
@@ -223,7 +223,7 @@ if a non-digit is encountered::
          allDigitsSoFar = false;
      }
 
-When we get all the way throught the string, the answer so far is the
+When we get all the way through the string, the answer so far is the
 final answer to be returned::
 
    /** Return true if s contains one or more digits
@@ -246,7 +246,7 @@ In the description it says it is true for a string of *one or more* digits.
 
 Check examples of length 1 and 0.  
 Length 1 is fine, but it fails for the empty string,
-since the loop is skipped and the intial answer, ``true`` is returned.
+since the loop is skipped and the initial answer, ``true`` is returned.
 
 There are many ways to fix this.  We will know right up front that the answer
 is false if the length is 0, and we could immediately set
@@ -263,7 +263,7 @@ an ``if`` statement should occur to you::
       allDigitsSoFar = false;
   }
       
-If we substitute this intialization for ``allDigitsSoFar``, 
+If we substitute this initialization for ``allDigitsSoFar``, 
 the code will satisfy the edge case, and the code will always 
 work. 
 
@@ -279,8 +279,8 @@ A *much* more concise and still equivalent initialization is just::
 
     Boolean allDigitsSoFar = (s.Length > 0); 
     
-In more gnerality this 
-conciseness comes ifrom the fact that it is a *Boolean* value that
+In more generality this 
+conciseness comes from the fact that it is a *Boolean* value that
 you are trying to set, based on a *Boolean* condition:  You do not
 need to do that with an ``if`` statement!  You just need an 
 assignment statement!  If you use an ``if`` statement in such a situation,
@@ -288,7 +288,7 @@ you mark yourself as a novice.
 
 It could even be slightly more concise:  The precedence of assignment is
 very low, lower than the comparison ``>``, 
-so the parentheses could be omited.  We think the
+so the parentheses could be omitted.  We think the
 code is easier to read with the parentheses left in, as written above,
 and below.
 

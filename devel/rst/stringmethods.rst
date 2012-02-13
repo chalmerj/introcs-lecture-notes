@@ -154,7 +154,7 @@ Testing Strings For Equality
 ------------------------------
 
 Strings can be tested for equality like numbers,
-with ``==``: *two* equal signs, not the *one* equal sign used for assignement.
+with ``==``: *two* equal signs, not the *one* equal sign used for assignment.
 The case of letters matters::
 
     csharp> string s = "Hello"; // initial value assigned

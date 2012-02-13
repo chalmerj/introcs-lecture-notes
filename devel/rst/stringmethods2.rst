@@ -18,7 +18,7 @@ This variation of ``IndexOf`` has a second parameter:
    double: string; IndexOf
    
 ``int IndexOf(string target, int start)``   
-    Returns the index of the begining of the first occurrence of the string 
+    Returns the index of the beginning of the first occurrence of the string 
     ``target`` 
     in **this** string object, starting at index ``start`` or after. 
     Returns -1 if ``target`` is not found. Example:: 
@@ -55,7 +55,7 @@ This variation of ``IndexOf`` has a second parameter:
    
 ``string Replace(string target, string replacement)``
     Returns a string formed from **this** string by replacing
-    all occurences of the substring ``target`` by ``replacement``.  
+    all occurrences of the substring ``target`` by ``replacement``.  
     Example::
     
         csharp> string s = "This is it!";
@@ -144,7 +144,7 @@ Be sure you are familiar with :ref:`safe-whole-number-input`,
 and the development of its ``InputWhole`` function.
 
 A legal whole number string consists entirely of digits.  We have
-already written example ``IsDigis`` to identify a string for a
+already written example ``IsDigits`` to identify a string for a
 whole number.
 
 The  improvements to InputInt and InputDouble are 
@@ -155,7 +155,7 @@ Boolean support functions,
 The issue with integer and decimal strings 
 is that they may include parts other than
 digits.  An integer may start with a minus sign.  A
-decmial number can also contain a decimal point in an appropriate 
+decimal number can also contain a decimal point in an appropriate 
 place.  The suggestion is to confirm that these other characters appear in
 legal places, remove them, and see that what is left is digits. 
 The recently introduced string methods should help....

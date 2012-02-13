@@ -4,10 +4,6 @@ While Examples
 
 .. todo::
 
-   "sum of first N numbers using loop & Euler formula"
-
-.. todo::
-
    "bisection method"
 
 Savings Exercise

@@ -3,6 +3,8 @@ foreach Examples
 
 .. index::    char; underlying numeric code
 
+.. _codeofstringchar:
+
 In :ref:`IsDigits <IsDigits>` we use the underlying int code value
 of the characters in comparisons.  
 When printing, you cannot see this code directly,

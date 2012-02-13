@@ -14,7 +14,7 @@ One way to look at the while statement rubric is::
 
     set data for conditions
     while (condition) {
-       accompish something
+       accomplish something
        set data for condition
     }
     
@@ -53,7 +53,7 @@ loop rubric above, can have the form::
     do {
        set data for condition
        if (condition) {
-           accompish something
+           accomplish something
        }
     } while (condition);
 
