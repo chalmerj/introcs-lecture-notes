@@ -13,35 +13,52 @@ Rationale for this Lab
 Now that we have developed basic fluency in editing, compiling, and
 running programs, we are now going to start using something called the
 *integrated development environment* (the IDE). Professional software
-developers generally prefer the IDE, because the IDE is to software
-development as a word processor is to writing. A word processor won't
-make you a better writer but will help you to avoid some of the
-pitfalls that plague writers: spelling, grammar, and consistent
-formatting. When it comes to programming, you've already learned that
-working at the command line can be an exercise in frustration. You
-will often make basic syntax errors or forget to do something
-"grammatically" like declaring a variable or not using a particular
-feature of the language properly.
+developers generally prefer the IDE, because the IDE does for software
+development what a word processor does for writing. That said, a word
+processor won't make you a better writer but will help you to avoid
+some of the pitfalls that plague writers: spelling, grammar, and
+style, among other formatting features. When it comes to programming,
+you've already learned that working at the command line can be an
+exercise in frustration. You will often make basic syntax errors or
+forget to do something "grammatically" like declaring a variable or
+not using a particular feature of the language properly. It can be
+tricky to fix errors, especially when the error output scrolls beyond
+the visible terminal area. While there are ways to work around these
+issues, the use of an IDE is far more efficient and allows us to
+maintain our collective sanity.
 
-So the IDE is here to help. You might wonder why we don't teach it
-from the beginning. The rationale is simple. You neeed to know the
-basics of how a program is put together and run. It is part of
-learning to think like a computer scientist and software
-developer. Furthermore, we want to be able to assume that you know at
-least one of the *basics*: executable programs. When we compile a Mono
-program, we get an output file named *Name*.exe, where this *Name* can
-be anything, say, ``HelloWorld.exe``.
+So the IDE is here to help you, and it is now time to start using it
+for our labs, homework, and (eventually) your project. You might
+wonder why we don't teach it from the beginning. The rationale is
+simple. You need to know the basics of how a program is put together
+and run. It is part of learning to think like a computer scientist and
+software developer. Furthermore, we want to be able to assume that you
+know at least one of the *basics*: executable programs and how to run
+them. When we compile a Mono program, we get an output file named
+*Name*.exe, where this *Name* can be anyhing, say,
+``HelloWorld.exe``. When we use the IDE, MonoDevelop, we'll still be
+getting this executable and be able to run it either within our
+outside of MonoDevelop.
 
 Goals
 -----
 
 In this lab, we're going to set the table for the rest of the
-course. We're going to create a C# Solution that you can use to do all
-of the remaining homework assignments and labs this semester. If you
-like, you can create as many solutions as you like, but C# allows you
-to create a single solution and add (at any time) projects to it.
+course. So please do whatever you can to complete each part. It is
+entirely possible we will spend two lab periods working on this lab.
 
-We're going to create a solution that will contain three different
+Our primary goal to create a C# Solution that you can use to do all of
+the remaining homework assignments and labs this semester. If you
+wish, you can create as many solutions as you like, but C# allows you
+to create a single solution and add (at any time) projects to it. This
+will provide by far the best experience for you in the course, where
+you can keep adding onto previous efforts without having to start over
+each time. (As we'll see in this lab, you'll also have a way of making
+*use* of previous work, which is an incredibly powerful concept in
+software engineering that many CS courses and real-world software
+projects depend upon.)
+
+We're going to create a solution that will contain (at least) three different
 projects:
 
 #. A project that contains our familiar Hello, World example. This
@@ -63,18 +80,105 @@ Steps
 So let's begin. We'll start by creating a *solution* and add projects
 to it one at a time.
 
-.. todo:: 
-   George fleshing out the details of this lab still.
+#. Create a new blank solution using the following steps:
 
-#. Create the overall solution. I suggest creating a good name,
-   ThiruvathukalComp170.
+   - Go File -> New -> Solution
+
+     .. image:: images/lab-monodevelop/FileNewSolution.png
+        :height: 400 px
+     	:alt: MonoDevelop Image
+     	:align: center
+
+   - Select C# in left hand side panel
+   - Select Empty Project in right hand side panel
+   - Leave the Location field as is.
+   - Enter any solution name you like (we recommend Last name, First name,
+     followed by 170, e.g. ThiruvathukalGeorge170) in the Name field.
+   - For the Solution name
+   - Make sure *Create directory for solution* is checked.
+   - Press the Forward button.
+   - At the Project Features form, just press ok.
+   - You now have created your first empty solution in MonoDevelop. We can now add *projects*
+     to this *solution*. Because your project is empty, it won't
+     actually do anything until we add some *projects* to it.
+
+#. Create a project for the familiar "Hello, World!" program:
+
+   - Place the mouse over the Solution *folder* in the Solution pane
+     (on the left hand side).
+   - Right click, select Add -> Add New Project
+
+     .. image:: images/lab-monodevelop/AddHelloProject.png
+        :height: 400 px
+     	:alt: MonoDevelop Image
+     	:align: center
+
+   - Select C# in the left panel and Console Project in the right
+     panel. Enter Hello in the Name field.
+   - Press the Forward button.
+   - At the Project Features form, just press ok.
+   - You'll now see the Hello folder. Click on Hello (beneath the
+     Solution) in the left panel and you'll see ``Main.cs``. If you
+     double click on Main.cs, you will notice the familiar "Hello,
+     World!" program. In the current versions of mono, a new C#
+     console project always creates a minimal, functioning program so
+     you can test MonoDevelop and Mono for their ability to build a
+     working project.
+
+     .. image:: images/lab-monodevelop/BrowseHelloProject.png
+        :height: 400 px
+     	:alt: MonoDevelop Image
+     	:align: center
 
 
-#. Create a project for Hello, World.
+   Now you can actually *run* the program defined by this project:
 
-#. Create a project for the Input Utilities.
+   - Right click on Hello.
+   - Select *Build Hello* or *Rebuild Hello*.
+   - If the build was successful, which it will be, you will see
+     *Build successful.* in the status line.
+   - Right click on Hello.
+   - Select *Run Item*.
+   - If all goes well, you will see the familiar *console* pop up with
+     the output from your program.
 
-#. Create one or more projects for each of your labs/homeworks. 
+     .. image:: images/lab-monodevelop/HelloRunOutput.png
+        :height: 400 px
+     	:alt: MonoDevelop Image
+     	:align: center
+
+     Note that what you see here may vary, depending on whether you
+     use OS X, Windows, or another platform (Linux).
+
+#. Create one or more projects for each of your labs/homework
+   assignments. For this last part you will add a project, which can
+   make use of code that you wrote in a previous lab or assignment:
+
+   - Add a project as we did in step 1.
+   - Name your project appropriately. For example, if you want to take
+     the first homework assignment and move it to MonoDevelop, you
+     could name it Homework1. You could also name it GradeCalc or
+     something similar.
+   - You don't need to retype the code that you've already created,
+     compiled, and run. Instead, you can just open it up in the text
+     editor and copy/paste it into the ``Main.cs`` file for your new
+     project. (You'll first want to delete the "Hello, World!" code
+     that MonoDevelop creates *every time* you add a new C# project.
+   - You should now have *two* projects: Hello and Homework1 (or
+     GradeCalc).
+   - Build and Run the program to see whether it works.
 
 
+#. Create a library project for the Input Utilities.
+
+   .. todo::
+      George to write up how to add Input Utilities project.
+
+
+#. Create a console project that makes use of the Input Utilities by
+   adding a reference to the Input Utilities library (created in the
+   previous step).
+
+   .. todo::
+      George to write up how to reference Input Utilities project.
 
