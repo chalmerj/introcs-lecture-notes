@@ -85,6 +85,7 @@ Here is a version of IsDigits::
     }
 
 See the advantages of ``foreach`` in these examples:
+
 - They are more concise than the indexing versions.
 - They keep the emphasis on the characters, not the secondary indicies.
 - The ``foreach`` heading emphasizes that a particular sequence is being 
