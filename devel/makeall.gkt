@@ -2,11 +2,6 @@
 
 # assume start in devel dir
 cd rst
-./setofferings.py $USER
 make html
-#./pause.py
-#rm _build/latex/Hands-onPythonTutorial.tex
 make latexpdf
-./setofferings.py $USER no
-#./pause.py
 make epub
