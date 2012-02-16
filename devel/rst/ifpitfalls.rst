@@ -5,6 +5,8 @@ If-statement Pitfalls
 .. index::
    triple: pitfall; semicolon after condition; if statement
 
+.. _dangerous-semicolon:
+
 Dangerous Semicolon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 

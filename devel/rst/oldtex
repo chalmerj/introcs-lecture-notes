@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 12, 2012}
+\date{February 16, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -3969,7 +3969,7 @@ You may find \code{Wages2.cs} easier to adapt than \code{Wages1.cs}.
 \index{pitfall!semicolon after condition if statement}\index{semicolon after condition!if statement, pitfall}\index{if statement!pitfall semicolon after condition}
 
 \subsection{Dangerous Semicolon}
-\label{ifpitfalls:dangerous-semicolon}\label{ifpitfalls:index-0}
+\label{ifpitfalls:dangerous-semicolon}\label{ifpitfalls:index-0}\label{ifpitfalls:id1}
 Regular statements must end with a semicolon.
 It turns out that the semicolon is all you need to have a legal statement:
 
@@ -6158,7 +6158,7 @@ restrict to many ranges with InputIntInRange.
 
 \subsection{Greatest Common Divisor}
 \label{gcdexamples:index-0}\label{gcdexamples:greatest-common-divisor}
-The \emph{greatest common divisor} of two non-zero integers is a great
+The greatest common divisor of two non-zero integers is a great
 example to illustrate the power of loops. Everyone learns about the
 \emph{concept} of a greatest common divisor when faced with a fraction that
 is not in \emph{reduced} form.
@@ -6222,24 +6222,35 @@ these two numbers is always 5 as the order doesn't matter.
 
 \subsection{GCD ``Brute Force'' Method}
 \label{gcdexamples:gcd-brute-force-method}
-Now that we've gotten the preliminaries out of the way and have a basic mathematical explanation for how
-to calculate the greatest common divisor, we'll take a look at how to translate this into code using the
+Now that we've gotten the preliminaries out of the way and have a basic
+mathematical explanation for how
+to calculate the greatest common divisor,
+we'll take a look at how to translate this into code using the
 machinery of while loops that you've recently learned.
 
-The way GCD is formulated above is, indeed, the most clever way to calculate the greatest common divisor.
-Yet the way we learn about the greatest common divisor in elementary school (at least at first) is to
-learn how to factor the numbers a and b, often in a brute force way. So for example, when calculating the
-greatest common divisor of 10 and 15, we can immediately see it, because we know that both of these
-numbers are divisible by 5 (e.g. 5 * 2 = 10 and 5 * 3 = 15). So the greatest common divisor is 5.
+The way GCD is formulated above is, indeed, the most clever way to
+calculate the greatest common divisor.
+Yet the way we learn about the greatest common divisor in elementary
+school (at least at first) is to
+learn how to factor the numbers a and b, often in a brute force way.
+So for example, when calculating the
+greatest common divisor of 10 and 15, we can immediately see it,
+because we know that both of these
+numbers are divisible by 5 (e.g. 5 * 2 = 10 and 5 * 3 = 15).
+So the greatest common divisor is 5.
 
-But if we had something more tricky to do like 810 and 729, we might have to think a bit more.
+But if we had something more tricky to do like 810 and 729,
+we might have to think a bit more.
 
-Before we learn to find the factors of numbers, we will often just ``try'' numbers until we get the
-greatest common divisor. This sort of trial process can take place in a loop, where we start at 1 and end at
-min(a, b)? Why the minimum? Well, we know that none of the values after the minimum can divide both a and b
+Before we learn to find the factors of numbers,
+we will often just ``try'' numbers until we get the
+greatest common divisor. This sort of trial process can take place in a loop,
+where we start at 1 and end at min(a, b)? Why the minimum?
+Well, we know that none of the values after the minimum can divide both a and b
 (in integer division) because either a / b = 0 or b / a = 0, if a != b.
 
-You can verify this by picking any two different values of a and b. For example 810/729 \textgreater{} 0 and 729/810 = 0.
+You can verify this by picking any two different values of a and b.
+For example 810/729 \textgreater{} 0 and 729/810 = 0.
 
 Without further ado, let's take a look at a basic version of GCD:
 
@@ -6262,41 +6273,52 @@ Without further ado, let's take a look at a basic version of GCD:
 This code works as follows:
 \begin{itemize}
 \item {} 
-We begin by finding \code{Math.Min(a, b)}. This is how to compute the minimum of any two
-values in C\#. Techically, we don't need to use the minimum of a and b, but there is no
-point in doing any more work than necessary. We'll use the variable \code{i} as the loop index
+We begin by finding \code{Math.Min(a, b)}.
+This is how to compute the minimum of any two
+values in C\#. Technically, we don't need to use the minimum of a and b,
+but there is no
+point in doing any more work than necessary.
+We'll use the variable \code{i} as the loop index
 and the variable \code{gcd} will hold the currently known value of the GCD.
 
 \item {} 
-The line \code{i = gcd = 1} means we'll start i at 1 and assume that the GCD is one until
+The line \code{i = gcd = 1} means we'll start i at 1
+and assume that the GCD is one until
 we find a higher value that also divides a and b.
 
 \item {} 
-The line \code{while (i \textless{}= n)} is used to indicate that we are iterating the values of
+The line \code{while (i \textless{}= n)} is used to indicate that we are
+iterating the values of
 \code{i} until the minimum of \code{a} and \code{b} (computed earlier) is reached.
 
 \item {} 
-The line \code{if (a \% i == 0 \&\& b \% i == 0)} is used to check whether we have found a
-new value that replaces our previous \emph{candidate} for the GCD. A value can only be
-a candidate for the GCD if it divides a and b without a remainder. The modulus
-operator \code{\%} is our way of determining whether there is a remainder from the
+The line \code{if (a \% i == 0 \&\& b \% i == 0)}
+is used to check whether we have found a
+new value that replaces our previous \emph{candidate} for the GCD.
+A value can only be
+a candidate for the GCD if it divides a and b without a remainder.
+The modulus
+operator \code{\%} is our way of determining whether there is a
+remainder from the
 division operation \code{a / i} or \code{b / i}.
 
 \item {} 
-The line \code{i = i + 1} is our way of going to the next value of \code{i} to be tested
-as the new GCD.
+The line \code{i = i + 1} is our way of going to the next value of \code{i}
+to be tested as the new GCD.
 
 \item {} 
 When this loop terminates, the greatest common divisor has been found.
 
 \end{itemize}
 
-So this gives you a relatively straightforward way of calculating the greatest common
-divisor. While simple, it is not necessarily the most efficient way of determining
-the GCD? If you think about what is going on, this loop could run a significant number
-of times. For example, if you were calculating the GCD two very large numbers, say,
-one billion (1,000,000,000) and two billion (2,000,000,000) it is painfully evident
-that you would consider a large number of values (a billion, in fact) before obtaining
+So this gives you a relatively straightforward way of calculating the
+greatest common divisor. While simple, it is not necessarily the most
+efficient way of determining the GCD? If you think about what is going on,
+this loop could run a significant number of times.
+For example, if you were calculating the GCD two very large numbers, say,
+one billion (1,000,000,000) and two billion (2,000,000,000)
+it is painfully evident that you would consider a large number of values
+(a billion, in fact) before obtaining
 the candidate GCD, which we know is 1,000,000,000.
 
 
@@ -6388,8 +6410,8 @@ One way to look at the while statement rubric is:
 
 As we have pointed out before this involves setting data in two places.
 With the triangle problem, three pieces fo data need to be entered,
-while the condition to test is fairly simple (and in any case could be
-calculated in a function).
+while the condition to test is fairly simple (and in any case the condition
+could be calculated in a function).
 
 A \code{do}-\code{while} loop will help here.  It tests the condition at the end of the
 loop, so there is no need to gather data before the loop:
@@ -6403,7 +6425,7 @@ loop, so there is no need to gather data before the loop:
     \PYG{n}{c} \PYG{p}{=} \PYG{n}{IntInput}\PYG{p}{(}\PYG{l+s}{"Enter integer hypotenuse: "}\PYG{p}{)}\PYG{p}{;}
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{a}\PYG{p}{*}\PYG{n}{a} \PYG{p}{+} \PYG{n}{b}\PYG{p}{*}\PYG{n}{b} \PYG{p}{!}\PYG{p}{=} \PYG{n}{c}\PYG{p}{*}\PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"Not a right triangle: Try again!"}\PYG{p}{)}\PYG{p}{;}
-\PYG{k}{while} \PYG{p}{(}\PYG{n}{a}\PYG{p}{*}\PYG{n}{a} \PYG{p}{+} \PYG{n}{b}\PYG{p}{*}\PYG{n}{b} \PYG{p}{!}\PYG{p}{=} \PYG{n}{c}\PYG{p}{*}\PYG{n}{c}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}} \PYG{k}{while} \PYG{p}{(}\PYG{n}{a}\PYG{p}{*}\PYG{n}{a} \PYG{p}{+} \PYG{n}{b}\PYG{p}{*}\PYG{n}{b} \PYG{p}{!}\PYG{p}{=} \PYG{n}{c}\PYG{p}{*}\PYG{n}{c}\PYG{p}{)}\PYG{p}{;}
 \end{Verbatim}
 
 The general form of a \code{do}-\code{while} statement is
@@ -6423,7 +6445,16 @@ Here the block of statement(s) is always executed, but it continues
 to be executed in a loop only so long as the condition tested
 after the loop body is true.
 
-A \code{do}-\code{while} loop that accomplishes exactly the same thing as the \code{while}
+\begin{notice}{note}{Note:}
+A \code{do}-\code{while} loop is the \emph{one} place where you \emph{do} want a semicolon
+right after a condition, unlike the places mentioned in
+{\hyperref[ifpitfalls:dangerous-semicolon]{\emph{Dangerous Semicolon}}}.  At least if you omit it here you
+are likely to get a compiler error rather than a difficult logical
+bug.
+\end{notice}
+
+A \code{do}-\code{while} loop, like the example above,
+that accomplishes exactly the same thing as the \code{while}
 loop rubric above, can have the form:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -6436,6 +6467,7 @@ loop rubric above, can have the form:
 \end{Verbatim}
 
 It only sets the data to be tested once.
+(The tradeoff is that the condition is tested twice.)
 
 \index{labs!string manipulations}
 
@@ -7038,6 +7070,414 @@ You can create it in a program editor or in a fancy document editor.
 If you use a fancy document editor, be sure to save it an a plain text file,
 usually indicated by the ''.txt'' suffix.
 \end{notice}
+\phantomsection\label{lab-monodevelop:lab-monodevelop}
+\index{labs!MonoDevelop}
+
+\section{Lab: Using MonoDevelop}
+\label{lab-monodevelop:lab-using-monodevelop}\label{lab-monodevelop:index-0}\label{lab-monodevelop::doc}
+
+\subsection{Rationale for this Lab}
+\label{lab-monodevelop:rationale-for-this-lab}
+Now that we have developed basic fluency in editing, compiling, and
+running programs, we are now going to start using something called the
+\emph{integrated development environment} (the IDE). Professional software
+developers generally prefer the IDE, because the IDE does for software
+development what a word processor does for writing. That said, a word
+processor won't make you a better writer but will help you to avoid
+some of the pitfalls that plague writers: spelling, grammar, and
+style, among other formatting features. When it comes to programming,
+you've already learned that working at the command line can be an
+exercise in frustration. You will often make basic syntax errors or
+forget to do something ``grammatically'' like declaring a variable or
+not using a particular feature of the language properly. It can be
+tricky to fix errors, especially when the error output scrolls beyond
+the visible terminal area. While there are ways to work around these
+issues, the use of an IDE is far more efficient and allows us to
+maintain our collective sanity.
+
+So the IDE is here to help you, and it is now time to start using it
+for our labs, homework, and (eventually) your project. You might
+wonder why we don't teach it from the beginning. The rationale is
+simple. You need to know the basics of how a program is put together
+and run. It is part of learning to think like a computer scientist and
+software developer. Furthermore, we want to be able to assume that you
+know at least one of the \emph{basics}: executable programs and how to run
+them. When we compile a Mono program, we get an output file named
+\emph{Name}.exe, where this \emph{Name} can be anyhing, say,
+\code{HelloWorld.exe}. When we use the IDE, MonoDevelop, we'll still be
+getting this executable and be able to run it either within our
+outside of MonoDevelop.
+
+
+\subsection{Goals}
+\label{lab-monodevelop:goals}
+In this lab, we're going to set the table for the rest of the
+course. So please do whatever you can to complete each part. It is
+entirely possible we will spend two lab periods working on this lab.
+
+Our primary goal to create a C\# Solution that you can use to do all of
+the remaining homework assignments and labs this semester. If you
+wish, you can create as many solutions as you like, but C\# allows you
+to create a single solution and add (at any time) projects to it. This
+will provide by far the best experience for you in the course, where
+you can keep adding onto previous efforts without having to start over
+each time. (As we'll see in this lab, you'll also have a way of making
+\emph{use} of previous work, which is an incredibly powerful concept in
+software engineering that many CS courses and real-world software
+projects depend upon.)
+
+We're going to create a solution that will contain (at least) three different
+projects:
+\begin{enumerate}
+\item {} 
+A project that contains our familiar Hello, World example. This
+will be used to make sure that everyone can create something that
+works, much like we did in the first lab.
+
+\item {} 
+A project that contains the \emph{input} functions that we have been
+using in various examples (e.g. InputInt and InputString).
+
+\item {} 
+A project that makes use of the \emph{input} functions. This project
+can contain whatever code you like, including your homework
+assignment. This project will use something called a \emph{reference}
+to make use of the \emph{input} library.
+
+\end{enumerate}
+
+
+\subsection{Steps}
+\label{lab-monodevelop:steps}
+So let's begin. We'll start by creating a \emph{solution} and add projects
+to it one at a time.
+\begin{enumerate}
+\item {} 
+Create a new blank solution using the following steps:
+\begin{itemize}
+\item {} 
+Go File -\textgreater{} New -\textgreater{} Solution
+
+{\hfill\includegraphics{FileNewSolution.png}\hfill}
+
+\item {} 
+Select C\# in left hand side panel
+
+\item {} 
+Select Empty Project in right hand side panel
+
+\item {} 
+Leave the Location field as is.
+
+\item {} 
+Enter any solution name you like (we recommend Last name, First name,
+followed by 170, e.g. ThiruvathukalGeorge170) in the Name field.
+
+\item {} 
+For the Solution name
+
+\item {} 
+Make sure \emph{Create directory for solution} is checked.
+
+\item {} 
+Press the Forward button.
+
+\item {} 
+At the Project Features form, just press ok.
+
+\item {} 
+You now have created your first empty solution in MonoDevelop. We can now add \emph{projects}
+to this \emph{solution}. Because your project is empty, it won't
+actually do anything until we add some \emph{projects} to it.
+
+\end{itemize}
+
+\item {} 
+Create a project for the familiar ``Hello, World!'' program:
+\begin{itemize}
+\item {} 
+Place the mouse over the Solution \emph{folder} in the Solution pane
+(on the left hand side).
+
+\item {} 
+Right click, select Add -\textgreater{} Add New Project
+
+{\hfill\includegraphics{AddHelloProject.png}\hfill}
+
+\item {} 
+Select C\# in the left panel and Console Project in the right
+panel. Enter Hello in the Name field.
+
+\item {} 
+Press the Forward button.
+
+\item {} 
+At the Project Features form, just press ok.
+
+\item {} 
+You'll now see the Hello folder. Click on Hello (beneath the
+Solution) in the left panel and you'll see \code{Main.cs}. If you
+double click on Main.cs, you will notice the familiar ``Hello,
+World!'' program. In the current versions of mono, a new C\#
+console project always creates a minimal, functioning program so
+you can test MonoDevelop and Mono for their ability to build a
+working project.
+
+{\hfill\includegraphics{BrowseHelloProject.png}\hfill}
+
+\end{itemize}
+
+Now you can actually \emph{run} the program defined by this project:
+\begin{itemize}
+\item {} 
+Right click on Hello.
+
+\item {} 
+Select \emph{Build Hello} or \emph{Rebuild Hello}.
+
+\item {} 
+If the build was successful, which it will be, you will see
+\emph{Build successful.} in the status line.
+
+\item {} 
+Right click on Hello.
+
+\item {} 
+Select \emph{Run Item}.
+
+\item {} 
+If all goes well, you will see the familiar \emph{console} pop up with
+the output from your program.
+
+{\hfill\includegraphics{HelloRunOutput.png}\hfill}
+
+Note that what you see here may vary, depending on whether you
+use OS X, Windows, or another platform (Linux).
+
+\end{itemize}
+
+\item {} 
+Create one or more projects for each of your labs/homework
+assignments. For this last part you will add a project, which can
+make use of code that you wrote in a previous lab or assignment:
+\begin{itemize}
+\item {} 
+Add a project as we did in step 1.
+
+\item {} 
+Name your project appropriately. For example, if you want to take
+the first homework assignment and move it to MonoDevelop, you
+could name it Homework1. You could also name it GradeCalc or
+something similar.
+
+\item {} 
+You don't need to retype the code that you've already created,
+compiled, and run. Instead, you can just open it up in the text
+editor and copy/paste it into the \code{Main.cs} file for your new
+project. (You'll first want to delete the ``Hello, World!'' code
+that MonoDevelop creates \emph{every time} you add a new C\# project.
+
+\item {} 
+You should now have \emph{two} projects: Hello and Homework1 (or
+GradeCalc).
+
+\item {} 
+Build and Run the program to see whether it works.
+
+\end{itemize}
+
+\item {} 
+Create a library project for the Input Utilities.
+
+In many of our examples, we have made use of some functions to
+handle various aspects of user input. For example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{c+cm}{/** Return a line from the keyboard}
+\PYG{c+cm}{    * after displaying the prompt. */}
+   \PYG{k}{static} \PYG{k+kt}{string} \PYG{n+nf}{InputLine}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{Write}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k}{return} \PYG{n}{Console}\PYG{p}{.}\PYG{n}{ReadLine}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+
+   \PYG{c+cm}{/** Return an integer entered from the keyboard}
+\PYG{c+cm}{    * after displaying the prompt. */}
+   \PYG{k}{static} \PYG{k+kt}{int} \PYG{n+nf}{InputInt}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{string} \PYG{n}{nStr} \PYG{p}{=} \PYG{n}{InputLine}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{//Trim removes enclosing blanks}
+      \PYG{k}{return} \PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{nStr}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+
+   \PYG{c+cm}{/** Return a double entered from the keyboard}
+\PYG{c+cm}{    * after displaying the prompt. */}
+   \PYG{k}{static} \PYG{k+kt}{double} \PYG{n+nf}{InputDouble}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{prompt}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{string} \PYG{n}{nStr} \PYG{p}{=} \PYG{n}{InputLine}\PYG{p}{(}\PYG{n}{prompt}\PYG{p}{)}\PYG{p}{.}\PYG{n}{Trim}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{//Trim removes enclosing blanks}
+      \PYG{k}{return} \PYG{k+kt}{double}\PYG{p}{.}\PYG{n}{Parse}\PYG{p}{(}\PYG{n}{nStr}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+It is rather tedious for us to copy these functions every time we
+want to make use of them. In MonoDevelop, we can \emph{package} these
+functions into a \emph{library}. Much like your local public library,
+where you can grab a book when you need it, a library in
+MonoDevelop allows you to grab methods whenever you need them. In
+this case, we'll create a simple class to hold our input methods
+named \code{InputUtilities} and copy the above code into it. Let's do
+it.
+\begin{itemize}
+\item {} 
+On the solution you have created for your overall project, right
+click and select Add -\textgreater{} Add New Project.
+
+\item {} 
+Select C\# and Library/C\#.
+
+\item {} 
+Enter \code{InputUtils} as the project name and press Forward as
+many times as required to complete the process.
+
+\item {} 
+You now have a new library project.
+
+\item {} 
+You'll see a class named \code{MyClass.cs}. You can keep this name,
+but it would be nice to give this class a name that has something
+to do with \emph{input}. Right click on MyClass.cs to select the
+Rename option and give it any name you like (we suggest
+\code{InputUtils.cs}).
+
+\item {} 
+Now double click on the file to open it in the editor. We're
+going to make a few alterations.
+\begin{itemize}
+\item {} 
+Change namespace to \code{namespace InputUtils}, if it has not been set this
+way already.
+
+\item {} 
+Change \code{public MyClass} to \code{public Input}.
+
+\item {} 
+If you see a method named \code{public MyClass}, remove it and its
+braces. This is called a class constructor and is not needed
+(but is harmless if you want to keep it).
+
+\item {} 
+Copy the code for the two Input functions above in between the
+brackets (inside the class Input).
+
+\item {} 
+We need to make one change, now that we are putting our
+functions into a library. We need to add the \code{public} keyword
+before the word \code{static}. This indicates that these functions
+can be used by \emph{anyone} who has access to the class
+\code{Input}. We'll come to understand this in more detail when we
+learn about classes and objects. (So just do it, even if you
+don't fully understand it yet!)
+
+\end{itemize}
+
+\item {} 
+When you are done,  you should have something like the following:
+
+{\hfill\includegraphics{InputUtilsCS.png}\hfill}
+
+\item {} 
+As in the previous part, let's check whether our entire solution
+\emph{builds} properly. From the Build menu, select Build All. If you
+encounter any errors, you'll have to correct them.
+
+\end{itemize}
+
+\item {} 
+Create a console project that makes use of the Input Utilities by
+adding a reference to the Input Utilities library (created in the
+previous step).
+
+Now that we have a library project, we can create another project
+that uses this library. That is, much like when we say \code{using
+System} we now have a way of making use of our own \emph{stuff}. That
+is, we can say \code{using InputUtils} and then call our \emph{input}
+functions.
+\begin{itemize}
+\item {} 
+Much like we did for the initial \code{Hello} project, we are going
+create a new project called \code{InputTesting}. To make sure you
+know how to do this, you must do the \code{Add New Project} like we
+did earlier.
+
+\item {} 
+Once you have the new project, you need to \emph{reference} the
+library.
+
+\item {} 
+In the Solution pane (explorer), you will see a folder named
+References underneath InputTesting. Right click to Edit
+References.
+
+\item {} 
+If all has gone according to plan, you should see \code{InputUtils}
+as an ``assembly'' (.Net's fancy name for a compiled
+library). Check the checkbox next to InputUtils so we can use it
+in our new project.
+
+\item {} 
+Now click on \code{MyClass.cs} in the \code{InputTesting} project and
+do the following:
+\begin{itemize}
+\item {} 
+Add \code{using InputUtils}.
+
+\item {} 
+Create a Main() method to prompt the user for any desired input
+(integer, string, etc.) We are just testing whether we can see
+the functions that we referenced in InputUtils.
+
+\item {} 
+To call the input functions, we need to do things a bit
+differently than in the past. Because we are now using a
+separate class (Input) from the class that is using the
+functions (MyClass), we need to use the \emph{dot} syntax to call
+it. For example, this:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{n}{InputInt}\PYG{p}{(}\PYG{l+s}{"Please enter an integer: "}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+is now:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{n}{Input}\PYG{p}{.}\PYG{n}{InputInt}\PYG{p}{(}\PYG{l+s}{"Please enter an integer: "}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+\end{itemize}
+
+\item {} 
+As before, you should be able to Build -\textgreater{} Build All and then run
+this simple program. You might want to use a
+\code{Console.WriteLine} to write the variable \code{i} to the
+console.
+
+\end{itemize}
+
+\end{enumerate}
+
+So that's it! At this point, you will have a solution with three
+projects. Incidentally, everything we have shown here does also work
+in Microsoft Visual Studio. You may find that the instructions vary
+slightly. Because our course places great emphasis on learning
+computer science on the platform of your choice, we're only doing this
+in Mono and MonoDevelop (for now).
+
+So the next time you have a lab or homework assignment, you can start
+by adding a new project to this existing solution. This will allow
+you to build on ideas we have explored previously. As you become more
+\emph{seasoned} as an introductory computer science student, you will find
+yourself saying, ``I think I have done something like this before.'' If
+properly packaged into a library, you can make use of the code again
+and again in your work, which can be a real time saver!
 
 \index{double loop!foreach}
 
@@ -7101,22 +7541,15 @@ To \emph{use} ``the character'' in C\#, we must be able to refer to it.
 We might name the current character \code{ch}.
 The following is a variant of \code{OneCharPerLine} with a \code{foreach}
 loop:
-\begin{quote}
 
-static void OneCharPerLine(string s)
-\{
-\begin{quote}
-\begin{description}
-\item[{foreach (char ch in s) \{}] \leavevmode
-Console.WriteLine(ch);
-
-\end{description}
-
-\}
-\end{quote}
-
-\}
-\end{quote}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{OneCharPerLine}\PYG{p}{(}\PYG{k+kt}{string} \PYG{n}{s}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{foreach} \PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{ch} \PYG{k}{in} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+       \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{n}{ch}\PYG{p}{)}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
 
 That is all you need!   The \code{foreach} heading feeds us one
 character from \code{s} each time through, using the name \code{ch}
@@ -7156,13 +7589,18 @@ Here is a version of IsDigits:
 \end{Verbatim}
 
 See the advantages of \code{foreach} in these examples:
-- They are more concise than the indexing versions.
-- They keep the emphasis on the characters, not the secondary indicies.
-- The \code{foreach} heading emphasizes that a particular sequence is being
-\begin{quote}
+\begin{itemize}
+\item {} 
+They are more concise than the indexing versions.
 
+\item {} 
+They keep the emphasis on the characters, not the secondary indicies.
+
+\item {} 
+The \code{foreach} heading emphasizes that a particular sequence is being
 processed.
-\end{quote}
+
+\end{itemize}
 
 \emph{If} you have explicit need to refer to the indices of the items in the sequence,
 then this pattern does not work.  You can use a \code{while} loop, or perhaps a
@@ -7226,7 +7664,7 @@ More generally:
 \begin{quote}
 
 \begin{DUlineblock}{0em}
-\item[] \code{for (} \emph{initialization} \code{;} \emph{condition} ; \emph{modification} \code{)} \{
+\item[] \code{for (} \emph{initialization} \code{;} \emph{condition} ; \emph{update} \code{)} \{
 \item[]
 \begin{DUlineblock}{\DUlineblockindent}
 \item[] statement(s)
@@ -7244,14 +7682,14 @@ translates to
 \item[]
 \begin{DUlineblock}{\DUlineblockindent}
 \item[] statement(s)
-\item[] \emph{modification}
+\item[] \emph{update}
 \end{DUlineblock}
 \item[] \code{\}}
 \end{DUlineblock}
 \end{quote}
 
 In the example above, \emph{initialization} is \code{i=2}, \emph{condition} is \code{i \textless{}= n},
-and \emph{modification} is \code{i++}.
+and \emph{update} is \code{i++}.
 
 Why bother with this rearrangement?  It is a matter of taste,
 but the heading:
@@ -7313,9 +7751,9 @@ See Miles, page 46, for a discussion of \code{break}.
 As in a regular local variable declaration,
 there may be several variables of the
 same type initialized at the beginning of a \code{for} loop heading,
-separated by commas.  Also, at the end of the \code{for} loop heading
-there may be more than one
-modification expression, separated by commas.  For example:
+separated by commas.  Also, at the end of the \code{for} loop heading, the
+update portion may include more than one expression, separated by commas.
+For example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{0}\PYG{p}{,} \PYG{n}{j} \PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}} \PYG{n}{j}\PYG{p}{;} \PYG{n}{i} \PYG{p}{=} \PYG{n}{i}\PYG{p}{+}\PYG{l+m}{2}\PYG{p}{,} \PYG{n}{j}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -7400,15 +7838,144 @@ is the same as
 \PYG{n}{x} \PYG{p}{=} \PYG{n}{x} \PYG{p}{*} \PYG{l+m}{5}\PYG{p}{;}
 \end{Verbatim}
 
-\begin{notice}{note}{Todo}
+\index{format!field width}\index{field width!format}\index{format!table}\index{table!format}\index{example!PowerTable.cs}\index{PowerTable.cs!example}\paragraph{Tables}
 
-table of square, cube, and square root.
+Reports commonly include tables, often with successive lines generated by
+a consistent formula.  As a simple first
+table can show the square, cube, and square root of numbers 1 through 10.
+The Math class has a function Sqrt, so we take the square root with Math.Sqrt
+function.  The formula is consistent, so we can loop easily:
 
-field width formatting
-\end{notice}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(} \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{n} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;} \PYG{n}{n}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{} \PYGZob{}2\PYGZcb{} \PYGZob{}3\PYGZcb{}"}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{,} \PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{,} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Sqrt}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+The numbers will be there, but it is not pretty:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{1} \PYG{l+m}{1} \PYG{l+m}{1} \PYG{l+m}{1}
+\PYG{l+m}{2} \PYG{l+m}{4} \PYG{l+m}{8} \PYG{l+m}{1.4142135623731}
+\PYG{l+m}{3} \PYG{l+m}{9} \PYG{l+m}{2}\PYG{l+m}{7} \PYG{l+m}{1.73205080756888}
+\PYG{l+m}{4} \PYG{l+m}{1}\PYG{l+m}{6} \PYG{l+m}{6}\PYG{l+m}{4} \PYG{l+m}{2}
+\PYG{l+m}{5} \PYG{l+m}{2}\PYG{l+m}{5} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{5} \PYG{l+m}{2.23606797749979}
+\PYG{l+m}{6} \PYG{l+m}{3}\PYG{l+m}{6} \PYG{l+m}{2}\PYG{l+m}{1}\PYG{l+m}{6} \PYG{l+m}{2.44948974278318}
+\PYG{l+m}{7} \PYG{l+m}{4}\PYG{l+m}{9} \PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{3} \PYG{l+m}{2.64575131106459}
+\PYG{l+m}{8} \PYG{l+m}{6}\PYG{l+m}{4} \PYG{l+m}{5}\PYG{l+m}{1}\PYG{l+m}{2} \PYG{l+m}{2.82842712474619}
+\PYG{l+m}{9} \PYG{l+m}{8}\PYG{l+m}{1} \PYG{l+m}{7}\PYG{l+m}{2}\PYG{l+m}{9} \PYG{l+m}{3}
+\PYG{l+m}{1}\PYG{l+m}{0} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{l+m}{3.16227766016838}
+\end{Verbatim}
+
+First we might not need all those digits in the square root approximations.
+We can replace \code{\{3\}} by \code{\{3:F4\}} to just show 4 decimal places.
+
+There are not nice columns lining up.  We can adjust the spacing to make nice
+columns by using a further formatting option.  The longest entries are all
+in the last row, where they take up, 2, 3, 4, and 6 columns (for 3.1623).
+Change the format string:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(} \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{n} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;} \PYG{n}{n}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0,2\PYGZcb{} \PYGZob{}1,3\PYGZcb{} \PYGZob{}2,4\PYGZcb{} \PYGZob{}3,6:F4\PYGZcb{}"}\PYG{p}{,}
+                                               \PYG{n}{n}\PYG{p}{,} \PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{,} \PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{,} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Sqrt}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+and we generate the neater:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{l+m}{1}   \PYG{l+m}{1}    \PYG{l+m}{1} \PYG{l+m}{1.0000}
+ \PYG{l+m}{2}   \PYG{l+m}{4}    \PYG{l+m}{8} \PYG{l+m}{1.4142}
+ \PYG{l+m}{3}   \PYG{l+m}{9}   \PYG{l+m}{2}\PYG{l+m}{7} \PYG{l+m}{1.7321}
+ \PYG{l+m}{4}  \PYG{l+m}{1}\PYG{l+m}{6}   \PYG{l+m}{6}\PYG{l+m}{4} \PYG{l+m}{2.0000}
+ \PYG{l+m}{5}  \PYG{l+m}{2}\PYG{l+m}{5}  \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{5} \PYG{l+m}{2.2361}
+ \PYG{l+m}{6}  \PYG{l+m}{3}\PYG{l+m}{6}  \PYG{l+m}{2}\PYG{l+m}{1}\PYG{l+m}{6} \PYG{l+m}{2.4495}
+ \PYG{l+m}{7}  \PYG{l+m}{4}\PYG{l+m}{9}  \PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{3} \PYG{l+m}{2.6458}
+ \PYG{l+m}{8}  \PYG{l+m}{6}\PYG{l+m}{4}  \PYG{l+m}{5}\PYG{l+m}{1}\PYG{l+m}{2} \PYG{l+m}{2.8284}
+ \PYG{l+m}{9}  \PYG{l+m}{8}\PYG{l+m}{1}  \PYG{l+m}{7}\PYG{l+m}{2}\PYG{l+m}{9} \PYG{l+m}{3.0000}
+\PYG{l+m}{1}\PYG{l+m}{0} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{l+m}{3.1623}
+\end{Verbatim}
+
+We are using two new formatting forms:
+\begin{quote}
+
+\begin{DUlineblock}{0em}
+\item[] \code{\{}index{}`{}`,{}`{}`fieldWidth{}`{}`\}{}`{}`  and
+\item[] \code{\{}index{}`{}`,{}`{}`fieldWidth{}`{}`\code{:}F{}`{}`\#{}`{}`\}{}`{}`
+\end{DUlineblock}
+\end{quote}
+
+where index, fieldWidth, and \# are replaces by specific integers.
+The new part with the comma (not colon) and fieldWidth, sets the \emph{minimum}
+number of columns used for the substituted string, padding with blanks as needed.
+
+If the string to be inserted is wider than the fieldWidth, then the whole string is
+inserted, ignoring the fieldWidth.  Example:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{string} \PYG{n}{s} \PYG{p}{=} \PYG{l+s}{"stuff"}\PYG{p}{;}
+\PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"123456789"}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0, 9\PYGZcb{}\PYGZbs{}n\PYGZob{}0, 7\PYGZcb{}\PYGZbs{}n\PYGZob{}0, 5\PYGZcb{}\PYGZbs{}n\PYGZob{}0, 3\PYGZcb{}"}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
+
+generates:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{5}\PYG{l+m}{6}\PYG{l+m}{7}\PYG{l+m}{8}\PYG{l+m}{9}
+        \PYG{n}{stuff}
+  \PYG{n}{stuff}
+\PYG{n}{stuff}
+\PYG{n}{stuff}
+\end{Verbatim}
+
+filling 9, 7, and then 5 columns, by padding with 4, 2, and 0 blanks.  The
+last line sticks out past the proposed 3-column fieldWidth.
+
+One more thing to add to our power table is a heading.  We might want:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{n}   \PYG{n}{square}    \PYG{n}{cube}    \PYG{n}{root}
+\end{Verbatim}
+
+To make the data line up with the heading titles,
+we can expand the columns, with code in example
+\code{PowerTable.cs}:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0,2\PYGZcb{}\PYGZob{}1,8\PYGZcb{}\PYGZob{}2,8\PYGZcb{}\PYGZob{}3,8\PYGZcb{}"}\PYG{p}{,}
+                        \PYG{l+s}{"n"}\PYG{p}{,} \PYG{l+s}{"square"}\PYG{p}{,} \PYG{l+s}{"cube"}\PYG{p}{,} \PYG{l+s}{"root"}\PYG{p}{)}\PYG{p}{;}
+      \PYG{k}{for} \PYG{p}{(} \PYG{k+kt}{int} \PYG{n}{n} \PYG{p}{=} \PYG{l+m}{1}\PYG{p}{;} \PYG{n}{n} \PYG{p}{\textless{}}\PYG{p}{=} \PYG{l+m}{1}\PYG{l+m}{0}\PYG{p}{;} \PYG{n}{n}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+         \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0,2\PYGZcb{}\PYGZob{}1,8\PYGZcb{}\PYGZob{}2,8\PYGZcb{}\PYGZob{}3,8:F4\PYGZcb{}"}\PYG{p}{,}
+                           \PYG{n}{n}\PYG{p}{,} \PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{,} \PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{*}\PYG{n}{n}\PYG{p}{,} \PYG{n}{Math}\PYG{p}{.}\PYG{n}{Sqrt}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+
+generating:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{n}{n}  \PYG{n}{square}    \PYG{n}{cube}    \PYG{n}{root}
+ \PYG{l+m}{1}       \PYG{l+m}{1}       \PYG{l+m}{1}  \PYG{l+m}{1.0000}
+ \PYG{l+m}{2}       \PYG{l+m}{4}       \PYG{l+m}{8}  \PYG{l+m}{1.4142}
+ \PYG{l+m}{3}       \PYG{l+m}{9}      \PYG{l+m}{2}\PYG{l+m}{7}  \PYG{l+m}{1.7321}
+ \PYG{l+m}{4}      \PYG{l+m}{1}\PYG{l+m}{6}      \PYG{l+m}{6}\PYG{l+m}{4}  \PYG{l+m}{2.0000}
+ \PYG{l+m}{5}      \PYG{l+m}{2}\PYG{l+m}{5}     \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{5}  \PYG{l+m}{2.2361}
+ \PYG{l+m}{6}      \PYG{l+m}{3}\PYG{l+m}{6}     \PYG{l+m}{2}\PYG{l+m}{1}\PYG{l+m}{6}  \PYG{l+m}{2.4495}
+ \PYG{l+m}{7}      \PYG{l+m}{4}\PYG{l+m}{9}     \PYG{l+m}{3}\PYG{l+m}{4}\PYG{l+m}{3}  \PYG{l+m}{2.6458}
+ \PYG{l+m}{8}      \PYG{l+m}{6}\PYG{l+m}{4}     \PYG{l+m}{5}\PYG{l+m}{1}\PYG{l+m}{2}  \PYG{l+m}{2.8284}
+ \PYG{l+m}{9}      \PYG{l+m}{8}\PYG{l+m}{1}     \PYG{l+m}{7}\PYG{l+m}{2}\PYG{l+m}{9}  \PYG{l+m}{3.0000}
+\PYG{l+m}{1}\PYG{l+m}{0}     \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}    \PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0}\PYG{l+m}{0}  \PYG{l+m}{3.1623}
+\end{Verbatim}
+
+Note how we make sure the columns are consistent in the heading and further rows:
+We used a format string for the headings with the same field widths as
+in the body of the table. We also reduced the length
+of the format string by putting all the substitution expressions in braces
+right beside each other, and generate the space between columns with a
+larger field width.
 
 \index{ASCII!example}\index{example!ASCII}\phantomsection\label{forexamples:ascii}
-Here is the reverse of the
+Here is a reverse lookup from the
 {\hyperref[foreachexamples:codeofstringchar]{\emph{Numeric Code of String Characters}}}:
 Find the characters for a list of numeric codes. Just as we can cast a
 \code{char} to an \code{int}, we can cast an \code{int} 0-127 to a \code{char}.
@@ -7416,7 +7983,7 @@ Find the characters for a list of numeric codes. Just as we can cast a
 The Unicode used
 by C\# is an extension of the ASCII codes corresponding to the
 characters on a US keyboard.  The codes were originally
-USED to drive printers,
+used to drive printers,
 and the first 32 codes are non-printable instructions to the printer.
 Characters 32 - 126 yield the 95 characters on a standard US keyboard.
 
@@ -7426,45 +7993,15 @@ would be:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{3}\PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{7}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}"}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
+   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0,3\PYGZcb{} \PYGZob{}1\PYGZcb{}"}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
 
-The first line printed does not appear to have a character:  That is the
+To make all the character line up we added a field width 3 for the code column.
+
+If you run  this in csharp,
+the first line printed does not appear to have a character:  That is the
 blank character.  All the other characters are visible.
-
-Part of the output is:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{l+m}{9}\PYG{l+m}{8} \PYG{n}{b}
-\PYG{l+m}{9}\PYG{l+m}{9} \PYG{n}{c}
-\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{n}{d}
-\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{1} \PYG{n}{e}
-\end{Verbatim}
-
-The characters do not line up, because the
-integer codes do not all have the same number of digits.
-That is a formatting issue.We have already seen how we can give formatting
-instructions to get decimal answers rounded to a specified number of digits.
-We can also pad values so they take up the same number of columns.
-The only change below is replacing \code{\{0\}} by \code{\{0, 3\}}.  This means that
-is the resulting string is less than 3 characters long,
-it is padded on the left with blanks to be 3 characters wide:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{p}{=} \PYG{l+m}{3}\PYG{l+m}{2}\PYG{p}{;} \PYG{n}{i} \PYG{p}{\textless{}} \PYG{l+m}{1}\PYG{l+m}{2}\PYG{l+m}{7}\PYG{p}{;} \PYG{n}{i}\PYG{p}{+}\PYG{p}{+}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-   \PYG{n}{Console}\PYG{p}{.}\PYG{n}{WriteLine}\PYG{p}{(}\PYG{l+s}{"\PYGZob{}0, 3\PYGZcb{} \PYGZob{}1\PYGZcb{}"}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)}\PYG{n}{i}\PYG{p}{)}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}
-
-Now the same part of the output is:
-
-\begin{Verbatim}[commandchars=\\\{\}]
- \PYG{l+m}{9}\PYG{l+m}{8} \PYG{n}{b}
- \PYG{l+m}{9}\PYG{l+m}{9} \PYG{n}{c}
-\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{0} \PYG{n}{d}
-\PYG{l+m}{1}\PYG{l+m}{0}\PYG{l+m}{1} \PYG{n}{e}
-\end{Verbatim}
 
 Let us make a more concise table, putting 8 entries per line.
 We can print successive parts use \code{Write} not \code{WriteLine},
@@ -8365,54 +8902,45 @@ two dimensional arrays
 
 \begin{notice}{note}{Todo}
 
-table of square, cube, and square root.
-
-field width formatting
-\end{notice}
-
-(The {\hyperref[forexamples:index-1]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 66.)
-
-\begin{notice}{note}{Todo}
-
 Do some of these examples backwards.
 \end{notice}
 
-(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 152.)
+(The {\hyperref[forexamples:index-3]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 240.)
 
 \begin{notice}{note}{Todo}
 
 Reversing a string...
 \end{notice}
 
-(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 156.)
+(The {\hyperref[forexamples:index-4]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 244.)
 
 \begin{notice}{note}{Todo}
 
 Palindrome
 \end{notice}
 
-(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 160.)
+(The {\hyperref[forexamples:index-5]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 248.)
 
 \begin{notice}{note}{Todo}
 
 ASCII art, triangles; see for loop lab.
 \end{notice}
 
-(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 164.)
+(The {\hyperref[forexamples:index-6]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 252.)
 
 \begin{notice}{note}{Todo}
 
 Make restructured text table with fixed rows, columns, and width empty content.
 \end{notice}
 
-(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 167.)
+(The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 255.)
 
 \begin{notice}{note}{Todo}
 
 Repeat string N times.
 \end{notice}
 
-(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 170.)
+(The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 258.)
 
 \begin{thebibliography}{UPennCSharp}
 \bibitem[CamelCase]{CamelCase}{\phantomsection\label{homework-gradecalculation2:camelcase} 

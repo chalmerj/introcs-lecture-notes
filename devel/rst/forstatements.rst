@@ -24,7 +24,7 @@ is exactly equivalent to this code simliar to part of
 
 More generally:
 
-   | ``for (`` *initialization* ``;`` *condition* ; *modification* ``)`` {
+   | ``for (`` *initialization* ``;`` *condition* ; *update* ``)`` {
    |    statement(s)
    | ``}``
    
@@ -33,11 +33,11 @@ translates to
    | *initialization* ``;`` 
    | ``while (`` *condition* ``)`` {
    |    statement(s)
-   |    *modification* 
+   |    *update* 
    | ``}``
 
 In the example above, *initialization* is ``i=2``, *condition* is ``i <= n``,
-and *modification* is ``i++``.
+and *update* is ``i++``.
 
 Why bother with this rearrangement?  It is a matter of taste,
 but the heading::
@@ -93,9 +93,9 @@ See Miles, page 46, for a discussion of ``break``.
 As in a regular local variable declaration, 
 there may be several variables of the
 same type initialized at the beginning of a ``for`` loop heading, 
-separated by commas.  Also, at the end of the ``for`` loop heading
-there may be more than one
-modification expression, separated by commas.  For example::
+separated by commas.  Also, at the end of the ``for`` loop heading, the
+update portion may include more than one expression, separated by commas.  
+For example::
 
       for (int i = 0, j = 10; i < j; i = i+2, j++) {
          Console.WriteLine("{0} {1}", i, j);

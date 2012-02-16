@@ -48,7 +48,8 @@ A conceptually simpler view is just::
 To *use* "the character" in C#, we must be able to refer to it.
 We might name the current character ``ch``.
 The following is a variant of ``OneCharPerLine`` with a ``foreach`` 
-loop:
+loop::
+
     static void OneCharPerLine(string s) 
     {
        foreach (char ch in s) {

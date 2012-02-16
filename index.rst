@@ -16,12 +16,12 @@ You may use any of the C# Notes formats:
 -   `PDF file <ProgrammingInCSharp.pdf>`_ in fixed paged format for printing
     and for somewhat prettier computer viewing if your screen is wide enough.
 
-In any case be sure to `download the example zip file <examples.zip>`_ 
-and then expand it to have
-all the C# example programs that go with the notes.
+In any case be sure to download the simple `examples zip file <examples.zip>`_ 
+and the `monodevelop projects zip file <projects.zip>`_ then expand ieach to have
+all the C# example programs and projects that go with the notes.
 
 For a quick look, you may also 
-`browse the example code online <examples>`_.
+browse the `example code online <examples>`_ and the `project code online <projects>`_.
 
 The notes continue to be updated and expanded. You can see an outline of
 the latest major changes in the `change log <CSharpHtml/changelog.html>`_.  
