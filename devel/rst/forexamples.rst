@@ -171,7 +171,7 @@ generating::
 
 Note how we make sure the columns are consistent in the heading and further rows:  
 We used a format string for the headings with the same field widths as
-in the body of the table. We also reduced the length
+in the body of the table. A separate variation: We also reduced the length
 of the format string by putting all the substitution expressions in braces
 right beside each other, and generate the space between columns with a 
 larger field width.
@@ -249,10 +249,10 @@ next line.  A program printing this table should include an extra
    ASCII art, triangles; see for loop lab.
 
 .. todo::
-   Make restructured text table with fixed rows, columns, and width empty content.
+   Repeat string N times.  part a, just printed, part b: return a string
 
 .. todo::
-   Repeat string N times.
+   Make restructured text table with fixed rows, columns, and width empty content.
 
 
 Head or Tails Exercise

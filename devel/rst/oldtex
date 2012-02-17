@@ -13,7 +13,7 @@
 
 
 \title{Introductory Programming in C\#}
-\date{February 16, 2012}
+\date{February 17, 2012}
 \release{1.0}
 \author{Andrew N. Harrington and George K. Thiruvathukal}
 \newcommand{\sphinxlogo}{}
@@ -7969,7 +7969,7 @@ generating:
 
 Note how we make sure the columns are consistent in the heading and further rows:
 We used a format string for the headings with the same field widths as
-in the body of the table. We also reduced the length
+in the body of the table. A separate variation: We also reduced the length
 of the format string by putting all the substitution expressions in braces
 right beside each other, and generate the space between columns with a
 larger field width.
@@ -8054,12 +8054,12 @@ ASCII art, triangles; see for loop lab.
 
 \begin{notice}{note}{Todo}
 
-Make restructured text table with fixed rows, columns, and width empty content.
+Repeat string N times.  part a, just printed, part b: return a string
 \end{notice}
 
 \begin{notice}{note}{Todo}
 
-Repeat string N times.
+Make restructured text table with fixed rows, columns, and width empty content.
 \end{notice}
 
 
@@ -8930,14 +8930,14 @@ ASCII art, triangles; see for loop lab.
 
 \begin{notice}{note}{Todo}
 
-Make restructured text table with fixed rows, columns, and width empty content.
+Repeat string N times.  part a, just printed, part b: return a string
 \end{notice}
 
 (The {\hyperref[forexamples:index-7]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 255.)
 
 \begin{notice}{note}{Todo}
 
-Repeat string N times.
+Make restructured text table with fixed rows, columns, and width empty content.
 \end{notice}
 
 (The {\hyperref[forexamples:index-8]{\emph{original entry}}} is located in  /Users/anh/www/170/notes/devel/rst/forexamples.rst, line 258.)
